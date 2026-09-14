@@ -1,8 +1,9 @@
 import React from 'react';
-import { PageId } from '../types';
+import { PageId, GSX_WHATSAPP_URL, GSX_INSTAGRAM_URL, GSX_LINKEDIN_URL } from '../types';
 import { FEATURED_LEAD, CORE_TEAM } from '../data/team';
 import { HeroGlow } from '../components/HeroGlow';
 import { ScrollReveal } from '../components/ScrollReveal';
+import { WhatsAppIcon } from '../components/WhatsAppIcon';
 import {
   Instagram,
   Linkedin,
@@ -248,10 +249,10 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onNavigate, onOpenJoinModal 
         </ScrollReveal>
 
         <ScrollReveal variant="fade-up" distance={25}>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
             <a
               id="team-instagram-link"
-              href="https://www.instagram.com/gsx_chennai_chapter/"
+              href={GSX_INSTAGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-between p-4 rounded-2xl bg-white/[0.02] border border-white/[0.08] hover:border-purple-500/40 hover:bg-purple-950/20 text-gray-300 hover:text-white transition-all group"
@@ -267,7 +268,7 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onNavigate, onOpenJoinModal 
 
             <a
               id="team-linkedin-link"
-              href="https://linkedin.com/company/gsx-chennai"
+              href={GSX_LINKEDIN_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-between p-4 rounded-2xl bg-white/[0.02] border border-white/[0.08] hover:border-purple-500/40 hover:bg-purple-950/20 text-gray-300 hover:text-white transition-all group"
@@ -279,6 +280,22 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onNavigate, onOpenJoinModal 
                 <span className="text-sm font-medium">LinkedIn</span>
               </div>
               <ArrowUpRight className="w-4 h-4 text-gray-500 group-hover:text-purple-300 transition-colors" />
+            </a>
+
+            <a
+              id="team-whatsapp-link"
+              href={GSX_WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-between p-4 rounded-2xl bg-white/[0.02] border border-white/[0.08] hover:border-green-500/40 hover:bg-green-950/20 text-gray-300 hover:text-white transition-all group"
+            >
+              <div className="flex items-center gap-3">
+                <div className="p-2.5 rounded-xl bg-green-500/10 border border-green-500/20 text-green-400 group-hover:border-green-400/40 transition-colors">
+                  <WhatsAppIcon className="w-5 h-5 text-green-400" />
+                </div>
+                <span className="text-sm font-medium">WhatsApp</span>
+              </div>
+              <ArrowUpRight className="w-4 h-4 text-gray-500 group-hover:text-green-300 transition-colors" />
             </a>
           </div>
         </ScrollReveal>

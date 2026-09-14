@@ -1,4 +1,7 @@
 export const GSX_JOIN_FORM_URL = 'https://forms.gle/AFdmVVLug64CURiq9';
+export const GSX_WHATSAPP_URL = 'https://chat.whatsapp.com/HfxItPkZAgeDtdKut2qgfr?s=cl&p=a&ilr=0';
+export const GSX_INSTAGRAM_URL = 'https://www.instagram.com/gsx_chennai_chapter/';
+export const GSX_LINKEDIN_URL = 'https://www.linkedin.com/company/gsx-chennai-chapter';
 
 export type PageId = 
   | 'home'
