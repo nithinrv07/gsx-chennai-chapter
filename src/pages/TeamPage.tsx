@@ -6,7 +6,6 @@ import { ScrollReveal } from '../components/ScrollReveal';
 import {
   Instagram,
   Linkedin,
-  Github,
   Sparkles,
   ArrowUpRight,
   Compass,
@@ -142,17 +141,6 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onNavigate, onOpenJoinModal 
                     <Linkedin className="w-4 h-4 text-purple-400" />
                   </a>
                 )}
-                {FEATURED_LEAD.github && (
-                  <a
-                    href={FEATURED_LEAD.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2.5 rounded-xl bg-white/[0.04] border border-white/[0.08] hover:border-purple-500/40 hover:bg-purple-950/30 text-gray-300 hover:text-white transition-all"
-                    title="GitHub"
-                  >
-                    <Github className="w-4 h-4 text-purple-400" />
-                  </a>
-                )}
               </div>
             </div>
           </div>
@@ -235,17 +223,6 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onNavigate, onOpenJoinModal 
                           <Linkedin className="w-3.5 h-3.5" />
                         </a>
                       )}
-                      {member.github && (
-                        <a
-                          href={member.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="p-1.5 rounded-lg bg-white/[0.03] text-gray-400 hover:text-purple-300 transition-colors"
-                          title="GitHub"
-                        >
-                          <Github className="w-3.5 h-3.5" />
-                        </a>
-                      )}
                     </div>
 
                     <span className="text-[10px] font-mono text-gray-400 group-hover:text-purple-300">
@@ -271,7 +248,7 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onNavigate, onOpenJoinModal 
         </ScrollReveal>
 
         <ScrollReveal variant="fade-up" distance={25}>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
             <a
               id="team-instagram-link"
               href="https://www.instagram.com/gsx_chennai_chapter/"
@@ -300,22 +277,6 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onNavigate, onOpenJoinModal 
                   <Linkedin className="w-5 h-5" />
                 </div>
                 <span className="text-sm font-medium">LinkedIn</span>
-              </div>
-              <ArrowUpRight className="w-4 h-4 text-gray-500 group-hover:text-purple-300 transition-colors" />
-            </a>
-
-            <a
-              id="team-github-link"
-              href="https://github.com/gsx-chennai"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-between p-4 rounded-2xl bg-white/[0.02] border border-white/[0.08] hover:border-purple-500/40 hover:bg-purple-950/20 text-gray-300 hover:text-white transition-all group"
-            >
-              <div className="flex items-center gap-3">
-                <div className="p-2.5 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 group-hover:border-purple-400/40 transition-colors">
-                  <Github className="w-5 h-5" />
-                </div>
-                <span className="text-sm font-medium">GitHub</span>
               </div>
               <ArrowUpRight className="w-4 h-4 text-gray-500 group-hover:text-purple-300 transition-colors" />
             </a>

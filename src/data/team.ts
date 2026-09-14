@@ -13,7 +13,6 @@ export const FEATURED_LEAD: TeamMember = {
   image: '/team/DEDEEPYA%20YAKKALA.jpeg',
   iconName: 'Compass',
   linkedin: 'https://www.linkedin.com/company/gsx-chennai-chapter',
-  github: 'https://github.com/gsx-chennai',
   instagram: 'https://www.instagram.com/gsx_chennai_chapter/',
   twitter: 'https://twitter.com',
   isLead: true,
@@ -29,7 +28,6 @@ export const CORE_TEAM: TeamMember[] = [
     image: '/team/SUJEY%20H.jpeg',
     iconName: 'Cpu',
     linkedin: 'https://www.linkedin.com/company/gsx-chennai-chapter',
-    github: 'https://github.com/gsx-chennai',
     instagram: 'https://www.instagram.com/gsx_chennai_chapter/',
   },
   {
@@ -41,7 +39,6 @@ export const CORE_TEAM: TeamMember[] = [
     image: '/team/ABINAYA.jpeg',
     iconName: 'Hammer',
     linkedin: 'https://www.linkedin.com/company/gsx-chennai-chapter',
-    github: 'https://github.com/gsx-chennai',
     instagram: 'https://www.instagram.com/gsx_chennai_chapter/',
   },
   {
@@ -53,7 +50,6 @@ export const CORE_TEAM: TeamMember[] = [
     image: '/team/buvaneshwer.jpeg',
     iconName: 'Hammer',
     linkedin: 'https://www.linkedin.com/company/gsx-chennai-chapter',
-    github: 'https://github.com/gsx-chennai',
     instagram: 'https://www.instagram.com/gsx_chennai_chapter/',
   },
   {
@@ -65,7 +61,6 @@ export const CORE_TEAM: TeamMember[] = [
     image: '/team/KAMESHWARN.jpeg',
     iconName: 'Users',
     linkedin: 'https://www.linkedin.com/company/gsx-chennai-chapter',
-    github: 'https://github.com/gsx-chennai',
     instagram: 'https://www.instagram.com/gsx_chennai_chapter/',
   },
   {
@@ -77,7 +72,6 @@ export const CORE_TEAM: TeamMember[] = [
     image: '/team/KAVIYA.jpeg',
     iconName: 'TrendingUp',
     linkedin: 'https://www.linkedin.com/company/gsx-chennai-chapter',
-    github: 'https://github.com/gsx-chennai',
     instagram: 'https://www.instagram.com/gsx_chennai_chapter/',
   },
   {
@@ -89,7 +83,6 @@ export const CORE_TEAM: TeamMember[] = [
     image: '/team/MINHU.jpeg',
     iconName: 'Cpu',
     linkedin: 'https://www.linkedin.com/company/gsx-chennai-chapter',
-    github: 'https://github.com/gsx-chennai',
     instagram: 'https://www.instagram.com/gsx_chennai_chapter/',
   },
   {
@@ -101,7 +94,6 @@ export const CORE_TEAM: TeamMember[] = [
     image: '/team/MITHRA.jpeg',
     iconName: 'Megaphone',
     linkedin: 'https://www.linkedin.com/company/gsx-chennai-chapter',
-    github: 'https://github.com/gsx-chennai',
     instagram: 'https://www.instagram.com/gsx_chennai_chapter/',
   },
   {
@@ -113,7 +105,6 @@ export const CORE_TEAM: TeamMember[] = [
     image: '/team/SHAMEL.jpeg',
     iconName: 'HeartHandshake',
     linkedin: 'https://www.linkedin.com/company/gsx-chennai-chapter',
-    github: 'https://github.com/gsx-chennai',
     instagram: 'https://www.instagram.com/gsx_chennai_chapter/',
   },
   {
@@ -125,7 +116,6 @@ export const CORE_TEAM: TeamMember[] = [
     image: '/team/raghunath%20balaji.jpeg',
     iconName: 'BookOpen',
     linkedin: 'https://www.linkedin.com/company/gsx-chennai-chapter',
-    github: 'https://github.com/gsx-chennai',
     instagram: 'https://www.instagram.com/gsx_chennai_chapter/',
   },
   {
@@ -137,7 +127,6 @@ export const CORE_TEAM: TeamMember[] = [
     image: '/team/semmozhi.jpeg',
     iconName: 'BookOpen',
     linkedin: 'https://www.linkedin.com/company/gsx-chennai-chapter',
-    github: 'https://github.com/gsx-chennai',
     instagram: 'https://www.instagram.com/gsx_chennai_chapter/',
   },
 ];

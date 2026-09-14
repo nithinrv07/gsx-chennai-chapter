@@ -1,6 +1,6 @@
 import React from 'react';
 import { ProjectItem } from '../types';
-import { X, Github, ExternalLink, Sparkles, CheckCircle2, Layers } from 'lucide-react';
+import { X, ExternalLink, Sparkles, CheckCircle2, Layers } from 'lucide-react';
 import { motion } from 'motion/react';
 
 interface ProjectDetailModalProps {
@@ -141,18 +141,6 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
           {/* Actions */}
           <div className="pt-4 border-t border-white/[0.08] flex flex-wrap items-center justify-between gap-3">
             <div className="flex items-center gap-3">
-              {project.githubUrl && (
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] text-gray-200 hover:text-white text-xs font-medium transition-colors"
-                >
-                  <Github className="w-4 h-4" />
-                  <span>Source Code</span>
-                </a>
-              )}
-
               {project.liveDemoUrl && (
                 <a
                   href={project.liveDemoUrl}

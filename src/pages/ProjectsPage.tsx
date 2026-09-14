@@ -3,7 +3,7 @@ import { PageId, ProjectCategory, ProjectItem } from '../types';
 import { PROJECTS_DATA } from '../data/projects';
 import { HeroGlow } from '../components/HeroGlow';
 import { ScrollReveal } from '../components/ScrollReveal';
-import { Github, ExternalLink, Sparkles, Layers, ArrowRight, Plus } from 'lucide-react';
+import { ExternalLink, Sparkles, Layers, ArrowRight, Plus } from 'lucide-react';
 import { motion } from 'motion/react';
 
 interface ProjectsPageProps {
@@ -152,17 +152,6 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
                       </span>
 
                       <div className="flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
-                        {project.githubUrl && (
-                          <a
-                            href={project.githubUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-1.5 rounded-lg bg-white/[0.03] hover:bg-white/[0.08] text-gray-400 hover:text-white transition-colors"
-                            title="View Source"
-                          >
-                            <Github className="w-3.5 h-3.5" />
-                          </a>
-                        )}
                         {project.liveDemoUrl && (
                           <a
                             href={project.liveDemoUrl}

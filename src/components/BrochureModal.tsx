@@ -16,7 +16,6 @@ import {
   Mail, 
   Instagram, 
   Linkedin, 
-  Github, 
   Award, 
   CheckCircle2,
   Calendar,

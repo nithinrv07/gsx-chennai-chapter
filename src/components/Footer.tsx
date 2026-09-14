@@ -1,6 +1,6 @@
 import React from 'react';
 import { PageId } from '../types';
-import { Instagram, Linkedin, Github, ArrowUpRight, Sparkles, MapPin, Mail } from 'lucide-react';
+import { Instagram, Linkedin, ArrowUpRight, Sparkles, MapPin, Mail } from 'lucide-react';
 import { WhatsAppIcon } from './WhatsAppIcon';
 
 interface FooterProps {
@@ -167,20 +167,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenJoinModal }) =
                 <div className="flex items-center gap-2.5">
                   <Linkedin className="w-4 h-4 text-purple-400" />
                   <span className="text-xs font-medium">LinkedIn</span>
-                </div>
-                <ArrowUpRight className="w-3.5 h-3.5 text-gray-500 group-hover:text-purple-300 transition-colors" />
-              </a>
-
-              <a
-                id="footer-github-link"
-                href="https://github.com/gsx-chennai"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-between p-2.5 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-purple-500/40 hover:bg-purple-950/20 text-gray-300 hover:text-white transition-all group"
-              >
-                <div className="flex items-center gap-2.5">
-                  <Github className="w-4 h-4 text-purple-400" />
-                  <span className="text-xs font-medium">GitHub</span>
                 </div>
                 <ArrowUpRight className="w-3.5 h-3.5 text-gray-500 group-hover:text-purple-300 transition-colors" />
               </a>

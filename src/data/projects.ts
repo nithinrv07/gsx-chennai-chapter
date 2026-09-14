@@ -20,7 +20,6 @@ export const PROJECTS_DATA: ProjectItem[] = [
       { name: 'Community Builder Beta', role: 'Frontend & API' }
     ],
     image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=900&auto=format&fit=crop&q=80',
-    githubUrl: 'https://github.com/gsx-chennai',
     liveDemoUrl: 'https://example.com'
   },
   {
@@ -34,7 +33,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       'Interactive skill-matching graph for hackathon teammates',
       'Markdown research paper previews and code repository linking',
       'Direct peer messaging with verified student campus badges',
-      'Integration with GitHub activity feeds'
+      'Integration with project activity feeds'
     ],
     techStack: ['Next.js', 'React', 'Node.js', 'Tailwind CSS', 'PostgreSQL'],
     creators: [
@@ -42,7 +41,6 @@ export const PROJECTS_DATA: ProjectItem[] = [
       { name: 'Student Builder Delta', role: 'Product Design' }
     ],
     image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=900&auto=format&fit=crop&q=80',
-    githubUrl: 'https://github.com/gsx-chennai',
     liveDemoUrl: 'https://example.com'
   },
   {
@@ -63,7 +61,6 @@ export const PROJECTS_DATA: ProjectItem[] = [
       { name: 'AI Community Pod', role: 'Dataset & Model Training' }
     ],
     image: 'https://images.unsplash.com/photo-1589254065878-42c9da997008?w=900&auto=format&fit=crop&q=80',
-    githubUrl: 'https://github.com/gsx-chennai',
     liveDemoUrl: 'https://example.com'
   },
   {
@@ -83,8 +80,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     creators: [
       { name: 'Hardware SIG Lead', role: 'Embedded Systems' }
     ],
-    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&auto=format&fit=crop&q=80',
-    githubUrl: 'https://github.com/gsx-chennai'
+    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&auto=format&fit=crop&q=80'
   },
   {
     id: 'proj-blood-relay-mobile',
@@ -104,7 +100,6 @@ export const PROJECTS_DATA: ProjectItem[] = [
       { name: 'Mobile Track Cohort', role: 'Mobile Architecture' }
     ],
     image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=900&auto=format&fit=crop&q=80',
-    githubUrl: 'https://github.com/gsx-chennai',
     liveDemoUrl: 'https://example.com'
   }
 ];

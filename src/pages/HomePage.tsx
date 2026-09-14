@@ -17,7 +17,6 @@ import {
   Briefcase, 
   Layers, 
   ExternalLink,
-  Github,
   Compass
 } from 'lucide-react';
 import { motion } from 'motion/react';

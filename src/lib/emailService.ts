@@ -114,7 +114,7 @@ export async function sendProjectSubmission(data: ProjectSubmissionPayload): Pro
         'Creator Name': data.creatorName,
         'Creator Email': data.creatorEmail,
         'Live Demo URL': data.liveDemoUrl || 'Not provided',
-        'GitHub Repository': data.githubUrl || 'Not provided',
+        'Project / Code Repository': data.githubUrl || 'Not provided',
         'Submitted At': new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
       }),
     });

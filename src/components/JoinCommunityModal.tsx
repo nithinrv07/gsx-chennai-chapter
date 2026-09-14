@@ -218,7 +218,7 @@ export const JoinCommunityModal: React.FC<JoinCommunityModalProps> = ({ isOpen, 
 
               <div>
                 <label className="block text-xs font-semibold text-gray-300 mb-1">
-                  GitHub or Instagram Handle (Optional)
+                  Instagram Handle (Optional)
                 </label>
                 <input
                   type="text"

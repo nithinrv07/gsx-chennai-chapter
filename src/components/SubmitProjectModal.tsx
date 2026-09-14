@@ -145,11 +145,11 @@ export const SubmitProjectModal: React.FC<SubmitProjectModalProps> = ({ isOpen, 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-xs font-semibold text-gray-300 mb-1">
-                    GitHub / Repo URL
+                    Project / Code Link
                   </label>
                   <input
                     type="url"
-                    placeholder="https://github.com/..."
+                    placeholder="https://..."
                     value={formData.githubUrl}
                     onChange={(e) => setFormData({ ...formData, githubUrl: e.target.value })}
                     className="w-full px-3 py-2 rounded-xl bg-white/[0.03] border border-white/[0.1] text-xs text-white placeholder-gray-500 focus:outline-none focus:border-purple-500"
