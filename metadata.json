@@ -1,0 +1,6 @@
+{
+  "name": "GSX Chennai Chapter",
+  "description": "Official website for GSX Chennai Chapter — Learn. Build. Connect. Grow. A premier community of learners, creators, innovators, and changemakers across Chennai.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
