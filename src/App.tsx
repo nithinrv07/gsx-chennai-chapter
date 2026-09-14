@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { PageId, EventItem, ProjectItem, AnnouncementItem } from './types';
+import { PageId, EventItem, ProjectItem, AnnouncementItem, GSX_JOIN_FORM_URL } from './types';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { CustomCursor } from './components/CustomCursor';
@@ -37,6 +37,11 @@ function AppContent() {
   const [isSubmitProjectModalOpen, setIsSubmitProjectModalOpen] = useState(false);
   const [selectedAnnouncementForDetail, setSelectedAnnouncementForDetail] = useState<AnnouncementItem | null>(null);
 
+  // Direct user to official GSX Google Form
+  const handleOpenJoinModal = () => {
+    window.open(GSX_JOIN_FORM_URL, '_blank', 'noopener,noreferrer');
+  };
+
   // Scroll to top upon page navigation
   const handleNavigate = (page: PageId) => {
     setCurrentPage(page);
@@ -58,7 +63,7 @@ function AppContent() {
       <Navbar
         currentPage={currentPage}
         onNavigate={handleNavigate}
-        onOpenJoinModal={() => setIsJoinModalOpen(true)}
+        onOpenJoinModal={handleOpenJoinModal}
       />
 
       {/* Main Content with Route Transitions */}
@@ -74,7 +79,7 @@ function AppContent() {
             >
               <HomePage
                 onNavigate={handleNavigate}
-                onOpenJoinModal={() => setIsJoinModalOpen(true)}
+                onOpenJoinModal={handleOpenJoinModal}
                 onOpenEventDetail={(evt) => setSelectedEventForDetail(evt)}
                 onRegisterEvent={(evt) => setSelectedEventForRegister(evt)}
                 onOpenProjectDetail={(proj) => setSelectedProjectForDetail(proj)}
@@ -92,7 +97,7 @@ function AppContent() {
             >
               <AboutPage
                 onNavigate={handleNavigate}
-                onOpenJoinModal={() => setIsJoinModalOpen(true)}
+                onOpenJoinModal={handleOpenJoinModal}
               />
             </motion.div>
           )}
@@ -107,7 +112,7 @@ function AppContent() {
             >
               <TeamPage
                 onNavigate={handleNavigate}
-                onOpenJoinModal={() => setIsJoinModalOpen(true)}
+                onOpenJoinModal={handleOpenJoinModal}
               />
             </motion.div>
           )}
@@ -169,7 +174,7 @@ function AppContent() {
             >
               <GetInvolvedPage
                 onNavigate={handleNavigate}
-                onOpenJoinModal={() => setIsJoinModalOpen(true)}
+                onOpenJoinModal={handleOpenJoinModal}
               />
             </motion.div>
           )}
@@ -179,7 +184,7 @@ function AppContent() {
       {/* Global Footer */}
       <Footer
         onNavigate={handleNavigate}
-        onOpenJoinModal={() => setIsJoinModalOpen(true)}
+        onOpenJoinModal={handleOpenJoinModal}
       />
 
       {/* ===================================================

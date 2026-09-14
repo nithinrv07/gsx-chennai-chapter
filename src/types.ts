@@ -1,3 +1,5 @@
+export const GSX_JOIN_FORM_URL = 'https://forms.gle/AFdmVVLug64CURiq9';
+
 export type PageId = 
   | 'home'
   | 'about'

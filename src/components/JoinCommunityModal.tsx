@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { X, CheckCircle2, Sparkles, Instagram, ArrowRight, Compass, Code, Rocket } from 'lucide-react';
+import { X, CheckCircle2, Sparkles, Instagram, ArrowRight, Compass, Code, Rocket, ExternalLink } from 'lucide-react';
 import { motion } from 'motion/react';
 import { sendJoinRegistration, GSX_OFFICIAL_EMAIL } from '../lib/emailService';
+import { GSX_JOIN_FORM_URL } from '../types';
 
 interface JoinCommunityModalProps {
   isOpen: boolean;
@@ -72,7 +73,7 @@ export const JoinCommunityModal: React.FC<JoinCommunityModalProps> = ({ isOpen, 
 
         {!joined ? (
           <div className="p-6 sm:p-8">
-            <div className="mb-6 text-center sm:text-left">
+            <div className="mb-5 text-center sm:text-left">
               <span className="inline-block px-2.5 py-0.5 text-[10px] font-bold tracking-wider uppercase rounded-full bg-violet-500/10 text-violet-300 border border-violet-500/20 mb-2">
                 Join GSX Chennai Chapter
               </span>
@@ -80,9 +81,34 @@ export const JoinCommunityModal: React.FC<JoinCommunityModalProps> = ({ isOpen, 
                 Your Journey Starts Here
               </h2>
               <p className="text-xs sm:text-sm text-gray-400 mt-1 leading-relaxed">
-                You don&apos;t need to be an expert to join GSX. Bring your curiosity, your ideas, and your willingness to contribute.
+                Join through our official Google Form or register right here.
               </p>
             </div>
+
+            {/* Google Form Direct Link Banner */}
+            <a
+              href={GSX_JOIN_FORM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full mb-5 p-3 sm:p-3.5 rounded-xl bg-gradient-to-r from-violet-600/30 via-purple-600/20 to-fuchsia-600/30 border border-violet-500/40 hover:border-violet-400 text-white flex items-center justify-between gap-3 shadow-[0_0_20px_rgba(139,92,246,0.2)] hover:shadow-[0_0_25px_rgba(139,92,246,0.4)] transition-all group cursor-pointer"
+            >
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-lg bg-violet-500/30 border border-violet-400/30 flex items-center justify-center text-violet-200">
+                  <ExternalLink className="w-4 h-4" />
+                </div>
+                <div className="text-left">
+                  <span className="text-xs font-bold block text-white group-hover:text-violet-200 transition-colors">
+                    Official GSX Google Form
+                  </span>
+                  <span className="text-[11px] text-gray-400">
+                    Open Google Form to join directly
+                  </span>
+                </div>
+              </div>
+              <span className="text-xs font-bold text-violet-300 flex items-center gap-1 group-hover:translate-x-0.5 transition-transform bg-violet-500/20 px-2.5 py-1 rounded-lg border border-violet-500/30">
+                Open Form →
+              </span>
+            </a>
 
             {/* 3-Step Journey Micro-cards */}
             <div className="grid grid-cols-3 gap-2.5 mb-6">
