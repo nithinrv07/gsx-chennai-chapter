@@ -93,60 +93,59 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
 
       {/* Projects Grid */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProjects.map((project, idx) => (
-            <ScrollReveal
-              key={project.id}
-              variant="fade-up"
-              staggerIndex={idx}
-              staggerInterval={70}
-              distance={24}
-              className="h-full"
-            >
-              <div
-                className="glass-panel glass-panel-hover rounded-2xl overflow-hidden flex flex-col group border border-white/[0.08] cursor-pointer h-full"
-                onClick={() => onOpenProjectDetail(project)}
+        {filteredProjects.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredProjects.map((project, idx) => (
+              <ScrollReveal
+                key={project.id}
+                variant="fade-up"
+                staggerIndex={idx}
+                staggerInterval={70}
+                distance={24}
+                className="h-full"
               >
-                {/* Cover Image */}
-                <div className="relative h-48 w-full overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#090710] via-transparent to-transparent" />
-                  <span className="absolute top-3 left-3 px-2.5 py-1 text-[10px] font-semibold rounded-full bg-black/70 backdrop-blur-md text-purple-300 border border-purple-500/30">
-                    {project.category}
-                  </span>
-                </div>
-
-                {/* Body */}
-                <div className="p-6 flex-1 flex flex-col justify-between">
-                  <div>
-                    <h3 className="text-lg font-bold text-white group-hover:text-purple-200 transition-colors line-clamp-1 mb-2">
-                      {project.title}
-                    </h3>
-
-                    <p className="text-xs text-gray-400 line-clamp-2 leading-relaxed mb-4">
-                      {project.shortDescription}
-                    </p>
-
-                    {/* Tech stack badges */}
-                    <div className="flex flex-wrap gap-1.5 mb-5">
-                      {project.techStack.map((tech, i) => (
-                        <span
-                          key={i}
-                          className="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.03] text-purple-300 border border-white/[0.06]"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
+                <div
+                  className="glass-panel glass-panel-hover rounded-2xl overflow-hidden flex flex-col group border border-white/[0.08] cursor-pointer h-full"
+                  onClick={() => onOpenProjectDetail(project)}
+                >
+                  {/* Cover Image */}
+                  <div className="relative h-48 w-full overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#090710] via-transparent to-transparent" />
+                    <span className="absolute top-3 left-3 px-2.5 py-1 text-[10px] font-semibold rounded-full bg-black/70 backdrop-blur-md text-purple-300 border border-purple-500/30">
+                      {project.category}
+                    </span>
                   </div>
 
-                  <div>
-                    {/* Creators and action links */}
-                    <div className="pt-3 border-t border-white/[0.06] flex items-center justify-between">
+                  {/* Body */}
+                  <div className="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                      <h3 className="text-lg font-bold text-white group-hover:text-purple-200 transition-colors line-clamp-1 mb-2">
+                        {project.title}
+                      </h3>
+
+                      <p className="text-xs text-gray-400 line-clamp-2 leading-relaxed mb-4">
+                        {project.shortDescription}
+                      </p>
+
+                      {/* Tech stack badges */}
+                      <div className="flex flex-wrap gap-1.5 mb-5">
+                        {project.techStack.map((tech, i) => (
+                          <span
+                            key={i}
+                            className="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.03] text-purple-300 border border-white/[0.06]"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between">
                       <span className="text-[11px] text-gray-400">
                         by {project.creators[0]?.name || 'GSX Community'}
                       </span>
@@ -163,17 +162,33 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
                             <ExternalLink className="w-3.5 h-3.5" />
                           </a>
                         )}
-                        <span className="text-xs font-semibold text-purple-300 ml-1 group-hover:translate-x-0.5 transition-transform">
-                          Details →
-                        </span>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </ScrollReveal>
-          ))}
-        </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        ) : (
+          <div className="glass-panel p-10 sm:p-16 rounded-3xl border border-white/[0.08] text-center max-w-2xl mx-auto">
+            <div className="w-16 h-16 rounded-2xl bg-purple-600/20 border border-purple-500/30 text-purple-300 flex items-center justify-center mx-auto mb-5 shadow-[0_0_30px_rgba(168,85,247,0.3)]">
+              <Sparkles className="w-8 h-8" />
+            </div>
+            <h3 className="text-2xl font-bold text-white mb-2">
+              No Projects Showcased Yet
+            </h3>
+            <p className="text-sm text-gray-400 leading-relaxed max-w-md mx-auto mb-8">
+              We&apos;re curating submissions from student builders across Chennai. Have you built an open-source tool, AI model, or prototype? Be the first to get featured!
+            </p>
+            <button
+              onClick={onOpenSubmitModal}
+              className="px-8 py-3.5 rounded-xl bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-500 hover:to-violet-500 text-white font-semibold text-sm shadow-[0_0_25px_rgba(168,85,247,0.4)] transition-all cursor-pointer inline-flex items-center gap-2"
+            >
+              <Plus className="w-4 h-4" />
+              <span>Submit Your Project</span>
+            </button>
+          </div>
+        )}
       </section>
 
       {/* Final Submission CTA */}

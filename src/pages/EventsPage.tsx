@@ -197,86 +197,99 @@ export const EventsPage: React.FC<EventsPageProps> = ({
             ))}
           </div>
         ) : (
-          <div className="text-center py-16 glass-panel rounded-2xl border border-white/[0.06]">
-            <p className="text-gray-400 text-sm">No upcoming events found in this category.</p>
-            <button
-              onClick={() => setSelectedCategory('All')}
-              className="mt-3 text-xs text-purple-400 hover:underline"
+          <div className="glass-panel p-10 sm:p-14 rounded-3xl border border-white/[0.08] text-center max-w-xl mx-auto">
+            <div className="w-16 h-16 rounded-2xl bg-purple-600/20 border border-purple-500/30 text-purple-300 flex items-center justify-center mx-auto mb-4 shadow-[0_0_25px_rgba(168,85,247,0.3)]">
+              <Calendar className="w-8 h-8" />
+            </div>
+            <h3 className="text-xl font-bold text-white mb-2">
+              Next Events Lineup In Preparation
+            </h3>
+            <p className="text-xs sm:text-sm text-gray-400 leading-relaxed max-w-md mx-auto mb-6">
+              We&apos;re finalizing dates for upcoming developer workshops, AI build jams, and hackathons. Join the community to get access first!
+            </p>
+            <a
+              href="https://forms.gle/AFdmVVLug64CURiq9"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 rounded-xl bg-violet-600 hover:bg-violet-500 text-white text-xs font-bold uppercase tracking-wider shadow-[0_0_20px_rgba(139,92,246,0.35)] transition-all cursor-pointer inline-flex items-center gap-2"
             >
-              Reset Filters
-            </button>
+              <Sparkles className="w-4 h-4 text-violet-200" />
+              <span>Join GSX Chennai Community</span>
+            </a>
           </div>
         )}
       </section>
 
       {/* Past Events Recap Section */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6">
-        <ScrollReveal variant="fade-up" distance={20} className="border-t border-white/[0.08] pt-16 mb-8">
-          <span className="text-xs font-bold uppercase tracking-widest text-purple-400 block mb-1">
-            Archive & Highlights
-          </span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-            Past Events
-          </h2>
-          <p className="text-xs sm:text-sm text-gray-400 mt-1">
-            Recap of previous summits, code sprints, and workshops hosted by the chapter.
-          </p>
-        </ScrollReveal>
+      {pastEvents.length > 0 && (
+        <section className="max-w-6xl mx-auto px-4 sm:px-6">
+          <ScrollReveal variant="fade-up" distance={20} className="border-t border-white/[0.08] pt-16 mb-8">
+            <span className="text-xs font-bold uppercase tracking-widest text-purple-400 block mb-1">
+              Archive & Highlights
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+              Past Events
+            </h2>
+            <p className="text-xs sm:text-sm text-gray-400 mt-1">
+              Recap of previous summits, code sprints, and workshops hosted by the chapter.
+            </p>
+          </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {pastEvents.map((evt, idx) => (
-            <ScrollReveal
-              key={evt.id}
-              variant="fade-up"
-              staggerIndex={idx}
-              staggerInterval={70}
-              distance={20}
-              className="h-full"
-            >
-              <div className="glass-panel rounded-2xl overflow-hidden flex flex-col border border-white/[0.06] opacity-85 hover:opacity-100 transition-opacity h-full">
-                <div className="relative h-40 w-full overflow-hidden">
-                  <img
-                    src={evt.image}
-                    alt={evt.title}
-                    className="w-full h-full object-cover grayscale-[30%]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#090710] via-transparent to-transparent" />
-                  <span className="absolute top-3 left-3 px-2 py-0.5 text-[10px] font-semibold rounded-full bg-black/70 text-gray-300">
-                    {evt.category}
-                  </span>
-                </div>
-
-                <div className="p-5 flex-1 flex flex-col justify-between">
-                  <div>
-                    <div className="text-[11px] text-gray-400 mb-1">
-                      {evt.date} • {evt.venueType}
-                    </div>
-                    <h3 className="text-sm font-bold text-white mb-2 line-clamp-1">
-                      {evt.title}
-                    </h3>
-                    <p className="text-xs text-gray-400 line-clamp-2 leading-relaxed">
-                      {evt.description}
-                    </p>
-                  </div>
-
-                  <div className="pt-4 mt-4 border-t border-white/[0.06] flex items-center justify-between">
-                    <span className="text-[10px] text-purple-400 font-medium">
-                      Successfully Completed
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {pastEvents.map((evt, idx) => (
+              <ScrollReveal
+                key={evt.id}
+                variant="fade-up"
+                staggerIndex={idx}
+                staggerInterval={70}
+                distance={20}
+                className="h-full"
+              >
+                <div className="glass-panel rounded-2xl overflow-hidden flex flex-col border border-white/[0.06] opacity-85 hover:opacity-100 transition-opacity h-full">
+                  <div className="relative h-40 w-full overflow-hidden">
+                    <img
+                      src={evt.image}
+                      alt={evt.title}
+                      className="w-full h-full object-cover grayscale-[30%]"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#090710] via-transparent to-transparent" />
+                    <span className="absolute top-3 left-3 px-2 py-0.5 text-[10px] font-semibold rounded-full bg-black/70 text-gray-300">
+                      {evt.category}
                     </span>
-                    <button
-                      onClick={() => onOpenEventDetail(evt)}
-                      className="text-xs text-gray-300 hover:text-white font-medium flex items-center gap-1 cursor-pointer"
-                    >
-                      <span>View Recap</span>
-                      <ArrowRight className="w-3 h-3 text-purple-400" />
-                    </button>
+                  </div>
+
+                  <div className="p-5 flex-1 flex flex-col justify-between">
+                    <div>
+                      <div className="text-[11px] text-gray-400 mb-1">
+                        {evt.date} • {evt.venueType}
+                      </div>
+                      <h3 className="text-sm font-bold text-white mb-2 line-clamp-1">
+                        {evt.title}
+                      </h3>
+                      <p className="text-xs text-gray-400 line-clamp-2 leading-relaxed">
+                        {evt.description}
+                      </p>
+                    </div>
+
+                    <div className="pt-4 mt-4 border-t border-white/[0.06] flex items-center justify-between">
+                      <span className="text-[10px] text-purple-400 font-medium">
+                        Successfully Completed
+                      </span>
+                      <button
+                        onClick={() => onOpenEventDetail(evt)}
+                        className="text-xs text-gray-300 hover:text-white font-medium flex items-center gap-1 cursor-pointer"
+                      >
+                        <span>View Recap</span>
+                        <ArrowRight className="w-3 h-3 text-purple-400" />
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </ScrollReveal>
-          ))}
-        </div>
-      </section>
+              </ScrollReveal>
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   );
 };

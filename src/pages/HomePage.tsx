@@ -257,72 +257,93 @@ export const HomePage: React.FC<HomePageProps> = ({
           </button>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {upcomingEvents.map((evt, idx) => (
-            <ScrollReveal
-              key={evt.id}
-              variant="fade-up"
-              staggerIndex={idx}
-              staggerInterval={90}
-              distance={24}
-              className="h-full"
-            >
-              <div
-                className="glass-panel glass-panel-hover rounded-2xl overflow-hidden flex flex-col group cursor-pointer h-full"
-                onClick={() => onOpenEventDetail(evt)}
+        {upcomingEvents.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {upcomingEvents.map((evt, idx) => (
+              <ScrollReveal
+                key={evt.id}
+                variant="fade-up"
+                staggerIndex={idx}
+                staggerInterval={90}
+                distance={24}
+                className="h-full"
               >
-                {/* Event Cover Image */}
-                <div className="relative h-44 w-full overflow-hidden">
-                  <img
-                    src={evt.image}
-                    alt={evt.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#090710] via-transparent to-transparent" />
-                  <span className="absolute top-3 left-3 px-2.5 py-1 text-[11px] font-semibold rounded-full bg-black/60 backdrop-blur-md text-purple-300 border border-purple-500/30">
-                    {evt.category}
-                  </span>
-                </div>
-
-                {/* Event Content */}
-                <div className="p-5 flex-1 flex flex-col justify-between">
-                  <div>
-                    <div className="flex items-center gap-2 text-[11px] text-purple-400 font-medium mb-1.5">
-                      <Calendar className="w-3.5 h-3.5 shrink-0" />
-                      <span>{evt.date}</span>
-                    </div>
-
-                    <h3 className="text-base font-bold text-white group-hover:text-purple-200 transition-colors line-clamp-1 mb-2">
-                      {evt.title}
-                    </h3>
-
-                    <p className="text-xs text-gray-400 line-clamp-2 leading-relaxed mb-4">
-                      {evt.description}
-                    </p>
+                <div
+                  className="glass-panel glass-panel-hover rounded-2xl overflow-hidden flex flex-col group cursor-pointer h-full"
+                  onClick={() => onOpenEventDetail(evt)}
+                >
+                  {/* Event Cover Image */}
+                  <div className="relative h-44 w-full overflow-hidden">
+                    <img
+                      src={evt.image}
+                      alt={evt.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#090710] via-transparent to-transparent" />
+                    <span className="absolute top-3 left-3 px-2.5 py-1 text-[11px] font-semibold rounded-full bg-black/60 backdrop-blur-md text-purple-300 border border-purple-500/30">
+                      {evt.category}
+                    </span>
                   </div>
 
-                  <div className="pt-3 border-t border-white/[0.06] flex items-center justify-between">
-                    <div className="flex items-center gap-1.5 text-[11px] text-gray-400 truncate max-w-[150px]">
-                      <MapPin className="w-3 h-3 text-purple-400 shrink-0" />
-                      <span className="truncate">{evt.location}</span>
+                  {/* Event Content */}
+                  <div className="p-5 flex-1 flex flex-col justify-between">
+                    <div>
+                      <div className="flex items-center gap-2 text-[11px] text-purple-400 font-medium mb-1.5">
+                        <Calendar className="w-3.5 h-3.5 shrink-0" />
+                        <span>{evt.date}</span>
+                      </div>
+
+                      <h3 className="text-base font-bold text-white group-hover:text-purple-200 transition-colors line-clamp-1 mb-2">
+                        {evt.title}
+                      </h3>
+
+                      <p className="text-xs text-gray-400 line-clamp-2 leading-relaxed mb-4">
+                        {evt.description}
+                      </p>
                     </div>
 
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        onRegisterEvent(evt);
-                      }}
-                      className="text-xs font-semibold text-purple-300 hover:text-white flex items-center gap-1 cursor-pointer"
-                    >
-                      <span>Register</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </button>
+                    <div className="pt-3 border-t border-white/[0.06] flex items-center justify-between">
+                      <div className="flex items-center gap-1.5 text-[11px] text-gray-400 truncate max-w-[150px]">
+                        <MapPin className="w-3 h-3 text-purple-400 shrink-0" />
+                        <span className="truncate">{evt.location}</span>
+                      </div>
+
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onRegisterEvent(evt);
+                        }}
+                        className="text-xs font-semibold text-purple-300 hover:text-white flex items-center gap-1 cursor-pointer"
+                      >
+                        <span>Register</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </ScrollReveal>
-          ))}
-        </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        ) : (
+          <div className="glass-panel p-8 sm:p-12 rounded-3xl border border-white/[0.08] text-center max-w-xl mx-auto">
+            <div className="w-14 h-14 rounded-2xl bg-purple-600/20 border border-purple-500/30 text-purple-300 flex items-center justify-center mx-auto mb-4 shadow-[0_0_25px_rgba(168,85,247,0.3)]">
+              <Calendar className="w-7 h-7" />
+            </div>
+            <h3 className="text-xl font-bold text-white mb-2">
+              Next Events In Preparation
+            </h3>
+            <p className="text-xs sm:text-sm text-gray-400 leading-relaxed max-w-md mx-auto mb-6">
+              We&apos;re finalizing dates for upcoming developer meetups, hackathons, and hands-on workshops.
+            </p>
+            <button
+              onClick={onOpenJoinModal}
+              className="px-6 py-3 rounded-xl bg-violet-600 hover:bg-violet-500 text-white text-xs font-bold uppercase tracking-wider shadow-[0_0_20px_rgba(139,92,246,0.35)] transition-all cursor-pointer inline-flex items-center gap-2"
+            >
+              <Sparkles className="w-4 h-4 text-violet-200" />
+              <span>Join to Get Notified</span>
+            </button>
+          </div>
+        )}
       </section>
 
       {/* ===================================================
@@ -349,73 +370,93 @@ export const HomePage: React.FC<HomePageProps> = ({
           </button>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {featuredProjects.map((proj, idx) => (
-            <ScrollReveal
-              key={proj.id}
-              variant="fade-up"
-              staggerIndex={idx}
-              staggerInterval={90}
-              distance={24}
-              className="h-full"
-            >
-              <div
-                className="glass-panel glass-panel-hover rounded-2xl overflow-hidden flex flex-col group cursor-pointer h-full"
-                onClick={() => onOpenProjectDetail(proj)}
+        {featuredProjects.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {featuredProjects.map((proj, idx) => (
+              <ScrollReveal
+                key={proj.id}
+                variant="fade-up"
+                staggerIndex={idx}
+                staggerInterval={90}
+                distance={24}
+                className="h-full"
               >
-                <div className="relative h-44 w-full overflow-hidden">
-                  <img
-                    src={proj.image}
-                    alt={proj.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#090710] via-transparent to-transparent" />
-                  <span className="absolute top-3 left-3 px-2.5 py-1 text-[11px] font-semibold rounded-full bg-black/60 backdrop-blur-md text-purple-300 border border-purple-500/30">
-                    {proj.category}
-                  </span>
-                </div>
-
-                <div className="p-5 flex-1 flex flex-col justify-between">
-                  <div>
-                    <h3 className="text-base font-bold text-white group-hover:text-purple-200 transition-colors line-clamp-1 mb-2">
-                      {proj.title}
-                    </h3>
-                    <p className="text-xs text-gray-400 line-clamp-2 leading-relaxed mb-4">
-                      {proj.shortDescription}
-                    </p>
+                <div
+                  className="glass-panel glass-panel-hover rounded-2xl overflow-hidden flex flex-col group cursor-pointer h-full"
+                  onClick={() => onOpenProjectDetail(proj)}
+                >
+                  <div className="relative h-44 w-full overflow-hidden">
+                    <img
+                      src={proj.image}
+                      alt={proj.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#090710] via-transparent to-transparent" />
+                    <span className="absolute top-3 left-3 px-2.5 py-1 text-[11px] font-semibold rounded-full bg-black/60 backdrop-blur-md text-purple-300 border border-purple-500/30">
+                      {proj.category}
+                    </span>
                   </div>
 
-                  <div>
-                    <div className="flex flex-wrap gap-1.5 mb-4">
-                      {proj.techStack.slice(0, 3).map((t, i) => (
-                        <span
-                          key={i}
-                          className="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.04] text-purple-300 border border-white/[0.06]"
-                        >
-                          {t}
-                        </span>
-                      ))}
-                      {proj.techStack.length > 3 && (
-                        <span className="px-1.5 py-0.5 text-[10px] text-gray-400">
-                          +{proj.techStack.length - 3}
-                        </span>
-                      )}
+                  <div className="p-5 flex-1 flex flex-col justify-between">
+                    <div>
+                      <h3 className="text-base font-bold text-white group-hover:text-purple-200 transition-colors line-clamp-1 mb-2">
+                        {proj.title}
+                      </h3>
+                      <p className="text-xs text-gray-400 line-clamp-2 leading-relaxed mb-4">
+                        {proj.shortDescription}
+                      </p>
                     </div>
 
-                    <div className="pt-3 border-t border-white/[0.06] flex items-center justify-between text-xs">
-                      <span className="text-gray-400 text-[11px]">
-                        {proj.creators[0]?.name || 'Community Pod'}
-                      </span>
-                      <span className="text-purple-300 font-semibold flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
-                        View Project →
-                      </span>
+                    <div>
+                      <div className="flex flex-wrap gap-1.5 mb-4">
+                        {proj.techStack.slice(0, 3).map((t, i) => (
+                          <span
+                            key={i}
+                            className="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.04] text-purple-300 border border-white/[0.06]"
+                          >
+                            {t}
+                          </span>
+                        ))}
+                        {proj.techStack.length > 3 && (
+                          <span className="px-1.5 py-0.5 text-[10px] text-gray-400">
+                            +{proj.techStack.length - 3}
+                          </span>
+                        )}
+                      </div>
+
+                      <div className="pt-3 border-t border-white/[0.06] flex items-center justify-between text-xs">
+                        <span className="text-gray-400 text-[11px]">
+                          {proj.creators[0]?.name || 'Community Pod'}
+                        </span>
+                        <span className="text-purple-300 font-semibold flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+                          View Project →
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </ScrollReveal>
-          ))}
-        </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        ) : (
+          <div className="glass-panel p-8 sm:p-12 rounded-3xl border border-white/[0.08] text-center max-w-xl mx-auto">
+            <div className="w-14 h-14 rounded-2xl bg-purple-600/20 border border-purple-500/30 text-purple-300 flex items-center justify-center mx-auto mb-4 shadow-[0_0_25px_rgba(168,85,247,0.3)]">
+              <Sparkles className="w-7 h-7" />
+            </div>
+            <h3 className="text-xl font-bold text-white mb-2">
+              Project Showcase Launching Soon
+            </h3>
+            <p className="text-xs sm:text-sm text-gray-400 leading-relaxed max-w-md mx-auto mb-6">
+              Chennai&apos;s student developers are building the next generation of open technology. Have a project? Submit your work to get featured!
+            </p>
+            <button
+              onClick={() => onNavigate('projects')}
+              className="px-6 py-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold uppercase tracking-wider shadow-[0_0_20px_rgba(168,85,247,0.35)] transition-all cursor-pointer inline-flex items-center gap-2"
+            >
+              <span>Explore Projects Track →</span>
+            </button>
+          </div>
+        )}
       </section>
 
       {/* ===================================================

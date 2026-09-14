@@ -141,75 +141,98 @@ export const AnnouncementsPage: React.FC<AnnouncementsPageProps> = ({
 
       {/* Announcement Grid */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredAnnouncements.map((item, idx) => {
-            const isImportant = item.category === 'Important Announcements';
-            return (
-              <ScrollReveal
-                key={item.id}
-                variant="fade-up"
-                staggerIndex={idx}
-                staggerInterval={70}
-                distance={24}
-                className="h-full"
-              >
-                <div
-                  className={`rounded-2xl overflow-hidden flex flex-col group cursor-pointer transition-all duration-300 h-full ${
-                    isImportant
-                      ? 'glass-panel border-purple-500/40 shadow-[0_0_25px_rgba(168,85,247,0.2)]'
-                      : 'glass-panel glass-panel-hover border-white/[0.08]'
-                  }`}
-                  onClick={() => onOpenDetail(item)}
+        {filteredAnnouncements.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredAnnouncements.map((item, idx) => {
+              const isImportant = item.category === 'Important Announcements';
+              return (
+                <ScrollReveal
+                  key={item.id}
+                  variant="fade-up"
+                  staggerIndex={idx}
+                  staggerInterval={70}
+                  distance={24}
+                  className="h-full"
                 >
-                  <div className="relative h-44 w-full overflow-hidden">
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#090710] via-transparent to-transparent" />
-                    <span
-                      className={`absolute top-3 left-3 px-2.5 py-1 text-[10px] font-semibold rounded-full backdrop-blur-md ${
-                        isImportant
-                          ? 'bg-purple-600/80 text-white border border-purple-400/60'
-                          : 'bg-black/70 text-purple-300 border border-purple-500/30'
-                      }`}
-                    >
-                      {item.category}
-                    </span>
-                  </div>
-
-                  <div className="p-5 flex-1 flex flex-col justify-between">
-                    <div>
-                      <div className="flex items-center gap-2 text-[11px] text-gray-400 mb-2">
-                        <Calendar className="w-3.5 h-3.5 text-purple-400" />
-                        <span>{item.date}</span>
-                        <span>•</span>
-                        <span>{item.readTime}</span>
-                      </div>
-
-                      <h3 className="text-base font-bold text-white group-hover:text-purple-200 transition-colors line-clamp-2 mb-2">
-                        {item.title}
-                      </h3>
-
-                      <p className="text-xs text-gray-400 line-clamp-3 leading-relaxed mb-4">
-                        {item.shortDescription}
-                      </p>
-                    </div>
-
-                    <div className="pt-3 border-t border-white/[0.06] flex items-center justify-between">
-                      <span className="text-[11px] text-gray-400">{item.author}</span>
-                      <span className="text-xs font-semibold text-purple-300 group-hover:text-white flex items-center gap-1">
-                        <span>Read More</span>
-                        <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                  <div
+                    className={`rounded-2xl overflow-hidden flex flex-col group cursor-pointer transition-all duration-300 h-full ${
+                      isImportant
+                        ? 'glass-panel border-purple-500/40 shadow-[0_0_25px_rgba(168,85,247,0.2)]'
+                        : 'glass-panel glass-panel-hover border-white/[0.08]'
+                    }`}
+                    onClick={() => onOpenDetail(item)}
+                  >
+                    <div className="relative h-44 w-full overflow-hidden">
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#090710] via-transparent to-transparent" />
+                      <span
+                        className={`absolute top-3 left-3 px-2.5 py-1 text-[10px] font-semibold rounded-full backdrop-blur-md ${
+                          isImportant
+                            ? 'bg-purple-600/80 text-white border border-purple-400/60'
+                            : 'bg-black/70 text-purple-300 border border-purple-500/30'
+                        }`}
+                      >
+                        {item.category}
                       </span>
                     </div>
+
+                    <div className="p-5 flex-1 flex flex-col justify-between">
+                      <div>
+                        <div className="flex items-center gap-2 text-[11px] text-gray-400 mb-2">
+                          <Calendar className="w-3.5 h-3.5 text-purple-400" />
+                          <span>{item.date}</span>
+                          <span>•</span>
+                          <span>{item.readTime}</span>
+                        </div>
+
+                        <h3 className="text-base font-bold text-white group-hover:text-purple-200 transition-colors line-clamp-2 mb-2">
+                          {item.title}
+                        </h3>
+
+                        <p className="text-xs text-gray-400 line-clamp-3 leading-relaxed mb-4">
+                          {item.shortDescription}
+                        </p>
+                      </div>
+
+                      <div className="pt-3 border-t border-white/[0.06] flex items-center justify-between">
+                        <span className="text-[11px] text-gray-400">{item.author}</span>
+                        <span className="text-xs font-semibold text-purple-300 group-hover:text-white flex items-center gap-1">
+                          <span>Read More</span>
+                          <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                        </span>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </ScrollReveal>
-            );
-          })}
-        </div>
+                </ScrollReveal>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="glass-panel p-10 sm:p-16 rounded-3xl border border-white/[0.08] text-center max-w-xl mx-auto">
+            <div className="w-16 h-16 rounded-2xl bg-purple-600/20 border border-purple-500/30 text-purple-300 flex items-center justify-center mx-auto mb-4 shadow-[0_0_25px_rgba(168,85,247,0.3)]">
+              <Sparkles className="w-8 h-8" />
+            </div>
+            <h3 className="text-xl font-bold text-white mb-2">
+              No Announcements Yet
+            </h3>
+            <p className="text-xs sm:text-sm text-gray-400 leading-relaxed max-w-md mx-auto mb-6">
+              Official chapter bulletins, fellowship programs, and hackathon registration announcements will be posted here soon.
+            </p>
+            <a
+              href="https://forms.gle/AFdmVVLug64CURiq9"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 rounded-xl bg-violet-600 hover:bg-violet-500 text-white text-xs font-bold uppercase tracking-wider shadow-[0_0_20px_rgba(139,92,246,0.35)] transition-all cursor-pointer inline-flex items-center gap-2"
+            >
+              <Sparkles className="w-4 h-4 text-violet-200" />
+              <span>Join GSX Community</span>
+            </a>
+          </div>
+        )}
       </section>
     </div>
   );

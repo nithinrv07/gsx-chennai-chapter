@@ -22,7 +22,7 @@ export const CORE_TEAM: TeamMember[] = [
   {
     id: 'core-01',
     name: 'H Sujey',
-    role: 'Co-Lead / Ops',
+    role: 'Co-Lead',
     owns: 'Logistics, venues, member data, event execution',
     shortBio: 'Spearheading venue coordination, operational logistics, member records, and seamless on-ground execution for chapter experiences.',
     image: '/team/SUJEY%20H.jpeg',
