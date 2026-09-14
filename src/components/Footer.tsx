@@ -134,13 +134,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenJoinModal }) =
                 href="https://chat.whatsapp.com/HfxItPkZAgeDtdKut2qgfr?s=cl&p=a&ilr=0"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between p-2.5 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-green-500/40 hover:bg-green-950/20 text-gray-300 hover:text-white transition-all group"
+                className="flex items-center justify-between p-2.5 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-purple-500/40 hover:bg-purple-950/20 text-gray-300 hover:text-white transition-all group"
               >
                 <div className="flex items-center gap-2.5">
-                  <WhatsAppIcon className="w-4 h-4 text-green-400" />
+                  <WhatsAppIcon className="w-4 h-4 text-purple-400" />
                   <span className="text-xs font-medium">WhatsApp Community</span>
                 </div>
-                <ArrowUpRight className="w-3.5 h-3.5 text-gray-500 group-hover:text-green-300 transition-colors" />
+                <ArrowUpRight className="w-3.5 h-3.5 text-gray-500 group-hover:text-purple-300 transition-colors" />
               </a>
 
               <a

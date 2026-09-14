@@ -4,7 +4,7 @@ interface WhatsAppIconProps {
   className?: string;
 }
 
-export const WhatsAppIcon: React.FC<WhatsAppIconProps> = ({ className = 'w-4 h-4 text-green-400' }) => (
+export const WhatsAppIcon: React.FC<WhatsAppIconProps> = ({ className = 'w-4 h-4 text-purple-400' }) => (
   <svg
     viewBox="0 0 24 24"
     fill="currentColor"

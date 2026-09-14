@@ -445,9 +445,9 @@ export const BrochureModal: React.FC<BrochureModalProps> = ({ isOpen, onClose })
                 href="https://chat.whatsapp.com/HfxItPkZAgeDtdKut2qgfr?s=cl&p=a&ilr=0"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 p-3 rounded-xl bg-white/[0.04] border border-white/[0.08] hover:border-green-500/40 text-gray-300 hover:text-white transition-colors"
+                className="flex items-center gap-2 p-3 rounded-xl bg-white/[0.04] border border-white/[0.08] hover:border-purple-500/40 text-gray-300 hover:text-white transition-colors"
               >
-                <WhatsAppIcon className="w-4 h-4 text-green-400 shrink-0" />
+                <WhatsAppIcon className="w-4 h-4 text-purple-400 shrink-0" />
                 <span className="truncate">WhatsApp Community</span>
               </a>
 
