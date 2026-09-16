@@ -12,9 +12,7 @@ export const FEATURED_LEAD: TeamMember = {
   shortBio: 'Leading overall chapter direction, high-level community architecture, ecosystem partnerships, and monthly chapter reporting for GSX Chennai.',
   image: '/team/DEDEEPYA%20YAKKALA.jpeg',
   iconName: 'Compass',
-  linkedin: 'https://www.linkedin.com/company/gsx-chennai-chapter',
-  instagram: 'https://www.instagram.com/gsx_chennai_chapter/',
-  twitter: 'https://twitter.com',
+  linkedin: 'https://www.linkedin.com/in/dedeepyayakkala',
   isLead: true,
 };
 
@@ -27,8 +25,7 @@ export const CORE_TEAM: TeamMember[] = [
     shortBio: 'Spearheading venue coordination, operational logistics, member records, and seamless on-ground execution for chapter experiences.',
     image: '/team/SUJEY%20H.jpeg',
     iconName: 'Cpu',
-    linkedin: 'https://www.linkedin.com/company/gsx-chennai-chapter',
-    instagram: 'https://www.instagram.com/gsx_chennai_chapter/',
+    linkedin: 'https://www.linkedin.com/in/sujey-hariprasad',
   },
   {
     id: 'core-02',
@@ -38,8 +35,7 @@ export const CORE_TEAM: TeamMember[] = [
     shortBio: 'Driving open-source engineering tracks, dataset curation, autonomous AI agent experimentation, and flagship GSX hackathons.',
     image: '/team/ABINAYA.jpeg',
     iconName: 'Hammer',
-    linkedin: 'https://www.linkedin.com/company/gsx-chennai-chapter',
-    instagram: 'https://www.instagram.com/gsx_chennai_chapter/',
+    linkedin: 'https://www.linkedin.com/in/abinaya0333',
   },
   {
     id: 'core-03',
@@ -49,8 +45,7 @@ export const CORE_TEAM: TeamMember[] = [
     shortBio: 'Guiding repository architecture, dataset engineering, open tooling releases, and agentic AI project builds.',
     image: '/team/buvaneshwer.jpeg',
     iconName: 'Hammer',
-    linkedin: 'https://www.linkedin.com/company/gsx-chennai-chapter',
-    instagram: 'https://www.instagram.com/gsx_chennai_chapter/',
+    linkedin: 'https://www.linkedin.com/in/buvanagirish-sk-3b7ba8329/',
   },
   {
     id: 'core-04',
@@ -60,8 +55,7 @@ export const CORE_TEAM: TeamMember[] = [
     shortBio: 'Curating vibrant in-person meetups, technical lightning talks, paper reading circles, and inter-college networking forums.',
     image: '/team/KAMESHWARN.jpeg',
     iconName: 'Users',
-    linkedin: 'https://www.linkedin.com/company/gsx-chennai-chapter',
-    instagram: 'https://www.instagram.com/gsx_chennai_chapter/',
+    linkedin: 'https://www.linkedin.com/in/kameshwaran-b-779363338/',
   },
   {
     id: 'core-05',
@@ -71,8 +65,7 @@ export const CORE_TEAM: TeamMember[] = [
     shortBio: 'Empowering students and developers with tech interview prep clinics, certification pathways, resume feedback, and industry referrals.',
     image: '/team/KAVIYA.jpeg',
     iconName: 'TrendingUp',
-    linkedin: 'https://www.linkedin.com/company/gsx-chennai-chapter',
-    instagram: 'https://www.instagram.com/gsx_chennai_chapter/',
+    linkedin: 'https://www.linkedin.com/in/kaviya-sree-n-a6293b380/',
   },
   {
     id: 'core-06',
@@ -82,8 +75,7 @@ export const CORE_TEAM: TeamMember[] = [
     shortBio: 'Coordinating operational workflows, venue logistics, registration pipelines, and smooth on-ground experience for chapter initiatives.',
     image: '/team/MINHU.jpeg',
     iconName: 'Cpu',
-    linkedin: 'https://www.linkedin.com/company/gsx-chennai-chapter',
-    instagram: 'https://www.instagram.com/gsx_chennai_chapter/',
+    linkedin: 'https://www.linkedin.com/in/minhu-parthasarathy07/',
   },
   {
     id: 'core-07',
@@ -93,8 +85,7 @@ export const CORE_TEAM: TeamMember[] = [
     shortBio: 'Managing digital media presence, visual broadcasts, chapter announcements, and promotional campaigns across tech channels.',
     image: '/team/MITHRA.jpeg',
     iconName: 'Megaphone',
-    linkedin: 'https://www.linkedin.com/company/gsx-chennai-chapter',
-    instagram: 'https://www.instagram.com/gsx_chennai_chapter/',
+    linkedin: 'https://www.linkedin.com/in/mithra-b-404111313/',
   },
   {
     id: 'core-08',
@@ -104,8 +95,7 @@ export const CORE_TEAM: TeamMember[] = [
     shortBio: 'Leading grassroots technology outreach to schools, NGO digital literacy missions, and local-language / vernacular open tools.',
     image: '/team/SHAMEL.jpeg',
     iconName: 'HeartHandshake',
-    linkedin: 'https://www.linkedin.com/company/gsx-chennai-chapter',
-    instagram: 'https://www.instagram.com/gsx_chennai_chapter/',
+    linkedin: 'https://www.linkedin.com/in/mohamedshameel2006/',
   },
   {
     id: 'core-09',
@@ -115,8 +105,7 @@ export const CORE_TEAM: TeamMember[] = [
     shortBio: 'Designing structured peer study circles, hands-on developer bootcamps, and specialized technical enablement tracks.',
     image: '/team/raghunath%20balaji.jpeg',
     iconName: 'BookOpen',
-    linkedin: 'https://www.linkedin.com/company/gsx-chennai-chapter',
-    instagram: 'https://www.instagram.com/gsx_chennai_chapter/',
+    linkedin: 'https://www.linkedin.com/in/raghunath-balaji/',
   },
   {
     id: 'core-10',
@@ -126,8 +115,7 @@ export const CORE_TEAM: TeamMember[] = [
     shortBio: 'Facilitating technical learning sprints, educator workshops, peer knowledge exchange, and student mentorship circles.',
     image: '/team/semmozhi.jpeg',
     iconName: 'BookOpen',
-    linkedin: 'https://www.linkedin.com/company/gsx-chennai-chapter',
-    instagram: 'https://www.instagram.com/gsx_chennai_chapter/',
+    linkedin: 'https://www.linkedin.com/in/semmozhi/',
   },
 ];
 

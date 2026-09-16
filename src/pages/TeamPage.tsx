@@ -120,17 +120,6 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onNavigate, onOpenJoinModal 
               </p>
 
               <div className="pt-3 border-t border-white/[0.08] flex items-center gap-3">
-                {FEATURED_LEAD.instagram && (
-                  <a
-                    href={FEATURED_LEAD.instagram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2.5 rounded-xl bg-white/[0.04] border border-white/[0.08] hover:border-purple-500/40 hover:bg-purple-950/30 text-gray-300 hover:text-white transition-all"
-                    title="Instagram Chapter Feed"
-                  >
-                    <Instagram className="w-4 h-4 text-purple-400" />
-                  </a>
-                )}
                 {FEATURED_LEAD.linkedin && (
                   <a
                     href={FEATURED_LEAD.linkedin}
@@ -202,17 +191,6 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onNavigate, onOpenJoinModal 
                   {/* Social Links on Hover */}
                   <div className="pt-4 mt-4 border-t border-white/[0.06] flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      {member.instagram && (
-                        <a
-                          href={member.instagram}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="p-1.5 rounded-lg bg-white/[0.03] text-gray-400 hover:text-purple-300 transition-colors"
-                          title="Instagram"
-                        >
-                          <Instagram className="w-3.5 h-3.5" />
-                        </a>
-                      )}
                       {member.linkedin && (
                         <a
                           href={member.linkedin}
