@@ -25,9 +25,95 @@ import { ANNOUNCEMENTS_DATA } from './data/announcements';
 import { AnimatePresence, motion } from 'motion/react';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
 
+const VALID_PAGES: PageId[] = [
+  'home',
+  'about',
+  'team',
+  'events',
+  'announcements',
+  'projects',
+  'get-involved',
+];
+
+const parsePageFromLocation = (): PageId | null => {
+  if (typeof window === 'undefined') return null;
+
+  // 1. Check URL hash (e.g. #team, #/team)
+  const hash = window.location.hash.replace(/^#[/]?/, '').trim().toLowerCase();
+  if (hash && VALID_PAGES.includes(hash as PageId)) {
+    return hash as PageId;
+  }
+
+  // 2. Check URL pathname (e.g. /team or /gsx-chennai-chapter/team)
+  const pathParts = window.location.pathname.split('/').filter(Boolean);
+  const lastPart = pathParts[pathParts.length - 1]?.trim().toLowerCase();
+  if (lastPart && VALID_PAGES.includes(lastPart as PageId)) {
+    return lastPart as PageId;
+  }
+
+  return null;
+};
+
+const getInitialPage = (): PageId => {
+  const fromLocation = parsePageFromLocation();
+  if (fromLocation) return fromLocation;
+
+  // 3. Fallback to localStorage (survives hard refresh)
+  try {
+    const saved = localStorage.getItem('gsx_current_page');
+    if (saved && VALID_PAGES.includes(saved as PageId)) {
+      return saved as PageId;
+    }
+  } catch {
+    // ignore storage exceptions
+  }
+
+  return 'home';
+};
+
 function AppContent() {
-  const [currentPage, setCurrentPage] = useState<PageId>('home');
+  const [currentPage, setCurrentPage] = useState<PageId>(getInitialPage);
   const { isDark } = useTheme();
+
+  // Synchronize URL hash and localStorage whenever currentPage changes
+  useEffect(() => {
+    try {
+      localStorage.setItem('gsx_current_page', currentPage);
+    } catch {
+      // ignore
+    }
+
+    const currentHash = window.location.hash.replace(/^#[/]?/, '').trim().toLowerCase();
+    const targetHash = currentPage === 'home' ? '' : `#${currentPage}`;
+
+    if (currentPage === 'home') {
+      if (window.location.hash) {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+    } else if (currentHash !== currentPage) {
+      history.replaceState(null, '', targetHash);
+    }
+  }, [currentPage]);
+
+  // Handle browser Back / Forward buttons and manual hash changes
+  useEffect(() => {
+    const handleLocationChange = () => {
+      const page = parsePageFromLocation();
+      if (page) {
+        setCurrentPage(page);
+      } else if (!window.location.hash && (window.location.pathname === '/' || window.location.pathname === '')) {
+        setCurrentPage('home');
+      }
+    };
+
+    window.addEventListener('popstate', handleLocationChange);
+    window.addEventListener('hashchange', handleLocationChange);
+
+    return () => {
+      window.removeEventListener('popstate', handleLocationChange);
+      window.removeEventListener('hashchange', handleLocationChange);
+    };
+  }, []);
 
   // Modal states
   const [isJoinModalOpen, setIsJoinModalOpen] = useState(false);
@@ -42,14 +128,25 @@ function AppContent() {
     window.open(GSX_JOIN_FORM_URL, '_blank', 'noopener,noreferrer');
   };
 
-  // Scroll to top upon page navigation
+  // Scroll to top upon page navigation and push history state
   const handleNavigate = (page: PageId) => {
     setCurrentPage(page);
+    try {
+      localStorage.setItem('gsx_current_page', page);
+    } catch {
+      // ignore
+    }
+    const targetHash = page === 'home' ? '' : `#${page}`;
+    if (page === 'home') {
+      history.pushState(null, '', window.location.pathname + window.location.search);
+    } else {
+      history.pushState(null, '', targetHash);
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <div className="min-h-screen font-sans selection:bg-purple-600 selection:text-white relative overflow-x-hidden flex flex-col bg-[#050505] text-[#ededed]">
+    <div className="min-h-screen font-sans selection:bg-purple-600 selection:text-white relative overflow-x-hidden flex flex-col bg-[#080414] text-[#ededed]">
       {/* Creative GSX Cosmic Stardust Custom Cursor */}
       <CustomCursor />
 

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>GSX Chennai Chapter</title>
+    <script type="text/javascript">
+      // SPA redirect for GitHub Pages and static web hosting
+      (function() {
+        var validPages = ['about', 'team', 'events', 'announcements', 'projects', 'get-involved'];
+        var pathSegments = window.location.pathname.split('/').filter(Boolean);
+        var lastSegment = pathSegments[pathSegments.length - 1];
+        if (lastSegment && validPages.indexOf(lastSegment.toLowerCase()) !== -1) {
+          var basePath = pathSegments.length > 1 ? '/' + pathSegments.slice(0, -1).join('/') + '/' : '/';
+          window.location.replace(window.location.origin + basePath + '#' + lastSegment);
+        } else {
+          window.location.replace(window.location.origin + '/');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

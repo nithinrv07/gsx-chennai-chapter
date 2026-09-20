@@ -36,7 +36,7 @@ export const AnnouncementsPage: React.FC<AnnouncementsPageProps> = ({
   return (
     <div className="relative min-h-screen pb-20">
       {/* Hero */}
-      <section className="relative pt-32 sm:pt-40 pb-16 sm:pb-24 overflow-hidden text-center">
+      <section className="relative pt-44 sm:pt-52 md:pt-56 pb-24 sm:pb-32 min-h-[500px] sm:min-h-[580px] md:min-h-[620px] flex flex-col justify-center overflow-hidden text-center">
         <HeroGlow intensity="medium" />
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
@@ -44,7 +44,7 @@ export const AnnouncementsPage: React.FC<AnnouncementsPageProps> = ({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-[1.1] mb-6"
+            className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-[1.1] mb-6 sm:mb-8"
           >
             What&apos;s Happening at{' '}
             <span className="text-gradient-purple">GSX?</span>
@@ -54,7 +54,7 @@ export const AnnouncementsPage: React.FC<AnnouncementsPageProps> = ({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed"
+            className="text-base sm:text-lg md:text-xl text-gray-300/90 max-w-2xl sm:max-w-3xl mx-auto leading-relaxed"
           >
             Stay synchronized with chapter initiatives, fellowship cohorts, hackathon timelines, and technology dispatches.
           </motion.p>
