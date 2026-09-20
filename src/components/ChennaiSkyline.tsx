@@ -1,4 +1,4 @@
-import React, { type CSSProperties, useRef, useState } from 'react';
+import React, { type CSSProperties, useEffect, useRef, useState } from 'react';
 
 type Landmark = {
   name: string;
@@ -67,6 +67,14 @@ const LANDMARK_SCENES: LandmarkScene[] = [
 export const ChennaiSkyline: React.FC = () => {
   const [activeScene, setActiveScene] = useState(0);
   const touchStartX = useRef<number | null>(null);
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setActiveScene((current) => (current + 1) % LANDMARK_SCENES.length);
+    }, 3000);
+
+    return () => window.clearInterval(interval);
+  }, []);
 
   const previousScene = () => {
     setActiveScene((current) => (current - 1 + LANDMARK_SCENES.length) % LANDMARK_SCENES.length);
