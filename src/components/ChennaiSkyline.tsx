@@ -21,8 +21,7 @@ type LandmarkArt =
   | 'trade'
   | 'office'
   | 'mall'
-  | 'it'
-  | 'beach';
+  | 'it';
 
 type Landmark = {
   name: string;
@@ -38,12 +37,12 @@ type LandmarkScene = {
 };
 
 const POSITIONS = [
-  { left: '9%', top: 131, height: 190 },
-  { left: '24%', top: 106, height: 198 },
-  { left: '38%', top: 150, height: 150 },
-  { left: '62%', top: 138, height: 166 },
-  { left: '77%', top: 158, height: 142 },
-  { left: '91%', top: 125, height: 177 },
+  { left: '5.3%', top: 151, height: 194 },
+  { left: '17%', top: 109, height: 143 },
+  { left: '30.3%', top: 160, height: 102 },
+  { left: '64.2%', top: 152, height: 132 },
+  { left: '76%', top: 181, height: 115 },
+  { left: '89%', top: 178, height: 154 },
 ];
 
 const makeScene = (
@@ -60,27 +59,27 @@ const makeScene = (
 
 const LANDMARK_SCENES: LandmarkScene[] = [
   makeScene('Central Chennai', [
-    ['CHENNAI LIGHTHOUSE', 'lighthouse'],
-    ['MARINA BEACH', 'beach'],
+    ['MARINA BEACH', 'lighthouse'],
+    ['KALAIGNAR\nKARUNANIDHI\nMEMORIAL', 'arch'],
     ['RIPON BUILDING', 'civic'],
-    ['CHENNAI CENTRAL', 'station'],
-    ['KAPALEESHWARAR\nTEMPLE', 'temple'],
-    ['FORT ST. GEORGE', 'fort'],
+    ['KAPALEESWARAR\nTEMPLE', 'temple'],
+    ['BESANT NAGAR', 'monument'],
+    ['GUINDY\nNATIONAL PARK', 'park'],
   ]),
   makeScene('Heritage Chennai', [
+    ['CHENNAI CENTRAL', 'station'],
     ['NAPIER BRIDGE', 'bridge'],
+    ['FORT ST. GEORGE', 'fort'],
     ['SAN THOME\nBASILICA', 'church'],
     ['VALLUVAR KOTTAM', 'arch'],
     ['GOVERNMENT\nMUSEUM', 'museum'],
-    ['VIVEKANANDA\nHOUSE', 'house'],
-    ['PARTHASARATHY\nTEMPLE', 'temple'],
   ]),
   makeScene('Culture & Learning', [
-    ['BESANT NAGAR\nBEACH', 'beach'],
-    ['ASHTALAKSHMI\nTEMPLE', 'temple'],
-    ['GUINDY\nNATIONAL PARK', 'park'],
+    ['PARTHASARATHY\nTEMPLE', 'temple'],
+    ['VIVEKANANDA\nHOUSE', 'house'],
     ['ANNA UNIVERSITY', 'university'],
     ['BIRLA\nPLANETARIUM', 'planetarium'],
+    ['SEMMOZHI\nPOONGA', 'garden'],
     ['KATHIPARA\nURBAN SQUARE', 'flyover'],
   ]),
   makeScene('Modern Chennai', [
@@ -89,7 +88,7 @@ const LANDMARK_SCENES: LandmarkScene[] = [
     ['DLF CYBERCITY\nCHENNAI', 'office'],
     ['TIDEL PARK', 'it'],
     ['PHOENIX\nMARKETCITY', 'mall'],
-    ['OMR IT\nCORRIDOR', 'it'],
+    ['OMR IT\nCORRIDOR', 'office'],
   ]),
 ];
 
@@ -106,8 +105,6 @@ const LandmarkArtwork: React.FC<{ type: LandmarkArt }> = ({ type }) => {
     switch (type) {
       case 'lighthouse':
         return <><path {...common} d="M53 12h14l7 70H46l7-70Z" /><path {...common} d="M50 27h20M48 47h24M46 66h28M57 12V5h6v7M40 82h40" /></>;
-      case 'beach':
-        return <><path {...common} d="M8 62c12-8 21-8 33 0s22 8 35 0 22-8 36 0M8 75c12-8 21-8 33 0s22 8 35 0 22-8 36 0M24 37c8-11 17-12 26-2M75 22a10 10 0 1 0 0 20 10 10 0 0 0 0-20Z" /><path {...common} d="M47 45c9-15 19-18 29-14" /></>;
       case 'arch':
         return <><path {...common} d="M20 82h80M28 82V58c0-25 14-39 32-39s32 14 32 39v24" /><path {...common} d="M42 82V61c0-13 7-21 18-21s18 8 18 21v21" /><path {...common} d="M34 37h52" /></>;
       case 'civic':
@@ -155,50 +152,23 @@ const LandmarkArtwork: React.FC<{ type: LandmarkArt }> = ({ type }) => {
 };
 
 export const ChennaiSkyline: React.FC = () => {
-  // End copies let the last-to-first transition travel one screen, then reset unseen.
-  const [slide, setSlide] = useState(1);
-  const [animate, setAnimate] = useState(true);
-  const moving = useRef(false);
+  const [activeScene, setActiveScene] = useState(0);
   const touchStartX = useRef<number | null>(null);
-  const activeScene = (slide - 1 + LANDMARK_SCENES.length) % LANDMARK_SCENES.length;
-
-  const move = (direction: -1 | 1) => {
-    if (moving.current) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      setSlide((current) => ((current - 1 + direction + LANDMARK_SCENES.length) % LANDMARK_SCENES.length) + 1);
-      return;
-    }
-    moving.current = true;
-    setAnimate(true);
-    setSlide((current) => current + direction);
-  };
 
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const interval = window.setInterval(() => move(1), 3000);
+    const interval = window.setInterval(() => {
+      setActiveScene((current) => (current + 1) % LANDMARK_SCENES.length);
+    }, 3000);
 
     return () => window.clearInterval(interval);
   }, []);
 
-  const selectScene = (index: number) => {
-    if (moving.current || index === activeScene) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      setSlide(index + 1);
-      return;
-    }
-    moving.current = true;
-    setAnimate(true);
-    setSlide(index + 1);
+  const previousScene = () => {
+    setActiveScene((current) => (current - 1 + LANDMARK_SCENES.length) % LANDMARK_SCENES.length);
   };
 
-  const finishMove = (event: React.TransitionEvent<HTMLDivElement>) => {
-    if (event.target !== event.currentTarget || event.propertyName !== 'transform') return;
-    moving.current = false;
-    if (slide === 0 || slide === LANDMARK_SCENES.length + 1) {
-      setAnimate(false);
-      setSlide(slide === 0 ? LANDMARK_SCENES.length : 1);
-      requestAnimationFrame(() => requestAnimationFrame(() => setAnimate(true)));
-    }
+  const nextScene = () => {
+    setActiveScene((current) => (current + 1) % LANDMARK_SCENES.length);
   };
 
   const handleTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
@@ -213,8 +183,8 @@ export const ChennaiSkyline: React.FC = () => {
     touchStartX.current = null;
 
     if (Math.abs(distance) < 45) return;
-    if (distance < 0) move(1);
-    else move(-1);
+    if (distance < 0) nextScene();
+    else previousScene();
   };
 
   const currentScene = LANDMARK_SCENES[activeScene];
@@ -231,11 +201,10 @@ export const ChennaiSkyline: React.FC = () => {
       >
         <div
           className="landmark-track"
-          style={{ transform: `translate3d(-${slide * 100}%, 0, 0)`, transition: animate ? undefined : 'none' }}
-          onTransitionEnd={finishMove}
+          style={{ transform: `translate3d(-${activeScene * 100}%, 0, 0)` }}
         >
-          {[LANDMARK_SCENES.at(-1)!, ...LANDMARK_SCENES, LANDMARK_SCENES[0]].map((scene, index) => (
-            <div className="landmark-scene" key={`${scene.title}-${index}`} aria-hidden={index !== slide}>
+          {LANDMARK_SCENES.map((scene) => (
+            <div className="landmark-scene" key={scene.title} aria-hidden={scene.title !== currentScene.title}>
               {scene.landmarks.map((item) => (
                 <div
                   key={item.name}
@@ -265,7 +234,7 @@ export const ChennaiSkyline: React.FC = () => {
       <button
         type="button"
         className="city-nav city-nav-left"
-        onClick={() => move(-1)}
+        onClick={previousScene}
         aria-label="Show previous Chennai landmark set"
       >
         <span aria-hidden="true">←</span>
@@ -274,7 +243,7 @@ export const ChennaiSkyline: React.FC = () => {
       <button
         type="button"
         className="city-nav city-nav-right"
-        onClick={() => move(1)}
+        onClick={nextScene}
         aria-label="Show next Chennai landmark set"
       >
         <span aria-hidden="true">→</span>
@@ -286,7 +255,7 @@ export const ChennaiSkyline: React.FC = () => {
             key={scene.title}
             type="button"
             className={index === activeScene ? 'active' : ''}
-            onClick={() => selectScene(index)}
+            onClick={() => setActiveScene(index)}
             aria-label={`Show ${scene.title}`}
             aria-current={index === activeScene ? 'true' : undefined}
           >
