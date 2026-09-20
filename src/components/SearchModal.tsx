@@ -4,7 +4,7 @@ import { PageId } from '../types';
 interface SearchModalProps {
   open: boolean;
   onClose: () => void;
-  onNavigate: (page: PageId) => void;
+  onNavigate: (page: PageId, sectionId?: string) => void;
   onOpenJoinModal: () => void;
 }
 
@@ -55,29 +55,92 @@ export const SearchModal: React.FC<SearchModalProps> = ({
       },
     },
     {
-      id: 'team',
-      label: 'Core Team & Leads',
+      id: 'what-is-gsx',
+      label: 'What is GSX?',
+      category: 'About',
+      action: () => {
+        onNavigate('about', 'what-is-gsx');
+        onClose();
+      },
+    },
+    {
+      id: 'our-mission',
+      label: 'Our Mission & Vision',
+      category: 'About',
+      action: () => {
+        onNavigate('about', 'our-mission');
+        onClose();
+      },
+    },
+    {
+      id: 'our-pillars',
+      label: 'Our Pillars (5 Verticals & Values)',
+      category: 'About',
+      action: () => {
+        onNavigate('about', 'our-pillars');
+        onClose();
+      },
+    },
+    {
+      id: 'our-journey',
+      label: 'Our Journey & Milestones',
+      category: 'About',
+      action: () => {
+        onNavigate('about', 'our-journey');
+        onClose();
+      },
+    },
+    {
+      id: 'community',
+      label: 'Community & Members',
       category: 'Community',
       action: () => {
-        onNavigate('team');
+        onNavigate('community');
+        onClose();
+      },
+    },
+    {
+      id: 'core-team',
+      label: 'Core Team & Domain Owners',
+      category: 'Community',
+      action: () => {
+        onNavigate('community', 'core-team');
+        onClose();
+      },
+    },
+    {
+      id: 'colleges',
+      label: 'Colleges in Chennai (15+ Chapters)',
+      category: 'Community',
+      action: () => {
+        onNavigate('community', 'colleges');
         onClose();
       },
     },
     {
       id: 'events',
       label: 'Events & Workshops',
-      category: 'Programs',
+      category: 'Events',
       action: () => {
         onNavigate('events');
         onClose();
       },
     },
     {
-      id: 'announcements',
-      label: 'Announcements & Updates',
-      category: 'Community',
+      id: 'upcoming-events',
+      label: 'Upcoming Events & Hackathons',
+      category: 'Events',
       action: () => {
-        onNavigate('announcements');
+        onNavigate('events', 'upcoming-events');
+        onClose();
+      },
+    },
+    {
+      id: 'past-events',
+      label: 'Past Events Archive',
+      category: 'Events',
+      action: () => {
+        onNavigate('events', 'past-events');
         onClose();
       },
     },
@@ -91,11 +154,119 @@ export const SearchModal: React.FC<SearchModalProps> = ({
       },
     },
     {
+      id: 'collaborate-with-us',
+      label: 'Collaborate With Us on Projects',
+      category: 'Engineering',
+      action: () => {
+        onNavigate('projects', 'collaborate-with-us');
+        onClose();
+      },
+    },
+    {
+      id: 'opportunities',
+      label: 'Opportunities Hub',
+      category: 'Opportunities',
+      action: () => {
+        onNavigate('opportunities');
+        onClose();
+      },
+    },
+    {
+      id: 'internships',
+      label: 'Internships & Trainee Tracks',
+      category: 'Opportunities',
+      action: () => {
+        onNavigate('opportunities', 'internships');
+        onClose();
+      },
+    },
+    {
+      id: 'hackathons',
+      label: 'Hackathons & Sprints',
+      category: 'Opportunities',
+      action: () => {
+        onNavigate('opportunities', 'hackathons');
+        onClose();
+      },
+    },
+    {
+      id: 'open-source',
+      label: 'Open Source (GSSoC, GSoC)',
+      category: 'Opportunities',
+      action: () => {
+        onNavigate('opportunities', 'open-source');
+        onClose();
+      },
+    },
+    {
+      id: 'fellowships',
+      label: 'Fellowships & Research Cohorts',
+      category: 'Opportunities',
+      action: () => {
+        onNavigate('opportunities', 'fellowships');
+        onClose();
+      },
+    },
+    {
+      id: 'resources',
+      label: 'Resources & Knowledge Vault',
+      category: 'Resources',
+      action: () => {
+        onNavigate('resources');
+        onClose();
+      },
+    },
+    {
+      id: 'learning',
+      label: 'Learning Roadmaps (AI, Full-Stack, DSA)',
+      category: 'Resources',
+      action: () => {
+        onNavigate('resources', 'learning');
+        onClose();
+      },
+    },
+    {
+      id: 'guides',
+      label: 'Developer Guides & Handbooks',
+      category: 'Resources',
+      action: () => {
+        onNavigate('resources', 'guides');
+        onClose();
+      },
+    },
+    {
+      id: 'workshops',
+      label: 'Recorded Workshops & Slide Decks',
+      category: 'Resources',
+      action: () => {
+        onNavigate('resources', 'workshops');
+        onClose();
+      },
+    },
+    {
+      id: 'student-resources',
+      label: 'Student Resources & Free Cloud Packs',
+      category: 'Resources',
+      action: () => {
+        onNavigate('resources', 'student-resources');
+        onClose();
+      },
+    },
+    {
       id: 'get-involved',
       label: 'Get Involved & Volunteer',
       category: 'Community',
       action: () => {
         onNavigate('get-involved');
+        onClose();
+      },
+    },
+    {
+      id: 'start-gsx-college',
+      label: 'Start GSX at Your College (Campus Lead)',
+      category: 'Community',
+      action: () => {
+        onNavigate('get-involved', 'start-gsx-college');
         onClose();
       },
     },

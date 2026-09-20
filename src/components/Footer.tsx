@@ -79,10 +79,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenJoinModal }) =
               </li>
               <li>
                 <button
-                  onClick={() => handleNav('team')}
+                  onClick={() => handleNav('community')}
                   className="text-gray-300 hover:text-purple-300 transition-colors"
                 >
-                  Meet the Team
+                  Community & Colleges
                 </button>
               </li>
               <li>
@@ -95,18 +95,26 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenJoinModal }) =
               </li>
               <li>
                 <button
-                  onClick={() => handleNav('announcements')}
+                  onClick={() => handleNav('projects')}
                   className="text-gray-300 hover:text-purple-300 transition-colors"
                 >
-                  Announcements
+                  Projects Showcase
                 </button>
               </li>
               <li>
                 <button
-                  onClick={() => handleNav('projects')}
+                  onClick={() => handleNav('opportunities')}
                   className="text-gray-300 hover:text-purple-300 transition-colors"
                 >
-                  Community Projects
+                  Opportunities
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handleNav('resources')}
+                  className="text-gray-300 hover:text-purple-300 transition-colors"
+                >
+                  Resources & Guides
                 </button>
               </li>
               <li>
@@ -114,7 +122,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenJoinModal }) =
                   onClick={() => handleNav('get-involved')}
                   className="text-gray-300 hover:text-purple-300 transition-colors"
                 >
-                  Get Involved
+                  Get Involved & Volunteer
                 </button>
               </li>
             </ul>

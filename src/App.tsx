@@ -7,10 +7,13 @@ import { CustomCursor } from './components/CustomCursor';
 // Pages
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
+import { CommunityPage } from './pages/CommunityPage';
 import { TeamPage } from './pages/TeamPage';
 import { EventsPage } from './pages/EventsPage';
 import { AnnouncementsPage } from './pages/AnnouncementsPage';
 import { ProjectsPage } from './pages/ProjectsPage';
+import { OpportunitiesPage } from './pages/OpportunitiesPage';
+import { ResourcesPage } from './pages/ResourcesPage';
 import { GetInvolvedPage } from './pages/GetInvolvedPage';
 
 // Modals
@@ -28,35 +31,66 @@ import { ThemeProvider, useTheme } from './context/ThemeContext';
 const VALID_PAGES: PageId[] = [
   'home',
   'about',
+  'community',
   'team',
   'events',
   'announcements',
   'projects',
+  'opportunities',
+  'resources',
   'get-involved',
 ];
 
-const parsePageFromLocation = (): PageId | null => {
-  if (typeof window === 'undefined') return null;
+const scrollToTargetSection = (sectionId: string) => {
+  const attemptScroll = (attemptsLeft: number) => {
+    const el = document.getElementById(sectionId);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else if (attemptsLeft > 0) {
+      setTimeout(() => attemptScroll(attemptsLeft - 1), 60);
+    }
+  };
+  setTimeout(() => attemptScroll(8), 50);
+};
 
-  // 1. Check URL hash (e.g. #team, #/team)
-  const hash = window.location.hash.replace(/^#[/]?/, '').trim().toLowerCase();
-  if (hash && VALID_PAGES.includes(hash as PageId)) {
-    return hash as PageId;
+const parsePageFromLocation = (): { page: PageId | null; sectionId: string | null } => {
+  if (typeof window === 'undefined') return { page: null, sectionId: null };
+
+  // 1. Check URL hash (e.g. #about#what-is-gsx or #community or #/events)
+  const rawHash = window.location.hash.replace(/^#/, '');
+  if (rawHash) {
+    const parts = rawHash.split('#').map(p => p.replace(/^[/]/, '').trim().toLowerCase());
+    let page: PageId | null = null;
+    let sectionId: string | null = null;
+
+    for (const part of parts) {
+      if (VALID_PAGES.includes(part as PageId)) {
+        page = part as PageId;
+      } else if (part) {
+        sectionId = part;
+      }
+    }
+    if (page) return { page, sectionId };
   }
 
   // 2. Check URL pathname (e.g. /team or /gsx-chennai-chapter/team)
   const pathParts = window.location.pathname.split('/').filter(Boolean);
   const lastPart = pathParts[pathParts.length - 1]?.trim().toLowerCase();
   if (lastPart && VALID_PAGES.includes(lastPart as PageId)) {
-    return lastPart as PageId;
+    return { page: lastPart as PageId, sectionId: null };
   }
 
-  return null;
+  return { page: null, sectionId: null };
 };
 
 const getInitialPage = (): PageId => {
-  const fromLocation = parsePageFromLocation();
-  if (fromLocation) return fromLocation;
+  const { page, sectionId } = parsePageFromLocation();
+  if (page) {
+    if (sectionId) {
+      scrollToTargetSection(sectionId);
+    }
+    return page;
+  }
 
   // 3. Fallback to localStorage (survives hard refresh)
   try {
@@ -75,32 +109,15 @@ function AppContent() {
   const [currentPage, setCurrentPage] = useState<PageId>(getInitialPage);
   const { isDark } = useTheme();
 
-  // Synchronize URL hash and localStorage whenever currentPage changes
-  useEffect(() => {
-    try {
-      localStorage.setItem('gsx_current_page', currentPage);
-    } catch {
-      // ignore
-    }
-
-    const currentHash = window.location.hash.replace(/^#[/]?/, '').trim().toLowerCase();
-    const targetHash = currentPage === 'home' ? '' : `#${currentPage}`;
-
-    if (currentPage === 'home') {
-      if (window.location.hash) {
-        history.replaceState(null, '', window.location.pathname + window.location.search);
-      }
-    } else if (currentHash !== currentPage) {
-      history.replaceState(null, '', targetHash);
-    }
-  }, [currentPage]);
-
   // Handle browser Back / Forward buttons and manual hash changes
   useEffect(() => {
     const handleLocationChange = () => {
-      const page = parsePageFromLocation();
+      const { page, sectionId } = parsePageFromLocation();
       if (page) {
         setCurrentPage(page);
+        if (sectionId) {
+          scrollToTargetSection(sectionId);
+        }
       } else if (!window.location.hash && (window.location.pathname === '/' || window.location.pathname === '')) {
         setCurrentPage('home');
       }
@@ -128,21 +145,30 @@ function AppContent() {
     window.open(GSX_JOIN_FORM_URL, '_blank', 'noopener,noreferrer');
   };
 
-  // Scroll to top upon page navigation and push history state
-  const handleNavigate = (page: PageId) => {
+  // Scroll to section or top upon page navigation and push history state
+  const handleNavigate = (page: PageId, sectionId?: string) => {
     setCurrentPage(page);
     try {
       localStorage.setItem('gsx_current_page', page);
     } catch {
       // ignore
     }
-    const targetHash = page === 'home' ? '' : `#${page}`;
-    if (page === 'home') {
+
+    const targetHash = page === 'home'
+      ? (sectionId ? `#${sectionId}` : '')
+      : (sectionId ? `#${page}#${sectionId}` : `#${page}`);
+
+    if (page === 'home' && !sectionId) {
       history.pushState(null, '', window.location.pathname + window.location.search);
     } else {
       history.pushState(null, '', targetHash);
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    if (sectionId) {
+      scrollToTargetSection(sectionId);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   return (
@@ -199,15 +225,45 @@ function AppContent() {
             </motion.div>
           )}
 
-          {currentPage === 'team' && (
+          {(currentPage === 'community' || currentPage === 'team') && (
             <motion.div
-              key="team"
+              key="community"
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.3 }}
             >
-              <TeamPage
+              <CommunityPage
+                onNavigate={handleNavigate}
+                onOpenJoinModal={handleOpenJoinModal}
+              />
+            </motion.div>
+          )}
+
+          {currentPage === 'opportunities' && (
+            <motion.div
+              key="opportunities"
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.3 }}
+            >
+              <OpportunitiesPage
+                onNavigate={handleNavigate}
+                onOpenJoinModal={handleOpenJoinModal}
+              />
+            </motion.div>
+          )}
+
+          {currentPage === 'resources' && (
+            <motion.div
+              key="resources"
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.3 }}
+            >
+              <ResourcesPage
                 onNavigate={handleNavigate}
                 onOpenJoinModal={handleOpenJoinModal}
               />
