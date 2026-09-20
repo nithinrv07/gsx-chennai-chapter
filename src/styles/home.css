@@ -19,7 +19,7 @@
   position: absolute;
   inset: 0;
   z-index: -3;
-  background-image: url('/assets/chennai.webp');
+  background-image: url('/assets/chennai-clean.webp');
   background-size: 100% 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -266,10 +266,10 @@
 
 .landmark-art {
   position: absolute;
-  width: 94px;
-  height: 80px;
-  left: -47px;
-  bottom: 5px;
+  width: 130px;
+  height: 108px;
+  left: -65px;
+  bottom: -5px;
   color: #dec8ff;
   overflow: visible;
   filter:
@@ -311,6 +311,8 @@
   inset: 0;
   z-index: 2;
   overflow: hidden;
+  pointer-events: auto;
+  touch-action: pan-y;
 }
 
 .landmark-track {
@@ -344,6 +346,7 @@
   place-items: center;
   font-size: 22px;
   cursor: pointer;
+  pointer-events: auto;
   box-shadow: 0 0 22px rgba(164, 90, 255, 0.18), inset 0 0 18px rgba(174, 112, 255, 0.06);
   transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
@@ -403,6 +406,7 @@
   display: flex;
   flex-direction: column;
   gap: 9px;
+  pointer-events: auto;
 }
 
 .landmark-pagination button {
@@ -986,6 +990,24 @@
   .landmark {
     display: none;
   }
+  .landmark:nth-child(odd) {
+    display: block;
+    top: 100px;
+    height: 118px;
+    font-size: 9px;
+  }
+  .landmark:nth-child(1) { left: 16%; }
+  .landmark:nth-child(3) { left: 50%; }
+  .landmark:nth-child(5) { left: 82%; }
+  .landmark-art {
+    width: 78px;
+    height: 66px;
+    left: -39px;
+    bottom: -5px;
+  }
+  .landmark span {
+    max-width: 95px;
+  }
   .city-nav {
     width: 42px;
     height: 42px;
@@ -1007,16 +1029,7 @@
     display: none;
   }
   .mobile-landmark-grid {
-    position: absolute;
-    left: 50%;
-    bottom: 38px;
-    transform: translateX(-50%);
-    width: min(82vw, 380px);
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 5px 8px;
-    z-index: 6;
-    pointer-events: none;
+    display: none;
   }
   .mobile-landmark-grid span {
     overflow: hidden;
