@@ -109,6 +109,13 @@ export const HomePage: React.FC<HomePageProps> = ({
           <CommunityStats />
         </main>
 
+        {/* Vertical 4-dot Page Marker Indicator */}
+        <div className="page-marker" aria-hidden="true">
+          <i />
+          <i />
+          <i />
+          <i />
+        </div>
       </div>
 
       {/* ===================================================
