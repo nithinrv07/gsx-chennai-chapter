@@ -55,18 +55,10 @@ export const HomePage: React.FC<HomePageProps> = ({
     }
   };
 
-  const handleScrollToExplore = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const section = document.getElementById('explore-community');
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <div className="relative min-h-screen bg-[#080414] text-[#f6f2ff]">
       {/* ===================================================
-          HERO SECTION — FROM GSX-REACT DESIGN
+          HERO SECTION
           Purple skyline, neon light ribbons, landmark pins,
           signature typography, glowing pills, and community stats
           =================================================== */}
@@ -124,17 +116,6 @@ export const HomePage: React.FC<HomePageProps> = ({
           <i />
           <i />
         </div>
-
-        {/* Floating Explore Community Anchor */}
-        <a
-          className="explore"
-          href="#explore-community"
-          onClick={handleScrollToExplore}
-          aria-label="Scroll to explore community section"
-        >
-          <span className="circle" aria-hidden="true">↓</span>
-          <span>Explore our community</span>
-        </a>
       </div>
 
       {/* ===================================================

@@ -23,7 +23,7 @@ export const CORE_TEAM: TeamMember[] = [
     role: 'Co-Lead',
     owns: 'Logistics, venues, member data, event execution',
     shortBio: 'Spearheading venue coordination, operational logistics, member records, and seamless on-ground execution for chapter experiences.',
-    image: '/team/SUJEY%20H.jpeg',
+    image: '/team/SUJEY H.jpeg',
     iconName: 'Cpu',
     linkedin: 'https://www.linkedin.com/in/sujey-hariprasad',
   },

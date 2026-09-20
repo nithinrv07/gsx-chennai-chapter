@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { HeroParticles } from './HeroParticles';
 
 // Curves follow the bright ribbons in the supplied 1672 × 941 background.
@@ -21,8 +21,6 @@ export const HeroGlow: React.FC<HeroGlowProps> = ({
   showParticles = true,
   showWatermarkLogo = true,
 }) => {
-  const [paused, setPaused] = useState(false);
-
   // If intensity is explicitly passed without variant, treat as ambient subpage glow
   const isAmbient = variant === 'ambient' || (intensity !== undefined && variant !== 'skyline');
 
@@ -81,10 +79,10 @@ export const HeroGlow: React.FC<HeroGlowProps> = ({
     );
   }
 
-  // Skyline Animated Neon Ribbon Background (from gsx-react)
+  // Skyline Animated Neon Ribbon Background
   return (
     <>
-      <div className={`animated-background${paused ? ' is-paused' : ''}`} aria-hidden="true">
+      <div className="animated-background" aria-hidden="true">
         <div className="art" />
         {/* Luminous cosmic ambient glow at the top directly behind the navbar */}
         <div
@@ -105,14 +103,6 @@ export const HeroGlow: React.FC<HeroGlowProps> = ({
         </svg>
       </div>
       <div className="shade" aria-hidden="true" />
-      <button
-        className="motion-toggle"
-        onClick={() => setPaused(!paused)}
-        aria-pressed={paused}
-        aria-label={paused ? 'Play background animation' : 'Pause background animation'}
-      >
-        {paused ? '▶ Play motion' : 'Ⅱ Pause motion'}
-      </button>
     </>
   );
 };
