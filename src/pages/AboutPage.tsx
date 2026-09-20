@@ -79,7 +79,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenJoinModa
       </section>
 
       {/* Editorial Section: Who We Are */}
-      <ScrollReveal as="section" variant="fade-up" distance={28} className="max-w-5xl mx-auto px-4 sm:px-6 mb-24">
+      <ScrollReveal as="section" id="what-is-gsx" variant="fade-up" distance={28} className="max-w-5xl mx-auto px-4 sm:px-6 mb-24 scroll-mt-28">
         <div className="glass-panel rounded-3xl p-8 sm:p-14 border border-white/[0.08] relative overflow-hidden">
           <div className="absolute top-0 right-1/4 w-80 h-80 bg-purple-600/10 rounded-full blur-3xl pointer-events-none" />
 
@@ -104,8 +104,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenJoinModa
         </div>
       </ScrollReveal>
 
-      {/* The Five Operating Verticals */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 mb-24">
+      {/* The Five Operating Verticals & Values (Our Pillars) */}
+      <section id="our-pillars" className="max-w-5xl mx-auto px-4 sm:px-6 mb-24 scroll-mt-28">
         <ScrollReveal variant="fade-up" distance={20} className="text-center max-w-2xl mx-auto mb-12">
           <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
             Our Five Verticals
@@ -189,7 +189,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenJoinModa
       </section>
 
       {/* Mission & Vision Section */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 mb-24">
+      <section id="our-mission" className="max-w-5xl mx-auto px-4 sm:px-6 mb-24 scroll-mt-28">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Mission */}
           <ScrollReveal variant="fade-up" staggerIndex={0} distance={24} className="h-full">
@@ -267,7 +267,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenJoinModa
       </section>
 
       {/* Our Journey Timeline */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 mb-24">
+      <section id="our-journey" className="max-w-5xl mx-auto px-4 sm:px-6 mb-24 scroll-mt-28">
         <ScrollReveal variant="fade-up" distance={20} className="text-center max-w-xl mx-auto mb-14">
           <span className="text-xs font-bold uppercase tracking-widest text-purple-400 block mb-2">
             Milestones & Roadmap

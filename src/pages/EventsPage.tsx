@@ -93,8 +93,8 @@ export const EventsPage: React.FC<EventsPageProps> = ({
       </section>
 
       {/* Upcoming Events Grid */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24">
-        <div className="flex items-center justify-between mb-8">
+      <section id="upcoming-events" className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 scroll-mt-28">
+        <div id="event-details" className="flex items-center justify-between mb-8 scroll-mt-28">
           <div>
             <span className="text-xs font-bold uppercase tracking-widest text-purple-400 block mb-1">
               Active Schedule
@@ -222,7 +222,7 @@ export const EventsPage: React.FC<EventsPageProps> = ({
 
       {/* Past Events Recap Section */}
       {pastEvents.length > 0 && (
-        <section className="max-w-6xl mx-auto px-4 sm:px-6">
+        <section id="past-events" className="max-w-6xl mx-auto px-4 sm:px-6 scroll-mt-28">
           <ScrollReveal variant="fade-up" distance={20} className="border-t border-white/[0.08] pt-16 mb-8">
             <span className="text-xs font-bold uppercase tracking-widest text-purple-400 block mb-1">
               Archive & Highlights

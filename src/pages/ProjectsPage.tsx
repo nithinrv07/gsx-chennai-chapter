@@ -92,7 +92,8 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
       </section>
 
       {/* Projects Grid */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24">
+      <section id="ongoing-projects" className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 scroll-mt-28">
+        <div id="completed-projects" className="scroll-mt-28" />
         {filteredProjects.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredProjects.map((project, idx) => (
@@ -191,8 +192,8 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
         )}
       </section>
 
-      {/* Final Submission CTA */}
-      <ScrollReveal as="section" variant="fade-up" distance={25} className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      {/* Final Submission & Collaboration CTA */}
+      <ScrollReveal as="section" id="collaborate-with-us" variant="fade-up" distance={25} className="max-w-4xl mx-auto px-4 sm:px-6 text-center scroll-mt-28">
         <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-purple-950/40 via-[#0a0715] to-purple-950/40 border border-purple-500/30 shadow-[0_0_40px_rgba(168,85,247,0.2)]">
           <span className="text-xs font-bold uppercase tracking-widest text-purple-400 block mb-2">
             Open Submissions

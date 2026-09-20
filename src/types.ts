@@ -6,11 +6,28 @@ export const GSX_LINKEDIN_URL = 'https://www.linkedin.com/company/gsx-chennai-ch
 export type PageId = 
   | 'home'
   | 'about'
+  | 'community'
   | 'team'
   | 'events'
   | 'announcements'
   | 'projects'
+  | 'opportunities'
+  | 'resources'
   | 'get-involved';
+
+export interface NavDropdownItem {
+  id: string;
+  label: string;
+  pageId: PageId;
+  sectionId?: string;
+  description?: string;
+}
+
+export interface NavItemConfig {
+  id: PageId;
+  label: string;
+  children?: NavDropdownItem[];
+}
 
 export interface StatItem {
   id: string;

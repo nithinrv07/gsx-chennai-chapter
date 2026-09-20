@@ -132,10 +132,10 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({
       </section>
 
       {/* ===================================================
-          SECTION 1 — HOW YOU CAN GET INVOLVED
+          SECTION 1 — HOW YOU CAN GET INVOLVED (VOLUNTEER)
           6 Opportunity Cards
           =================================================== */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-28">
+      <section id="volunteer" className="max-w-6xl mx-auto px-4 sm:px-6 mb-28 scroll-mt-28">
         <ScrollReveal variant="fade-up" distance={20} className="text-center max-w-xl mx-auto mb-14">
           <span className="text-xs font-bold uppercase tracking-widest text-purple-400 block mb-2">
             Engagement Pathways
@@ -202,7 +202,7 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({
           SECTION 2 — JOIN GSX
           Large visually impressive section with 3-step journey
           =================================================== */}
-      <ScrollReveal as="section" variant="fade-up" distance={30} className="max-w-6xl mx-auto px-4 sm:px-6 mb-28">
+      <ScrollReveal as="section" id="join-gsx" variant="fade-up" distance={30} className="max-w-6xl mx-auto px-4 sm:px-6 mb-28 scroll-mt-28">
         <div className="relative rounded-3xl p-8 sm:p-14 overflow-hidden border border-purple-500/30 bg-gradient-to-br from-[#120a24]/90 via-[#0a0714] to-[#050505] shadow-[0_0_60px_rgba(168,85,247,0.25)]">
           {/* Radial light behind content */}
           <div className="absolute top-0 right-1/4 w-[500px] h-[350px] bg-purple-600/20 blur-[100px] pointer-events-none rounded-full" />
@@ -266,10 +266,11 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({
       </ScrollReveal>
 
       {/* ===================================================
-          SECTION 3 — COLLABORATE WITH US
+          SECTION 3 — COLLABORATE WITH US / PARTNER WITH US
           4 collaboration cards + Printable Brochure Card + Collaboration Form
           =================================================== */}
-      <section id="collaborate-section" className="max-w-6xl mx-auto px-4 sm:px-6 mb-16 scroll-mt-24">
+      <section id="partner-with-us" className="max-w-6xl mx-auto px-4 sm:px-6 mb-16 scroll-mt-28">
+        <div id="collaborate-section" className="scroll-mt-28" />
         <ScrollReveal variant="fade-up" distance={20} className="text-center max-w-xl mx-auto mb-14">
           <span className="text-xs font-bold uppercase tracking-widest text-purple-400 block mb-2">
             Institutional Alliances
@@ -355,13 +356,73 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({
             REUSABLE COLLABORATION & INQUIRY FORM
             Clean, validated form with instant success feedback & backend readiness
             =================================================== */}
-        <ScrollReveal variant="fade-up" distance={24} className="max-w-2xl mx-auto">
+        <ScrollReveal variant="fade-up" distance={24} className="max-w-2xl mx-auto mb-20">
           <CollaborationInquiryForm 
             id="collaboration-form"
             title="Send Collaboration Proposal"
             subtitle="Our chapter relations team will review your proposal and connect back promptly."
             defaultType="Partnership"
           />
+        </ScrollReveal>
+
+        {/* ===================================================
+            SECTION 4 — START GSX AT YOUR COLLEGE
+            Campus Lead & Chapter Setup Portal
+            =================================================== */}
+        <ScrollReveal as="div" id="start-gsx-college" variant="fade-up" distance={28} className="max-w-5xl mx-auto scroll-mt-28">
+          <div className="relative p-8 sm:p-14 rounded-3xl overflow-hidden border border-purple-500/30 bg-gradient-to-br from-[#130b26]/90 via-[#0d071b] to-[#06040c] shadow-[0_0_50px_rgba(168,85,247,0.25)]">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-purple-600/15 blur-[90px] pointer-events-none rounded-full" />
+            
+            <div className="max-w-3xl mb-10 relative z-10">
+              <span className="text-xs font-bold uppercase tracking-widest text-purple-400 block mb-2">
+                Campus Initiative
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight mb-3">
+                Start GSX at Your College
+              </h2>
+              <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
+                Bring the energy, events, open-source mentorship, and builder culture of GSX Chennai right onto your campus. We provide the playbook, speakers, tracks, and official support.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-10 relative z-10">
+              <div className="glass-panel p-5 rounded-2xl border border-white/[0.08]">
+                <div className="text-purple-400 font-mono text-xs font-bold mb-2">PHASE 1</div>
+                <h4 className="text-base font-bold text-white mb-1.5">Apply as Campus Lead</h4>
+                <p className="text-xs text-gray-400 leading-relaxed">Form a core group of 3–5 student evangelists passionate about technical peer learning.</p>
+              </div>
+
+              <div className="glass-panel p-5 rounded-2xl border border-white/[0.08]">
+                <div className="text-purple-400 font-mono text-xs font-bold mb-2">PHASE 2</div>
+                <h4 className="text-base font-bold text-white mb-1.5">Get Chapter Kit</h4>
+                <p className="text-xs text-gray-400 leading-relaxed">Receive workshop slides, speaker network access, GitHub repo templates, and event swags.</p>
+              </div>
+
+              <div className="glass-panel p-5 rounded-2xl border border-white/[0.08]">
+                <div className="text-purple-400 font-mono text-xs font-bold mb-2">PHASE 3</div>
+                <h4 className="text-base font-bold text-white mb-1.5">Host First Build Day</h4>
+                <p className="text-xs text-gray-400 leading-relaxed">Run a kick-off hack sprint or tech circle co-promoted across Chennai colleges.</p>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-center gap-4 relative z-10">
+              <button
+                onClick={onOpenJoinModal}
+                className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-500 hover:to-violet-500 text-white font-bold text-sm shadow-[0_0_25px_rgba(168,85,247,0.4)] transition-all flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <Sparkles className="w-4 h-4" />
+                <span>Apply to Launch a Campus Chapter</span>
+              </button>
+              
+              <button
+                onClick={() => setIsBrochureOpen(true)}
+                className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.1] text-white font-semibold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <FileText className="w-4 h-4 text-purple-400" />
+                <span>Read Campus Playbook</span>
+              </button>
+            </div>
+          </div>
         </ScrollReveal>
       </section>
     </div>
