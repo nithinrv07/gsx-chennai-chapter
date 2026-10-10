@@ -114,9 +114,11 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onNavigate, onOpenJoinModal 
                 </p>
               </div>
 
-              <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
-                {FEATURED_LEAD.shortBio}
-              </p>
+              <div className="space-y-4">
+                  {FEATURED_LEAD.shortBio.split('\n\n').map((paragraph, index) => (
+                    <p key={index} className="text-sm text-gray-300 leading-relaxed">{paragraph}</p>
+                  ))}
+                </div>
 
               <div className="pt-3 border-t border-white/[0.08] flex items-center gap-3">
                 {FEATURED_LEAD.linkedin && (

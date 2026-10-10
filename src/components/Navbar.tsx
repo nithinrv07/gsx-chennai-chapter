@@ -13,6 +13,7 @@ export interface NavDropdownChild {
   id: string;
   label: string;
   sectionId?: string;
+  pageId?: PageId;
   description?: string;
 }
 
@@ -26,24 +27,17 @@ export const NAV_STRUCTURE: NavStructureItem[] = [
   {
     id: 'home',
     label: 'Home',
-  },
-  {
-    id: 'about',
-    label: 'About',
     children: [
-      { id: 'what-is-gsx', label: 'What is GSX?', sectionId: 'what-is-gsx', description: 'Our identity & foundation' },
-      { id: 'our-mission', label: 'Our Mission', sectionId: 'our-mission', description: 'Guiding purpose & vision' },
-      { id: 'our-pillars', label: 'Our Pillars', sectionId: 'our-pillars', description: '5 verticals & core values' },
-      { id: 'our-journey', label: 'Our Journey', sectionId: 'our-journey', description: 'Milestones & contributor path' },
+      { id: 'about', label: 'About', pageId: 'about', description: 'Our story, mission & community' },
+      { id: 'photo-gallery', label: 'Photo Gallery', sectionId: 'photo-gallery', description: 'Moments from our chapter' },
     ],
   },
   {
     id: 'community',
     label: 'Community',
     children: [
-      { id: 'members', label: 'Members', sectionId: 'members', description: 'Student network & study circles' },
       { id: 'core-team', label: 'Core Team', sectionId: 'core-team', description: 'Leadership & domain owners' },
-      { id: 'colleges', label: 'Colleges', sectionId: 'colleges', description: '15+ Chennai college chapters' },
+      { id: 'colleges', label: 'Colleges', sectionId: 'colleges', description: 'Students from colleges across Chennai' },
       { id: 'join-gsx', label: 'Join GSX', sectionId: 'join-gsx', description: 'Become an active member' },
     ],
   },
@@ -52,6 +46,7 @@ export const NAV_STRUCTURE: NavStructureItem[] = [
     label: 'Events',
     children: [
       { id: 'upcoming-events', label: 'Upcoming Events', sectionId: 'upcoming-events', description: 'Hackathons, meetups & summits' },
+      { id: 'meetups', label: 'Meetups', sectionId: 'meetups', description: 'Connect, share ideas & meet fellow builders' },
       { id: 'past-events', label: 'Past Events', sectionId: 'past-events', description: 'Recaps & highlights' },
       { id: 'event-details', label: 'Event Details', sectionId: 'event-details', description: 'Schedules & speaker info' },
     ],
@@ -217,7 +212,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           aria-label="Main navigation"
         >
           {NAV_STRUCTURE.map((item) => {
-            const isCurrent = currentPage === item.id || (item.id === 'community' && currentPage === 'team');
+            const isCurrent = currentPage === item.id || (item.id === 'home' && currentPage === 'about') || (item.id === 'community' && currentPage === 'team');
             const hasChildren = Boolean(item.children && item.children.length > 0);
             const isOpen = activeDropdown === item.id;
 
@@ -275,7 +270,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                           className="w-full text-left px-3 py-2 rounded-xl hover:bg-purple-600/25 text-gray-300 hover:text-white transition-all flex items-center justify-between group cursor-pointer border border-transparent hover:border-purple-500/30"
                           onClick={(e) => {
                             e.stopPropagation();
-                            handleNavClick(item.id, child.sectionId);
+                            handleNavClick(child.pageId || item.id, child.sectionId);
                           }}
                         >
                           <div className="flex flex-col">
@@ -357,7 +352,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             <div className="flex flex-col gap-1.5">
               {NAV_STRUCTURE.map((item) => {
-                const isCurrent = currentPage === item.id || (item.id === 'community' && currentPage === 'team');
+                const isCurrent = currentPage === item.id || (item.id === 'home' && currentPage === 'about') || (item.id === 'community' && currentPage === 'team');
                 const hasChildren = Boolean(item.children && item.children.length > 0);
                 const isExpanded = mobileExpanded === item.id;
 
@@ -400,7 +395,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                           <button
                             key={child.id}
                             type="button"
-                            onClick={() => handleNavClick(item.id, child.sectionId)}
+                            onClick={() => handleNavClick(child.pageId || item.id, child.sectionId)}
                             className="w-full text-left py-2 px-2.5 rounded-lg text-xs text-gray-300 hover:text-white hover:bg-purple-600/30 transition-all flex items-center justify-between"
                           >
                             <span>{child.label}</span>

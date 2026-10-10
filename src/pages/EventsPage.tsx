@@ -41,6 +41,7 @@ export const EventsPage: React.FC<EventsPageProps> = ({
   );
 
   const pastEvents = EVENTS_DATA.filter((e) => e.status === 'past');
+  const meetups = EVENTS_DATA.filter((e) => e.category === 'Meetups');
 
   return (
     <div className="relative min-h-screen pb-20">
@@ -219,6 +220,37 @@ export const EventsPage: React.FC<EventsPageProps> = ({
           </div>
         )}
       </section>
+
+      {/* Community Meetups */}
+      {(selectedCategory === 'All' || selectedCategory === 'Meetups') && (
+        <section id="meetups" className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 scroll-mt-28">
+          <div className="mb-8">
+            <span className="text-xs font-bold uppercase tracking-widest text-purple-400 block mb-1">Connect with the community</span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Meetups</h2>
+            <p className="text-sm text-gray-400 mt-2">Meet fellow builders, exchange ideas, and share what you are learning.</p>
+          </div>
+          {meetups.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {meetups.map(meetup => (
+                <article key={meetup.id} className="glass-panel rounded-2xl border border-white/[0.08] p-6 flex flex-col">
+                  <span className="text-xs text-purple-300 mb-3">{meetup.status === 'past' ? 'Past meetup' : meetup.status === 'ongoing' ? 'Ongoing meetup' : 'Upcoming meetup'} · {meetup.venueType}</span>
+                  <h3 className="text-lg font-bold text-white mb-3">{meetup.title}</h3>
+                  <p className="text-sm text-gray-400 leading-relaxed mb-4">{meetup.description}</p>
+                  <p className="text-xs text-purple-300 mb-2">{meetup.date} · {meetup.time}</p>
+                  <p className="text-xs text-gray-400 mb-6">{meetup.location}</p>
+                  <button type="button" onClick={() => onOpenEventDetail(meetup)} className="mt-auto text-sm text-purple-300 hover:text-white text-left font-semibold">{meetup.status === 'past' ? 'View recap' : 'View meetup details'} →</button>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <div className="glass-panel rounded-3xl border border-purple-500/20 p-8 sm:p-10 text-center">
+              <h3 className="text-lg font-bold text-white mb-3">Meetup details coming soon</h3>
+              <p className="text-sm text-gray-400 max-w-lg mx-auto leading-relaxed">Dates and venues will appear here when announced. Join the community to hear about the next meetup.</p>
+              <a href="https://forms.gle/AFdmVVLug64CURiq9" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mt-6 px-6 py-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-sm font-semibold transition-colors">Join the community <ArrowRight className="w-4 h-4" /></a>
+            </div>
+          )}
+        </section>
+      )}
 
       {/* Past Events Recap Section */}
       {pastEvents.length > 0 && (

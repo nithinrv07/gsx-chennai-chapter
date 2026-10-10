@@ -46,6 +46,15 @@ export const SearchModal: React.FC<SearchModalProps> = ({
       },
     },
     {
+      id: 'photo-gallery',
+      label: 'Photo Gallery',
+      category: 'Home',
+      action: () => {
+        onNavigate('home', 'photo-gallery');
+        onClose();
+      },
+    },
+    {
       id: 'about',
       label: 'About Chapter',
       category: 'Page',
@@ -92,7 +101,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
     },
     {
       id: 'community',
-      label: 'Community & Members',
+      label: 'Community & Colleges',
       category: 'Community',
       action: () => {
         onNavigate('community');
@@ -110,7 +119,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
     },
     {
       id: 'colleges',
-      label: 'Colleges in Chennai (15+ Chapters)',
+      label: 'Students Across Chennai Colleges',
       category: 'Community',
       action: () => {
         onNavigate('community', 'colleges');
@@ -132,6 +141,15 @@ export const SearchModal: React.FC<SearchModalProps> = ({
       category: 'Events',
       action: () => {
         onNavigate('events', 'upcoming-events');
+        onClose();
+      },
+    },
+    {
+      id: 'meetups',
+      label: 'Meetups',
+      category: 'Events',
+      action: () => {
+        onNavigate('events', 'meetups');
         onClose();
       },
     },
