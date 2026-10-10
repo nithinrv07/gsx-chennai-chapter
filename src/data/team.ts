@@ -50,7 +50,8 @@ export const CORE_TEAM: TeamMember[] = [
     "owns": "Chapter operations and event coordination",
     "shortBio": "Coordinating chapter operations and supporting event delivery.",
     "image": "/team/jenita%20agnes.jpeg",
-    "iconName": "Cpu"
+    "iconName": "Cpu",
+    "linkedin": "https://www.linkedin.com/in/jenita-agnes-dl/"
   },
   {
     "id": "core-04",
