@@ -110,7 +110,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
     },
     {
       id: 'colleges',
-      label: 'Colleges in Chennai (15+ Chapters)',
+      label: 'Students Across Chennai Colleges',
       category: 'Community',
       action: () => {
         onNavigate('community', 'colleges');

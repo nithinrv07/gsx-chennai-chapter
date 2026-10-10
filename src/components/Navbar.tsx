@@ -42,7 +42,7 @@ export const NAV_STRUCTURE: NavStructureItem[] = [
     label: 'Community',
     children: [
       { id: 'core-team', label: 'Core Team', sectionId: 'core-team', description: 'Leadership & domain owners' },
-      { id: 'colleges', label: 'Colleges', sectionId: 'colleges', description: '15+ Chennai college chapters' },
+      { id: 'colleges', label: 'Colleges', sectionId: 'colleges', description: 'Students from colleges across Chennai' },
       { id: 'join-gsx', label: 'Join GSX', sectionId: 'join-gsx', description: 'Become an active member' },
     ],
   },
