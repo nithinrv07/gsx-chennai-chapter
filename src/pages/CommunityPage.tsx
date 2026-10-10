@@ -14,9 +14,7 @@ import {
   CheckCircle2,
   MapPin,
   ExternalLink,
-  Code2,
   Cpu,
-  Globe2,
   Search,
   Linkedin,
   Compass,
@@ -129,33 +127,6 @@ const CHENNAI_COLLEGES = [
   }
 ];
 
-const COMMUNITY_CIRCLES = [
-  {
-    title: 'AI & LLM Study Circle',
-    tag: 'Weekly Syncs',
-    description: 'Deep dives into open-weights models, prompt architecture, autonomous agents, and PyTorch implementations.',
-    leadCount: '450+ Learners'
-  },
-  {
-    title: 'Open Source Guild',
-    tag: 'Git & Linux',
-    description: 'Hands-on PR reviews, GSoC & GSSoC mentorship, repository maintenance, and issue triage.',
-    leadCount: '380+ Builders'
-  },
-  {
-    title: 'Full-Stack & Cloud Guild',
-    tag: 'Production Tech',
-    description: 'React, Next.js, FastAPI, Docker, Kubernetes, and serverless architectures powering modern products.',
-    leadCount: '520+ Devs'
-  },
-  {
-    title: 'Competitive Coding & DSA',
-    tag: 'Interview Prep',
-    description: 'Algorithmic problem solving, LeetCode patterns, system design fundamentals, and mock interviews.',
-    leadCount: '340+ Solvers'
-  }
-];
-
 export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate, onOpenJoinModal }) => {
   const [collegeFilter, setCollegeFilter] = useState('');
 
@@ -222,90 +193,6 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate, onOpen
             </div>
           </motion.div>
         </div>
-      </section>
-
-      {/* ===================================================
-          SECTION 1 — MEMBERS (#members)
-          Community Learning Circles & Member Highlights
-          =================================================== */}
-      <section id="members" className="max-w-6xl mx-auto px-4 sm:px-6 mb-28 scroll-mt-28">
-        <ScrollReveal variant="fade-up" distance={20} className="text-center max-w-2xl mx-auto mb-14">
-          <span className="text-xs font-bold uppercase tracking-widest text-purple-400 block mb-2">
-            Peer Ecosystem
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Community Members & Guilds
-          </h2>
-          <p className="text-sm text-gray-400 mt-2">
-            Every member finds their home in focused study circles and engineering tracks tailored to real-world skilling.
-          </p>
-        </ScrollReveal>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-14">
-          {COMMUNITY_CIRCLES.map((circle, idx) => (
-            <ScrollReveal
-              key={circle.title}
-              variant="fade-up"
-              staggerIndex={idx}
-              staggerInterval={60}
-              distance={24}
-              className="h-full"
-            >
-              <div className="glass-panel glass-panel-hover p-6 rounded-2xl border border-white/[0.08] h-full flex flex-col justify-between group">
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-[11px] font-mono font-semibold px-2.5 py-0.5 rounded-full bg-purple-950/60 border border-purple-500/30 text-purple-300">
-                      {circle.tag}
-                    </span>
-                    <span className="text-[11px] text-gray-400">{circle.leadCount}</span>
-                  </div>
-                  <h3 className="text-lg font-bold text-white group-hover:text-purple-200 transition-colors mb-2">
-                    {circle.title}
-                  </h3>
-                  <p className="text-xs text-gray-400 leading-relaxed">
-                    {circle.description}
-                  </p>
-                </div>
-
-                <div className="pt-4 mt-4 border-t border-white/[0.06] flex items-center justify-between text-xs text-purple-400 font-medium">
-                  <span>Active Circle</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                </div>
-              </div>
-            </ScrollReveal>
-          ))}
-        </div>
-
-        {/* Member Culture Showcase */}
-        <ScrollReveal variant="fade-up" distance={25}>
-          <div className="glass-panel p-8 sm:p-10 rounded-3xl border border-purple-500/20 bg-gradient-to-r from-purple-950/30 via-[#0d071d] to-purple-950/20">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center sm:text-left">
-              <div className="space-y-2">
-                <div className="w-10 h-10 rounded-xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center text-purple-300 mx-auto sm:mx-0">
-                  <Code2 className="w-5 h-5" />
-                </div>
-                <h4 className="text-base font-bold text-white">Learn in Public</h4>
-                <p className="text-xs text-gray-400 leading-relaxed">Share your daily builds, debug hurdles, and project code without judgment.</p>
-              </div>
-
-              <div className="space-y-2">
-                <div className="w-10 h-10 rounded-xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center text-purple-300 mx-auto sm:mx-0">
-                  <Globe2 className="w-5 h-5" />
-                </div>
-                <h4 className="text-base font-bold text-white">Cross-College Synergy</h4>
-                <p className="text-xs text-gray-400 leading-relaxed">Pair with coders and designers outside your own campus to win hackathons.</p>
-              </div>
-
-              <div className="space-y-2">
-                <div className="w-10 h-10 rounded-xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center text-purple-300 mx-auto sm:mx-0">
-                  <Sparkles className="w-5 h-5" />
-                </div>
-                <h4 className="text-base font-bold text-white">Career Acceleration</h4>
-                <p className="text-xs text-gray-400 leading-relaxed">Direct mentorship and referrals from senior alumni placed at top tech teams.</p>
-              </div>
-            </div>
-          </div>
-        </ScrollReveal>
       </section>
 
       {/* ===================================================

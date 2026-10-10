@@ -41,7 +41,6 @@ export const NAV_STRUCTURE: NavStructureItem[] = [
     id: 'community',
     label: 'Community',
     children: [
-      { id: 'members', label: 'Members', sectionId: 'members', description: 'Student network & study circles' },
       { id: 'core-team', label: 'Core Team', sectionId: 'core-team', description: 'Leadership & domain owners' },
       { id: 'colleges', label: 'Colleges', sectionId: 'colleges', description: '15+ Chennai college chapters' },
       { id: 'join-gsx', label: 'Join GSX', sectionId: 'join-gsx', description: 'Become an active member' },
@@ -52,6 +51,7 @@ export const NAV_STRUCTURE: NavStructureItem[] = [
     label: 'Events',
     children: [
       { id: 'upcoming-events', label: 'Upcoming Events', sectionId: 'upcoming-events', description: 'Hackathons, meetups & summits' },
+      { id: 'meetups', label: 'Meetups', sectionId: 'meetups', description: 'Connect, share ideas & meet fellow builders' },
       { id: 'past-events', label: 'Past Events', sectionId: 'past-events', description: 'Recaps & highlights' },
       { id: 'event-details', label: 'Event Details', sectionId: 'event-details', description: 'Schedules & speaker info' },
     ],
