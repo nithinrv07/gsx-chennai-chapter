@@ -246,7 +246,7 @@ export const EventsPage: React.FC<EventsPageProps> = ({
             <div className="glass-panel rounded-3xl border border-purple-500/20 p-8 sm:p-10 text-center">
               <h3 className="text-lg font-bold text-white mb-3">Meetup details coming soon</h3>
               <p className="text-sm text-gray-400 max-w-lg mx-auto leading-relaxed">Dates and venues will appear here when announced. Join the community to hear about the next meetup.</p>
-              <a href="https://forms.gle/AFdmVVLug64CURiq9" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mt-6 px-6 py-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-sm font-semibold transition-colors">Join the community <ArrowRight className="w-4 h-4" /></a>
+              <a href={GSX_JOIN_FORM_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mt-6 px-6 py-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-sm font-semibold transition-colors">Join the community <ArrowRight className="w-4 h-4" /></a>
             </div>
           )}
         </section>
