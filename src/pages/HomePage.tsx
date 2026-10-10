@@ -15,7 +15,8 @@ import {
   Hammer, 
   Users, 
   Briefcase, 
-  Compass
+  Compass,
+  Images
 } from 'lucide-react';
 import '../styles/home.css';
 
@@ -128,7 +129,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
               <div className="lg:col-span-8 space-y-4">
                 <span className="text-xs font-semibold uppercase tracking-widest text-purple-400">
-                  The Ecosystem
+                  About GSX Chennai
                 </span>
                 <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
                   More Than a Community.
@@ -150,6 +151,18 @@ export const HomePage: React.FC<HomePageProps> = ({
             </div>
           </div>
         </ScrollReveal>
+
+        <section id="photo-gallery" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-24 scroll-mt-28">
+          <div className="text-center mb-8">
+            <span className="text-xs font-semibold uppercase tracking-widest text-purple-400">Our community in moments</span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mt-3">Photo Gallery</h2>
+          </div>
+          <div className="rounded-3xl border border-purple-500/20 bg-gradient-to-br from-purple-950/30 to-[#0d071d] p-10 sm:p-14 text-center">
+            <Images className="w-10 h-10 text-purple-300 mx-auto mb-5" />
+            <h3 className="text-xl text-white font-semibold mb-3">Community moments coming soon</h3>
+            <p className="text-sm text-gray-400 max-w-md mx-auto leading-relaxed">Photos from our chapter activities, meetups, and collaborations will appear here.</p>
+          </div>
+        </section>
 
         {/* SECTION 2: CORE PILLARS / WHAT WE DO */}
         <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-28">

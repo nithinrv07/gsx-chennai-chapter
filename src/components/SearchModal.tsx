@@ -46,6 +46,15 @@ export const SearchModal: React.FC<SearchModalProps> = ({
       },
     },
     {
+      id: 'photo-gallery',
+      label: 'Photo Gallery',
+      category: 'Home',
+      action: () => {
+        onNavigate('home', 'photo-gallery');
+        onClose();
+      },
+    },
+    {
       id: 'about',
       label: 'About Chapter',
       category: 'Page',
