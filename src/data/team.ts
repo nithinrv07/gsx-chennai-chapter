@@ -45,7 +45,7 @@ export const CORE_TEAM: TeamMember[] = [
   },
   {
     "id": "core-03",
-    "name": "Jenita",
+    "name": "Jenita Agnes D L",
     "role": "Operations Lead",
     "owns": "Chapter operations and event coordination",
     "shortBio": "Coordinating chapter operations and supporting event delivery.",
