@@ -84,29 +84,29 @@ export const CORE_TEAM: TeamMember[] = [
   {
     "id": "core-07",
     "name": "Hariharan",
-    "role": "Core Member",
-    "owns": "Community initiatives and chapter activities",
-    "shortBio": "Supporting the chapter’s community initiatives and activities.",
+    "role": "Technical Team",
+    "owns": "Technical support and development",
+    "shortBio": "Supporting the chapter’s technical initiatives and development.",
     "image": "/team/Hari%20Haran.jpeg",
-    "iconName": "Users"
+    "iconName": "Cpu"
   },
   {
     "id": "core-08",
     "name": "Balaji",
-    "role": "Core Member",
-    "owns": "Community initiatives and chapter activities",
-    "shortBio": "Supporting the chapter’s community initiatives and activities.",
+    "role": "Technical Team",
+    "owns": "Technical support and development",
+    "shortBio": "Supporting the chapter’s technical initiatives and development.",
     "image": "/team/Balaji%20S.jpeg",
-    "iconName": "Users"
+    "iconName": "Cpu"
   },
   {
     "id": "core-nithin-r",
     "name": "Nithin R",
-    "role": "Core Member",
-    "owns": "Community initiatives and chapter activities",
-    "shortBio": "Supporting the chapter’s community initiatives and activities.",
+    "role": "Technical Team",
+    "owns": "Technical support and development",
+    "shortBio": "Supporting the chapter’s technical initiatives and development.",
     "image": "/team/nithin-r.jpeg",
-    "iconName": "Users"
+    "iconName": "Cpu"
   },
   {
     "id": "core-09",
@@ -189,10 +189,10 @@ export const COMMUNITY_CHARTER: CommunityRoleCharter[] = [
     "iconName": "Hammer"
   },
   {
-    "role": "Core Member",
-    "owns": "Community initiatives and chapter activities",
-    "details": "Supporting the chapter’s community initiatives and activities.",
-    "iconName": "Users"
+    "role": "Technical Team",
+    "owns": "Technical support and development",
+    "details": "Supporting the chapter’s technical initiatives and development.",
+    "iconName": "Cpu"
   },
   {
     "role": "Community",
