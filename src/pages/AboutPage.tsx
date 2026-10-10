@@ -1,6 +1,7 @@
 import React from 'react';
 import { PageId } from '../types';
 import { ABOUT_INTRO, ABOUT_SECTIONS } from '../data/aboutContent';
+import { PageHero } from '../components/PageHero';
 import { ArrowUpRight } from 'lucide-react';
 
 interface AboutPageProps {
@@ -45,12 +46,11 @@ function splitGroups(content: string[]) {
 }
 
 export const AboutPage: React.FC<AboutPageProps> = ({ onOpenJoinModal }) => (
-  <div className="about-copy relative min-h-screen pt-36 sm:pt-44 pb-24 px-5 sm:px-8">
-    <div className="max-w-5xl mx-auto">
+  <div className="about-copy relative min-h-screen pb-24">
+    <PageHero title={<>{ABOUT_INTRO[0].replace(/^# /, '')}</>} description={<>{inline(ABOUT_INTRO[1])}</>} />
+    <div className="max-w-6xl mx-auto px-4 sm:px-6">
       <header className="text-center max-w-3xl mx-auto mb-16 sm:mb-24">
-        <span className="text-purple-300 text-xs uppercase tracking-[0.25em]">About GSX Chennai Chapter</span>
-        <h1 className="text-4xl sm:text-6xl font-extrabold text-white leading-[1.1] mt-6 mb-7">{ABOUT_INTRO[0].replace(/^# /, '')}</h1>
-        <div className="space-y-4">{blocks(ABOUT_INTRO.slice(1))}</div>
+        <div className="space-y-4">{blocks(ABOUT_INTRO.slice(2))}</div>
         <nav aria-label="About sections" className="flex flex-wrap justify-center gap-2 mt-8">
           {[['what-is-gsx', 'Our story'], ['our-pillars', 'Five verticals'], ['our-mission', 'Mission'], ['our-values', 'Values'], ['our-journey', 'Our journey']].map(([id, label]) => <a key={id} href={`#about#${id}`} className="px-4 py-2 rounded-full border border-purple-500/25 text-sm text-purple-200 hover:bg-purple-500/10 transition-colors">{label}</a>)}
         </nav>

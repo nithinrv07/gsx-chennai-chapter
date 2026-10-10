@@ -1,7 +1,7 @@
 import React from 'react';
 import { PageId, GSX_JOIN_FORM_URL, GSX_WHATSAPP_URL, GSX_INSTAGRAM_URL, GSX_LINKEDIN_URL } from '../types';
 import { FEATURED_LEAD, CORE_TEAM } from '../data/team';
-import { HeroGlow } from '../components/HeroGlow';
+import { PageHero } from '../components/PageHero';
 import { ScrollReveal } from '../components/ScrollReveal';
 import { WhatsAppIcon } from '../components/WhatsAppIcon';
 import {
@@ -57,30 +57,10 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate, onOpen
       {/* ===================================================
           HERO SECTION
           =================================================== */}
-      <section className="relative pt-44 sm:pt-52 md:pt-56 pb-24 sm:pb-32 min-h-[500px] sm:min-h-[580px] md:min-h-[620px] flex flex-col justify-center overflow-hidden text-center">
-        <HeroGlow intensity="medium" />
-
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-[1.1] mb-6 sm:mb-8"
-          >
-            One Community.{' '}
-            <span className="text-gradient-purple">Many Colleges.</span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-base sm:text-lg md:text-xl text-gray-300/90 max-w-2xl sm:max-w-3xl mx-auto leading-relaxed mb-10"
-          >
-            Connecting student builders, researchers, and developers across Chennai institutions to learn in public, ship projects, and build lifelong friendships.
-          </motion.p>
-
-          {/* Quick Metrics */}
+      <PageHero title={<>One Community.{' '}
+            <span className="text-gradient-purple">Many Colleges.</span></>} description={<>Connecting student builders, researchers, and developers across Chennai institutions to learn in public, ship projects, and build lifelong friendships.</>} />
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 mb-16 sm:mb-20 text-center">
+{/* Quick Metrics */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -104,8 +84,7 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate, onOpen
               <div className="text-xs text-gray-400 mt-1">Free & Open Access</div>
             </div>
           </motion.div>
-        </div>
-      </section>
+      </div>
 
       {/* ===================================================
           SECTION 2 — CORE TEAM (#core-team)

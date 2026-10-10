@@ -1,6 +1,6 @@
 import React from 'react';
 import { PageId } from '../types';
-import { HeroGlow } from '../components/HeroGlow';
+import { PageHero } from '../components/PageHero';
 import { ScrollReveal } from '../components/ScrollReveal';
 import { Users, Hammer, Mic, GitPullRequest, ArrowUpRight } from 'lucide-react';
 
@@ -46,15 +46,7 @@ const opportunities = [
 
 export const OpportunitiesPage: React.FC<OpportunitiesPageProps> = ({ onOpenJoinModal }) => (
   <div className="relative min-h-screen pb-24">
-    <section className="relative pt-40 sm:pt-48 pb-16 sm:pb-20 overflow-hidden text-center">
-      <HeroGlow intensity="medium" />
-      <div className="relative z-10 max-w-3xl mx-auto px-6">
-        <h1 className="text-4xl sm:text-6xl font-extrabold text-white tracking-tight mb-6">Opportunities</h1>
-        <p className="text-base sm:text-lg text-gray-300 leading-relaxed max-w-xl mx-auto">
-          Learn by doing, share what you know, and create something meaningful with the GSX Chennai Chapter.
-        </p>
-      </div>
-    </section>
+    <PageHero title={<>Opportunities</>} description={<>Learn by doing, share what you know, and create something meaningful with the GSX Chennai Chapter.</>} />
 
     <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-2 gap-6">
       {opportunities.map((opportunity, index) => {

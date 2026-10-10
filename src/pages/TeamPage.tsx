@@ -1,7 +1,7 @@
 import React from 'react';
 import { PageId, GSX_WHATSAPP_URL, GSX_INSTAGRAM_URL, GSX_LINKEDIN_URL } from '../types';
 import { FEATURED_LEAD, CORE_TEAM } from '../data/team';
-import { HeroGlow } from '../components/HeroGlow';
+import { PageHero } from '../components/PageHero';
 import { ScrollReveal } from '../components/ScrollReveal';
 import { WhatsAppIcon } from '../components/WhatsAppIcon';
 import {
@@ -18,7 +18,6 @@ import {
   TrendingUp,
   Megaphone,
 } from 'lucide-react';
-import { motion } from 'motion/react';
 
 interface TeamPageProps {
   onNavigate: (page: PageId) => void;
@@ -52,30 +51,8 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onNavigate, onOpenJoinModal 
   return (
     <div className="relative min-h-screen pb-20">
       {/* Hero */}
-      <section className="relative pt-44 sm:pt-52 md:pt-56 pb-24 sm:pb-32 min-h-[500px] sm:min-h-[580px] md:min-h-[620px] flex flex-col justify-center overflow-hidden text-center">
-        <HeroGlow intensity="medium" />
-
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-[1.1] mb-6 sm:mb-8"
-          >
-            Meet the People Behind{' '}
-            <span className="text-gradient-purple">GSX Chennai.</span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-base sm:text-lg md:text-xl text-gray-300/90 max-w-2xl sm:max-w-3xl mx-auto leading-relaxed"
-          >
-            A dedicated collective of domain owners, community architects, and technical builders empowering Chennai&apos;s tech ecosystem.
-          </motion.p>
-        </div>
-      </section>
+      <PageHero title={<>Meet the People Behind{' '}
+            <span className="text-gradient-purple">GSX Chennai.</span></>} description={<>A dedicated collective of domain owners, community architects, and technical builders empowering Chennai&apos;s tech ecosystem.</>} />
 
       {/* Featured Lead Profile Card */}
       <ScrollReveal as="section" variant="fade-up" distance={25} className="max-w-5xl mx-auto px-4 sm:px-6 mb-20">
