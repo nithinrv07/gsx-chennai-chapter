@@ -239,27 +239,16 @@
 
 .city-title-brand {
   display: block;
-  padding-left: 0.18em;
-  font-size: clamp(30px, 3.4vw, 48px);
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  color: #d2b5fa;
-  opacity: 0.8;
-  text-shadow: 0 0 28px rgba(170, 104, 255, 0.35);
-}
-
-.city-title-name {
-  display: block;
   padding-left: 0.08em;
-  font-size: clamp(44px, 7vw, 100px);
+  font-size: clamp(84px, 10vw, 144px);
   font-weight: 900;
   letter-spacing: 0.08em;
   background: linear-gradient(180deg, #f0e5ff 5%, #c69bf6 48%, #8050bc 100%);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  opacity: 0.75;
-  filter: drop-shadow(0 0 24px rgba(156, 85, 253, 0.2));
+  opacity: 0.85;
+  filter: drop-shadow(0 0 24px rgba(156, 85, 253, 0.25));
 }
 
 .city-title-chapter {
@@ -267,9 +256,9 @@
   align-items: center;
   gap: 18px;
   margin-top: 4px;
-  font-size: clamp(11px, 1vw, 14px);
+  font-size: clamp(16px, 1.7vw, 24px);
   font-weight: 500;
-  letter-spacing: 0.5em;
+  letter-spacing: 0.15em;
   color: #cdb5ed;
   opacity: 0.8;
 }
@@ -826,12 +815,12 @@
     top: 37px;
     gap: 12px;
   }
-  .city-title-name {
-    font-size: clamp(36px, 10vw, 60px);
+  .city-title-brand {
+    font-size: clamp(72px, 20vw, 100px);
   }
   .city-title-chapter {
     gap: 12px;
-    letter-spacing: 0.4em;
+    letter-spacing: 0.1em;
   }
   .hero {
     padding: 0 22px;
