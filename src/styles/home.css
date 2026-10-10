@@ -222,7 +222,7 @@
 
 .city-title {
   position: absolute;
-  top: 40px;
+  top: 20px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -825,7 +825,7 @@
     height: 244px;
   }
   .city-title {
-    top: 37px;
+    top: 21px;
     gap: 12px;
   }
   .city-title-brand {
