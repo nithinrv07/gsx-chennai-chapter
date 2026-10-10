@@ -215,24 +215,68 @@
 
 .city-title {
   position: absolute;
-  top: 37px;
+  top: 40px;
   left: 50%;
   transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
   margin: 0;
-  font-size: clamp(40px, 5vw, 80px);
-  font-weight: 900;
-  letter-spacing: clamp(1px, 0.35vw, 5px);
   white-space: nowrap;
   text-align: center;
   line-height: 1;
-  color: #9b55e9;
-  opacity: 0.28;
   user-select: none;
   font-family: 'Space Grotesk', Inter, sans-serif;
 }
 
-.city-title span {
+.city-title-brand {
   display: block;
+  padding-left: 0.18em;
+  font-size: clamp(30px, 3.4vw, 48px);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #d2b5fa;
+  opacity: 0.8;
+  text-shadow: 0 0 28px rgba(170, 104, 255, 0.35);
+}
+
+.city-title-name {
+  display: block;
+  padding-left: 0.08em;
+  font-size: clamp(44px, 7vw, 100px);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  background: linear-gradient(180deg, #f0e5ff 5%, #c69bf6 48%, #8050bc 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  opacity: 0.75;
+  filter: drop-shadow(0 0 24px rgba(156, 85, 253, 0.2));
+}
+
+.city-title-chapter {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 4px;
+  font-size: clamp(11px, 1vw, 14px);
+  font-weight: 500;
+  letter-spacing: 0.5em;
+  color: #cdb5ed;
+  opacity: 0.8;
+}
+
+.city-title-chapter::before,
+.city-title-chapter::after {
+  content: '';
+  width: clamp(28px, 4vw, 56px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #ae70ff);
+}
+
+.city-title-chapter::after {
+  transform: rotate(180deg);
 }
 
 .hero {
@@ -772,9 +816,15 @@
     height: 244px;
   }
   .city-title {
-    font-size: clamp(40px, 10vw, 56px);
-    letter-spacing: 1px;
     top: 37px;
+    gap: 12px;
+  }
+  .city-title-name {
+    font-size: clamp(36px, 10vw, 60px);
+  }
+  .city-title-chapter {
+    gap: 12px;
+    letter-spacing: 0.4em;
   }
   .hero {
     padding: 0 22px;
