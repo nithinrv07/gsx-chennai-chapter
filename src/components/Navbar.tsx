@@ -330,11 +330,11 @@ export const Navbar: React.FC<NavbarProps> = ({
             <span aria-hidden="true">→</span>
           </button>
 
-          {/* Quick Search Shortcut */}
+          {/* Mobile Search Shortcut */}
           <button
             ref={searchBtnRef}
             type="button"
-            className="icon-button"
+            className="icon-button mobile-header-action"
             aria-label="Search pages"
             title="Search pages (Press / or Ctrl+K)"
             onClick={() => {
@@ -353,7 +353,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             ref={menuBtnRef}
             type="button"
-            className="icon-button lg:hidden"
+            className="icon-button mobile-header-action"
             aria-controls="mobile-navigation"
             aria-expanded={mobileOpen}
             aria-label={mobileOpen ? 'Close navigation' : 'Open navigation'}
