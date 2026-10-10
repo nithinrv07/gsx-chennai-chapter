@@ -92,15 +92,9 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate, onOpen
           =================================================== */}
       <section id="core-team" className="max-w-6xl mx-auto px-4 sm:px-6 mb-28 scroll-mt-28">
         <ScrollReveal variant="fade-up" distance={20} className="text-center max-w-xl mx-auto mb-14">
-          <span className="text-xs font-bold uppercase tracking-widest text-purple-400 block mb-2">
-            Working Council
-          </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Core Team & Domain Owners
+            Core Team
           </h2>
-          <p className="text-sm text-gray-400 mt-2">
-            The student leaders architecting tracks, organizing meetups, and curating experiences across the city.
-          </p>
         </ScrollReveal>
 
         {/* Featured Lead */}
