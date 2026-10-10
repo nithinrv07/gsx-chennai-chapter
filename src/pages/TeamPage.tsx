@@ -143,7 +143,7 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onNavigate, onOpenJoinModal 
             Working Council
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Core Team & Domain Owners
+            Core Team 
           </h2>
           <p className="text-sm text-gray-400 mt-2">
             Leaders driving learning tracks, open-source building, community outreach, and career programs.
