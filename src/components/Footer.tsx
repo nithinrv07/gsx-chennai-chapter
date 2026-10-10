@@ -15,9 +15,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenJoinModal }) =
   };
 
   return (
-    <footer id="main-footer" className="relative bg-[#030206] border-t border-white/[0.08] overflow-hidden pt-16 pb-12">
-      {/* Background ambient bottom glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px] bg-purple-900/10 blur-[120px] pointer-events-none rounded-full" />
+    <footer id="main-footer" className="relative bg-[#080414] border-t border-purple-500/10 overflow-hidden pt-16 pb-12">
+      {/* A soft, continuous purple glow blends the footer into the page. */}
+      <div aria-hidden="true" className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_50%_100%,rgba(109,40,217,0.10),transparent_70%)]" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-white/[0.06]">
