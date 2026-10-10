@@ -59,7 +59,7 @@ export const HomePage: React.FC<HomePageProps> = ({
     <div className="relative min-h-screen bg-[#080414] text-[#f6f2ff]">
       {/* ===================================================
           HERO SECTION
-          Purple skyline, neon light ribbons, landmark pins,
+          Purple skyline, neon light ribbons, chapter watermark,
           signature typography, glowing pills, and community stats
           =================================================== */}
       <div className="home" id="home">
@@ -69,7 +69,7 @@ export const HomePage: React.FC<HomePageProps> = ({
         {/* Top spacer to accommodate fixed header height (94px) */}
         <div style={{ height: '94px' }} aria-hidden="true" />
 
-        {/* Chennai Skyline Landmark Labels & Watermark Backdrop */}
+        {/* Chennai Skyline & Chapter Watermark Backdrop */}
         <ChennaiSkyline />
 
         {/* Main Hero Content */}
