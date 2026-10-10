@@ -105,7 +105,7 @@ export const CORE_TEAM: TeamMember[] = [
     "role": "Technical Team",
     "owns": "Technical support and development",
     "shortBio": "Supporting the chapter’s technical initiatives and development.",
-    "image": "",
+    "image": "/team/nithin-r.jpeg",
     "iconName": "Cpu"
   },
   {
