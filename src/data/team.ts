@@ -75,38 +75,38 @@ export const CORE_TEAM: TeamMember[] = [
   {
     "id": "core-06",
     "name": "Sreekanth G",
-    "role": "Technical Team",
-    "owns": "Technical support and development",
-    "shortBio": "Supporting the chapter’s technical initiatives and development.",
+    "role": "Core Member",
+    "owns": "Community initiatives and chapter activities",
+    "shortBio": "Supporting the chapter’s community initiatives and activities.",
     "image": "/team/Sreekanth%20G.jpeg",
-    "iconName": "Cpu"
+    "iconName": "Users"
   },
   {
     "id": "core-07",
     "name": "Hariharan",
-    "role": "Technical Team",
-    "owns": "Technical support and development",
-    "shortBio": "Supporting the chapter’s technical initiatives and development.",
+    "role": "Core Member",
+    "owns": "Community initiatives and chapter activities",
+    "shortBio": "Supporting the chapter’s community initiatives and activities.",
     "image": "/team/Hari%20Haran.jpeg",
-    "iconName": "Cpu"
+    "iconName": "Users"
   },
   {
     "id": "core-08",
     "name": "Balaji",
-    "role": "Technical Team",
-    "owns": "Technical support and development",
-    "shortBio": "Supporting the chapter’s technical initiatives and development.",
+    "role": "Core Member",
+    "owns": "Community initiatives and chapter activities",
+    "shortBio": "Supporting the chapter’s community initiatives and activities.",
     "image": "/team/Balaji%20S.jpeg",
-    "iconName": "Cpu"
+    "iconName": "Users"
   },
   {
     "id": "core-nithin-r",
     "name": "Nithin R",
-    "role": "Technical Team",
-    "owns": "Technical support and development",
-    "shortBio": "Supporting the chapter’s technical initiatives and development.",
+    "role": "Core Member",
+    "owns": "Community initiatives and chapter activities",
+    "shortBio": "Supporting the chapter’s community initiatives and activities.",
     "image": "/team/nithin-r.jpeg",
-    "iconName": "Cpu"
+    "iconName": "Users"
   },
   {
     "id": "core-09",
@@ -189,10 +189,10 @@ export const COMMUNITY_CHARTER: CommunityRoleCharter[] = [
     "iconName": "Hammer"
   },
   {
-    "role": "Technical Team",
-    "owns": "Technical support and development",
-    "details": "Supporting the chapter’s technical initiatives and development.",
-    "iconName": "Cpu"
+    "role": "Core Member",
+    "owns": "Community initiatives and chapter activities",
+    "details": "Supporting the chapter’s community initiatives and activities.",
+    "iconName": "Users"
   },
   {
     "role": "Community",
