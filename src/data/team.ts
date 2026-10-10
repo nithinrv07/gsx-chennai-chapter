@@ -100,6 +100,15 @@ export const CORE_TEAM: TeamMember[] = [
     "iconName": "Cpu"
   },
   {
+    "id": "core-nithin-r",
+    "name": "Nithin R",
+    "role": "Technical Team",
+    "owns": "Technical support and development",
+    "shortBio": "Supporting the chapter’s technical initiatives and development.",
+    "image": "",
+    "iconName": "Cpu"
+  },
+  {
     "id": "core-09",
     "name": "Kameshwaran B",
     "role": "Community",
