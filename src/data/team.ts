@@ -49,7 +49,7 @@ export const CORE_TEAM: TeamMember[] = [
     "role": "Operations Lead",
     "owns": "Chapter operations and event coordination",
     "shortBio": "Coordinating chapter operations and supporting event delivery.",
-    "image": "",
+    "image": "/team/jenita%20agnes.jpeg",
     "iconName": "Cpu"
   },
   {
@@ -78,7 +78,7 @@ export const CORE_TEAM: TeamMember[] = [
     "role": "Technical Team",
     "owns": "Technical support and development",
     "shortBio": "Supporting the chapter’s technical initiatives and development.",
-    "image": "",
+    "image": "/team/Sreekanth%20G.jpeg",
     "iconName": "Cpu"
   },
   {
@@ -87,7 +87,7 @@ export const CORE_TEAM: TeamMember[] = [
     "role": "Technical Team",
     "owns": "Technical support and development",
     "shortBio": "Supporting the chapter’s technical initiatives and development.",
-    "image": "",
+    "image": "/team/Hari%20Haran.jpeg",
     "iconName": "Cpu"
   },
   {
@@ -96,7 +96,7 @@ export const CORE_TEAM: TeamMember[] = [
     "role": "Technical Team",
     "owns": "Technical support and development",
     "shortBio": "Supporting the chapter’s technical initiatives and development.",
-    "image": "",
+    "image": "/team/Balaji%20S.jpeg",
     "iconName": "Cpu"
   },
   {
