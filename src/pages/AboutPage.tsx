@@ -1,6 +1,7 @@
 import React from 'react';
 import { PageId } from '../types';
 import { ABOUT_INTRO, ABOUT_SECTIONS } from '../data/aboutContent';
+import { PageHero } from '../components/PageHero';
 import { ArrowUpRight } from 'lucide-react';
 
 interface AboutPageProps {
@@ -45,12 +46,11 @@ function splitGroups(content: string[]) {
 }
 
 export const AboutPage: React.FC<AboutPageProps> = ({ onOpenJoinModal }) => (
-  <div className="about-copy relative min-h-screen pt-36 sm:pt-44 pb-24 px-5 sm:px-8">
-    <div className="max-w-5xl mx-auto">
+  <div className="about-copy relative min-h-screen pb-24">
+    <PageHero title={<>{ABOUT_INTRO[0].replace(/^# /, '')}</>} description={<>{inline(ABOUT_INTRO[1])}</>} />
+    <div className="max-w-6xl mx-auto px-4 sm:px-6">
       <header className="text-center max-w-3xl mx-auto mb-16 sm:mb-24">
-        <span className="text-purple-300 text-xs uppercase tracking-[0.25em]">About GSX Chennai Chapter</span>
-        <h1 className="text-4xl sm:text-6xl text-white leading-[1.1] mt-6 mb-7">{ABOUT_INTRO[0].replace(/^# /, '')}</h1>
-        <div className="space-y-4">{blocks(ABOUT_INTRO.slice(1))}</div>
+        <div className="space-y-4">{blocks(ABOUT_INTRO.slice(2))}</div>
         <nav aria-label="About sections" className="flex flex-wrap justify-center gap-2 mt-8">
           {[['what-is-gsx', 'Our story'], ['our-pillars', 'Five verticals'], ['our-mission', 'Mission'], ['our-values', 'Values'], ['our-journey', 'Our journey']].map(([id, label]) => <a key={id} href={`#about#${id}`} className="px-4 py-2 rounded-full border border-purple-500/25 text-sm text-purple-200 hover:bg-purple-500/10 transition-colors">{label}</a>)}
         </nav>
@@ -63,14 +63,14 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenJoinModal }) => (
           <section key={section.title} id={id} className="scroll-mt-28 mb-16 sm:mb-20 border-t border-purple-500/15 pt-10 sm:pt-12">
             <div className="flex items-start gap-4 mb-6">
               <span className="text-xs text-purple-400 mt-3 shrink-0">{String(index + 1).padStart(2, '0')}</span>
-              <h2 className="text-3xl sm:text-4xl text-white leading-tight">{section.title}</h2>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white leading-tight">{section.title}</h2>
             </div>
             <div className="space-y-5 max-w-3xl">{blocks(introduction)}</div>
             {groups.length > 0 && (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-8">
                 {groups.map(group => (
                   <article key={group.title} className="rounded-2xl border border-purple-500/15 bg-white/[0.02] p-6 sm:p-8">
-                    <h3 className="text-xl sm:text-2xl text-purple-100 mb-5">{group.title}</h3>
+                    <h3 className="text-xl sm:text-2xl font-bold text-purple-100 mb-5">{group.title}</h3>
                     <div className="space-y-4">{blocks(group.blocks)}</div>
                   </article>
                 ))}

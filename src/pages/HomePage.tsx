@@ -71,13 +71,12 @@ export const HomePage: React.FC<HomePageProps> = ({
 
         {/* Main Hero Content */}
         <main id="main" className="hero">
-          <p className="eyebrow">A brighter tomorrow, together • GSX Chennai Chapter</p>
+          <p className="eyebrow">A brighter tomorrow, together</p>
           <h1>
             Learn. Build. Connect. <span>Grow.</span>
           </h1>
           <p className="intro">
-            GSX Chennai is a vibrant student community under <strong>GirlScript Foundation</strong>,
-            bringing curious minds together across Chennai to learn, build impactful projects, collaborate, and grow.
+            A student community under <strong>GirlScript Foundation</strong>, connecting students across Chennai to learn, build, and grow together.
           </p>
 
           <div className="cta-row">
@@ -178,7 +177,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             </p>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-6">
             {WHAT_WE_DO_CARDS.map((card, idx) => (
               <ScrollReveal
                 key={card.number}
@@ -186,7 +185,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 staggerIndex={idx}
                 staggerInterval={80}
                 distance={24}
-                className="h-full"
+                className={`h-full md:col-span-2 ${idx === 4 ? 'md:col-start-2 lg:col-start-4' : idx === 3 ? 'lg:col-start-2' : ''}`}
               >
                 <div
                   className={`p-6 rounded-2xl transition-all border border-white/[0.08] h-full flex flex-col justify-between bg-white/[0.02] hover:bg-white/[0.05] hover:border-purple-500/40 hover:-translate-y-1 shadow-[0_4px_20px_rgba(0,0,0,0.3)] ${

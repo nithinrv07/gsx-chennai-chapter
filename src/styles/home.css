@@ -222,7 +222,7 @@
 
 .city-title {
   position: absolute;
-  top: 40px;
+  top: 20px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -259,8 +259,8 @@
   font-size: clamp(16px, 1.7vw, 24px);
   font-weight: 500;
   letter-spacing: 0.15em;
-  color: #cdb5ed;
-  opacity: 0.8;
+  color: #e0cbfb;
+  opacity: 0.95;
 }
 
 .city-title-chapter::before,
@@ -293,7 +293,7 @@
 }
 
 .hero h1 {
-  font-size: clamp(38px, 4.1vw, 66px);
+  font-size: clamp(34px, 3.6vw, 58px);
   letter-spacing: -2.4px;
   line-height: 1.17;
   margin: 0 0 17px;
@@ -309,12 +309,25 @@
 }
 
 .intro {
+  position: relative;
+  isolation: isolate;
   font-size: 17px;
   line-height: 1.6;
-  color: #c9c1d8;
+  color: #e2dbea;
   margin: 0 auto;
   max-width: 610px;
   letter-spacing: 0.2px;
+}
+
+.intro::before {
+  content: '';
+  position: absolute;
+  inset: -14px -24px;
+  z-index: -1;
+  border-radius: 50%;
+  background: rgba(8, 4, 20, 0.72);
+  filter: blur(18px);
+  pointer-events: none;
 }
 
 .intro strong {
@@ -688,7 +701,7 @@
     padding-inline: 20px;
   }
   .hero h1 {
-    font-size: 54px;
+    font-size: 48px;
   }
   .explore {
     right: 24px;
@@ -749,7 +762,7 @@
     height: 320px;
   }
   .hero h1 {
-    font-size: 48px;
+    font-size: 42px;
   }
   .page-marker {
     display: none;
@@ -812,7 +825,7 @@
     height: 244px;
   }
   .city-title {
-    top: 37px;
+    top: 21px;
     gap: 12px;
   }
   .city-title-brand {
@@ -832,8 +845,8 @@
     margin-bottom: 17px;
   }
   .hero h1 {
-    font-size: 42px;
-    letter-spacing: -1.7px;
+    font-size: 38px;
+    letter-spacing: -1.5px;
     line-height: 1.15;
     max-width: 370px;
     margin: 0 auto 19px;
