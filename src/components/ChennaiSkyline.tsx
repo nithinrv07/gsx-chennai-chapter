@@ -5,7 +5,7 @@ export const ChennaiSkyline: React.FC = () => {
     <div className="city" aria-hidden="true">
       <p className="city-title">
         <span className="city-title-brand">GSX</span>
-        <span className="city-title-chapter">Chennai chapter</span>
+        <span className="city-title-chapter">Chennai Chapter</span>
       </p>
     </div>
   );

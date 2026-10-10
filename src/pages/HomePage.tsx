@@ -71,13 +71,12 @@ export const HomePage: React.FC<HomePageProps> = ({
 
         {/* Main Hero Content */}
         <main id="main" className="hero">
-          <p className="eyebrow">A brighter tomorrow, together • GSX Chennai Chapter</p>
+          <p className="eyebrow">A brighter tomorrow, together</p>
           <h1>
             Learn. Build. Connect. <span>Grow.</span>
           </h1>
           <p className="intro">
-            GSX Chennai is a vibrant student community under <strong>GirlScript Foundation</strong>,
-            bringing curious minds together across Chennai to learn, build impactful projects, collaborate, and grow.
+            A student community under <strong>GirlScript Foundation</strong>, connecting students across Chennai to learn, build, and grow together.
           </p>
 
           <div className="cta-row">
