@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PageId, AnnouncementItem, AnnouncementCategory } from '../types';
+import { PageId, AnnouncementItem, AnnouncementCategory, GSX_JOIN_FORM_URL } from '../types';
 import { ANNOUNCEMENTS_DATA } from '../data/announcements';
 import { HeroGlow } from '../components/HeroGlow';
 import { ScrollReveal } from '../components/ScrollReveal';
@@ -223,7 +223,7 @@ export const AnnouncementsPage: React.FC<AnnouncementsPageProps> = ({
               Official chapter bulletins, fellowship programs, and hackathon registration announcements will be posted here soon.
             </p>
             <a
-              href="https://forms.gle/AFdmVVLug64CURiq9"
+              href={GSX_JOIN_FORM_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-3 rounded-xl bg-violet-600 hover:bg-violet-500 text-white text-xs font-bold uppercase tracking-wider shadow-[0_0_20px_rgba(139,92,246,0.35)] transition-all cursor-pointer inline-flex items-center gap-2"

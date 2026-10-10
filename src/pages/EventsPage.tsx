@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PageId, EventCategory, EventItem } from '../types';
+import { PageId, EventCategory, EventItem, GSX_JOIN_FORM_URL } from '../types';
 import { EVENTS_DATA } from '../data/events';
 import { HeroGlow } from '../components/HeroGlow';
 import { ScrollReveal } from '../components/ScrollReveal';
@@ -208,7 +208,7 @@ export const EventsPage: React.FC<EventsPageProps> = ({
               We&apos;re finalizing dates for upcoming developer workshops, AI build jams, and hackathons. Join the community to get access first!
             </p>
             <a
-              href="https://forms.gle/AFdmVVLug64CURiq9"
+              href={GSX_JOIN_FORM_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-3 rounded-xl bg-violet-600 hover:bg-violet-500 text-white text-xs font-bold uppercase tracking-wider shadow-[0_0_20px_rgba(139,92,246,0.35)] transition-all cursor-pointer inline-flex items-center gap-2"

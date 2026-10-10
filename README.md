@@ -9,7 +9,7 @@
 
   <p align="center">
     <a href="https://chat.whatsapp.com/HfxItPkZAgeDtdKut2qgfr?s=cl&p=a&ilr=0"><img src="https://img.shields.io/badge/WhatsApp-Join_Community-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="WhatsApp Community" /></a>
-    <a href="https://forms.gle/AFdmVVLug64CURiq9"><img src="https://img.shields.io/badge/Membership-Apply_Now-7C3AED?style=for-the-badge&logo=googleforms&logoColor=white" alt="Join Membership" /></a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSf7lPAS9VLlK-_fVmVp8OhryvDjcgu048lgooeb_7Pg69YxqQ/viewform"><img src="https://img.shields.io/badge/Membership-Apply_Now-7C3AED?style=for-the-badge&logo=googleforms&logoColor=white" alt="Join Membership" /></a>
     <a href="https://www.linkedin.com/company/gsx-chennai-chapter"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
     <a href="https://www.instagram.com/gsx_chennai_chapter/"><img src="https://img.shields.io/badge/Instagram-Follow-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram" /></a>
   </p>
@@ -310,7 +310,7 @@ We actively welcome partnerships across the technology and education ecosystem:
 - 🌍 **NGOs & Civic Bodies**: Collaborate on digital literacy initiatives, vernacular translation tools, and grassroots community workshops.
 - 🧑‍🏫 **Mentors & Industry Veterans**: Guide student engineering teams, judge hackathons, and lead masterclasses on emerging tech.
 
-To initiate a collaboration, submit an inquiry through the **Get Involved** tab on the website or fill out our [Collaboration Form](https://forms.gle/AFdmVVLug64CURiq9).
+To initiate a collaboration, submit an inquiry through the **Get Involved** tab on the website or fill out our [Collaboration Form](https://docs.google.com/forms/d/e/1FAIpQLSf7lPAS9VLlK-_fVmVp8OhryvDjcgu048lgooeb_7Pg69YxqQ/viewform).
 
 ---
 
@@ -359,7 +359,7 @@ Contributions to the GSX Chennai Chapter web application and open-source initiat
 Stay updated with our events, releases, and announcements:
 
 - 💬 **WhatsApp Community**: [Join the Group](https://chat.whatsapp.com/HfxItPkZAgeDtdKut2qgfr?s=cl&p=a&ilr=0)
-- 📝 **Membership Form**: [Register as a Member](https://forms.gle/AFdmVVLug64CURiq9)
+- 📝 **Membership Form**: [Register as a Member](https://docs.google.com/forms/d/e/1FAIpQLSf7lPAS9VLlK-_fVmVp8OhryvDjcgu048lgooeb_7Pg69YxqQ/viewform)
 - 💼 **LinkedIn**: [@gsx-chennai-chapter](https://www.linkedin.com/company/gsx-chennai-chapter)
 - 📸 **Instagram**: [@gsx_chennai_chapter](https://www.instagram.com/gsx_chennai_chapter/)
 - 🏛️ **Host Institution**: [Chennai Institute of Technology (CIT)](https://www.citchennai.edu.in/)

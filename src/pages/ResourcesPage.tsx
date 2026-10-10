@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PageId } from '../types';
+import { PageId, GSX_JOIN_FORM_URL } from '../types';
 import { HeroGlow } from '../components/HeroGlow';
 import { ScrollReveal } from '../components/ScrollReveal';
 import {
@@ -102,7 +102,7 @@ const RESOURCES_DATA: ResourceItem[] = [
     level: 'Beginner',
     description: 'ATS resume formatting, cold emailing templates that work, portfolio building tips, technical mock questions, and behavioral rounds preparation.',
     tags: ['Resume', 'Interviews', 'Placements'],
-    link: 'https://forms.gle/AFdmVVLug64CURiq9'
+    link: GSX_JOIN_FORM_URL
   },
   {
     id: 'res-guide-3',
@@ -124,7 +124,7 @@ const RESOURCES_DATA: ResourceItem[] = [
     level: 'Intermediate',
     description: 'Full 2-hour recorded workshop walking through setting up local LLMs with Ollama and building an interactive code assistant agent.',
     tags: ['Ollama', 'LangChain', 'Local AI', 'Workshop'],
-    link: 'https://forms.gle/AFdmVVLug64CURiq9',
+    link: GSX_JOIN_FORM_URL,
     badge: 'Recorded'
   },
   {
@@ -135,7 +135,7 @@ const RESOURCES_DATA: ResourceItem[] = [
     level: 'Beginner',
     description: 'Interactive session covering merge conflict resolution, git stash, cherry-picking, interactive rebase, and GitHub Actions CI pipelines.',
     tags: ['Git', 'CI/CD', 'GitHub Actions'],
-    link: 'https://forms.gle/AFdmVVLug64CURiq9'
+    link: GSX_JOIN_FORM_URL
   },
   {
     id: 'res-ws-3',
@@ -145,7 +145,7 @@ const RESOURCES_DATA: ResourceItem[] = [
     level: 'Intermediate',
     description: 'How to build and ship an MVP in a 24-hour hackathon timeframe using Vite, TailwindCSS, Supabase Auth, and REST APIs.',
     tags: ['Hackathons', 'MVP', 'Full-Stack'],
-    link: 'https://forms.gle/AFdmVVLug64CURiq9'
+    link: GSX_JOIN_FORM_URL
   },
 
   // Student Resources

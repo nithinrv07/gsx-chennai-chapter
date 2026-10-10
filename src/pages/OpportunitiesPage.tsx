@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PageId } from '../types';
+import { PageId, GSX_JOIN_FORM_URL } from '../types';
 import { HeroGlow } from '../components/HeroGlow';
 import { ScrollReveal } from '../components/ScrollReveal';
 import {
@@ -54,7 +54,7 @@ const OPPORTUNITIES_LIST: OpportunityItem[] = [
     stipend: '₹20,000 – ₹35,000 / mo',
     description: 'Work on production LangChain/LlamaIndex agents, fine-tuning open-source LLMs, and deploying vector search pipelines with FastAPI.',
     tags: ['Python', 'LLMs', 'FastAPI', 'PyTorch'],
-    link: 'https://forms.gle/AFdmVVLug64CURiq9',
+    link: GSX_JOIN_FORM_URL,
     isFeatured: true
   },
   {
@@ -68,7 +68,7 @@ const OPPORTUNITIES_LIST: OpportunityItem[] = [
     stipend: '₹15,000 – ₹25,000 / mo',
     description: 'Build responsive web apps with Next.js, TypeScript, TailwindCSS, and PostgreSQL. Pair with senior architects on scalable backend microservices.',
     tags: ['Next.js', 'TypeScript', 'Node.js', 'Tailwind'],
-    link: 'https://forms.gle/AFdmVVLug64CURiq9'
+    link: GSX_JOIN_FORM_URL
   },
   {
     id: 'opp-int-3',
@@ -81,7 +81,7 @@ const OPPORTUNITIES_LIST: OpportunityItem[] = [
     stipend: '₹18,000 – ₹30,000 / mo',
     description: 'Deploy Kubernetes clusters, implement automated CI/CD GitHub Actions, manage Terraform infrastructure, and monitor containerized apps.',
     tags: ['Docker', 'Kubernetes', 'AWS', 'CI/CD'],
-    link: 'https://forms.gle/AFdmVVLug64CURiq9'
+    link: GSX_JOIN_FORM_URL
   },
 
   // Hackathons
@@ -96,7 +96,7 @@ const OPPORTUNITIES_LIST: OpportunityItem[] = [
     stipend: '₹1,50,000 Prize Pool',
     description: 'Build high-impact civic, educational, or developer productivity software using generative AI models. Mentorship and food provided.',
     tags: ['GenAI', 'Civic Tech', 'Prizes', 'Mentorship'],
-    link: 'https://forms.gle/AFdmVVLug64CURiq9',
+    link: GSX_JOIN_FORM_URL,
     isFeatured: true
   },
   {
@@ -123,7 +123,7 @@ const OPPORTUNITIES_LIST: OpportunityItem[] = [
     stipend: 'Grants & Incubation',
     description: 'Build technology solutions for vernacular digital literacy, public transit optimization, and healthcare delivery across Tamil Nadu.',
     tags: ['State Govt', 'StartupTN', 'Civic Tech'],
-    link: 'https://forms.gle/AFdmVVLug64CURiq9'
+    link: GSX_JOIN_FORM_URL
   },
 
   // Open Source
@@ -180,7 +180,7 @@ const OPPORTUNITIES_LIST: OpportunityItem[] = [
     stipend: 'Cloud Credits + Mentorship Grant',
     description: 'An elite cohort for student engineers building production open-source software, datasets, and systems. Direct 1-on-1 industry mentorship.',
     tags: ['Fellowship', 'Mentorship', 'Cloud Grants'],
-    link: 'https://forms.gle/AFdmVVLug64CURiq9',
+    link: GSX_JOIN_FORM_URL,
     isFeatured: true
   },
   {
@@ -209,7 +209,7 @@ const OPPORTUNITIES_LIST: OpportunityItem[] = [
     stipend: 'Speaker Gift Hamper & Video Recording',
     description: 'Have you built a cool side project or learned a fascinating technology? Deliver a 20-minute lightning talk at upcoming GSX monthly meetups.',
     tags: ['Public Speaking', 'Community', 'Recognition'],
-    link: 'https://forms.gle/AFdmVVLug64CURiq9'
+    link: GSX_JOIN_FORM_URL
   },
   {
     id: 'opp-oth-2',
