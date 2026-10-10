@@ -9,7 +9,13 @@ export const FEATURED_LEAD: TeamMember = {
   name: 'Dedeepya Yakkala',
   role: 'Chapter Lead',
   owns: 'Overall direction, central relationship, monthly report',
-  shortBio: 'Leading overall chapter direction, high-level community architecture, ecosystem partnerships, and monthly chapter reporting for GSX Chennai.',
+  shortBio: `Dedeepya Yakkala is the Chapter Lead of GSX Chennai Chapter under GirlScript Foundation. She leads the chapter’s overall vision, community development, inter-college expansion, and ecosystem partnerships, working towards building a student community that extends beyond individual campuses.
+
+Passionate about technology, community building, and creating meaningful opportunities for students, she focuses on bringing people together through learning, real-world projects, collaborations, and career-oriented initiatives. Her vision is to build a space where students can explore their interests, develop practical skills, work on real-world challenges, and grow together as contributors and innovators.
+
+Through GSX Chennai, she aims to connect students, institutions, organisations, and industry professionals to create opportunities that go beyond traditional classroom learning.
+
+Her guiding philosophy: Learn. Build. Connect. Grow. — together, beyond campuses.`,
   image: '/team/DEDEEPYA%20YAKKALA.jpeg',
   iconName: 'Compass',
   linkedin: 'https://www.linkedin.com/in/dedeepyayakkala',

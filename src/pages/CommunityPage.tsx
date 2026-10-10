@@ -238,9 +238,11 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate, onOpen
                   </p>
                 </div>
 
-                <p className="text-sm text-gray-300 leading-relaxed">
-                  {FEATURED_LEAD.shortBio}
-                </p>
+                <div className="space-y-4">
+                  {FEATURED_LEAD.shortBio.split('\n\n').map((paragraph, index) => (
+                    <p key={index} className="text-sm text-gray-300 leading-relaxed">{paragraph}</p>
+                  ))}
+                </div>
 
                 <div className="text-xs text-purple-300 bg-purple-950/40 border border-purple-500/30 px-3.5 py-2 rounded-xl inline-block">
                   <span className="font-semibold text-white">Owns:</span> {FEATURED_LEAD.owns}
