@@ -76,11 +76,11 @@ export const CORE_TEAM: TeamMember[] = [
   {
     "id": "core-06",
     "name": "Sreekanth G",
-    "role": "Technical Team",
-    "owns": "Technical support and development",
-    "shortBio": "Supporting the chapter’s technical initiatives and development.",
+    "role": "Core Member",
+    "owns": "Community initiatives and chapter activities",
+    "shortBio": "Supporting the chapter’s community initiatives and activities.",
     "image": "/team/Sreekanth%20G.jpeg",
-    "iconName": "Cpu"
+    "iconName": "Users"
   },
   {
     "id": "core-07",
