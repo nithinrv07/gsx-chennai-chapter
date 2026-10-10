@@ -10,6 +10,7 @@ export const TeamPortrait: React.FC<TeamPortraitProps> = ({ name, image }) => {
   return image && !failed ? (
     <img src={image} alt={name} loading="lazy"
       onError={() => setFailed(true)}
+      style={name === 'Jenita' ? { objectPosition: 'center 52%' } : undefined}
       className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
   ) : (
     <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-purple-950/60 to-[#100a20]" aria-hidden="true">
