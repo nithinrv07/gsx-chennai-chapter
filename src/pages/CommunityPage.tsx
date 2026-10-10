@@ -1,3 +1,4 @@
+import { TeamPortrait } from '../components/TeamPortrait';
 import React from 'react';
 import { PageId, GSX_JOIN_FORM_URL, GSX_WHATSAPP_URL, GSX_INSTAGRAM_URL, GSX_LINKEDIN_URL } from '../types';
 import { FEATURED_LEAD, CORE_TEAM } from '../data/team';
@@ -92,15 +93,9 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate, onOpen
           =================================================== */}
       <section id="core-team" className="max-w-6xl mx-auto px-4 sm:px-6 mb-28 scroll-mt-28">
         <ScrollReveal variant="fade-up" distance={20} className="text-center max-w-xl mx-auto mb-14">
-          <span className="text-xs font-bold uppercase tracking-widest text-purple-400 block mb-2">
-            Working Council
-          </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Core Team & Domain Owners
+            Core Team
           </h2>
-          <p className="text-sm text-gray-400 mt-2">
-            The student leaders architecting tracks, organizing meetups, and curating experiences across the city.
-          </p>
         </ScrollReveal>
 
         {/* Featured Lead */}
@@ -171,12 +166,7 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate, onOpen
             >
               <div className="glass-panel glass-panel-hover rounded-2xl overflow-hidden flex flex-col group border border-white/[0.08] transition-all duration-300 h-full">
                 <div className="relative h-60 w-full overflow-hidden bg-white/[0.02]">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                  />
+                  <TeamPortrait key={member.image} name={member.name} image={member.image} />
                 </div>
 
                 <div className="p-5 flex-1 flex flex-col justify-between">

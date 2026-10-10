@@ -1,3 +1,4 @@
+import { TeamPortrait } from '../components/TeamPortrait';
 import React from 'react';
 import { PageId, GSX_WHATSAPP_URL, GSX_INSTAGRAM_URL, GSX_LINKEDIN_URL } from '../types';
 import { FEATURED_LEAD, CORE_TEAM } from '../data/team';
@@ -142,12 +143,7 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onNavigate, onOpenJoinModal 
               <div className="glass-panel glass-panel-hover rounded-2xl overflow-hidden flex flex-col group border border-white/[0.08] transition-all duration-300 h-full">
                 {/* Member Photo */}
                 <div className="relative h-64 w-full overflow-hidden bg-white/[0.02]">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                  />
+                  <TeamPortrait key={member.image} name={member.name} image={member.image} />
                 </div>
 
                 {/* Member Bio & Info */}
