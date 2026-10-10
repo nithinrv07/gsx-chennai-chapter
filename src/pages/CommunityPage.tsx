@@ -61,11 +61,6 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate, onOpen
         <HeroGlow intensity="medium" />
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-950/60 border border-purple-500/30 text-purple-300 text-xs font-semibold mb-6">
-            <Users className="w-3.5 h-3.5 text-purple-400" />
-            <span>Chennai&apos;s Inter-College Tech Collective</span>
-          </div>
-
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
