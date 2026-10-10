@@ -10,9 +10,7 @@ export type PageId =
   | 'team'
   | 'events'
   | 'announcements'
-  | 'projects'
   | 'opportunities'
-  | 'resources'
   | 'get-involved';
 
 export interface NavDropdownItem {

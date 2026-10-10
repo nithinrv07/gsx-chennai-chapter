@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { PageId, EventItem, ProjectItem, AnnouncementItem, GSX_JOIN_FORM_URL } from './types';
+import { PageId, EventItem, AnnouncementItem, GSX_JOIN_FORM_URL } from './types';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { CustomCursor } from './components/CustomCursor';
@@ -11,17 +11,13 @@ import { CommunityPage } from './pages/CommunityPage';
 import { TeamPage } from './pages/TeamPage';
 import { EventsPage } from './pages/EventsPage';
 import { AnnouncementsPage } from './pages/AnnouncementsPage';
-import { ProjectsPage } from './pages/ProjectsPage';
 import { OpportunitiesPage } from './pages/OpportunitiesPage';
-import { ResourcesPage } from './pages/ResourcesPage';
 import { GetInvolvedPage } from './pages/GetInvolvedPage';
 
 // Modals
 import { JoinCommunityModal } from './components/JoinCommunityModal';
 import { EventDetailModal } from './components/EventDetailModal';
 import { EventRegisterModal } from './components/EventRegisterModal';
-import { ProjectDetailModal } from './components/ProjectDetailModal';
-import { SubmitProjectModal } from './components/SubmitProjectModal';
 import { AnnouncementDetailModal } from './components/AnnouncementDetailModal';
 import { ANNOUNCEMENTS_DATA } from './data/announcements';
 
@@ -35,9 +31,7 @@ const VALID_PAGES: PageId[] = [
   'team',
   'events',
   'announcements',
-  'projects',
   'opportunities',
-  'resources',
   'get-involved',
 ];
 
@@ -55,6 +49,14 @@ const scrollToTargetSection = (sectionId: string) => {
 
 const parsePageFromLocation = (): { page: PageId | null; sectionId: string | null } => {
   if (typeof window === 'undefined') return { page: null, sectionId: null };
+
+  // Send old links for removed pages to an available destination.
+  const retiredPages: Record<string, PageId> = { projects: 'opportunities', resources: 'home' };
+  const locationPage = window.location.hash.replace(/^#\/?/, '').split('#')[0].toLowerCase()
+    || window.location.pathname.split('/').filter(Boolean).pop()?.toLowerCase();
+  if (locationPage && retiredPages[locationPage]) {
+    return { page: retiredPages[locationPage], sectionId: null };
+  }
 
   // 1. Check URL hash (e.g. #about#what-is-gsx or #community or #/events)
   const rawHash = window.location.hash.replace(/^#/, '');
@@ -95,6 +97,8 @@ const getInitialPage = (): PageId => {
   // 3. Fallback to localStorage (survives hard refresh)
   try {
     const saved = localStorage.getItem('gsx_current_page');
+    if (saved === 'projects') return 'opportunities';
+    if (saved === 'resources') return 'home';
     if (saved && VALID_PAGES.includes(saved as PageId)) {
       return saved as PageId;
     }
@@ -136,8 +140,6 @@ function AppContent() {
   const [isJoinModalOpen, setIsJoinModalOpen] = useState(false);
   const [selectedEventForDetail, setSelectedEventForDetail] = useState<EventItem | null>(null);
   const [selectedEventForRegister, setSelectedEventForRegister] = useState<EventItem | null>(null);
-  const [selectedProjectForDetail, setSelectedProjectForDetail] = useState<ProjectItem | null>(null);
-  const [isSubmitProjectModalOpen, setIsSubmitProjectModalOpen] = useState(false);
   const [selectedAnnouncementForDetail, setSelectedAnnouncementForDetail] = useState<AnnouncementItem | null>(null);
 
   // Direct user to official GSX Google Form
@@ -205,7 +207,6 @@ function AppContent() {
                 onOpenJoinModal={handleOpenJoinModal}
                 onOpenEventDetail={(evt) => setSelectedEventForDetail(evt)}
                 onRegisterEvent={(evt) => setSelectedEventForRegister(evt)}
-                onOpenProjectDetail={(proj) => setSelectedProjectForDetail(proj)}
               />
             </motion.div>
           )}
@@ -255,20 +256,6 @@ function AppContent() {
             </motion.div>
           )}
 
-          {currentPage === 'resources' && (
-            <motion.div
-              key="resources"
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.3 }}
-            >
-              <ResourcesPage
-                onNavigate={handleNavigate}
-                onOpenJoinModal={handleOpenJoinModal}
-              />
-            </motion.div>
-          )}
 
           {currentPage === 'events' && (
             <motion.div
@@ -301,21 +288,6 @@ function AppContent() {
             </motion.div>
           )}
 
-          {currentPage === 'projects' && (
-            <motion.div
-              key="projects"
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.3 }}
-            >
-              <ProjectsPage
-                onNavigate={handleNavigate}
-                onOpenProjectDetail={(proj) => setSelectedProjectForDetail(proj)}
-                onOpenSubmitModal={() => setIsSubmitProjectModalOpen(true)}
-              />
-            </motion.div>
-          )}
 
           {currentPage === 'get-involved' && (
             <motion.div
@@ -364,18 +336,6 @@ function AppContent() {
       <EventRegisterModal
         event={selectedEventForRegister}
         onClose={() => setSelectedEventForRegister(null)}
-      />
-
-      {/* Project Detail Modal */}
-      <ProjectDetailModal
-        project={selectedProjectForDetail}
-        onClose={() => setSelectedProjectForDetail(null)}
-      />
-
-      {/* Submit Project Modal */}
-      <SubmitProjectModal
-        isOpen={isSubmitProjectModalOpen}
-        onClose={() => setIsSubmitProjectModalOpen(false)}
       />
 
       {/* Announcement Detail Modal */}

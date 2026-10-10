@@ -144,24 +144,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
         onClose();
       },
     },
-    {
-      id: 'projects',
-      label: 'Projects Showcase',
-      category: 'Engineering',
-      action: () => {
-        onNavigate('projects');
-        onClose();
-      },
-    },
-    {
-      id: 'collaborate-with-us',
-      label: 'Collaborate With Us on Projects',
-      category: 'Engineering',
-      action: () => {
-        onNavigate('projects', 'collaborate-with-us');
-        onClose();
-      },
-    },
+
     {
       id: 'opportunities',
       label: 'Opportunities Hub',
@@ -171,84 +154,40 @@ export const SearchModal: React.FC<SearchModalProps> = ({
         onClose();
       },
     },
+
     {
-      id: 'internships',
-      label: 'Internships & Trainee Tracks',
+      id: 'join-tech-team',
+      label: 'Join our tech team',
       category: 'Opportunities',
       action: () => {
-        onNavigate('opportunities', 'internships');
+        onNavigate('opportunities', 'join-tech-team');
         onClose();
       },
     },
     {
-      id: 'hackathons',
-      label: 'Hackathons & Sprints',
+      id: 'build-with-guidance',
+      label: 'Build projects with our guidance',
       category: 'Opportunities',
       action: () => {
-        onNavigate('opportunities', 'hackathons');
+        onNavigate('opportunities', 'build-with-guidance');
         onClose();
       },
     },
     {
-      id: 'open-source',
-      label: 'Open Source (GSSoC, GSoC)',
+      id: 'become-speaker',
+      label: 'Become a speaker',
       category: 'Opportunities',
       action: () => {
-        onNavigate('opportunities', 'open-source');
+        onNavigate('opportunities', 'become-speaker');
         onClose();
       },
     },
     {
-      id: 'fellowships',
-      label: 'Fellowships & Research Cohorts',
+      id: 'contribute',
+      label: 'Contribute',
       category: 'Opportunities',
       action: () => {
-        onNavigate('opportunities', 'fellowships');
-        onClose();
-      },
-    },
-    {
-      id: 'resources',
-      label: 'Resources & Knowledge Vault',
-      category: 'Resources',
-      action: () => {
-        onNavigate('resources');
-        onClose();
-      },
-    },
-    {
-      id: 'learning',
-      label: 'Learning Roadmaps (AI, Full-Stack, DSA)',
-      category: 'Resources',
-      action: () => {
-        onNavigate('resources', 'learning');
-        onClose();
-      },
-    },
-    {
-      id: 'guides',
-      label: 'Developer Guides & Handbooks',
-      category: 'Resources',
-      action: () => {
-        onNavigate('resources', 'guides');
-        onClose();
-      },
-    },
-    {
-      id: 'workshops',
-      label: 'Recorded Workshops & Slide Decks',
-      category: 'Resources',
-      action: () => {
-        onNavigate('resources', 'workshops');
-        onClose();
-      },
-    },
-    {
-      id: 'student-resources',
-      label: 'Student Resources & Free Cloud Packs',
-      category: 'Resources',
-      action: () => {
-        onNavigate('resources', 'student-resources');
+        onNavigate('opportunities', 'contribute');
         onClose();
       },
     },
@@ -324,7 +263,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
         type="search"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        placeholder="Events, projects, team, community…"
+        placeholder="Events, opportunities, team, community…"
         autoComplete="off"
       />
 
@@ -349,7 +288,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
           </li>
         ))}
         {filtered.length === 0 && (
-          <li className="empty">No matching pages or topics found. Try “events” or “projects”.</li>
+          <li className="empty">No matching pages or topics found. Try “events” or “opportunities”.</li>
         )}
       </ul>
       <p className="sr-only" role="status">

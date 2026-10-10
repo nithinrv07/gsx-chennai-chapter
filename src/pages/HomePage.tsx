@@ -1,8 +1,7 @@
 import React from 'react';
-import { PageId, EventItem, ProjectItem } from '../types';
+import { PageId, EventItem } from '../types';
 import { WHAT_WE_DO_CARDS } from '../data/stats';
 import { EVENTS_DATA } from '../data/events';
-import { PROJECTS_DATA } from '../data/projects';
 import { HeroGlow } from '../components/HeroGlow';
 import { ChennaiSkyline } from '../components/ChennaiSkyline';
 import { CommunityStats } from '../components/CommunityStats';
@@ -25,7 +24,6 @@ interface HomePageProps {
   onOpenJoinModal: () => void;
   onOpenEventDetail: (event: EventItem) => void;
   onRegisterEvent: (event: EventItem) => void;
-  onOpenProjectDetail: (project: ProjectItem) => void;
 }
 
 export const HomePage: React.FC<HomePageProps> = ({
@@ -33,10 +31,8 @@ export const HomePage: React.FC<HomePageProps> = ({
   onOpenJoinModal,
   onOpenEventDetail,
   onRegisterEvent,
-  onOpenProjectDetail,
 }) => {
   const upcomingEvents = EVENTS_DATA.filter((e) => e.status === 'upcoming').slice(0, 3);
-  const featuredProjects = PROJECTS_DATA.slice(0, 3);
 
   const getCardIcon = (iconName: string) => {
     switch (iconName) {
@@ -59,7 +55,7 @@ export const HomePage: React.FC<HomePageProps> = ({
     <div className="relative min-h-screen bg-[#080414] text-[#f6f2ff]">
       {/* ===================================================
           HERO SECTION
-          Purple skyline, neon light ribbons, landmark pins,
+          Purple skyline, neon light ribbons, chapter watermark,
           signature typography, glowing pills, and community stats
           =================================================== */}
       <div className="home" id="home">
@@ -69,7 +65,7 @@ export const HomePage: React.FC<HomePageProps> = ({
         {/* Top spacer to accommodate fixed header height (94px) */}
         <div style={{ height: '94px' }} aria-hidden="true" />
 
-        {/* Chennai Skyline Landmark Labels & Watermark Backdrop */}
+        {/* Chennai Skyline & Chapter Watermark Backdrop */}
         <ChennaiSkyline />
 
         {/* Main Hero Content */}
@@ -109,6 +105,13 @@ export const HomePage: React.FC<HomePageProps> = ({
           <CommunityStats />
         </main>
 
+        {/* Vertical 4-dot Page Marker Indicator */}
+        <div className="page-marker" aria-hidden="true">
+          <i />
+          <i />
+          <i />
+          <i />
+        </div>
       </div>
 
       {/* ===================================================
@@ -306,116 +309,6 @@ export const HomePage: React.FC<HomePageProps> = ({
               >
                 <Sparkles className="w-4 h-4" />
                 <span>Join to Get Notified</span>
-              </button>
-            </div>
-          )}
-        </section>
-
-        {/* SECTION 4: FEATURED PROJECTS */}
-        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-28">
-          <ScrollReveal variant="fade-up" distance={20} className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
-            <div>
-              <span className="text-xs font-semibold uppercase tracking-widest text-purple-400 block mb-1">
-                Community Prototypes
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-                Built by the Community.
-              </h2>
-            </div>
-
-            <button
-              onClick={() => onNavigate('projects')}
-              className="inline-flex items-center gap-2 text-sm font-semibold text-purple-300 hover:text-white transition-colors cursor-pointer"
-            >
-              <span>Explore Projects</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </ScrollReveal>
-
-          {featuredProjects.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {featuredProjects.map((proj, idx) => (
-                <ScrollReveal
-                  key={proj.id}
-                  variant="fade-up"
-                  staggerIndex={idx}
-                  staggerInterval={90}
-                  distance={24}
-                  className="h-full"
-                >
-                  <div
-                    className="rounded-2xl overflow-hidden flex flex-col group cursor-pointer h-full border border-white/[0.08] bg-[#100a20]/70 hover:border-purple-500/40 hover:bg-[#140c28] transition-all hover:-translate-y-1 shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
-                    onClick={() => onOpenProjectDetail(proj)}
-                  >
-                    <div className="relative h-44 w-full overflow-hidden">
-                      <img
-                        src={proj.image}
-                        alt={proj.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#100a20] via-transparent to-transparent" />
-                      <span className="absolute top-3 left-3 px-2.5 py-1 text-[11px] font-semibold rounded-full bg-black/70 backdrop-blur-md text-purple-300 border border-purple-500/30">
-                        {proj.category}
-                      </span>
-                    </div>
-
-                    <div className="p-5 flex-1 flex flex-col justify-between">
-                      <div>
-                        <h3 className="text-base font-bold text-white group-hover:text-purple-200 transition-colors line-clamp-1 mb-2">
-                          {proj.title}
-                        </h3>
-                        <p className="text-xs text-gray-400 line-clamp-2 leading-relaxed mb-4">
-                          {proj.shortDescription}
-                        </p>
-                      </div>
-
-                      <div>
-                        <div className="flex flex-wrap gap-1.5 mb-4">
-                          {proj.techStack.slice(0, 3).map((t, i) => (
-                            <span
-                              key={i}
-                              className="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.04] text-purple-300 border border-white/[0.06]"
-                            >
-                              {t}
-                            </span>
-                          ))}
-                          {proj.techStack.length > 3 && (
-                            <span className="px-1.5 py-0.5 text-[10px] text-gray-400">
-                              +{proj.techStack.length - 3}
-                            </span>
-                          )}
-                        </div>
-
-                        <div className="pt-3 border-t border-white/[0.06] flex items-center justify-between text-xs">
-                          <span className="text-gray-400 text-[11px]">
-                            {proj.creators[0]?.name || 'Community Pod'}
-                          </span>
-                          <span className="text-purple-300 font-semibold flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
-                            View Project →
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </ScrollReveal>
-              ))}
-            </div>
-          ) : (
-            <div className="p-8 sm:p-12 rounded-3xl border border-white/[0.08] text-center max-w-xl mx-auto bg-[#100a20]/70">
-              <div className="w-14 h-14 rounded-2xl bg-purple-600/20 border border-purple-500/30 text-purple-300 flex items-center justify-center mx-auto mb-4 shadow-[0_0_25px_rgba(168,85,247,0.3)]">
-                <Sparkles className="w-7 h-7" />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2">
-                Project Showcase Launching Soon
-              </h3>
-              <p className="text-xs sm:text-sm text-gray-400 leading-relaxed max-w-md mx-auto mb-6">
-                Chennai&apos;s student developers are building the next generation of open technology. Have a project? Submit your work to get featured!
-              </p>
-              <button
-                onClick={() => onNavigate('projects')}
-                className="pill primary text-xs font-bold uppercase tracking-wider !py-3 !px-6 cursor-pointer inline-flex items-center gap-2"
-              >
-                <span>Explore Projects Track →</span>
               </button>
             </div>
           )}

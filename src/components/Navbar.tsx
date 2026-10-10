@@ -57,33 +57,13 @@ export const NAV_STRUCTURE: NavStructureItem[] = [
     ],
   },
   {
-    id: 'projects',
-    label: 'Projects',
-    children: [
-      { id: 'ongoing-projects', label: 'Ongoing Projects', sectionId: 'ongoing-projects', description: 'Active builds in development' },
-      { id: 'completed-projects', label: 'Completed Projects', sectionId: 'completed-projects', description: 'Showcased tools & AI apps' },
-      { id: 'collaborate-with-us', label: 'Collaborate With Us', sectionId: 'collaborate-with-us', description: 'Submit & build with us' },
-    ],
-  },
-  {
     id: 'opportunities',
     label: 'Opportunities',
     children: [
-      { id: 'internships', label: 'Internships', sectionId: 'internships', description: 'Tech internships & referral tracks' },
-      { id: 'hackathons', label: 'Hackathons', sectionId: 'hackathons', description: 'National & regional challenges' },
-      { id: 'open-source', label: 'Open Source', sectionId: 'open-source', description: 'GSSoC, GSoC & chapter sprints' },
-      { id: 'fellowships', label: 'Fellowships', sectionId: 'fellowships', description: 'Elite builder cohorts & grants' },
-      { id: 'other-opportunities', label: 'Other Opportunities', sectionId: 'other-opportunities', description: 'CFPs, grants & ambassadorships' },
-    ],
-  },
-  {
-    id: 'resources',
-    label: 'Resources',
-    children: [
-      { id: 'learning', label: 'Learning', sectionId: 'learning', description: 'Curated roadmaps & tracks' },
-      { id: 'guides', label: 'Guides', sectionId: 'guides', description: 'Git, career & system playbooks' },
-      { id: 'workshops', label: 'Workshops', sectionId: 'workshops', description: 'Recorded sessions & slide decks' },
-      { id: 'student-resources', label: 'Student Resources', sectionId: 'student-resources', description: 'Free packs, cloud & dev tools' },
+      { id: 'join-tech-team', label: 'Join our tech team', sectionId: 'join-tech-team', description: 'Build technology with our community' },
+      { id: 'build-with-guidance', label: 'Build projects with our guidance', sectionId: 'build-with-guidance', description: 'Turn your idea into a working project' },
+      { id: 'become-speaker', label: 'Become a speaker', sectionId: 'become-speaker', description: 'Share what you know at our sessions' },
+      { id: 'contribute', label: 'Contribute', sectionId: 'contribute', description: 'Support code, design, content, and events' },
     ],
   },
   {
@@ -330,11 +310,11 @@ export const Navbar: React.FC<NavbarProps> = ({
             <span aria-hidden="true">→</span>
           </button>
 
-          {/* Quick Search Shortcut */}
+          {/* Mobile Search Shortcut */}
           <button
             ref={searchBtnRef}
             type="button"
-            className="icon-button"
+            className="icon-button mobile-header-action"
             aria-label="Search pages"
             title="Search pages (Press / or Ctrl+K)"
             onClick={() => {
@@ -353,7 +333,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             ref={menuBtnRef}
             type="button"
-            className="icon-button lg:hidden"
+            className="icon-button mobile-header-action"
             aria-controls="mobile-navigation"
             aria-expanded={mobileOpen}
             aria-label={mobileOpen ? 'Close navigation' : 'Open navigation'}

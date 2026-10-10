@@ -95,26 +95,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenJoinModal }) =
               </li>
               <li>
                 <button
-                  onClick={() => handleNav('projects')}
-                  className="text-gray-300 hover:text-purple-300 transition-colors"
-                >
-                  Projects Showcase
-                </button>
-              </li>
-              <li>
-                <button
                   onClick={() => handleNav('opportunities')}
                   className="text-gray-300 hover:text-purple-300 transition-colors"
                 >
                   Opportunities
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => handleNav('resources')}
-                  className="text-gray-300 hover:text-purple-300 transition-colors"
-                >
-                  Resources & Guides
                 </button>
               </li>
               <li>
