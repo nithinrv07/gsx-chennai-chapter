@@ -288,22 +288,3 @@ html.custom-cursor-active * {
     padding: 0 !important;
   }
 }
-
-
-/* The supplied About typography reference: Sulphur Point. */
-.about-copy,
-.about-copy h1,
-.about-copy h2,
-.about-copy h3,
-.about-copy button {
-  font-family: 'Sulphur Point', sans-serif;
-}
-.about-copy h1,
-.about-copy h2 {
-  font-weight: 300;
-  letter-spacing: -0.035em;
-}
-.about-copy h3 {
-  font-weight: 700;
-  letter-spacing: -0.015em;
-}
