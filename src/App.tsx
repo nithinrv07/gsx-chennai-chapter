@@ -94,18 +94,7 @@ const getInitialPage = (): PageId => {
     return page;
   }
 
-  // 3. Fallback to localStorage (survives hard refresh)
-  try {
-    const saved = localStorage.getItem('gsx_current_page');
-    if (saved === 'projects') return 'opportunities';
-    if (saved === 'resources') return 'home';
-    if (saved && VALID_PAGES.includes(saved as PageId)) {
-      return saved as PageId;
-    }
-  } catch {
-    // ignore storage exceptions
-  }
-
+  // Opening the main website address always starts on Home.
   return 'home';
 };
 
@@ -150,12 +139,6 @@ function AppContent() {
   // Scroll to section or top upon page navigation and push history state
   const handleNavigate = (page: PageId, sectionId?: string) => {
     setCurrentPage(page);
-    try {
-      localStorage.setItem('gsx_current_page', page);
-    } catch {
-      // ignore
-    }
-
     const targetHash = page === 'home'
       ? (sectionId ? `#${sectionId}` : '')
       : (sectionId ? `#${page}#${sectionId}` : `#${page}`);
