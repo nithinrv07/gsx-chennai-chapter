@@ -3,7 +3,7 @@
 
 @layer base {
   :root {
-    --font-heading: 'Inter', 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --font-sans: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --app-bg: #080414;
     --app-text: #f3f4f6;
@@ -15,15 +15,12 @@
     background-color: var(--app-bg);
     color: var(--app-text);
     overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
-    letter-spacing: -0.04em;
-    text-wrap: balance;
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.025em;
   }
 }
 
@@ -111,7 +108,7 @@ html.custom-cursor-active * {
 
 /* Custom glow and glassmorphism utilities */
 .glass-panel {
-  background: linear-gradient(145deg, rgba(25, 17, 41, 0.82), rgba(14, 9, 25, 0.92));
+  background: rgba(18, 14, 28, 0.4);
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -131,7 +128,7 @@ html.custom-cursor-active * {
 .glass-panel-hover:hover {
   background: rgba(28, 20, 48, 0.55);
   border-color: rgba(168, 85, 247, 0.35);
-  box-shadow: 0 16px 40px -18px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 35px -8px rgba(168, 85, 247, 0.25);
   transform: translateY(-2px);
 }
 
@@ -145,7 +142,7 @@ html.custom-cursor-active * {
 .glass-card-featured {
   background: linear-gradient(135deg, rgba(28, 18, 52, 0.7) 0%, rgba(13, 10, 22, 0.8) 100%);
   border: 1px solid rgba(168, 85, 247, 0.3);
-  box-shadow: 0 20px 60px -28px rgba(0, 0, 0, 0.65);
+  box-shadow: 0 0 45px -12px rgba(168, 85, 247, 0.35);
 }
 
 .light .glass-card-featured {
@@ -290,24 +287,4 @@ html.custom-cursor-active * {
     overflow: visible !important;
     padding: 0 !important;
   }
-}
-
-/* Consistent focus treatment for mouse, keyboard, and touch navigation. */
-:where(button, a, input, textarea, select):focus-visible {
-  outline: 2px solid #c4a3ff;
-  outline-offset: 4px;
-}
-:where(button, a) { -webkit-tap-highlight-color: transparent; }
-::selection { background: #7c3aed; color: #fff; }
-
-/* Display typography inspired by the supplied type specimen. */
-h1, h2 { font-weight: 850; }
-.community-faq summary { list-style: none; }
-.community-faq summary::-webkit-details-marker { display: none; }
-.community-faq[open] { border-color: rgba(192, 132, 252, .4); }
-.faq-plus { transition: transform .2s ease; flex-shrink: 0; }
-.community-faq[open] .faq-plus { transform: rotate(45deg); }
-.pillar-detail { min-height: 270px; }
-@media (prefers-reduced-motion: reduce) {
-  .faq-plus { transition: none; }
 }

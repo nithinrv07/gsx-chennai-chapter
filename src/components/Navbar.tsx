@@ -129,7 +129,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         setSearch(true);
       }
     };
-    const media = matchMedia('(min-width: 1024px)');
+    const media = matchMedia('(min-width: 1001px)');
     const handleResize = () => {
       setMobileOpen(false);
       setActiveDropdown(null);
@@ -145,13 +145,6 @@ export const Navbar: React.FC<NavbarProps> = ({
       media.removeEventListener('change', handleResize);
       if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current);
     };
-  }, [mobileOpen]);
-
-  useEffect(() => {
-    if (!mobileOpen) return;
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    return () => { document.body.style.overflow = previousOverflow; };
   }, [mobileOpen]);
 
   const handleDropdownEnter = (id: string) => {
@@ -188,14 +181,14 @@ export const Navbar: React.FC<NavbarProps> = ({
           backgroundColor: isHome
             ? scrolled
               ? 'rgba(8, 4, 20, 0.92)'
-              : 'rgba(8, 4, 20, 0.62)'
+              : 'transparent'
             : scrolled
             ? 'rgba(8, 4, 20, 0.96)'
             : 'rgba(8, 4, 20, 0.85)',
-          backdropFilter: 'blur(20px)',
-          WebkitBackdropFilter: 'blur(20px)',
+          backdropFilter: isHome && !scrolled ? 'none' : 'blur(20px)',
+          WebkitBackdropFilter: isHome && !scrolled ? 'none' : 'blur(20px)',
           borderBottom: isHome && !scrolled ? 'none' : '1px solid rgba(174, 112, 255, 0.15)',
-          boxShadow: scrolled || !isHome ? '0 8px 24px rgba(0, 0, 0, 0.18)' : 'none',
+          boxShadow: scrolled || !isHome ? '0 4px 30px rgba(0, 0, 0, 0.5)' : 'none',
         }}
       >
         {/* Brand Logo & Wordmark */}
@@ -229,25 +222,16 @@ export const Navbar: React.FC<NavbarProps> = ({
                 className="relative py-2"
                 onMouseEnter={() => hasChildren && handleDropdownEnter(item.id)}
                 onMouseLeave={hasChildren ? handleDropdownLeave : undefined}
-                onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget as Node)) setActiveDropdown(null); }}
               >
                 <button
                   type="button"
                   aria-current={isCurrent ? 'page' : undefined}
                   aria-haspopup={hasChildren ? 'true' : undefined}
                   aria-expanded={hasChildren ? isOpen : undefined}
-                  onKeyDown={(event) => {
-                    if (hasChildren && event.key === 'ArrowDown') {
-                      event.preventDefault();
-                      setActiveDropdown(item.id);
-                      const container = event.currentTarget.parentElement as HTMLElement | null;
-                      requestAnimationFrame(() => container?.querySelector<HTMLButtonElement>('[data-submenu-item]')?.focus());
-                    }
-                  }}
                   onClick={() => handleNavClick(item.id)}
                   className={`px-3 py-2 rounded-xl text-xs xl:text-sm font-medium transition-all flex items-center gap-1 cursor-pointer select-none ${
                     isCurrent
-                      ? 'text-purple-100 bg-purple-500/15 border border-purple-400/25'
+                      ? 'text-white bg-purple-600/20 border border-purple-500/40 shadow-[0_0_12px_rgba(168,85,247,0.3)]'
                       : 'text-gray-300 hover:text-white hover:bg-white/[0.05] border border-transparent'
                   }`}
                 >
@@ -268,7 +252,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     onMouseEnter={() => handleDropdownEnter(item.id)}
                     onMouseLeave={handleDropdownLeave}
                   >
-                    <div className="rounded-2xl p-2 bg-[#0e0722]/95 backdrop-blur-2xl border border-purple-500/30 shadow-[0_20px_50px_rgba(0,0,0,0.4)] flex flex-col gap-1">
+                    <div className="rounded-2xl p-2 bg-[#0e0722]/95 backdrop-blur-2xl border border-purple-500/30 shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_25px_rgba(168,85,247,0.2)] flex flex-col gap-1">
                       {/* Dropdown Header Pill */}
                       <div className="px-3 py-1.5 border-b border-white/[0.06] mb-1 flex items-center justify-between">
                         <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-purple-400">
@@ -381,7 +365,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       <button
                         type="button"
                         onClick={() => handleNavClick(item.id)}
-                        className={`min-h-11 flex-1 text-left text-sm font-semibold transition-colors ${
+                        className={`flex-1 text-left text-sm font-semibold transition-colors ${
                           isCurrent ? 'text-purple-300' : 'text-white'
                         }`}
                       >
@@ -393,7 +377,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                           type="button"
                           onClick={() => toggleMobileAccordion(item.id)}
                           aria-label={`Toggle ${item.label} sub-items`}
-                          aria-expanded={isExpanded}
                           className="p-1.5 rounded-lg bg-white/[0.04] text-gray-400 hover:text-white"
                         >
                           <ChevronDown
@@ -412,7 +395,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                           <button
                             key={child.id}
                             type="button"
-                            data-submenu-item
                             onClick={() => handleNavClick(child.pageId || item.id, child.sectionId)}
                             className="w-full text-left py-2 px-2.5 rounded-lg text-xs text-gray-300 hover:text-white hover:bg-purple-600/30 transition-all flex items-center justify-between"
                           >

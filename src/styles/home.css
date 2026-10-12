@@ -10,7 +10,7 @@
 .home {
   position: relative;
   isolation: isolate;
-  min-height: max(780px, 100svh);
+  min-height: max(880px, 100svh);
   overflow: hidden;
   background: #080414;
 }
@@ -33,18 +33,20 @@
 }
 
 .gsx-header {
-  height: 80px;
-  padding: 0 max(24px, calc((100vw - 1240px) / 2));
+  height: 94px;
+  padding: 0 clamp(24px, 5.4vw, 88px);
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 35px;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   width: 100% !important;
   z-index: 50 !important;
-
+  background: transparent !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
   transition: background-color 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease;
 }
 
@@ -160,7 +162,7 @@
   font-weight: 600;
   white-space: nowrap;
   background: rgba(66, 30, 103, 0.22);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 0 20px rgba(130, 59, 246, 0.28), inset 0 0 14px rgba(134, 74, 236, 0.1);
   color: #fff;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
@@ -168,7 +170,7 @@
 
 .pill:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(130, 59, 246, 0.18);
+  box-shadow: 0 0 28px rgba(164, 94, 255, 0.44);
 }
 
 .icon-button {
@@ -212,7 +214,7 @@
 
 .city {
   position: relative;
-  height: 285px;
+  height: 325px;
   max-width: 1600px;
   margin: auto;
   pointer-events: none;
@@ -232,7 +234,7 @@
   text-align: center;
   line-height: 1;
   user-select: none;
-  font-family: var(--font-heading);
+  font-family: 'Space Grotesk', Inter, sans-serif;
 }
 
 .city-title-brand {
@@ -284,7 +286,7 @@
 
 .eyebrow {
   font-size: 12px;
-  letter-spacing: 3px;
+  letter-spacing: 6px;
   text-transform: uppercase;
   color: #c0afd5;
   margin: 0 0 19px;
@@ -295,7 +297,7 @@
   letter-spacing: -2.4px;
   line-height: 1.17;
   margin: 0 0 17px;
-  font-weight: 850;
+  font-weight: 750;
   text-shadow: 0 0 25px rgba(178, 149, 220, 0.15);
   color: #fff;
   font-family: 'Space Grotesk', Inter, sans-serif;
@@ -342,15 +344,15 @@
 
 .primary {
   min-width: 150px;
-  background: linear-gradient(125deg, #d2b4ff, #af81f5);
+  background: linear-gradient(125deg, #bf8aff, #9656f2 60%, #c09aff);
   border-color: #dcbdff;
-  box-shadow: 0 8px 24px rgba(130, 59, 246, 0.18);
+  box-shadow: 0 0 24px rgba(157, 92, 245, 0.51), inset 0 0 11px rgba(236, 220, 255, 0.61);
   color: #120324;
   font-weight: 700;
 }
 
 .primary:hover {
-  box-shadow: 0 12px 28px rgba(130, 59, 246, 0.26);
+  box-shadow: 0 0 32px rgba(178, 115, 255, 0.7);
   transform: translateY(-2px);
 }
 
@@ -366,7 +368,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   width: min(735px, 100%);
-  margin: 48px auto 0;
+  margin: 68px auto 0;
   padding: 0;
   list-style: none;
 }
@@ -709,7 +711,7 @@
 
 @media (max-width: 1000px) {
   .gsx-header {
-    height: 80px;
+    height: 86px;
   }
   .navigation {
     display: none;
@@ -757,7 +759,7 @@
     display: grid;
   }
   .city {
-    height: 285px;
+    height: 320px;
   }
   .hero h1 {
     font-size: 42px;
@@ -772,7 +774,7 @@
     background-size: auto 880px;
   }
   .home {
-    min-height: 780px;
+    min-height: 880px;
   }
   .neon-ribbons {
     width: 1564px;
@@ -784,8 +786,8 @@
 
 @media (max-width: 600px) {
   .gsx-header {
-    height: 72px;
-    padding-inline: 16px;
+    height: 80px;
+    padding-inline: 20px;
     gap: 12px;
   }
   .wordmark {
@@ -820,7 +822,7 @@
     padding-bottom: 32px;
   }
   .city {
-    height: 224px;
+    height: 244px;
   }
   .city-title {
     top: 21px;
@@ -911,30 +913,4 @@
   .motion-toggle {
     display: none;
   }
-}
-
-.header-spacer { height: 80px; }
-.home-section { margin-bottom: clamp(64px, 8vw, 104px); }
-.pillar-card {
-  background: linear-gradient(145deg, rgba(29, 18, 47, .8), rgba(14, 9, 25, .9));
-  box-shadow: 0 12px 28px -16px rgba(0, 0, 0, .5);
-  transition: transform .25s ease, border-color .25s ease;
-}
-.pillar-card:hover { border-color: rgba(192, 132, 252, .4); transform: translateY(-4px); }
-@media (max-width: 600px) {
-  .header-spacer { height: 72px; }
-  .cta-row { flex-wrap: wrap; }
-  .hero h1 { font-size: clamp(30px, 8.6vw, 38px); }
-  .stats { padding-bottom: 12px; }
-}
-@media (max-width: 360px) {
-  .chapter { display: none; }
-  .cta-row { flex-direction: column; align-items: stretch; }
-}
-
-.home .hero h1 { letter-spacing: -.045em; text-wrap: balance; }
-.home .intro { text-wrap: pretty; }
-@media (max-width: 600px) {
-  .pillar-detail { min-height: 320px; }
-  .pillar-detail .pill { width: 100%; white-space: normal; padding: 12px 18px; }
 }
