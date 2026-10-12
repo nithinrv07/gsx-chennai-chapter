@@ -19,7 +19,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenJoinModal }) =
       {/* A soft, continuous purple glow blends the footer into the page. */}
       <div aria-hidden="true" className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_50%_100%,rgba(109,40,217,0.10),transparent_70%)]" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-white/[0.06]">
           {/* Brand Column with Immersive UI theme */}
           <div className="lg:col-span-4 space-y-4">

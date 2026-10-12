@@ -63,14 +63,14 @@ export const HomePage: React.FC<HomePageProps> = ({
         {/* Animated Neon Light Trails & Skyline Background with Motion Toggle */}
         <HeroGlow variant="skyline" />
 
-        {/* Top spacer to accommodate fixed header height (94px) */}
-        <div style={{ height: '94px' }} aria-hidden="true" />
+        {/* Top spacer to accommodate the responsive fixed header */}
+        <div className="header-spacer" aria-hidden="true" />
 
         {/* Chennai Skyline & Chapter Watermark Backdrop */}
         <ChennaiSkyline />
 
         {/* Main Hero Content */}
-        <main id="main" className="hero">
+        <div id="main" className="hero">
           <p className="eyebrow">A brighter tomorrow, together</p>
           <h1>
             Learn. Build. Connect. <span>Grow.</span>
@@ -103,7 +103,7 @@ export const HomePage: React.FC<HomePageProps> = ({
 
           {/* 4 Community Stats with Animated Count-ups */}
           <CommunityStats />
-        </main>
+        </div>
 
         {/* Vertical 4-dot Page Marker Indicator */}
         <div className="page-marker" aria-hidden="true">
@@ -116,13 +116,13 @@ export const HomePage: React.FC<HomePageProps> = ({
 
       {/* ===================================================
           BELOW-THE-FOLD SHOWCASE SECTIONS
-          Ecosystem Preview, Core Pillars, Events, Projects, CTA
+          Ecosystem Preview, Core Pillars, Events, CTA
           =================================================== */}
-      <div id="explore-community" className="relative z-10 pt-16 sm:pt-24 pb-20">
+      <div id="explore-community" className="relative z-10 pt-12 sm:pt-20 pb-12">
         
         {/* SECTION 1: ABOUT / ECOSYSTEM PREVIEW */}
-        <ScrollReveal as="section" variant="fade-up" distance={28} className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-28">
-          <div className="relative rounded-3xl p-8 sm:p-12 overflow-hidden border border-white/[0.08] bg-gradient-to-br from-[#120826]/80 to-[#080414]/90 backdrop-blur-xl shadow-[0_10px_35px_rgba(0,0,0,0.6)]">
+        <ScrollReveal as="section" variant="fade-up" distance={28} className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 home-section">
+          <div className="relative rounded-3xl p-8 sm:p-12 overflow-hidden border border-white/[0.08] bg-gradient-to-br from-[#120826]/80 to-[#080414]/90 backdrop-blur-xl shadow-[0_16px_40px_-20px_rgba(0,0,0,0.5)]">
             <div className="absolute top-0 right-0 w-96 h-96 bg-purple-600/15 rounded-full blur-3xl pointer-events-none" />
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
@@ -151,7 +151,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           </div>
         </ScrollReveal>
 
-        <section id="photo-gallery" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-24 scroll-mt-28">
+        <section id="photo-gallery" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 home-section scroll-mt-28">
           <div className="text-center mb-8">
             <span className="text-xs font-semibold uppercase tracking-widest text-purple-400">Our community in moments</span>
             <h2 className="text-3xl sm:text-4xl font-bold text-white mt-3">Photo Gallery</h2>
@@ -164,7 +164,7 @@ export const HomePage: React.FC<HomePageProps> = ({
         </section>
 
         {/* SECTION 2: CORE PILLARS / WHAT WE DO */}
-        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-28">
+        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 home-section">
           <ScrollReveal variant="fade-up" distance={20} className="text-center max-w-2xl mx-auto mb-14">
             <span className="text-xs font-semibold uppercase tracking-widest text-purple-400 block mb-2">
               Core Pillars
@@ -188,7 +188,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 className={`h-full md:col-span-2 ${idx === 4 ? 'md:col-start-2 lg:col-start-4' : idx === 3 ? 'lg:col-start-2' : ''}`}
               >
                 <div
-                  className={`p-6 rounded-2xl transition-all border border-white/[0.08] h-full flex flex-col justify-between bg-white/[0.02] hover:bg-white/[0.05] hover:border-purple-500/40 hover:-translate-y-1 shadow-[0_4px_20px_rgba(0,0,0,0.3)] ${
+                  className={`pillar-card p-7 rounded-2xl border border-white/[0.08] h-full flex flex-col justify-between ${
                     card.highlighted
                       ? 'bg-purple-900/15 border-purple-500/40 shadow-[0_0_30px_rgba(174,112,255,0.15)]'
                       : ''
@@ -208,7 +208,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                       {card.title}
                     </h3>
 
-                    <p className={`text-xs leading-relaxed ${card.highlighted ? 'text-gray-300' : 'text-gray-400'}`}>
+                    <p className={`text-sm leading-relaxed ${card.highlighted ? 'text-gray-300' : 'text-gray-400'}`}>
                       {card.description}
                     </p>
                   </div>
@@ -219,7 +219,7 @@ export const HomePage: React.FC<HomePageProps> = ({
         </section>
 
         {/* SECTION 3: UPCOMING EVENTS */}
-        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-28">
+        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 home-section">
           <ScrollReveal variant="fade-up" distance={20} className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
             <div>
               <span className="text-xs font-semibold uppercase tracking-widest text-purple-400 block mb-1">

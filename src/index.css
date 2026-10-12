@@ -15,6 +15,8 @@
     background-color: var(--app-bg);
     color: var(--app-text);
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 
@@ -108,7 +110,7 @@ html.custom-cursor-active * {
 
 /* Custom glow and glassmorphism utilities */
 .glass-panel {
-  background: rgba(18, 14, 28, 0.4);
+  background: linear-gradient(145deg, rgba(25, 17, 41, 0.82), rgba(14, 9, 25, 0.92));
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -128,7 +130,7 @@ html.custom-cursor-active * {
 .glass-panel-hover:hover {
   background: rgba(28, 20, 48, 0.55);
   border-color: rgba(168, 85, 247, 0.35);
-  box-shadow: 0 0 35px -8px rgba(168, 85, 247, 0.25);
+  box-shadow: 0 16px 40px -18px rgba(0, 0, 0, 0.6);
   transform: translateY(-2px);
 }
 
@@ -142,7 +144,7 @@ html.custom-cursor-active * {
 .glass-card-featured {
   background: linear-gradient(135deg, rgba(28, 18, 52, 0.7) 0%, rgba(13, 10, 22, 0.8) 100%);
   border: 1px solid rgba(168, 85, 247, 0.3);
-  box-shadow: 0 0 45px -12px rgba(168, 85, 247, 0.35);
+  box-shadow: 0 20px 60px -28px rgba(0, 0, 0, 0.65);
 }
 
 .light .glass-card-featured {
@@ -288,3 +290,11 @@ html.custom-cursor-active * {
     padding: 0 !important;
   }
 }
+
+/* Consistent focus treatment for mouse, keyboard, and touch navigation. */
+:where(button, a, input, textarea, select):focus-visible {
+  outline: 2px solid #c4a3ff;
+  outline-offset: 4px;
+}
+:where(button, a) { -webkit-tap-highlight-color: transparent; }
+::selection { background: #7c3aed; color: #fff; }

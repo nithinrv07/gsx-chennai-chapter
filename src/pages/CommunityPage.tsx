@@ -134,7 +134,7 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate, onOpen
 
         {/* Featured Lead */}
         <ScrollReveal variant="fade-up" distance={25} className="mb-14">
-          <div className="glass-card-featured rounded-3xl p-6 sm:p-10 border border-purple-500/30 relative overflow-hidden transition-all duration-300 hover:shadow-[0_0_50px_rgba(168,85,247,0.35)]">
+          <div className="glass-card-featured rounded-3xl p-6 sm:p-10 border border-purple-500/30 relative overflow-hidden transition-all duration-300 hover:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.5)]">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
               <div className="md:col-span-4 relative group overflow-hidden rounded-2xl border border-white/[0.1]">
                 <img
@@ -188,7 +188,7 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate, onOpen
         </ScrollReveal>
 
         {/* Core Team Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {CORE_TEAM.map((member, idx) => (
             <ScrollReveal
               key={member.id}
@@ -199,20 +199,20 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate, onOpen
               className="h-full"
             >
               <div className="glass-panel glass-panel-hover rounded-2xl overflow-hidden flex flex-col group border border-white/[0.08] transition-all duration-300 h-full">
-                <div className="relative h-60 w-full overflow-hidden bg-white/[0.02]">
+                <div className="relative aspect-[4/3] w-full overflow-hidden bg-white/[0.02]">
                   <TeamPortrait key={member.image} name={member.name} image={member.image} />
                 </div>
 
-                <div className="p-5 flex-1 flex flex-col justify-between">
+                <div className="p-6 flex-1 flex flex-col justify-between">
                   <div>
-                    <h3 className="text-base font-bold text-white group-hover:text-purple-200 transition-colors">
+                    <h3 className="text-lg font-bold text-white group-hover:text-purple-200 transition-colors">
                       {member.name}
                     </h3>
-                    <p className="text-xs font-semibold text-purple-400 mb-2 flex items-center gap-1">
+                    <p className="text-sm font-semibold text-purple-300 mb-3 flex items-center gap-1">
                       {getRoleIcon(member.iconName)}
                       <span>{member.role}</span>
                     </p>
-                    <p className="text-xs text-gray-400 leading-relaxed mb-3">
+                    <p className="text-sm text-gray-300/80 leading-relaxed mb-4">
                       {member.shortBio}
                     </p>
                   </div>
