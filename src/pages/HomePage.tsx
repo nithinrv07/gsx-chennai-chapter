@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import { PageId, EventItem } from '../types';
 import { WHAT_WE_DO_CARDS } from '../data/stats';
 import { EVENTS_DATA } from '../data/events';
-import { HeroGlow } from '../components/HeroGlow';
-import { ChennaiSkyline } from '../components/ChennaiSkyline';
-import { CommunityStats } from '../components/CommunityStats';
+import { InteractiveHero } from '../components/InteractiveHero';
 import { ScrollReveal } from '../components/ScrollReveal';
 import { 
   Sparkles, 
@@ -69,60 +67,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           Purple skyline, neon light ribbons, chapter watermark,
           signature typography, glowing pills, and community stats
           =================================================== */}
-      <div className="home" id="home">
-        {/* Animated Neon Light Trails & Skyline Background with Motion Toggle */}
-        <HeroGlow variant="skyline" />
-
-        {/* Top spacer to accommodate the responsive fixed header */}
-        <div className="header-spacer" aria-hidden="true" />
-
-        {/* Chennai Skyline & Chapter Watermark Backdrop */}
-        <ChennaiSkyline />
-
-        {/* Main Hero Content */}
-        <div id="main" className="hero">
-          <p className="eyebrow">A brighter tomorrow, together</p>
-          <h1>
-            Learn. Build. Connect. <span>Grow.</span>
-          </h1>
-          <p className="intro">
-            A student community under <strong>GirlScript Foundation</strong>, connecting students across Chennai to learn, build, and grow together.
-          </p>
-
-          <div className="cta-row">
-            <button
-              type="button"
-              id="hero-join-pill-btn"
-              onClick={onOpenJoinModal}
-              className="pill primary flex items-center gap-2"
-            >
-              <Sparkles className="w-4 h-4 text-purple-950 shrink-0" />
-              <span>Join GSX Chennai</span>
-              <span aria-hidden="true">→</span>
-            </button>
-            <button
-              type="button"
-              id="hero-explore-events-btn"
-              onClick={() => onNavigate('events')}
-              className="pill secondary flex items-center gap-2"
-            >
-              <span>Explore Events</span>
-              <ArrowRight className="w-4 h-4 text-purple-300 shrink-0" />
-            </button>
-          </div>
-
-          {/* 4 Community Stats with Animated Count-ups */}
-          <CommunityStats />
-        </div>
-
-        {/* Vertical 4-dot Page Marker Indicator */}
-        <div className="page-marker" aria-hidden="true">
-          <i />
-          <i />
-          <i />
-          <i />
-        </div>
-      </div>
+      <InteractiveHero onNavigate={onNavigate} onJoin={onOpenJoinModal} />
 
       {/* ===================================================
           BELOW-THE-FOLD SHOWCASE SECTIONS

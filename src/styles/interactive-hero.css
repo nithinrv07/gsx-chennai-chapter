@@ -1,0 +1,93 @@
+
+.playful-hero {
+  --hero-ink: #261833;
+  position: relative;
+  isolation: isolate;
+  background: #ede4fa;
+  color: var(--hero-ink);
+  padding: 126px 24px 64px;
+  overflow: hidden;
+}
+.playful-hero-inner { max-width: 1180px; margin: auto; }
+.hero-kicker { display: flex; align-items: center; gap: 9px; font-size: 12px; font-weight: 650; letter-spacing: .06em; }
+.hero-kicker > span { width: 8px; height: 8px; border-radius: 50%; background: #7650a8; }
+.playful-title-row { display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 64px; margin: 20px 0 42px; }
+.playful-title-row h1 { font: 900 clamp(110px, 18vw, 234px)/.88 var(--font-heading); letter-spacing: -.085em; margin: 0 0 18px -.065em; color: var(--hero-ink); }
+.playful-chapter { font-size: clamp(23px, 3vw, 38px); font-weight: 700; letter-spacing: -.04em; margin: 0; }
+.foundation-tag { display: inline-block; padding: 7px 11px; border: 1px solid #d2bfe7; border-radius: 999px; font-size: 11px; font-weight: 650; color: #624779; }
+.hero-story h2 { font-size: clamp(28px, 3.5vw, 44px); line-height: 1.1; margin: 15px 0; }
+.hero-story p { max-width: 400px; font-size: 14px; line-height: 1.7; color: #5b496c; }
+.playful-join { display: inline-flex; align-items: center; justify-content: center; gap: 20px; background: #281b38; border: 1px solid #281b38; color: #fff; font-weight: 650; font-size: 14px; min-height: 48px; padding: 12px 22px; border-radius: 999px; margin-top: 19px; cursor: pointer; transition: transform .2s, background .2s; }
+.playful-join:hover { transform: translateY(-3px); background: #533176; }
+.playground { position: relative; min-height: 438px; border: 2px solid #d3c2e6; border-radius: 32px; background: #dfcef5; overflow: hidden; transition: background .35s ease; }
+.playground[data-scene="build"] { background: #d9e9da; }
+.playground[data-scene="connect"] { background: #f6d7c9; }
+.playground[data-scene="grow"] { background: #eee0b1; }
+.playground-grid { position: absolute; inset: 0; background-image: linear-gradient(#5a427414 1px,transparent 1px),linear-gradient(90deg,#5a427414 1px,transparent 1px); background-size: 36px 36px; mask-image: linear-gradient(to bottom, #000, transparent); pointer-events: none; }
+.playground-note { position: absolute; top: 26px; left: 30px; font-size: 12px; font-weight: 600; transform: rotate(-3deg); color: #645174; }
+.hero-character { position: absolute; width: 260px; left: 4%; bottom: 47px; z-index: 2; }
+.hero-character svg { width: 100%; overflow: visible; }
+.scene-window { width: 46%; max-width: 500px; margin: 32px auto 66px; position: relative; z-index: 3; border: 2px solid #30203e; border-radius: 18px; background: #fffaf3; box-shadow: 8px 10px 0 #30203e; transform: rotate(-2deg); transition: transform .3s ease; }
+.scene-window:hover { transform: rotate(0); }
+.scene-window-bar { border-bottom: 2px solid #30203e; display: flex; align-items: center; justify-content: space-between; padding: 11px 14px; gap: 12px; font: 10px monospace; }
+.scene-window-bar > span:first-child { display: flex; gap: 5px; }
+.scene-window-bar i { width: 7px; height: 7px; border-radius: 50%; background: #b4a0cd; }
+.scene-window-content { padding: 23px 26px; }
+.scene-label { font: 10px monospace; color: #785492; letter-spacing: .07em; }
+.scene-window h3 { font-size: 24px; line-height: 1.15; margin: 11px 0; }
+.scene-window p { font-size: 12px; line-height: 1.7; color: #665374; min-height: 41px; }
+.scene-checklist { margin: 17px 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.scene-checklist li { display: flex; gap: 10px; align-items: center; font-size: 12px; }
+.scene-checklist li span { font: 9px monospace; display: grid; place-items: center; width: 23px; height: 23px; border-radius: 7px; background: #e9ddf6; color: #785492; }
+.scene-action { display: flex; align-items: center; justify-content: space-between; gap: 16px; width: 100%; padding: 11px 13px; min-height: 44px; border: 1px solid #ccb3e7; background: #e4d2fc; border-radius: 9px; font-size: 12px; font-weight: 750; cursor: pointer; transition: background .2s; }
+.scene-action:hover { background: #cfacf5; }
+.scene-sticker { position: absolute; right: 4%; top: 105px; width: 136px; height: 158px; border: 2px solid #30203e; background: #bbdccc; transform: rotate(10deg); border-radius: 70px 70px 18px 18px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 6px; animation: sticker-bob 5s ease-in-out infinite; }
+.scene-sticker span { font-size: 17px; font-weight: 800; line-height: 1.15; text-align: center; }
+.scene-sticker svg { width: 50px; fill: none; stroke: #30203e; stroke-width: 3; }
+.scene-spark { position: absolute; font-size: 90px; color: #f68363; line-height: 1; animation: sparkle-turn 14s linear infinite; }
+.scene-spark-one { right: 6%; bottom: 75px; }
+.scene-spark-two { left: 23%; top: 32px; color: #8356b0; font-size: 62px; animation-duration: 19s; }
+.playground-footer { position: absolute; bottom: 0; left: 0; right: 0; border-top: 1px solid #30203e26; display: flex; align-items: center; justify-content: space-between; padding: 13px 22px; gap: 14px; background: #fffaf345; font-size: 11px; }
+.playground-footer button { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 600; cursor: pointer; min-height: 30px; }
+.hero-path-controls { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; margin-top: 22px; }
+.hero-path-controls button { display: flex; align-items: center; justify-content: flex-start; gap: 12px; min-height: 62px; border: 1px solid #d1bde6; border-radius: 18px; padding: 15px 20px; background: #f8f1ff; color: #56406e; font-size: 15px; font-weight: 700; cursor: pointer; transition: transform .2s ease, background .2s ease; }
+.hero-path-controls button svg:last-child { margin-left: auto; }
+.hero-path-controls button[aria-pressed="true"] { background: #30203e; border-color: #30203e; color: #fff; }
+.hero-path-controls button:hover { transform: translateY(-3px); }
+.motion-paused .scene-spark, .motion-paused .scene-sticker { animation-play-state: paused; }
+@keyframes sticker-bob { 50% { transform: translateY(-8px) rotate(6deg); } }
+@keyframes sparkle-turn { to { transform: rotate(360deg); } }
+@media (max-width: 1000px) {
+  .playful-title-row { gap: 36px; }
+  .hero-character { left: 0; width: 220px; }
+  .scene-window { width: 49%; margin-left: 27%; }
+  .scene-sticker { right: 3%; width: 110px; height: 136px; }
+  .scene-sticker span { font-size: 14px; }
+}
+@media (max-width: 700px) {
+  .playful-hero { padding: 104px 18px 42px; }
+  .playful-title-row { grid-template-columns: 1fr; gap: 26px; margin-bottom: 30px; }
+  .playful-title-row h1 { font-size: clamp(112px, 36vw, 210px); }
+  .hero-story h2 br { display: none; }
+  .hero-story h2 { font-size: 29px; }
+  .playground { min-height: 515px; border-radius: 24px; padding-top: 4px; }
+  .playground-note { top: 18px; left: 20px; font-size: 10px; }
+  .scene-window { width: calc(100% - 42px); max-width: 470px; margin: 47px auto 155px; }
+  .scene-window-content { padding: 20px; }
+  .scene-window h3 { font-size: 22px; }
+  .hero-character { width: 132px; left: 6px; bottom: 28px; }
+  .scene-sticker { width: 81px; height: 93px; top: auto; bottom: 51px; right: 23px; }
+  .scene-sticker span { font-size: 11px; }
+  .scene-sticker svg { width: 27px; }
+  .scene-spark-one { font-size: 49px; right: 39%; bottom: 62px; }
+  .scene-spark-two { display: none; }
+  .playground-footer { padding: 7px 12px; font-size: 9px; }
+  .playground-footer > span { max-width: 180px; }
+  .hero-path-controls { grid-template-columns: repeat(2,1fr); gap: 10px; }
+  .hero-path-controls button { padding: 13px; min-height: 56px; font-size: 13px; }
+  .hero-kicker { font-size: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scene-sticker, .scene-spark { animation: none; }
+  .playful-hero * { transition: none; }
+}
