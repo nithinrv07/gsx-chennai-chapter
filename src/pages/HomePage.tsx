@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { PageId, EventItem } from '../types';
 import { WHAT_WE_DO_CARDS } from '../data/stats';
 import { EVENTS_DATA } from '../data/events';
@@ -21,7 +21,7 @@ import {
 import '../styles/home.css';
 
 interface HomePageProps {
-  onNavigate: (page: PageId) => void;
+  onNavigate: (page: PageId, sectionId?: string) => void;
   onOpenJoinModal: () => void;
   onOpenEventDetail: (event: EventItem) => void;
   onRegisterEvent: (event: EventItem) => void;
@@ -33,6 +33,16 @@ export const HomePage: React.FC<HomePageProps> = ({
   onOpenEventDetail,
   onRegisterEvent,
 }) => {
+  const [activePillar, setActivePillar] = useState('01');
+  const pillarActions: Record<string, { title: string; description: string; label: string; page: PageId; section?: string }> = {
+    '01': { title: 'Start with curiosity.', description: 'Explore our workshops, knowledge sessions, and meetups. Find a topic that interests you and learn alongside students from across Chennai.', label: 'Explore learning events', page: 'events', section: 'upcoming-events' },
+    '02': { title: 'Give your idea a place to grow.', description: 'Discover how to build a project with community guidance, collaborate with other students, and contribute your skills.', label: 'Build with our guidance', page: 'opportunities', section: 'build-with-guidance' },
+    '03': { title: 'Meet your people, beyond your campus.', description: 'Get to know the chapter and its core team. Connect with students who want to learn, build, and share ideas together.', label: 'Meet the community', page: 'community', section: 'core-team' },
+    '04': { title: 'Explore. Experiment. Contribute.', description: 'Bring your curiosity about AI, cloud, open source, or another area of technology. Explore ways to contribute to the chapter.', label: 'Explore ways to contribute', page: 'opportunities', section: 'contribute' },
+    '05': { title: 'Find your next step.', description: 'Join the tech team, build a project with guidance, become a speaker, or contribute to our community initiatives.', label: 'Find an opportunity', page: 'opportunities' },
+  };
+  const selectedPillar = WHAT_WE_DO_CARDS.find(card => card.number === activePillar)!;
+  const selectedAction = pillarActions[activePillar];
   const upcomingEvents = EVENTS_DATA.filter((e) => e.status === 'upcoming').slice(0, 3);
 
   const getCardIcon = (iconName: string) => {
@@ -177,44 +187,38 @@ export const HomePage: React.FC<HomePageProps> = ({
             </p>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-6">
+
+          <p className="text-center text-sm text-purple-200/80 mb-6">Choose a pillar to find your next step.</p>
+          <div className="grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-6 gap-4">
             {WHAT_WE_DO_CARDS.map((card, idx) => (
-              <ScrollReveal
-                key={card.number}
-                variant="fade-up"
-                staggerIndex={idx}
-                staggerInterval={80}
-                distance={24}
-                className={`h-full md:col-span-2 ${idx === 4 ? 'md:col-start-2 lg:col-start-4' : idx === 3 ? 'lg:col-start-2' : ''}`}
-              >
-                <div
-                  className={`pillar-card p-7 rounded-2xl border border-white/[0.08] h-full flex flex-col justify-between ${
-                    card.highlighted
-                      ? 'bg-purple-900/15 border-purple-500/40 shadow-[0_0_30px_rgba(174,112,255,0.15)]'
-                      : ''
-                  }`}
-                >
-                  <div>
-                    <div className="flex items-center justify-between mb-3">
-                      <div className={`text-xs font-bold font-mono text-purple-400 ${card.highlighted ? '' : 'opacity-70'}`}>
-                        {card.number}
-                      </div>
-                      <div className="p-1.5 rounded-lg bg-white/[0.04] border border-white/[0.06]">
-                        {getCardIcon(card.iconName)}
-                      </div>
-                    </div>
-
-                    <h3 className="text-lg font-bold mb-2 text-white">
-                      {card.title}
-                    </h3>
-
-                    <p className={`text-sm leading-relaxed ${card.highlighted ? 'text-gray-300' : 'text-gray-400'}`}>
-                      {card.description}
-                    </p>
-                  </div>
-                </div>
-              </ScrollReveal>
+              <button key={card.number} type="button"
+                aria-pressed={activePillar === card.number}
+                aria-controls="pillar-detail"
+                onClick={() => setActivePillar(card.number)}
+                className={`pillar-card text-left p-6 rounded-2xl border h-full sm:col-span-2 ${idx === 4 ? 'sm:col-start-2 lg:col-start-4' : idx === 3 ? 'lg:col-start-2' : ''} ${activePillar === card.number ? 'border-purple-400/60 ring-1 ring-purple-400/20' : 'border-white/[0.08]'}`}>
+                <span className="flex items-center justify-between mb-5">
+                  <span className="text-xs font-mono text-purple-300">{card.number}</span>
+                  <span className="p-2 rounded-xl bg-purple-500/10">{getCardIcon(card.iconName)}</span>
+                </span>
+                <span className="block text-xl font-bold text-white mb-2">{card.title}</span>
+                <span className="block text-sm text-gray-300/80 leading-relaxed">{card.description}</span>
+                <span className="mt-5 inline-flex items-center gap-2 text-xs font-semibold text-purple-300">
+                  {activePillar === card.number ? 'Selected' : 'Explore this pillar'}
+                  <ArrowRight aria-hidden="true" className="w-3.5 h-3.5" />
+                </span>
+              </button>
             ))}
+          </div>
+          <div id="pillar-detail" className="pillar-detail glass-panel rounded-3xl p-6 sm:p-9 mt-6 border-purple-400/20">
+            <div aria-live="polite" aria-atomic="true" className="max-w-2xl">
+              <span className="text-xs uppercase tracking-widest text-purple-300">{selectedPillar.title}</span>
+              <h3 className="text-2xl sm:text-3xl font-bold text-white mt-3 mb-3">{selectedAction.title}</h3>
+              <p className="text-sm sm:text-base text-gray-300 leading-relaxed">{selectedAction.description}</p>
+            </div>
+            <button type="button" className="pill primary mt-6"
+              onClick={() => onNavigate(selectedAction.page, selectedAction.section)}>
+              {selectedAction.label}<ArrowRight aria-hidden="true" className="w-4 h-4" />
+            </button>
           </div>
         </section>
 
@@ -324,6 +328,35 @@ export const HomePage: React.FC<HomePageProps> = ({
               </button>
             </div>
           )}
+        </section>
+
+
+        <section id="community-faq" aria-labelledby="faq-heading" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 home-section scroll-mt-28">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-14">
+            <div className="lg:col-span-5">
+              <span className="text-xs font-semibold uppercase tracking-widest text-purple-300">Before you join</span>
+              <h2 id="faq-heading" className="text-3xl sm:text-4xl font-extrabold text-white mt-3 mb-4">Curious? Start here.</h2>
+              <p className="text-sm sm:text-base text-gray-300 leading-relaxed">A few things to know about finding your place in GSX Chennai.</p>
+              <button type="button" onClick={onOpenJoinModal} className="inline-flex items-center gap-2 text-purple-300 font-semibold min-h-12 mt-5">
+                Join the community<ArrowRight aria-hidden="true" className="w-4 h-4" />
+              </button>
+            </div>
+            <div className="lg:col-span-7 space-y-3">
+              {[
+                ['Who can join GSX Chennai?', 'Students from different colleges across Chennai, self-taught learners, and technology enthusiasts are welcome. You can take part beyond your own campus.'],
+                ['Do I need prior experience?', 'You can start as a beginner. Bring your curiosity, explore learning sessions, and connect with others as you develop your skills.'],
+                ['How do I become a member?', 'Use the Join GSX Chennai button to open our official registration form. Complete the form with your details to take the first step.'],
+                ['How can I contribute?', 'Explore Opportunities to join the tech team, build projects with guidance, become a speaker, or contribute to chapter activities.'],
+              ].map(([question, answer]) => (
+                <details key={question} className="community-faq glass-panel rounded-2xl">
+                  <summary className="flex items-center justify-between gap-4 p-5 sm:p-6 cursor-pointer text-sm sm:text-base font-semibold text-white">
+                    {question}<span aria-hidden="true" className="faq-plus text-purple-300 text-2xl leading-none">+</span>
+                  </summary>
+                  <p className="px-5 sm:px-6 pb-6 text-sm text-gray-300 leading-relaxed">{answer}</p>
+                </details>
+              ))}
+            </div>
+          </div>
         </section>
 
         {/* SECTION 5: FINAL CTA */}

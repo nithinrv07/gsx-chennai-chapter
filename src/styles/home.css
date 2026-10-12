@@ -232,7 +232,7 @@
   text-align: center;
   line-height: 1;
   user-select: none;
-  font-family: 'Space Grotesk', Inter, sans-serif;
+  font-family: var(--font-heading);
 }
 
 .city-title-brand {
@@ -295,7 +295,7 @@
   letter-spacing: -2.4px;
   line-height: 1.17;
   margin: 0 0 17px;
-  font-weight: 750;
+  font-weight: 850;
   text-shadow: 0 0 25px rgba(178, 149, 220, 0.15);
   color: #fff;
   font-family: 'Space Grotesk', Inter, sans-serif;
@@ -930,4 +930,11 @@
 @media (max-width: 360px) {
   .chapter { display: none; }
   .cta-row { flex-direction: column; align-items: stretch; }
+}
+
+.home .hero h1 { letter-spacing: -.045em; text-wrap: balance; }
+.home .intro { text-wrap: pretty; }
+@media (max-width: 600px) {
+  .pillar-detail { min-height: 320px; }
+  .pillar-detail .pill { width: 100%; white-space: normal; padding: 12px 18px; }
 }

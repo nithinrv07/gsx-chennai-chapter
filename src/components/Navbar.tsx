@@ -147,6 +147,13 @@ export const Navbar: React.FC<NavbarProps> = ({
     };
   }, [mobileOpen]);
 
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = previousOverflow; };
+  }, [mobileOpen]);
+
   const handleDropdownEnter = (id: string) => {
     if (dropdownTimeoutRef.current) {
       clearTimeout(dropdownTimeoutRef.current);
@@ -222,12 +229,21 @@ export const Navbar: React.FC<NavbarProps> = ({
                 className="relative py-2"
                 onMouseEnter={() => hasChildren && handleDropdownEnter(item.id)}
                 onMouseLeave={hasChildren ? handleDropdownLeave : undefined}
+                onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget as Node)) setActiveDropdown(null); }}
               >
                 <button
                   type="button"
                   aria-current={isCurrent ? 'page' : undefined}
                   aria-haspopup={hasChildren ? 'true' : undefined}
                   aria-expanded={hasChildren ? isOpen : undefined}
+                  onKeyDown={(event) => {
+                    if (hasChildren && event.key === 'ArrowDown') {
+                      event.preventDefault();
+                      setActiveDropdown(item.id);
+                      const container = event.currentTarget.parentElement as HTMLElement | null;
+                      requestAnimationFrame(() => container?.querySelector<HTMLButtonElement>('[data-submenu-item]')?.focus());
+                    }
+                  }}
                   onClick={() => handleNavClick(item.id)}
                   className={`px-3 py-2 rounded-xl text-xs xl:text-sm font-medium transition-all flex items-center gap-1 cursor-pointer select-none ${
                     isCurrent
@@ -396,6 +412,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                           <button
                             key={child.id}
                             type="button"
+                            data-submenu-item
                             onClick={() => handleNavClick(child.pageId || item.id, child.sectionId)}
                             className="w-full text-left py-2 px-2.5 rounded-lg text-xs text-gray-300 hover:text-white hover:bg-purple-600/30 transition-all flex items-center justify-between"
                           >

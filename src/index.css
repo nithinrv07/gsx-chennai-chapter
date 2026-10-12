@@ -3,7 +3,7 @@
 
 @layer base {
   :root {
-    --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-heading: 'Inter', 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --font-sans: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --app-bg: #080414;
     --app-text: #f3f4f6;
@@ -21,8 +21,9 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Space Grotesk', sans-serif;
-    letter-spacing: -0.025em;
+    font-family: var(--font-heading);
+    letter-spacing: -0.04em;
+    text-wrap: balance;
   }
 }
 
@@ -298,3 +299,15 @@ html.custom-cursor-active * {
 }
 :where(button, a) { -webkit-tap-highlight-color: transparent; }
 ::selection { background: #7c3aed; color: #fff; }
+
+/* Display typography inspired by the supplied type specimen. */
+h1, h2 { font-weight: 850; }
+.community-faq summary { list-style: none; }
+.community-faq summary::-webkit-details-marker { display: none; }
+.community-faq[open] { border-color: rgba(192, 132, 252, .4); }
+.faq-plus { transition: transform .2s ease; flex-shrink: 0; }
+.community-faq[open] .faq-plus { transform: rotate(45deg); }
+.pillar-detail { min-height: 270px; }
+@media (prefers-reduced-motion: reduce) {
+  .faq-plus { transition: none; }
+}
