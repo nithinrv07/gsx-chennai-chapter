@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "tw-animate-css";
 @import "./styles/home.css";
 
 @layer base {
@@ -15,7 +14,7 @@
     font-family: 'Inter', sans-serif;
     background-color: var(--app-bg);
     color: var(--app-text);
-    overflow-x: clip;
+    overflow-x: hidden;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 
@@ -288,56 +287,4 @@ html.custom-cursor-active * {
     overflow: visible !important;
     padding: 0 !important;
   }
-}
-
-/* ScrollAnimation is intentionally scoped; no document theme, snapping, or other lists are changed. */
-@keyframes gsx-scroll-change { to { --hue: var(--end); } }
-@keyframes gsx-scroll-chroma-on { to { --chroma: .3; } }
-@keyframes gsx-scroll-chroma-off { to { --chroma: 0; } }
-@keyframes gsx-scroll-brighten {
-  0%, 100% { opacity: .22; }
-  50% { opacity: 1; filter: brightness(1.2); }
-}
-.gsx-scroll {
-  --start: 270;
-  --end: 320;
-  --hue: 270;
-  --chroma: .12;
-  --gsx-word-size: clamp(40px, 6.5vw, 84px);
-  position: relative;
-  max-width: 1120px;
-  margin: 64px auto 96px;
-  padding: 40px 24px 28px;
-  border-top: 1px solid #c084fc26;
-  border-bottom: 1px solid #c084fc26;
-  color: #f6f2ff;
-  isolation: isolate;
-}
-.gsx-scroll-intro { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; margin-bottom: 64px; }
-.gsx-scroll-eyebrow { font-size: 11px; font-weight: 650; text-transform: uppercase; letter-spacing: .14em; color: #c084fc; }
-.gsx-scroll-intro h2 { font-size: clamp(23px, 3.2vw, 36px); font-weight: 750; margin: 12px 0; }
-.gsx-scroll-intro p { font-size: 14px; line-height: 1.7; color: #bcb0ce; }
-.gsx-scroll-motion { display: inline-flex; gap: 8px; align-items: center; flex-shrink: 0; min-height: 44px; padding: 10px 14px; border: 1px solid #c084fc33; border-radius: 999px; background: #a855f70a; color: #dbc5ed; font-size: 11px; cursor: pointer; }
-.gsx-scroll-motion:disabled { cursor: default; opacity: .65; }
-.gsx-scroll-content { display: flex; align-items: flex-start; gap: .28em; max-width: 100%; font-family: var(--font-heading); font-size: var(--gsx-word-size); font-weight: 800; letter-spacing: -.05em; line-height: 1.32; }
-.gsx-scroll-prefix { position: sticky; top: calc(50vh - var(--gsx-word-size) * .66); white-space: nowrap; flex-shrink: 0; }
-.gsx-scroll-words { list-style: none; padding: 0; margin: 0; min-width: 0; }
-.gsx-scroll-words li { margin: 0; padding: 0; overflow-wrap: anywhere; color: #cf9eff; color: oklch(78% var(--chroma) var(--hue)); }
-.gsx-scroll[data-sync-scrollbar="true"] .gsx-scroll-words { border-inline-end: 2px solid #b98add66; padding-right: 16px; }
-.gsx-scroll-outro { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding-top: 42px; margin-top: 48px; border-top: 1px solid #c084fc1f; color: #bcb0ce; font-size: 13px; }
-.gsx-scroll-outro button { display: inline-flex; gap: 10px; align-items: center; color: #d4b1fa; min-height: 44px; font-weight: 650; cursor: pointer; }
-.gsx-scroll-settings { position: absolute; right: 24px; top: 100px; width: 250px; z-index: 5; }
-.gsx-scroll[data-theme="light"] { background: #f4effa; color: #2c1741; border-radius: 24px; }
-.gsx-scroll[data-theme="light"] .gsx-scroll-prefix { color: #2c1741; }
-.gsx-scroll[data-theme="light"] .gsx-scroll-words li { color: oklch(50% var(--chroma) var(--hue)); }
-.gsx-scroll[data-animate="false"] .gsx-scroll-prefix { position: static; }
-@media (max-width: 700px) {
-  .gsx-scroll { margin: 40px 16px 64px; padding: 28px 4px; --gsx-word-size: clamp(29px, 6.1vw, 43px); }
-  .gsx-scroll-intro { flex-direction: column; gap: 15px; margin-bottom: 40px; }
-  .gsx-scroll-content { gap: .22em; }
-  .gsx-scroll-outro { flex-direction: column; align-items: flex-start; margin-top: 28px; padding-top: 24px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .gsx-scroll-prefix { position: static; }
-  .gsx-scroll-words li { opacity: 1 !important; }
 }

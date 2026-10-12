@@ -19,9 +19,6 @@ import {
   Images
 } from 'lucide-react';
 import '../styles/home.css';
-import ScrollAnimation from '@/src/components/ui/you-can-scroll';
-
-const GSX_SCROLL_WORDS = ['learn.', 'build.', 'connect.', 'collaborate.', 'contribute.', 'innovate.', 'grow.', 'make an impact.'];
 
 interface HomePageProps {
   onNavigate: (page: PageId) => void;
@@ -121,8 +118,6 @@ export const HomePage: React.FC<HomePageProps> = ({
           BELOW-THE-FOLD SHOWCASE SECTIONS
           Ecosystem Preview, Core Pillars, Events, Projects, CTA
           =================================================== */}
-      <ScrollAnimation words={GSX_SCROLL_WORDS} onJoin={onOpenJoinModal} />
-
       <div id="explore-community" className="relative z-10 pt-16 sm:pt-24 pb-20">
         
         {/* SECTION 1: ABOUT / ECOSYSTEM PREVIEW */}

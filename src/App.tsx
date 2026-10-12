@@ -157,7 +157,7 @@ function AppContent() {
   };
 
   return (
-    <div className="min-h-screen font-sans selection:bg-purple-600 selection:text-white relative overflow-x-clip flex flex-col bg-[#080414] text-[#ededed]">
+    <div className="min-h-screen font-sans selection:bg-purple-600 selection:text-white relative overflow-x-hidden flex flex-col bg-[#080414] text-[#ededed]">
       {/* Creative GSX Cosmic Stardust Custom Cursor */}
       <CustomCursor />
 
