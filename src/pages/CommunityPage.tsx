@@ -1,5 +1,4 @@
 import { TeamPortrait } from '../components/TeamPortrait';
-import { CoreTeamHeading } from '../components/ui/core-team-heading';
 import React from 'react';
 import { PageId, GSX_JOIN_FORM_URL, GSX_WHATSAPP_URL, GSX_INSTAGRAM_URL, GSX_LINKEDIN_URL } from '../types';
 import { FEATURED_LEAD, CORE_TEAM } from '../data/team';
@@ -126,8 +125,12 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate, onOpen
           SECTION 2 — CORE TEAM (#core-team)
           Executive Leadership & Domain Owners
           =================================================== */}
-      <section id="core-team" aria-labelledby="core-team-heading" className="max-w-6xl mx-auto px-4 sm:px-6 mb-28 scroll-mt-28">
-        <CoreTeamHeading />
+      <section id="core-team" className="max-w-6xl mx-auto px-4 sm:px-6 mb-28 scroll-mt-28">
+        <ScrollReveal variant="fade-up" distance={20} className="text-center max-w-xl mx-auto mb-14">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+            Core Team
+          </h2>
+        </ScrollReveal>
 
         {/* Featured Lead */}
         <ScrollReveal variant="fade-up" distance={25} className="mb-14">

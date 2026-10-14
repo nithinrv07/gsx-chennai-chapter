@@ -38,14 +38,3 @@ the dynamic viewport height. `AnimatedTitleFM` takes an `open` boolean; edit
 its copy to change the branding.
 
 Validation: `npm run lint`, `npm run build`.
-
-## Core Team section
-
-`src/components/ui/core-team-heading.tsx` reuses `GlowHorizonFM` for a
-contained Core Team banner. It starts when the banner enters the viewport,
-plays once per mount, and renders without movement for reduced-motion users.
-The active Community page (also used by the team route) and the standalone
-TeamPage share this heading. Team profiles and links remain below the banner.
-The backdrop is decorative and does not intercept interaction. Typography
-and banner height adjust at the small-screen breakpoint. No new dependencies,
-providers, state management, or stock images are needed.
