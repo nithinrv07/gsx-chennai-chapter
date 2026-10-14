@@ -38,3 +38,16 @@ the dynamic viewport height. `AnimatedTitleFM` takes an `open` boolean; edit
 its copy to change the branding.
 
 Validation: `npm run lint`, `npm run build`.
+
+## Page navigation
+
+The uploaded `GsxLoadingScreen.tsx` is used separately for page changes. It
+replays for 900 ms when the page ID changes through links or browser history,
+using `oncePerSession={false}` and a navigation key. Clicking the current
+page or scrolling to a section on that page does not replay it. The initial
+visit keeps the glow horizon intro instead of stacking both animations.
+
+The supplied CSS, logo animation, reduced-motion support, click-through
+behavior, and image-error dismissal are preserved. The site already has
+`public/gsx-logo.png`, so that asset is used. Page rendering continues beneath
+the decorative overlay; this does not represent network loading progress.
