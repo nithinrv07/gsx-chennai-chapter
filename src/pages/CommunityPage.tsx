@@ -1,7 +1,7 @@
-import { CoreTeamShowcase } from '../components/CoreTeamShowcase';
+import { TeamPortrait } from '../components/TeamPortrait';
 import React from 'react';
 import { PageId, GSX_JOIN_FORM_URL, GSX_WHATSAPP_URL, GSX_INSTAGRAM_URL, GSX_LINKEDIN_URL } from '../types';
-import { FEATURED_LEAD } from '../data/team';
+import { FEATURED_LEAD, CORE_TEAM } from '../data/team';
 import { PageHero } from '../components/PageHero';
 import { ScrollReveal } from '../components/ScrollReveal';
 import { WhatsAppIcon } from '../components/WhatsAppIcon';
@@ -187,7 +187,60 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate, onOpen
           </div>
         </ScrollReveal>
 
-        <CoreTeamShowcase />
+        {/* Core Team Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {CORE_TEAM.map((member, idx) => (
+            <ScrollReveal
+              key={member.id}
+              variant="fade-up"
+              staggerIndex={idx}
+              staggerInterval={50}
+              distance={24}
+              className="h-full"
+            >
+              <div className="glass-panel glass-panel-hover rounded-2xl overflow-hidden flex flex-col group border border-white/[0.08] transition-all duration-300 h-full">
+                <div className="relative h-60 w-full overflow-hidden bg-white/[0.02]">
+                  <TeamPortrait key={member.image} name={member.name} image={member.image} />
+                </div>
+
+                <div className="p-5 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h3 className="text-base font-bold text-white group-hover:text-purple-200 transition-colors">
+                      {member.name}
+                    </h3>
+                    <p className="text-xs font-semibold text-purple-400 mb-2 flex items-center gap-1">
+                      {getRoleIcon(member.iconName)}
+                      <span>{member.role}</span>
+                    </p>
+                    <p className="text-xs text-gray-400 leading-relaxed mb-3">
+                      {member.shortBio}
+                    </p>
+                  </div>
+
+                  <div className="pt-3 mt-3 border-t border-white/[0.06] flex items-center justify-between">
+                    {member.linkedin ? (
+                      <a
+                        href={member.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-1.5 rounded-lg bg-white/[0.03] text-gray-400 hover:text-purple-300 transition-colors"
+                        title="LinkedIn"
+                      >
+                        <Linkedin className="w-3.5 h-3.5" />
+                      </a>
+                    ) : (
+                      <span className="text-[10px] text-gray-400">GSX Chennai</span>
+                    )}
+
+                    <span className="text-[10px] font-mono text-purple-400">
+                      Core Team
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
       </section>
 
       {/* Students across Chennai colleges */}
