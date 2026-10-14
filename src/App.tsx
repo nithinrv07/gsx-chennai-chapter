@@ -3,6 +3,7 @@ import { PageId, EventItem, AnnouncementItem, GSX_JOIN_FORM_URL } from './types'
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { CustomCursor } from './components/CustomCursor';
+import { IntroScreen } from './components/IntroScreen';
 
 // Pages
 import { HomePage } from './pages/HomePage';
@@ -175,7 +176,7 @@ function AppContent() {
       />
 
       {/* Main Content with Route Transitions */}
-      <main className="flex-1 relative z-10">
+      <main tabIndex={-1} className="flex-1 relative z-10">
         <AnimatePresence mode="wait">
           {currentPage === 'home' && (
             <motion.div
@@ -335,7 +336,9 @@ function AppContent() {
 export default function App() {
   return (
     <ThemeProvider>
-      <AppContent />
+      <IntroScreen>
+        <AppContent />
+      </IntroScreen>
     </ThemeProvider>
   );
 }
