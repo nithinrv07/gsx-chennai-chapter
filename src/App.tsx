@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { PageId, EventItem, AnnouncementItem, GSX_JOIN_FORM_URL } from './types';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { CustomCursor } from './components/CustomCursor';
 import { IntroScreen } from './components/IntroScreen';
+import GsxLoadingScreen from './components/GsxLoadingScreen';
 
 // Pages
 import { HomePage } from './pages/HomePage';
@@ -101,7 +102,16 @@ const getInitialPage = (): PageId => {
 
 function AppContent() {
   const [currentPage, setCurrentPage] = useState<PageId>(getInitialPage);
+  const previousPage = useRef(currentPage);
+  const [navigationId, setNavigationId] = useState(0);
   const { isDark } = useTheme();
+
+  // Replay the navigation overlay only when the page changes, including Back/Forward.
+  useEffect(() => {
+    if (previousPage.current === currentPage) return;
+    previousPage.current = currentPage;
+    setNavigationId(id => id + 1);
+  }, [currentPage]);
 
   // Handle browser Back / Forward buttons and manual hash changes
   useEffect(() => {
@@ -161,6 +171,15 @@ function AppContent() {
     <div className="min-h-screen font-sans selection:bg-purple-600 selection:text-white relative overflow-x-hidden flex flex-col bg-[#080414] text-[#ededed]">
       {/* Creative GSX Cosmic Stardust Custom Cursor */}
       <CustomCursor />
+      {navigationId > 0 && (
+        <React.Fragment key={navigationId}>
+          <GsxLoadingScreen
+            logoSrc="/gsx-logo.png"
+            oncePerSession={false}
+            duration={900}
+          />
+        </React.Fragment>
+      )}
 
       {/* Background ambient gradient highlights */}
       <div className="fixed inset-0 pointer-events-none z-0">
