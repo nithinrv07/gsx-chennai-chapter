@@ -1,4 +1,5 @@
 import { TeamPortrait } from '../components/TeamPortrait';
+import { CoreTeamHeading } from '../components/ui/core-team-heading';
 import React from 'react';
 import { PageId, GSX_WHATSAPP_URL, GSX_INSTAGRAM_URL, GSX_LINKEDIN_URL } from '../types';
 import { FEATURED_LEAD, CORE_TEAM } from '../data/team';
@@ -117,18 +118,8 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onNavigate, onOpenJoinModal 
       </ScrollReveal>
 
       {/* Core Team Grid */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24">
-        <ScrollReveal variant="fade-up" distance={20} className="text-center max-w-xl mx-auto mb-14">
-          <span className="text-xs font-bold uppercase tracking-widest text-purple-400 block mb-2">
-            Working Council
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Core Team 
-          </h2>
-          <p className="text-sm text-gray-400 mt-2">
-            Leaders driving learning tracks, open-source building, community outreach, and career programs.
-          </p>
-        </ScrollReveal>
+      <section aria-labelledby="core-team-heading" className="max-w-6xl mx-auto px-4 sm:px-6 mb-24">
+        <CoreTeamHeading />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {CORE_TEAM.map((member, idx) => (
