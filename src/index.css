@@ -257,6 +257,52 @@ html.custom-cursor-active * {
   background: #8b5cf6;
 }
 
+/* Interactive cards: cursor spotlight + 3D tilt (driven by useInteractiveSurfaces) */
+.spotlight-card,
+.glass-panel-hover,
+.glass-card-featured {
+  position: relative;
+  isolation: isolate;
+}
+
+.spotlight-card::after,
+.glass-panel-hover::after,
+.glass-card-featured::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(168, 85, 247, 0.16), transparent 45%);
+  z-index: 1;
+}
+
+.is-pointer-active::after {
+  opacity: 1;
+}
+
+.spotlight-card {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+}
+
+.spotlight-card.is-pointer-active,
+.glass-panel-hover.is-pointer-active {
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(-4px);
+  box-shadow: 0 18px 45px -18px rgba(168, 85, 247, 0.45);
+}
+
+/* Touch screens: tactile press feedback instead of hover effects */
+@media (hover: none) {
+  .spotlight-card:active,
+  .glass-panel-hover:active,
+  .pill:active {
+    transform: scale(0.98);
+    transition-duration: 0.1s;
+  }
+}
+
 /* Intersection Observer Scroll Reveal Animation classes */
 @media (prefers-reduced-motion: reduce) {
   .scroll-reveal-box {

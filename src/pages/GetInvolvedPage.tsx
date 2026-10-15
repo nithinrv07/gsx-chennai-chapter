@@ -200,7 +200,7 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({
 
           {/* 3-Step Journey Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 relative z-10">
-            <div className="glass-panel p-6 rounded-2xl border border-white/[0.08] hover:border-purple-500/30 transition-all">
+            <div className="spotlight-card glass-panel p-6 rounded-2xl border border-white/[0.08] hover:border-purple-500/30 transition-all">
               <span className="font-mono text-xs font-bold text-purple-400 block mb-2">
                 01
               </span>
@@ -220,7 +220,7 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({
               </p>
             </div>
 
-            <div className="glass-panel p-6 rounded-2xl border border-white/[0.08] hover:border-purple-500/30 transition-all">
+            <div className="spotlight-card glass-panel p-6 rounded-2xl border border-white/[0.08] hover:border-purple-500/30 transition-all">
               <span className="font-mono text-xs font-bold text-purple-400 block mb-2">
                 03
               </span>
@@ -273,7 +273,7 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({
               distance={24}
               className="h-full"
             >
-              <div className="glass-panel p-6 rounded-2xl border border-white/[0.08] hover:border-purple-500/30 transition-all group h-full flex flex-col justify-between">
+              <div className="spotlight-card glass-panel p-6 rounded-2xl border border-white/[0.08] hover:border-purple-500/30 transition-all group h-full flex flex-col justify-between">
                 <div>
                   <div className="w-10 h-10 rounded-xl bg-purple-950/40 border border-purple-500/30 flex items-center justify-center mb-4">
                     {getCollabIcon(type.iconName)}

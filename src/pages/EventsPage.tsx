@@ -210,7 +210,7 @@ export const EventsPage: React.FC<EventsPageProps> = ({
           {meetups.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {meetups.map(meetup => (
-                <article key={meetup.id} className="glass-panel rounded-2xl border border-white/[0.08] p-6 flex flex-col">
+                <article key={meetup.id} className="spotlight-card glass-panel rounded-2xl border border-white/[0.08] p-6 flex flex-col">
                   <span className="text-xs text-purple-300 mb-3">{meetup.status === 'past' ? 'Past meetup' : meetup.status === 'ongoing' ? 'Ongoing meetup' : 'Upcoming meetup'} · {meetup.venueType}</span>
                   <h3 className="text-lg font-bold text-white mb-3">{meetup.title}</h3>
                   <p className="text-sm text-gray-400 leading-relaxed mb-4">{meetup.description}</p>
@@ -255,7 +255,7 @@ export const EventsPage: React.FC<EventsPageProps> = ({
                 distance={20}
                 className="h-full"
               >
-                <div className="glass-panel rounded-2xl overflow-hidden flex flex-col border border-white/[0.06] opacity-85 hover:opacity-100 transition-opacity h-full">
+                <div className="spotlight-card glass-panel rounded-2xl overflow-hidden flex flex-col border border-white/[0.06] opacity-85 hover:opacity-100 transition-opacity h-full">
                   <div className="relative h-40 w-full overflow-hidden">
                     <img
                       src={evt.image}

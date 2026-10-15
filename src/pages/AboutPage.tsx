@@ -69,7 +69,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenJoinModal }) => (
             {groups.length > 0 && (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-8">
                 {groups.map(group => (
-                  <article key={group.title} className="rounded-2xl border border-purple-500/15 bg-white/[0.02] p-6 sm:p-8">
+                  <article key={group.title} className="spotlight-card rounded-2xl border border-purple-500/15 bg-white/[0.02] p-6 sm:p-8">
                     <h3 className="text-xl sm:text-2xl font-bold text-purple-100 mb-5">{group.title}</h3>
                     <div className="space-y-4">{blocks(group.blocks)}</div>
                   </article>

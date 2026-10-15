@@ -164,7 +164,8 @@
   background: rgba(66, 30, 103, 0.22);
   box-shadow: 0 0 20px rgba(130, 59, 246, 0.28), inset 0 0 14px rgba(134, 74, 236, 0.1);
   color: #fff;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  translate: var(--mag-x, 0px) var(--mag-y, 0px);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, translate 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   cursor: pointer;
 }
 
@@ -567,6 +568,22 @@
   z-index: 0;
 }
 
+.hero-video {
+  position: absolute;
+  inset: 0;
+  z-index: -4;
+  overflow: hidden;
+  pointer-events: none;
+  background: #080414 url('/chennai/poster.jpg') center / cover no-repeat;
+}
+
+.hero-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
 .neon-ribbons {
   position: absolute;
   inset: 0;
@@ -785,6 +802,22 @@
 }
 
 @media (max-width: 600px) {
+  .hero-video {
+    background-size: auto 520px;
+    background-position: 50% 40px;
+  }
+  .hero-video video {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    width: auto;
+    height: 520px;
+    max-width: none;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 600px) {
   .gsx-header {
     height: 80px;
     padding-inline: 20px;
@@ -819,7 +852,7 @@
   }
   .home {
     min-height: 100svh;
-    padding-bottom: 32px;
+    padding-bottom: 76px;
   }
   .city {
     height: 244px;

@@ -4,6 +4,8 @@ import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { CustomCursor } from './components/CustomCursor';
 import { ScrollProgress } from './components/ScrollProgress';
+import { SmoothScroll } from './components/SmoothScroll';
+import { useInteractiveSurfaces } from './hooks/useInteractiveSurfaces';
 
 // Pages
 import { HomePage } from './pages/HomePage';
@@ -113,6 +115,7 @@ const getInitialPage = (): PageId => {
 function AppContent() {
   const [currentPage, setCurrentPage] = useState<PageId>(getInitialPage);
   const { isDark } = useTheme();
+  useInteractiveSurfaces();
 
   // Handle browser Back / Forward buttons and manual hash changes
   useEffect(() => {
@@ -181,6 +184,7 @@ function AppContent() {
 
       {/* Scroll progress indicator */}
       <ScrollProgress />
+      <SmoothScroll />
 
       {/* Background ambient gradient highlights */}
       <div className="fixed inset-0 pointer-events-none z-0">

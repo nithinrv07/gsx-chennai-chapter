@@ -6,6 +6,7 @@ import { HeroGlow } from '../components/HeroGlow';
 import { ChennaiSkyline } from '../components/ChennaiSkyline';
 import { CommunityStats } from '../components/CommunityStats';
 import { ScrollReveal } from '../components/ScrollReveal';
+import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
 import { 
   Sparkles, 
   ArrowRight, 
@@ -33,6 +34,12 @@ export const HomePage: React.FC<HomePageProps> = ({
   onOpenEventDetail,
   onRegisterEvent,
 }) => {
+  // Hero content drifts up and fades as the page scrolls past it.
+  const reduceMotion = useReducedMotion();
+  const { scrollY } = useScroll();
+  const heroY = useTransform(scrollY, [0, 700], [0, reduceMotion ? 0 : -140]);
+  const heroOpacity = useTransform(scrollY, [0, 550], [1, reduceMotion ? 1 : 0.15]);
+
   const upcomingEvents = EVENTS_DATA.filter((e) => e.status === 'upcoming').slice(0, 3);
 
   const getCardIcon = (iconName: string) => {
@@ -70,7 +77,7 @@ export const HomePage: React.FC<HomePageProps> = ({
         <ChennaiSkyline />
 
         {/* Main Hero Content */}
-        <main id="main" className="hero">
+        <motion.main id="main" className="hero" style={{ y: heroY, opacity: heroOpacity }}>
           <p className="eyebrow">A brighter tomorrow, together</p>
           <h1>
             Learn. Build. Connect. <span>Grow.</span>
@@ -103,7 +110,7 @@ export const HomePage: React.FC<HomePageProps> = ({
 
           {/* 4 Community Stats with Animated Count-ups */}
           <CommunityStats />
-        </main>
+        </motion.main>
 
         {/* Vertical 4-dot Page Marker Indicator */}
         <div className="page-marker" aria-hidden="true">
@@ -188,7 +195,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 className={`h-full md:col-span-2 ${idx === 4 ? 'md:col-start-2 lg:col-start-4' : idx === 3 ? 'lg:col-start-2' : ''}`}
               >
                 <div
-                  className={`p-6 rounded-2xl transition-all border border-white/[0.08] h-full flex flex-col justify-between bg-white/[0.02] hover:bg-white/[0.05] hover:border-purple-500/40 hover:-translate-y-1 shadow-[0_4px_20px_rgba(0,0,0,0.3)] ${
+                  className={`spotlight-card p-6 rounded-2xl transition-all border border-white/[0.08] h-full flex flex-col justify-between bg-white/[0.02] hover:bg-white/[0.05] hover:border-purple-500/40 hover:-translate-y-1 shadow-[0_4px_20px_rgba(0,0,0,0.3)] ${
                     card.highlighted
                       ? 'bg-purple-900/15 border-purple-500/40 shadow-[0_0_30px_rgba(174,112,255,0.15)]'
                       : ''
@@ -251,7 +258,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                   className="h-full"
                 >
                   <div
-                    className="rounded-2xl overflow-hidden flex flex-col group cursor-pointer h-full border border-white/[0.08] bg-[#100a20]/70 hover:border-purple-500/40 hover:bg-[#140c28] transition-all hover:-translate-y-1 shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
+                    className="spotlight-card rounded-2xl overflow-hidden flex flex-col group cursor-pointer h-full border border-white/[0.08] bg-[#100a20]/70 hover:border-purple-500/40 hover:bg-[#140c28] transition-all hover:-translate-y-1 shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
                     onClick={() => onOpenEventDetail(evt)}
                   >
                     <div className="relative h-44 w-full overflow-hidden">

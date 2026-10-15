@@ -1,12 +1,6 @@
 import React from 'react';
 import { HeroParticles } from './HeroParticles';
-
-// Curves follow the bright ribbons in the supplied 1672 × 941 background.
-const ribbons = [
-  'M-30 511 C95 494 130 467 265 444 C361 428 267 415 352 400 C462 383 620 379 756 362',
-  'M920 391 C1070 416 1423 421 1510 481 C1638 568 1364 577 1414 645 C1455 704 1577 745 1688 766',
-  'M-40 734 C111 676 135 638 281 621 C367 601 430 628 523 638',
-];
+import { HeroVideo } from './HeroVideo';
 
 export interface HeroGlowProps {
   variant?: 'skyline' | 'ambient';
@@ -79,11 +73,11 @@ export const HeroGlow: React.FC<HeroGlowProps> = ({
     );
   }
 
-  // Skyline Animated Neon Ribbon Background
+  // Looping Chennai panorama video background
   return (
     <>
+      <HeroVideo />
       <div className="animated-background" aria-hidden="true">
-        <div className="art" />
         {/* Luminous cosmic ambient glow at the top directly behind the navbar */}
         <div
           className="absolute top-0 inset-x-0 h-64 pointer-events-none z-0"
@@ -92,15 +86,6 @@ export const HeroGlow: React.FC<HeroGlowProps> = ({
               'radial-gradient(ellipse 95% 180px at 50% -20px, rgba(168, 85, 247, 0.5) 0%, rgba(126, 34, 206, 0.25) 45%, rgba(88, 28, 135, 0.1) 70%, transparent 100%)',
           }}
         />
-        <svg className="neon-ribbons" viewBox="0 0 1672 941" preserveAspectRatio="none">
-          {ribbons.map((d, i) => (
-            <g key={d}>
-              <path className="ribbon-halo" d={d} />
-              <path className="ribbon-base" d={d} />
-              <path className={`ribbon-travel ribbon-travel-${i}`} d={d} pathLength="100" />
-            </g>
-          ))}
-        </svg>
       </div>
       <div className="shade" aria-hidden="true" />
     </>

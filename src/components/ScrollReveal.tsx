@@ -1,6 +1,12 @@
 import React, { ElementType, ReactNode, CSSProperties } from 'react';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
+const DESKTOP_REVEAL_QUERY = '(min-width: 1024px) and (hover: hover) and (pointer: fine)';
+
+/** On large mouse-driven screens, rising elements also tip forward in 3D. */
+const isDesktopReveal = () =>
+  typeof window !== 'undefined' && window.matchMedia(DESKTOP_REVEAL_QUERY).matches;
+
 export type RevealVariant = 'fade-up' | 'fade-down' | 'fade-left' | 'fade-right' | 'fade' | 'zoom-in';
 
 export interface ScrollRevealProps {
@@ -66,12 +72,17 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
   const computedDelay = staggerIndex !== undefined ? delay + staggerIndex * staggerInterval : delay;
 
   // Build the initial transform based on variant
+  const desktop = isDesktopReveal();
   const getInitialTransform = (): string => {
     switch (variant) {
       case 'fade-up':
-        return `translate3d(0, ${distance}px, 0) scale(0.97)`;
+        return desktop
+          ? `perspective(1200px) translate3d(0, ${distance * 1.75}px, 0) rotateX(14deg) scale(0.95)`
+          : `translate3d(0, ${distance}px, 0) scale(0.97)`;
       case 'fade-down':
-        return `translate3d(0, -${distance}px, 0) scale(0.97)`;
+        return desktop
+          ? `perspective(1200px) translate3d(0, -${distance * 1.75}px, 0) rotateX(-14deg) scale(0.95)`
+          : `translate3d(0, -${distance}px, 0) scale(0.97)`;
       case 'fade-left':
         return `translate3d(-${distance}px, 0, 0)`;
       case 'fade-right':
@@ -90,7 +101,8 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
     transform: isVisible ? 'none' : getInitialTransform(),
     filter: isVisible ? 'none' : `blur(${blur}px)`,
     transitionProperty: 'opacity, transform, filter',
-    transitionDuration: `${duration}ms`,
+    transitionDuration: `${desktop ? duration * 1.2 : duration}ms`,
+    transformOrigin: '50% 100%',
     transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
     transitionDelay: `${computedDelay}ms`,
     willChange: isVisible ? 'auto' : 'opacity, transform, filter',
