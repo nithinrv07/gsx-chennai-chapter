@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { PageId, EventItem, AnnouncementItem, GSX_JOIN_FORM_URL } from './types';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
@@ -6,6 +6,8 @@ import { CustomCursor } from './components/CustomCursor';
 import { ScrollProgress } from './components/ScrollProgress';
 import { SmoothScroll } from './components/SmoothScroll';
 import { useInteractiveSurfaces } from './hooks/useInteractiveSurfaces';
+import { IntroScreen } from './components/IntroScreen';
+import GsxLoadingScreen from './components/GsxLoadingScreen';
 
 // Pages
 import { HomePage } from './pages/HomePage';
@@ -97,25 +99,23 @@ const getInitialPage = (): PageId => {
     return page;
   }
 
-  // 3. Fallback to localStorage (survives hard refresh)
-  try {
-    const saved = localStorage.getItem('gsx_current_page');
-    if (saved === 'projects') return 'opportunities';
-    if (saved === 'resources') return 'home';
-    if (saved && VALID_PAGES.includes(saved as PageId)) {
-      return saved as PageId;
-    }
-  } catch {
-    // ignore storage exceptions
-  }
-
+  // Opening the main website address always starts on Home.
   return 'home';
 };
 
 function AppContent() {
   const [currentPage, setCurrentPage] = useState<PageId>(getInitialPage);
+  const previousPage = useRef(currentPage);
+  const [navigationId, setNavigationId] = useState(0);
   const { isDark } = useTheme();
   useInteractiveSurfaces();
+
+  // Replay the navigation overlay only when the page changes, including Back/Forward.
+  useEffect(() => {
+    if (previousPage.current === currentPage) return;
+    previousPage.current = currentPage;
+    setNavigationId(id => id + 1);
+  }, [currentPage]);
 
   // Handle browser Back / Forward buttons and manual hash changes
   useEffect(() => {
@@ -154,12 +154,6 @@ function AppContent() {
   // Scroll to section or top upon page navigation and push history state
   const handleNavigate = (page: PageId, sectionId?: string) => {
     setCurrentPage(page);
-    try {
-      localStorage.setItem('gsx_current_page', page);
-    } catch {
-      // ignore
-    }
-
     const targetHash = page === 'home'
       ? (sectionId ? `#${sectionId}` : '')
       : (sectionId ? `#${page}#${sectionId}` : `#${page}`);
@@ -181,6 +175,15 @@ function AppContent() {
     <div className="min-h-screen font-sans selection:bg-purple-600 selection:text-white relative overflow-x-hidden flex flex-col bg-[#080414] text-[#ededed]">
       {/* Creative GSX Cosmic Stardust Custom Cursor */}
       <CustomCursor />
+      {navigationId > 0 && (
+        <React.Fragment key={navigationId}>
+          <GsxLoadingScreen
+            logoSrc="/gsx-logo.png"
+            oncePerSession={false}
+            duration={900}
+          />
+        </React.Fragment>
+      )}
 
       {/* Scroll progress indicator */}
       <ScrollProgress />
@@ -200,7 +203,7 @@ function AppContent() {
       />
 
       {/* Main Content with Route Transitions */}
-      <main className="flex-1 relative z-10">
+      <main tabIndex={-1} className="flex-1 relative z-10">
         <AnimatePresence mode="wait">
           {currentPage === 'home' && (
             <motion.div
@@ -360,7 +363,9 @@ function AppContent() {
 export default function App() {
   return (
     <ThemeProvider>
-      <AppContent />
+      <IntroScreen>
+        <AppContent />
+      </IntroScreen>
     </ThemeProvider>
   );
 }

@@ -87,6 +87,40 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate, onOpen
           </motion.div>
       </div>
 
+
+      {/* GirlScript Foundation Founder */}
+      <section id="founder" aria-labelledby="founder-heading" className="max-w-6xl mx-auto px-4 sm:px-6 mb-20 scroll-mt-28">
+        <ScrollReveal variant="fade-up" distance={20} className="text-center mb-10">
+          <h2 id="founder-heading" className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Founder</h2>
+        </ScrollReveal>
+        <ScrollReveal variant="fade-up" distance={25}>
+          <div className="glass-card-featured rounded-3xl p-6 sm:p-10 border border-purple-500/30 overflow-hidden">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+              <div className="md:col-span-4 group overflow-hidden rounded-2xl border border-white/[0.1] max-w-sm w-full mx-auto">
+                <img src="/team/anubha-maneshwar.png" alt="Anubha Maneshwar" loading="lazy"
+                  className="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-500" />
+              </div>
+              <div className="md:col-span-8 space-y-5">
+                <div>
+                  <span className="text-xs font-mono text-purple-400 tracking-wider uppercase">GirlScript Foundation</span>
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-white mt-2">Anubha Maneshwar</h3>
+                  <p className="text-sm font-semibold text-purple-300 mt-2">Founder, GirlScript Foundation</p>
+                </div>
+                <p className="text-sm sm:text-base text-gray-300 leading-relaxed max-w-2xl">
+                  Anubha Maneshwar founded GirlScript Foundation to support beginners in technology and create opportunities for learning and growth.
+                </p>
+                <a href="https://www.linkedin.com/in/anubhamane/" target="_blank" rel="noopener noreferrer"
+                  aria-label="Connect with Anubha Maneshwar on LinkedIn"
+                  className="px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.08] hover:border-purple-500/40 hover:bg-purple-950/30 text-gray-300 hover:text-white transition-all inline-flex items-center gap-2 text-sm">
+                  <Linkedin className="w-4 h-4 text-purple-400" />
+                  <span>Connect on LinkedIn</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
+      </section>
+
       {/* ===================================================
           SECTION 2 — CORE TEAM (#core-team)
           Executive Leadership & Domain Owners

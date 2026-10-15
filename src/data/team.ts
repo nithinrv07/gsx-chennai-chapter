@@ -80,7 +80,8 @@ export const CORE_TEAM: TeamMember[] = [
     "owns": "Community initiatives and chapter activities",
     "shortBio": "Supporting the chapter’s community initiatives and activities.",
     "image": "/team/Sreekanth%20G.jpeg",
-    "iconName": "Users"
+    "iconName": "Users",
+    "linkedin": "https://www.linkedin.com/in/sreekanth-g-429711418"
   },
   {
     "id": "core-07",
@@ -107,7 +108,8 @@ export const CORE_TEAM: TeamMember[] = [
     "owns": "Technical support and development",
     "shortBio": "Supporting the chapter’s technical initiatives and development.",
     "image": "/team/nithin-r.jpeg",
-    "iconName": "Cpu"
+    "iconName": "Cpu",
+    "linkedin": "https://www.linkedin.com/in/nithinr-engineer"
   },
   {
     "id": "core-09",
