@@ -268,6 +268,50 @@ html.custom-cursor-active * {
   background: #8b5cf6;
 }
 
+/* Footer GSX wordmark: softly lit letters that blaze on hover */
+.footer-wordmark {
+  display: flex;
+  justify-content: center;
+  gap: 0.04em;
+  margin: 0;
+  padding: 28px 0 8px;
+  font-family: var(--font-heading);
+  font-size: clamp(96px, 22vw, 300px);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: 0.06em;
+  user-select: none;
+}
+
+.footer-wordmark-letter {
+  cursor: default;
+  color: rgba(196, 160, 255, 0.16);
+  text-shadow: 0 0 40px rgba(168, 85, 247, 0.25);
+  transition: color 0.35s ease, text-shadow 0.35s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.footer-wordmark-letter:hover,
+.footer-wordmark-letter:active {
+  color: #f5ecff;
+  text-shadow:
+    0 0 12px rgba(255, 255, 255, 0.9),
+    0 0 36px rgba(216, 180, 254, 0.85),
+    0 0 80px rgba(168, 85, 247, 0.8),
+    0 0 140px rgba(147, 51, 234, 0.6);
+  transform: translateY(-6px);
+}
+
+.light .footer-wordmark-letter {
+  color: rgba(109, 40, 217, 0.14);
+  text-shadow: none;
+}
+
+.light .footer-wordmark-letter:hover,
+.light .footer-wordmark-letter:active {
+  color: #7c3aed;
+  text-shadow: 0 0 30px rgba(139, 92, 246, 0.45);
+}
+
 /* Interactive cards: cursor spotlight + 3D tilt (driven by useInteractiveSurfaces) */
 .spotlight-card,
 .glass-panel-hover,

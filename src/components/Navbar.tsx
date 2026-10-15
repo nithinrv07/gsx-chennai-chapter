@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { PageId } from '../types';
 import { SearchModal } from './SearchModal';
-import { ChevronDown, Sparkles, House, Users, CalendarDays, Rocket, Handshake } from 'lucide-react';
+import { ChevronDown, Sparkles } from 'lucide-react';
 import { DropdownNavigation } from './ui/dropdown-navigation';
 
 export interface NavbarProps {
@@ -220,7 +220,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                 id: child.id,
                 label: child.label,
                 description: child.description,
-                icon: ({ home: House, community: Users, events: CalendarDays, opportunities: Rocket, 'get-involved': Handshake })[item.id] || Sparkles,
                 onSelect: () => handleNavClick(child.pageId || item.id, child.sectionId),
               })),
             }] : undefined,
@@ -238,7 +237,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="header-actions shrink-0">
           <button
             type="button"
-            className="pill"
+            className="pill nav-cta"
             onClick={onOpenJoinModal}
           >
             <span>Join GSX</span>

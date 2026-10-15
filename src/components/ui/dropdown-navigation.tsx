@@ -2,7 +2,7 @@
 
 import React, { useId, useRef } from "react";
 import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from "framer-motion";
-import { ChevronDown, type LucideIcon } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 export interface DropdownNavItem {
   id: string;
@@ -15,7 +15,6 @@ export interface DropdownNavItem {
       id: string;
       label: string;
       description?: string;
-      icon: LucideIcon;
       onSelect: () => void;
     }[];
   }[];
@@ -123,20 +122,14 @@ export function DropdownNavigation({ navItems, openMenu, onOpenMenu, onLeaveMenu
                           <div key={sub.title} className="w-72 max-w-full">
                             <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-purple-300">{sub.title}</h3>
                             <ul className="space-y-2">
-                              {sub.items.map(child => {
-                                const Icon = child.icon;
-                                return (
-                                  <li key={child.id}>
-                                    <button type="button" onClick={child.onSelect} className="group flex w-full items-start gap-3 rounded-xl p-2 text-left transition-colors hover:bg-purple-500/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-purple-300">
-                                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-purple-300/15 bg-white/[0.03] text-purple-300 transition-colors group-hover:bg-purple-500/20"><Icon aria-hidden="true" className="h-4 w-4" /></span>
-                                      <span className="min-w-0 leading-5">
-                                        <span className="block text-sm font-medium text-white">{child.label}</span>
-                                        <span className="mt-0.5 block text-xs leading-relaxed text-gray-400 group-hover:text-purple-200">{child.description}</span>
-                                      </span>
-                                    </button>
-                                  </li>
-                                );
-                              })}
+                              {sub.items.map(child => (
+                                <li key={child.id}>
+                                  <button type="button" onClick={child.onSelect} className="group block w-full rounded-xl px-3 py-2 text-left transition-colors hover:bg-purple-500/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-purple-300">
+                                    <span className="block text-sm font-medium leading-5 text-white">{child.label}</span>
+                                    <span className="mt-0.5 block text-xs leading-relaxed text-gray-400 group-hover:text-purple-200">{child.description}</span>
+                                  </button>
+                                </li>
+                              ))}
                             </ul>
                           </div>
                         ))}

@@ -183,6 +183,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenJoinModal }) =
           </div>
         </div>
 
+        {/* Big GSX wordmark: each letter lights up on hover */}
+        <p className="footer-wordmark" aria-label="GSX">
+          {['G', 'S', 'X'].map((letter) => (
+            <span key={letter} className="footer-wordmark-letter" aria-hidden="true">
+              {letter}
+            </span>
+          ))}
+        </p>
+
         {/* Footer Bottom */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
           <p>© 2026 GSX Chennai Chapter. All rights reserved.</p>
