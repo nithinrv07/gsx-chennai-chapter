@@ -98,7 +98,7 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate, onOpen
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
               <div className="md:col-span-4 group overflow-hidden rounded-2xl border border-white/[0.1] max-w-sm w-full mx-auto">
                 <img src="/team/anubha-maneshwar.png" alt="Anubha Maneshwar" loading="lazy"
-                  className="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-500" />
+                  className="w-full aspect-square object-cover grayscale group-hover:grayscale-0 group-active:grayscale-0 group-hover:scale-105 transition-[transform,filter] duration-500" />
               </div>
               <div className="md:col-span-8 space-y-5">
                 <div>
@@ -140,7 +140,7 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate, onOpen
                 <img
                   src={FEATURED_LEAD.image}
                   alt={FEATURED_LEAD.name}
-                  className="w-full h-72 sm:h-80 object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-72 sm:h-80 object-cover object-top grayscale group-hover:grayscale-0 group-active:grayscale-0 group-hover:scale-105 transition-[transform,filter] duration-500"
                 />
               </div>
 

@@ -44,7 +44,7 @@ export const HeroVideo: React.FC = () => {
 
   return (
     <>
-      <div className="hero-video" aria-hidden="true">
+      <div className={`hero-video${userPaused || !inView ? ' is-paused' : ''}`} aria-hidden="true">
         <video ref={videoRef} autoPlay muted loop playsInline preload="auto" poster={POSTER_SRC}>
           <source src={VIDEO_SRC} type="video/mp4" />
         </video>

@@ -73,7 +73,7 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onNavigate, onOpenJoinModal 
               <img
                 src={FEATURED_LEAD.image}
                 alt={FEATURED_LEAD.name}
-                className="w-full h-80 sm:h-96 object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                className="w-full h-80 sm:h-96 object-cover object-top grayscale group-hover:grayscale-0 group-active:grayscale-0 group-hover:scale-105 transition-[transform,filter] duration-500"
               />
             </div>
 

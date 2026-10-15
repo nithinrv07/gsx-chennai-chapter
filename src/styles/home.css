@@ -368,7 +368,7 @@
 .stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  width: min(735px, 100%);
+  width: min(860px, 100%);
   margin: 68px auto 0;
   padding: 0;
   list-style: none;
@@ -383,7 +383,7 @@
   content: "";
   position: absolute;
   left: 0;
-  top: 7px;
+  top: 10px;
   bottom: 0;
   width: 1px;
   background: rgba(199, 163, 248, 0.2);
@@ -391,17 +391,30 @@
 
 .stats strong {
   display: block;
-  font-size: 33px;
-  letter-spacing: -1px;
-  color: #bd88ff;
-  line-height: 1.25;
+  font-family: var(--font-heading);
+  font-size: clamp(36px, 4.2vw, 52px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
 }
 
-.stats span {
+/* The animated counter renders its own span, so target it explicitly. */
+.stats strong > span {
+  background: linear-gradient(180deg, #ffffff 15%, #c99bff 70%, #9a5cf0 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 18px rgba(168, 85, 247, 0.35));
+}
+
+.stats li > span {
   display: block;
-  font-size: 15px;
-  color: #e1d7f1;
-  margin-top: 3px;
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(225, 215, 241, 0.7);
 }
 
 .explore {
@@ -574,14 +587,42 @@
   z-index: -4;
   overflow: hidden;
   pointer-events: none;
-  background: #080414 url('/chennai/poster.jpg') center / cover no-repeat;
+  container-type: size;
+  background: #080414 url('/chennai/poster.jpg') left center / auto 100% no-repeat;
 }
 
+/* The panorama is wider than the screen; the camera glides across it and back. */
 .hero-video video {
-  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 100%;
+  width: auto;
+  min-width: 160%;
+  max-width: none;
   object-fit: cover;
-  object-position: center;
+  animation: hero-pan 15s ease-in-out infinite alternate;
+}
+
+.hero-video.is-paused video {
+  animation-play-state: paused;
+}
+
+@keyframes hero-pan {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(calc(100cqw - 100%), 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-video video {
+    animation: none;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 .neon-ribbons {
@@ -804,16 +845,11 @@
 @media (max-width: 600px) {
   .hero-video {
     background-size: auto 520px;
-    background-position: 50% 40px;
+    background-position: 0 40px;
   }
   .hero-video video {
-    position: absolute;
     top: 40px;
-    left: 50%;
-    width: auto;
     height: 520px;
-    max-width: none;
-    transform: translateX(-50%);
   }
 }
 
@@ -910,13 +946,13 @@
     max-width: 350px;
   }
   .stats strong {
-    font-size: 30px;
+    font-size: 36px;
   }
   .stats li:nth-child(3):before {
     display: none;
   }
-  .stats span {
-    font-size: 14px;
+  .stats li > span {
+    font-size: 11px;
   }
   .neon-ribbons {
     width: 1315px;
