@@ -91,7 +91,7 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate, onOpen
           SECTION 2 — CORE TEAM (#core-team)
           Executive Leadership & Domain Owners
           =================================================== */}
-      <section id="core-team" className="max-w-6xl mx-auto px-4 sm:px-6 mb-28 scroll-mt-28">
+      <section id="core-team" className="max-w-6xl mx-auto px-4 sm:px-6 mb-16 sm:mb-28 scroll-mt-28">
         <ScrollReveal variant="fade-up" distance={20} className="text-center max-w-xl mx-auto mb-14">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
             Core Team
@@ -210,7 +210,7 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate, onOpen
       </section>
 
       {/* Students across Chennai colleges */}
-      <section id="colleges" className="max-w-5xl mx-auto px-4 sm:px-6 mb-24 scroll-mt-28">
+      <section id="colleges" className="max-w-5xl mx-auto px-4 sm:px-6 mb-14 sm:mb-24 scroll-mt-28">
         <ScrollReveal variant="fade-up" distance={20}>
           <div className="glass-panel rounded-3xl border border-purple-500/20 bg-gradient-to-r from-purple-950/30 via-[#0d071d] to-purple-950/20 p-8 sm:p-12 text-center">
             <div className="w-14 h-14 rounded-2xl bg-purple-500/15 border border-purple-500/25 text-purple-300 flex items-center justify-center mx-auto mb-6">

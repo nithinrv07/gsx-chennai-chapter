@@ -56,7 +56,7 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onNavigate, onOpenJoinModal 
             <span className="text-gradient-purple">GSX Chennai.</span></>} description={<>A dedicated collective of domain owners, community architects, and technical builders empowering Chennai&apos;s tech ecosystem.</>} />
 
       {/* Featured Lead Profile Card */}
-      <ScrollReveal as="section" variant="fade-up" distance={25} className="max-w-5xl mx-auto px-4 sm:px-6 mb-20">
+      <ScrollReveal as="section" variant="fade-up" distance={25} className="max-w-5xl mx-auto px-4 sm:px-6 mb-12 sm:mb-20">
         <div className="text-center sm:text-left mb-6">
           <span className="text-xs font-bold uppercase tracking-widest text-purple-400">
             Executive Leadership
@@ -117,7 +117,7 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onNavigate, onOpenJoinModal 
       </ScrollReveal>
 
       {/* Core Team Grid */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24">
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-14 sm:mb-24">
         <ScrollReveal variant="fade-up" distance={20} className="text-center max-w-xl mx-auto mb-14">
           <span className="text-xs font-bold uppercase tracking-widest text-purple-400 block mb-2">
             Working Council
@@ -190,7 +190,7 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onNavigate, onOpenJoinModal 
       </section>
 
       {/* Official Community Channels Section */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 mb-24">
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 mb-14 sm:mb-24">
         <ScrollReveal variant="fade-up" distance={20} className="text-center max-w-xl mx-auto mb-10">
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
             Connect With GSX Chennai

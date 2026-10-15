@@ -121,7 +121,7 @@ export const HomePage: React.FC<HomePageProps> = ({
       <div id="explore-community" className="relative z-10 pt-16 sm:pt-24 pb-20">
         
         {/* SECTION 1: ABOUT / ECOSYSTEM PREVIEW */}
-        <ScrollReveal as="section" variant="fade-up" distance={28} className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-28">
+        <ScrollReveal as="section" variant="fade-up" distance={28} className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 sm:mb-28">
           <div className="relative rounded-3xl p-8 sm:p-12 overflow-hidden border border-white/[0.08] bg-gradient-to-br from-[#120826]/80 to-[#080414]/90 backdrop-blur-xl shadow-[0_10px_35px_rgba(0,0,0,0.6)]">
             <div className="absolute top-0 right-0 w-96 h-96 bg-purple-600/15 rounded-full blur-3xl pointer-events-none" />
 
@@ -151,7 +151,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           </div>
         </ScrollReveal>
 
-        <section id="photo-gallery" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-24 scroll-mt-28">
+        <section id="photo-gallery" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-14 sm:mb-24 scroll-mt-28">
           <div className="text-center mb-8">
             <span className="text-xs font-semibold uppercase tracking-widest text-purple-400">Our community in moments</span>
             <h2 className="text-3xl sm:text-4xl font-bold text-white mt-3">Photo Gallery</h2>
@@ -164,7 +164,7 @@ export const HomePage: React.FC<HomePageProps> = ({
         </section>
 
         {/* SECTION 2: CORE PILLARS / WHAT WE DO */}
-        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-28">
+        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 sm:mb-28">
           <ScrollReveal variant="fade-up" distance={20} className="text-center max-w-2xl mx-auto mb-14">
             <span className="text-xs font-semibold uppercase tracking-widest text-purple-400 block mb-2">
               Core Pillars
@@ -219,7 +219,7 @@ export const HomePage: React.FC<HomePageProps> = ({
         </section>
 
         {/* SECTION 3: UPCOMING EVENTS */}
-        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-28">
+        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 sm:mb-28">
           <ScrollReveal variant="fade-up" distance={20} className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
             <div>
               <span className="text-xs font-semibold uppercase tracking-widest text-purple-400 block mb-1">
@@ -327,7 +327,7 @@ export const HomePage: React.FC<HomePageProps> = ({
         </section>
 
         {/* SECTION 5: FINAL CTA */}
-        <ScrollReveal as="section" variant="fade-up" distance={30} className="relative overflow-hidden py-20 px-4 sm:px-6 lg:px-8 mb-16">
+        <ScrollReveal as="section" variant="fade-up" distance={30} className="relative overflow-hidden py-14 sm:py-20 px-4 sm:px-6 lg:px-8 mb-16">
           <div className="absolute inset-0 bg-gradient-to-b from-purple-900/20 via-violet-950/30 to-[#080414] pointer-events-none" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[350px] bg-purple-600/20 blur-[120px] rounded-full pointer-events-none" />
 

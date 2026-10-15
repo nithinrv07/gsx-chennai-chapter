@@ -3,6 +3,7 @@ import { PageId, EventItem, AnnouncementItem, GSX_JOIN_FORM_URL } from './types'
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { CustomCursor } from './components/CustomCursor';
+import { ScrollProgress } from './components/ScrollProgress';
 
 // Pages
 import { HomePage } from './pages/HomePage';
@@ -177,6 +178,9 @@ function AppContent() {
     <div className="min-h-screen font-sans selection:bg-purple-600 selection:text-white relative overflow-x-hidden flex flex-col bg-[#080414] text-[#ededed]">
       {/* Creative GSX Cosmic Stardust Custom Cursor */}
       <CustomCursor />
+
+      {/* Scroll progress indicator */}
+      <ScrollProgress />
 
       {/* Background ambient gradient highlights */}
       <div className="fixed inset-0 pointer-events-none z-0">

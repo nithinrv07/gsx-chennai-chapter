@@ -39,7 +39,7 @@ export const BrochureModal: React.FC<BrochureModalProps> = ({ isOpen, onClose })
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 overflow-y-auto bg-black/85 backdrop-blur-md">
       {/* Container */}
-      <div className="relative w-full max-w-4xl max-h-[92vh] bg-[#0c0a14] border border-purple-500/30 rounded-3xl shadow-[0_0_60px_rgba(147,51,234,0.3)] overflow-hidden flex flex-col my-auto">
+      <div className="relative w-full max-w-4xl max-h-[92dvh] bg-[#0c0a14] border border-purple-500/30 rounded-3xl shadow-[0_0_60px_rgba(147,51,234,0.3)] overflow-hidden flex flex-col my-auto">
         {/* Modal Toolbar (hidden on print) */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-white/[0.08] bg-[#120f1f] shrink-0 print:hidden">
           <div className="flex items-center gap-2.5">

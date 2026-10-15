@@ -348,7 +348,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         {mobileOpen && (
           <div
             id="mobile-navigation"
-            className="lg:hidden absolute top-full left-0 right-0 w-full bg-[#0d071f]/98 backdrop-blur-3xl border-b border-purple-500/30 p-4 sm:p-6 shadow-[0_25px_60px_rgba(0,0,0,0.8)] max-h-[80vh] overflow-y-auto z-50 animate-in fade-in slide-in-from-top-4 duration-200"
+            className="lg:hidden absolute top-full left-0 right-0 w-full bg-[#0d071f]/98 backdrop-blur-3xl border-b border-purple-500/30 p-4 sm:p-6 shadow-[0_25px_60px_rgba(0,0,0,0.8)] max-h-[80dvh] overflow-y-auto z-50 animate-in fade-in slide-in-from-top-4 duration-200"
           >
             <div className="flex flex-col gap-1.5">
               {NAV_STRUCTURE.map((item) => {

@@ -6,7 +6,7 @@ interface TrailPoint {
   y: number;
 }
 
-export const CustomCursor: React.FC = () => {
+const CustomCursorCanvas: React.FC = () => {
   const { isDark } = useTheme();
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -224,4 +224,22 @@ export const CustomCursor: React.FC = () => {
       </div>
     </>
   );
+};
+
+const FINE_POINTER_QUERY = '(hover: hover) and (pointer: fine)';
+
+/** Only mount the cursor on mouse/trackpad devices; touch screens keep the native behaviour. */
+export const CustomCursor: React.FC = () => {
+  const [hasFinePointer, setHasFinePointer] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia(FINE_POINTER_QUERY).matches
+  );
+
+  useEffect(() => {
+    const media = window.matchMedia(FINE_POINTER_QUERY);
+    const handleChange = () => setHasFinePointer(media.matches);
+    media.addEventListener('change', handleChange);
+    return () => media.removeEventListener('change', handleChange);
+  }, []);
+
+  return hasFinePointer ? <CustomCursorCanvas /> : null;
 };

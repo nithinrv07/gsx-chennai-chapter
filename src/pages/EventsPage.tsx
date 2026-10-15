@@ -72,7 +72,7 @@ export const EventsPage: React.FC<EventsPageProps> = ({
       </section>
 
       {/* Upcoming Events Grid */}
-      <section id="upcoming-events" className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 scroll-mt-28">
+      <section id="upcoming-events" className="max-w-6xl mx-auto px-4 sm:px-6 mb-14 sm:mb-24 scroll-mt-28">
         <div id="event-details" className="flex items-center justify-between mb-8 scroll-mt-28">
           <div>
             <span className="text-xs font-bold uppercase tracking-widest text-purple-400 block mb-1">
@@ -201,7 +201,7 @@ export const EventsPage: React.FC<EventsPageProps> = ({
 
       {/* Community Meetups */}
       {(selectedCategory === 'All' || selectedCategory === 'Meetups') && (
-        <section id="meetups" className="max-w-6xl mx-auto px-4 sm:px-6 mb-24 scroll-mt-28">
+        <section id="meetups" className="max-w-6xl mx-auto px-4 sm:px-6 mb-14 sm:mb-24 scroll-mt-28">
           <div className="mb-8">
             <span className="text-xs font-bold uppercase tracking-widest text-purple-400 block mb-1">Connect with the community</span>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Meetups</h2>

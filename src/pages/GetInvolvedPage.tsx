@@ -114,7 +114,7 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({
           SECTION 1 — HOW YOU CAN GET INVOLVED (VOLUNTEER)
           6 Opportunity Cards
           =================================================== */}
-      <section id="volunteer" className="max-w-6xl mx-auto px-4 sm:px-6 mb-28 scroll-mt-28">
+      <section id="volunteer" className="max-w-6xl mx-auto px-4 sm:px-6 mb-16 sm:mb-28 scroll-mt-28">
         <ScrollReveal variant="fade-up" distance={20} className="text-center max-w-xl mx-auto mb-14">
           <span className="text-xs font-bold uppercase tracking-widest text-purple-400 block mb-2">
             Engagement Pathways
@@ -181,7 +181,7 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({
           SECTION 2 — JOIN GSX
           Large visually impressive section with 3-step journey
           =================================================== */}
-      <ScrollReveal as="section" id="join-gsx" variant="fade-up" distance={30} className="max-w-6xl mx-auto px-4 sm:px-6 mb-28 scroll-mt-28">
+      <ScrollReveal as="section" id="join-gsx" variant="fade-up" distance={30} className="max-w-6xl mx-auto px-4 sm:px-6 mb-16 sm:mb-28 scroll-mt-28">
         <div className="relative rounded-3xl p-8 sm:p-14 overflow-hidden border border-purple-500/30 bg-gradient-to-br from-[#120a24]/90 via-[#0a0714] to-[#050505] shadow-[0_0_60px_rgba(168,85,247,0.25)]">
           {/* Radial light behind content */}
           <div className="absolute top-0 right-1/4 w-[500px] h-[350px] bg-purple-600/20 blur-[100px] pointer-events-none rounded-full" />
@@ -335,7 +335,7 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({
             REUSABLE COLLABORATION & INQUIRY FORM
             Clean, validated form with instant success feedback & backend readiness
             =================================================== */}
-        <ScrollReveal variant="fade-up" distance={24} className="max-w-2xl mx-auto mb-20">
+        <ScrollReveal variant="fade-up" distance={24} className="max-w-2xl mx-auto mb-12 sm:mb-20">
           <CollaborationInquiryForm 
             id="collaboration-form"
             title="Send Collaboration Proposal"

@@ -262,6 +262,7 @@ html.custom-cursor-active * {
   .scroll-reveal-box {
     opacity: 1 !important;
     transform: none !important;
+    filter: none !important;
     transition: none !important;
   }
 }
