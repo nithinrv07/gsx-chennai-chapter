@@ -489,29 +489,6 @@
   background: rgba(190, 135, 255, 0.15);
 }
 
-.page-marker {
-  position: absolute;
-  right: 29px;
-  top: 41%;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  pointer-events: none;
-  z-index: 10;
-}
-
-.page-marker i {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #81708d;
-}
-
-.page-marker i:first-child {
-  background: #fff;
-  box-shadow: 0 0 11px 4px #a45aff;
-}
-
 /* Search Modal Styling */
 .search-modal {
   color: var(--white);
@@ -855,9 +832,6 @@
   }
   .hero h1 {
     font-size: 42px;
-  }
-  .page-marker {
-    display: none;
   }
   .explore {
     display: none;
