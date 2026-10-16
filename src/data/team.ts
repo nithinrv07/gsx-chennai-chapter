@@ -16,7 +16,7 @@ Passionate about technology, community building, and creating meaningful opportu
 Through GSX Chennai, she aims to connect students, institutions, organisations, and industry professionals to create opportunities that go beyond traditional classroom learning.
 
 Her guiding philosophy: Learn. Build. Connect. Grow. — together, beyond campuses.`,
-  image: '/team/DEDEEPYA%20YAKKALA.jpeg',
+  image: '/team/purple/DEDEEPYA%20YAKKALA.jpg',
   iconName: 'Compass',
   linkedin: 'https://www.linkedin.com/in/dedeepyayakkala',
   isLead: true,
@@ -29,7 +29,7 @@ export const CORE_TEAM: TeamMember[] = [
     "role": "Co-Lead",
     "owns": "Chapter coordination and support",
     "shortBio": "Supporting the Chapter Lead and coordinating the core team.",
-    "image": "/team/MINHU.jpeg",
+    "image": "/team/purple/MINHU.jpg",
     "iconName": "Compass",
     "linkedin": "https://www.linkedin.com/in/minhu-parthasarathy07/"
   },
@@ -39,7 +39,7 @@ export const CORE_TEAM: TeamMember[] = [
     "role": "Operations Lead",
     "owns": "Chapter operations and event coordination",
     "shortBio": "Coordinating chapter operations and supporting event delivery.",
-    "image": "/team/ABINAYA.jpeg",
+    "image": "/team/purple/ABINAYA.jpg",
     "iconName": "Cpu",
     "linkedin": "https://www.linkedin.com/in/abinaya0333"
   },
@@ -49,7 +49,7 @@ export const CORE_TEAM: TeamMember[] = [
     "role": "Operations Lead",
     "owns": "Chapter operations and event coordination",
     "shortBio": "Coordinating chapter operations and supporting event delivery.",
-    "image": "/team/jenita%20agnes.jpeg",
+    "image": "/team/purple/jenita%20agnes.jpg",
     "iconName": "Cpu",
     "linkedin": "https://www.linkedin.com/in/jenita-agnes-dl/"
   },
@@ -59,7 +59,7 @@ export const CORE_TEAM: TeamMember[] = [
     "role": "Learning",
     "owns": "Community learning initiatives",
     "shortBio": "Supporting learning sessions and knowledge sharing within the community.",
-    "image": "/team/semmozhi.jpeg",
+    "image": "/team/purple/semmozhi.jpg",
     "iconName": "BookOpen",
     "linkedin": "https://www.linkedin.com/in/semmozhi/"
   },
@@ -69,7 +69,7 @@ export const CORE_TEAM: TeamMember[] = [
     "role": "Building",
     "owns": "Community project building",
     "shortBio": "Supporting collaborative project building within the community.",
-    "image": "/team/buvaneshwer.jpeg",
+    "image": "/team/purple/buvaneshwer.jpg",
     "iconName": "Hammer",
     "linkedin": "https://www.linkedin.com/in/buvanagirish-sk-3b7ba8329/"
   },
@@ -79,7 +79,7 @@ export const CORE_TEAM: TeamMember[] = [
     "role": "Core Member",
     "owns": "Community initiatives and chapter activities",
     "shortBio": "Supporting the chapter’s community initiatives and activities.",
-    "image": "/team/Sreekanth%20G.jpeg",
+    "image": "/team/purple/Sreekanth%20G.jpg",
     "iconName": "Users",
     "linkedin": "https://www.linkedin.com/in/sreekanth-g-429711418"
   },
@@ -89,7 +89,7 @@ export const CORE_TEAM: TeamMember[] = [
     "role": "Technical Team",
     "owns": "Technical support and development",
     "shortBio": "Supporting the chapter’s technical initiatives and development.",
-    "image": "/team/Hari%20Haran.jpeg",
+    "image": "/team/purple/Hari%20Haran.jpg",
     "iconName": "Cpu"
   },
   {
@@ -98,7 +98,7 @@ export const CORE_TEAM: TeamMember[] = [
     "role": "Technical Team",
     "owns": "Technical support and development",
     "shortBio": "Supporting the chapter’s technical initiatives and development.",
-    "image": "/team/Balaji%20S.jpeg",
+    "image": "/team/purple/Balaji%20S.jpg",
     "iconName": "Cpu"
   },
   {
@@ -107,7 +107,7 @@ export const CORE_TEAM: TeamMember[] = [
     "role": "Technical Team",
     "owns": "Technical support and development",
     "shortBio": "Supporting the chapter’s technical initiatives and development.",
-    "image": "/team/nithin-r.jpeg",
+    "image": "/team/purple/nithin-r.jpg",
     "iconName": "Cpu",
     "linkedin": "https://www.linkedin.com/in/nithinr-engineer"
   },
@@ -117,7 +117,7 @@ export const CORE_TEAM: TeamMember[] = [
     "role": "Community",
     "owns": "Community engagement",
     "shortBio": "Connecting students across colleges and supporting community participation.",
-    "image": "/team/KAMESHWARN.jpeg",
+    "image": "/team/purple/KAMESHWARN.jpg",
     "iconName": "Users",
     "linkedin": "https://www.linkedin.com/in/kameshwaran-b-779363338/"
   },
@@ -127,7 +127,7 @@ export const CORE_TEAM: TeamMember[] = [
     "role": "Impact",
     "owns": "Community impact initiatives",
     "shortBio": "Supporting initiatives that bring technology and community impact together.",
-    "image": "/team/SHAMEL.jpeg",
+    "image": "/team/purple/SHAMEL.jpg",
     "iconName": "HeartHandshake",
     "linkedin": "https://www.linkedin.com/in/mohamedshameel2006/"
   },
@@ -137,7 +137,7 @@ export const CORE_TEAM: TeamMember[] = [
     "role": "Career",
     "owns": "Career development initiatives",
     "shortBio": "Supporting career learning and development within the community.",
-    "image": "/team/KAVIYA.jpeg",
+    "image": "/team/purple/KAVIYA.jpg",
     "iconName": "TrendingUp",
     "linkedin": "https://www.linkedin.com/in/kaviya-sree-n-a6293b380/"
   },
@@ -147,7 +147,7 @@ export const CORE_TEAM: TeamMember[] = [
     "role": "Communications",
     "owns": "Chapter communications",
     "shortBio": "Supporting chapter announcements and community communications.",
-    "image": "/team/MITHRA.jpeg",
+    "image": "/team/purple/MITHRA.jpg",
     "iconName": "Megaphone",
     "linkedin": "https://www.linkedin.com/in/mithra-b-404111313/"
   }

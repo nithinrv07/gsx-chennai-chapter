@@ -193,13 +193,17 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenJoinModal }) =
         </div>
       </div>
 
-      {/* Giant GSX wordmark sinking past the footer's bottom edge; each letter lights up on hover */}
-      <p className="footer-wordmark" aria-label="GSX">
-        {['G', 'S', 'X'].map((letter) => (
-          <span key={letter} className="footer-wordmark-letter" aria-hidden="true">
-            {letter}
-          </span>
-        ))}
+      {/* Giant GSX CHENNAI wordmark sinking past the footer's bottom edge; each letter lights up on hover */}
+      <p className="footer-wordmark" aria-label="GSX Chennai">
+        {'GSX CHENNAI'.split('').map((letter, index) =>
+          letter === ' ' ? (
+            <span key={index} className="footer-wordmark-space" aria-hidden="true" />
+          ) : (
+            <span key={index} className="footer-wordmark-letter" aria-hidden="true">
+              {letter}
+            </span>
+          )
+        )}
       </p>
     </footer>
   );

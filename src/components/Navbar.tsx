@@ -198,13 +198,13 @@ export const Navbar: React.FC<NavbarProps> = ({
           onClick={() => handleNavClick('home')}
           aria-label="GSX Chennai home"
         >
-          <div className="w-9 h-9 bg-purple-600/30 border border-purple-500/40 rounded-xl flex items-center justify-center p-1.5 shadow-[0_0_15px_rgba(168,85,247,0.35)] group-hover:scale-105 transition-transform">
-            <img src="/gsx-logo.png" alt="GSX Logo" className="w-full h-full object-contain" />
-          </div>
-          <div className="flex items-center gap-2">
+          <span className="brand-mark">
+            <img src="/gsx-logo.png" alt="" aria-hidden="true" />
+          </span>
+          <span className="brand-text">
             <span className="wordmark">GSX</span>
             <span className="chapter">CHENNAI</span>
-          </div>
+          </span>
         </button>
 
         {/* Desktop Dropdown Navigation Menu */}

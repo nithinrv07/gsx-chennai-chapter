@@ -3,6 +3,8 @@ import React, { useEffect, useRef, useState } from 'react';
 const VIDEO_SRC = '/chennai/Chennai_Panorama_Loop.mp4';
 const POSTER_SRC = '/chennai/poster.jpg';
 const REDUCED_MOTION_QUERY = '(prefers-reduced-motion: reduce)';
+/** Slightly slower than real time so the water drifts calmly. */
+const PLAYBACK_RATE = 0.8;
 
 /**
  * Looping Chennai panorama behind the home hero. Plays muted and inline,
@@ -38,6 +40,7 @@ export const HeroVideo: React.FC = () => {
     if (userPaused || !inView) {
       video.pause();
     } else {
+      video.playbackRate = PLAYBACK_RATE;
       video.play().catch(() => setUserPaused(true));
     }
   }, [userPaused, inView]);
@@ -45,7 +48,18 @@ export const HeroVideo: React.FC = () => {
   return (
     <>
       <div className={`hero-video${userPaused || !inView ? ' is-paused' : ''}`} aria-hidden="true">
-        <video ref={videoRef} autoPlay muted loop playsInline preload="auto" poster={POSTER_SRC}>
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster={POSTER_SRC}
+          onLoadedMetadata={(event) => {
+            event.currentTarget.playbackRate = PLAYBACK_RATE;
+          }}
+        >
           <source src={VIDEO_SRC} type="video/mp4" />
         </video>
       </div>

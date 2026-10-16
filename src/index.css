@@ -275,15 +275,19 @@ html.custom-cursor-active * {
   z-index: 1;
   display: flex;
   justify-content: center;
-  gap: 0.02em;
-  margin: 24px 0 -0.2em;
+  gap: 0;
+  margin: 32px 0 -0.2em;
   padding: 0;
   font-family: var(--font-heading);
-  font-size: clamp(150px, 38vw, 620px);
+  font-size: clamp(44px, 13.4vw, 250px);
   font-weight: 900;
   line-height: 0.82;
   letter-spacing: -0.02em;
   user-select: none;
+}
+
+.footer-wordmark-space {
+  width: 0.28em;
 }
 
 .footer-wordmark-letter {
