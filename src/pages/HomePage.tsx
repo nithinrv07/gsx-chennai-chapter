@@ -7,9 +7,7 @@ import { ChennaiSkyline } from '../components/ChennaiSkyline';
 import { CommunityStats } from '../components/CommunityStats';
 import { ScrollReveal } from '../components/ScrollReveal';
 import { EcosystemMarquee } from '../components/EcosystemMarquee';
-import { TestimonialStrip } from '../components/TestimonialStrip';
-import YouCanScroll from '../components/ui/you-can-scroll';
-import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
+import { TestimonialStrip } from '../components/TestimonialStrip';import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
 import { 
   Sparkles, 
   ArrowRight, 
@@ -237,11 +235,6 @@ export const HomePage: React.FC<HomePageProps> = ({
             ))}
           </div>
         </section>
-
-        {/* "you can ___" scroll section */}
-        <div className="mb-16 sm:mb-28">
-          <YouCanScroll onJoin={onOpenJoinModal} />
-        </div>
 
         {/* SECTION 3: UPCOMING EVENTS */}
         <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 sm:mb-28">

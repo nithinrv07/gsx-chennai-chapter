@@ -264,63 +264,6 @@ html.custom-cursor-active * {
   background: #8b5cf6;
 }
 
-/* "you can ___" scroll section: the stage pins while one word at a time rolls into the slot */
-.you-can-scroll {
-  --hue: 265;
-  --line: 1.2em;
-  position: relative;
-}
-
-.you-can-stage {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  height: 100svh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0 16px;
-}
-
-.you-can-line {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.28em;
-  margin: 0;
-  font-family: var(--font-heading);
-  font-size: clamp(30px, 7.2vw, 104px);
-  font-weight: 700;
-  line-height: var(--line);
-  letter-spacing: -0.03em;
-  color: #fff;
-  white-space: nowrap;
-}
-
-/* One-line viewport onto the word strip; soft fade at top and bottom as words roll. */
-.you-can-window {
-  display: block;
-  height: var(--line);
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(180deg, transparent, #000 22%, #000 78%, transparent);
-  mask-image: linear-gradient(180deg, transparent, #000 22%, #000 78%, transparent);
-}
-
-.you-can-strip {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  will-change: transform;
-}
-
-.you-can-strip li {
-  --lit: 1;
-  height: var(--line);
-  color: oklch(calc(80% + 12% * var(--lit)) calc(0.08 + 0.14 * var(--lit)) var(--hue));
-  text-shadow: 0 0 calc(28px * var(--lit)) oklch(70% 0.25 var(--hue) / calc(0.65 * var(--lit)));
-}
-
 /* Endless marquee (partners, testimonials): list is rendered twice and slides by -50% */
 .marquee {
   position: relative;
