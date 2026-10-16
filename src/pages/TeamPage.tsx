@@ -56,7 +56,7 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onNavigate, onOpenJoinModal 
             <span className="text-gradient-purple">GSX Chennai.</span></>} description={<>A dedicated collective of domain owners, community architects, and technical builders empowering Chennai&apos;s tech ecosystem.</>} />
 
       {/* Featured Lead Profile Card */}
-      <ScrollReveal as="section" variant="fade-up" distance={25} className="max-w-5xl mx-auto px-4 sm:px-6 mb-12 sm:mb-20">
+      <ScrollReveal as="section" variant="fade-up" className="max-w-5xl mx-auto px-4 sm:px-6 mb-12 sm:mb-20">
         <div className="text-center sm:text-left mb-6">
           <span className="text-xs font-bold uppercase tracking-widest text-purple-400">
             Executive Leadership
@@ -118,7 +118,7 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onNavigate, onOpenJoinModal 
 
       {/* Core Team Grid */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-14 sm:mb-24">
-        <ScrollReveal variant="fade-up" distance={20} className="text-center max-w-xl mx-auto mb-14">
+        <ScrollReveal variant="fade-up" className="text-center max-w-xl mx-auto mb-14">
           <span className="text-xs font-bold uppercase tracking-widest text-purple-400 block mb-2">
             Working Council
           </span>
@@ -137,7 +137,7 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onNavigate, onOpenJoinModal 
               variant="fade-up"
               staggerIndex={idx}
               staggerInterval={60}
-              distance={24}
+             
               className="h-full"
             >
               <div className="glass-panel glass-panel-hover rounded-2xl overflow-hidden flex flex-col group border border-white/[0.08] transition-all duration-300 h-full">
@@ -191,7 +191,7 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onNavigate, onOpenJoinModal 
 
       {/* Official Community Channels Section */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 mb-14 sm:mb-24">
-        <ScrollReveal variant="fade-up" distance={20} className="text-center max-w-xl mx-auto mb-10">
+        <ScrollReveal variant="fade-up" className="text-center max-w-xl mx-auto mb-10">
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
             Connect With GSX Chennai
           </h2>
@@ -200,7 +200,7 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onNavigate, onOpenJoinModal 
           </p>
         </ScrollReveal>
 
-        <ScrollReveal variant="fade-up" distance={25}>
+        <ScrollReveal variant="fade-up">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
             <a
               id="team-instagram-link"
@@ -254,7 +254,7 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onNavigate, onOpenJoinModal 
       </section>
 
       {/* Volunteer Callout */}
-      <ScrollReveal as="section" variant="fade-up" distance={20} className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <ScrollReveal as="section" variant="fade-up" className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
         <div className="glass-panel p-8 sm:p-10 rounded-3xl border border-white/[0.08] relative overflow-hidden">
           <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
             Want to Join the Core Team?

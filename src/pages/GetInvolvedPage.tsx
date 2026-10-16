@@ -115,7 +115,7 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({
           6 Opportunity Cards
           =================================================== */}
       <section id="volunteer" className="max-w-6xl mx-auto px-4 sm:px-6 mb-16 sm:mb-28 scroll-mt-28">
-        <ScrollReveal variant="fade-up" distance={20} className="text-center max-w-xl mx-auto mb-14">
+        <ScrollReveal variant="fade-up" className="text-center max-w-xl mx-auto mb-14">
           <span className="text-xs font-bold uppercase tracking-widest text-purple-400 block mb-2">
             Engagement Pathways
           </span>
@@ -134,7 +134,7 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({
               variant="fade-up"
               staggerIndex={idx}
               staggerInterval={60}
-              distance={24}
+             
               className="h-full"
             >
               <div className="glass-panel glass-panel-hover p-6 rounded-2xl border border-white/[0.08] flex flex-col justify-between h-full group">
@@ -181,7 +181,7 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({
           SECTION 2 — JOIN GSX
           Large visually impressive section with 3-step journey
           =================================================== */}
-      <ScrollReveal as="section" id="join-gsx" variant="fade-up" distance={30} className="max-w-6xl mx-auto px-4 sm:px-6 mb-16 sm:mb-28 scroll-mt-28">
+      <ScrollReveal as="section" id="join-gsx" variant="fade-up" className="max-w-6xl mx-auto px-4 sm:px-6 mb-16 sm:mb-28 scroll-mt-28">
         <div className="relative rounded-3xl p-8 sm:p-14 overflow-hidden border border-purple-500/30 bg-gradient-to-br from-[#120a24]/90 via-[#0a0714] to-[#050505] shadow-[0_0_60px_rgba(168,85,247,0.25)]">
           {/* Radial light behind content */}
           <div className="absolute top-0 right-1/4 w-[500px] h-[350px] bg-purple-600/20 blur-[100px] pointer-events-none rounded-full" />
@@ -250,7 +250,7 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({
           =================================================== */}
       <section id="partner-with-us" className="max-w-6xl mx-auto px-4 sm:px-6 mb-16 scroll-mt-28">
         <div id="collaborate-section" className="scroll-mt-28" />
-        <ScrollReveal variant="fade-up" distance={20} className="text-center max-w-xl mx-auto mb-14">
+        <ScrollReveal variant="fade-up" className="text-center max-w-xl mx-auto mb-14">
           <span className="text-xs font-bold uppercase tracking-widest text-purple-400 block mb-2">
             Institutional Alliances
           </span>
@@ -270,7 +270,7 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({
               variant="fade-up"
               staggerIndex={idx}
               staggerInterval={80}
-              distance={24}
+             
               className="h-full"
             >
               <div className="spotlight-card glass-panel p-6 rounded-2xl border border-white/[0.08] hover:border-purple-500/30 transition-all group h-full flex flex-col justify-between">
@@ -305,7 +305,7 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({
             PRINTABLE PARTNERSHIP BROCHURE CARD
             Directly below collaborators section
             =================================================== */}
-        <ScrollReveal variant="fade-up" distance={25} className="mb-16">
+        <ScrollReveal variant="fade-up" className="mb-16">
           <div className="relative p-6 sm:p-10 rounded-3xl overflow-hidden border border-purple-500/30 bg-gradient-to-r from-purple-950/50 via-[#100b20] to-purple-950/40 shadow-[0_0_40px_rgba(168,85,247,0.2)] flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="space-y-2 text-center md:text-left max-w-xl">
               <span className="text-xs font-bold uppercase tracking-widest text-purple-400 block mb-1">
@@ -335,7 +335,7 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({
             REUSABLE COLLABORATION & INQUIRY FORM
             Clean, validated form with instant success feedback & backend readiness
             =================================================== */}
-        <ScrollReveal variant="fade-up" distance={24} className="max-w-2xl mx-auto mb-12 sm:mb-20">
+        <ScrollReveal variant="fade-up" className="max-w-2xl mx-auto mb-12 sm:mb-20">
           <CollaborationInquiryForm 
             id="collaboration-form"
             title="Send Collaboration Proposal"
@@ -348,7 +348,7 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({
             SECTION 4 — START GSX AT YOUR COLLEGE
             Campus Lead & Chapter Setup Portal
             =================================================== */}
-        <ScrollReveal as="div" id="start-gsx-college" variant="fade-up" distance={28} className="max-w-5xl mx-auto scroll-mt-28">
+        <ScrollReveal as="div" id="start-gsx-college" variant="fade-up" className="max-w-5xl mx-auto scroll-mt-28">
           <div className="relative p-8 sm:p-14 rounded-3xl overflow-hidden border border-purple-500/30 bg-gradient-to-br from-[#130b26]/90 via-[#0d071b] to-[#06040c] shadow-[0_0_50px_rgba(168,85,247,0.25)]">
             <div className="absolute top-0 right-0 w-96 h-96 bg-purple-600/15 blur-[90px] pointer-events-none rounded-full" />
             

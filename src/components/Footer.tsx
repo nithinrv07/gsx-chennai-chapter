@@ -15,7 +15,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenJoinModal }) =
   };
 
   return (
-    <footer id="main-footer" className="relative bg-[#080414] border-t border-purple-500/10 overflow-hidden pt-16 pb-12">
+    <footer id="main-footer" className="relative bg-[#080414] border-t border-purple-500/10 overflow-hidden pt-16">
       {/* A soft, continuous purple glow blends the footer into the page. */}
       <div aria-hidden="true" className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_50%_100%,rgba(109,40,217,0.10),transparent_70%)]" />
 
@@ -183,15 +183,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenJoinModal }) =
           </div>
         </div>
 
-        {/* Big GSX wordmark: each letter lights up on hover */}
-        <p className="footer-wordmark" aria-label="GSX">
-          {['G', 'S', 'X'].map((letter) => (
-            <span key={letter} className="footer-wordmark-letter" aria-hidden="true">
-              {letter}
-            </span>
-          ))}
-        </p>
-
         {/* Footer Bottom */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
           <p>© 2026 GSX Chennai Chapter. All rights reserved.</p>
@@ -201,6 +192,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenJoinModal }) =
           </p>
         </div>
       </div>
+
+      {/* Giant GSX wordmark sinking past the footer's bottom edge; each letter lights up on hover */}
+      <p className="footer-wordmark" aria-label="GSX">
+        {['G', 'S', 'X'].map((letter) => (
+          <span key={letter} className="footer-wordmark-letter" aria-hidden="true">
+            {letter}
+          </span>
+        ))}
+      </p>
     </footer>
   );
 };

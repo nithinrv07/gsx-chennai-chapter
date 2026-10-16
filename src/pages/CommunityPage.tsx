@@ -90,10 +90,10 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate, onOpen
 
       {/* GirlScript Foundation Founder */}
       <section id="founder" aria-labelledby="founder-heading" className="max-w-6xl mx-auto px-4 sm:px-6 mb-20 scroll-mt-28">
-        <ScrollReveal variant="fade-up" distance={20} className="text-center mb-10">
+        <ScrollReveal variant="fade-up" className="text-center mb-10">
           <h2 id="founder-heading" className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Founder</h2>
         </ScrollReveal>
-        <ScrollReveal variant="fade-up" distance={25}>
+        <ScrollReveal variant="fade-up">
           <div className="glass-card-featured rounded-3xl p-6 sm:p-10 border border-purple-500/30 overflow-hidden">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
               <div className="md:col-span-4 group overflow-hidden rounded-2xl border border-white/[0.1] max-w-sm w-full mx-auto">
@@ -126,14 +126,14 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate, onOpen
           Executive Leadership & Domain Owners
           =================================================== */}
       <section id="core-team" className="max-w-6xl mx-auto px-4 sm:px-6 mb-16 sm:mb-28 scroll-mt-28">
-        <ScrollReveal variant="fade-up" distance={20} className="text-center max-w-xl mx-auto mb-14">
+        <ScrollReveal variant="fade-up" className="text-center max-w-xl mx-auto mb-14">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
             Core Team
           </h2>
         </ScrollReveal>
 
         {/* Featured Lead */}
-        <ScrollReveal variant="fade-up" distance={25} className="mb-14">
+        <ScrollReveal variant="fade-up" className="mb-14">
           <div className="glass-card-featured rounded-3xl p-6 sm:p-10 border border-purple-500/30 relative overflow-hidden transition-all duration-300 hover:shadow-[0_0_50px_rgba(168,85,247,0.35)]">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
               <div className="md:col-span-4 relative group overflow-hidden rounded-2xl border border-white/[0.1]">
@@ -195,7 +195,7 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate, onOpen
               variant="fade-up"
               staggerIndex={idx}
               staggerInterval={50}
-              distance={24}
+             
               className="h-full"
             >
               <div className="glass-panel glass-panel-hover rounded-2xl overflow-hidden flex flex-col group border border-white/[0.08] transition-all duration-300 h-full">
@@ -245,7 +245,7 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate, onOpen
 
       {/* Students across Chennai colleges */}
       <section id="colleges" className="max-w-5xl mx-auto px-4 sm:px-6 mb-14 sm:mb-24 scroll-mt-28">
-        <ScrollReveal variant="fade-up" distance={20}>
+        <ScrollReveal variant="fade-up">
           <div className="glass-panel rounded-3xl border border-purple-500/20 bg-gradient-to-r from-purple-950/30 via-[#0d071d] to-purple-950/20 p-8 sm:p-12 text-center">
             <div className="w-14 h-14 rounded-2xl bg-purple-500/15 border border-purple-500/25 text-purple-300 flex items-center justify-center mx-auto mb-6">
               <Users className="w-7 h-7" />
@@ -264,7 +264,7 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate, onOpen
           Community Call to Action
           =================================================== */}
       <section id="join-gsx" className="max-w-4xl mx-auto px-4 sm:px-6 scroll-mt-28">
-        <ScrollReveal variant="fade-up" distance={30}>
+        <ScrollReveal variant="fade-up">
           <div className="p-8 sm:p-14 rounded-3xl bg-gradient-to-r from-purple-950/50 via-[#100722] to-purple-950/50 border border-purple-500/30 shadow-[0_0_50px_rgba(168,85,247,0.3)] text-center">
             <div className="w-16 h-16 rounded-2xl bg-purple-600/20 border border-purple-500/30 text-purple-300 flex items-center justify-center mx-auto mb-6 shadow-[0_0_30px_rgba(168,85,247,0.3)]">
               <Sparkles className="w-8 h-8 text-purple-300" />

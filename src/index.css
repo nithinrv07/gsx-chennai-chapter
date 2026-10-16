@@ -268,48 +268,55 @@ html.custom-cursor-active * {
   background: #8b5cf6;
 }
 
-/* Footer GSX wordmark: softly lit letters that blaze on hover */
+/* Footer GSX wordmark: giant tinted letters fading downward and cropped by the
+   footer's bottom edge; each letter lights up on hover (or tap). */
 .footer-wordmark {
+  position: relative;
+  z-index: 1;
   display: flex;
   justify-content: center;
-  gap: 0.04em;
-  margin: 0;
-  padding: 28px 0 8px;
+  gap: 0.02em;
+  margin: 24px 0 -0.2em;
+  padding: 0;
   font-family: var(--font-heading);
-  font-size: clamp(96px, 22vw, 300px);
+  font-size: clamp(150px, 38vw, 620px);
   font-weight: 900;
-  line-height: 0.9;
-  letter-spacing: 0.06em;
+  line-height: 0.82;
+  letter-spacing: -0.02em;
   user-select: none;
 }
 
 .footer-wordmark-letter {
   cursor: default;
-  color: rgba(196, 160, 255, 0.16);
-  text-shadow: 0 0 40px rgba(168, 85, 247, 0.25);
-  transition: color 0.35s ease, text-shadow 0.35s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  background: linear-gradient(180deg, rgba(216, 190, 255, 0.24) 0%, rgba(168, 120, 255, 0.1) 55%, rgba(168, 120, 255, 0) 92%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: filter 0.4s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.footer-wordmark-letter::selection {
+  background: transparent;
 }
 
 .footer-wordmark-letter:hover,
 .footer-wordmark-letter:active {
-  color: #f5ecff;
-  text-shadow:
-    0 0 12px rgba(255, 255, 255, 0.9),
-    0 0 36px rgba(216, 180, 254, 0.85),
-    0 0 80px rgba(168, 85, 247, 0.8),
-    0 0 140px rgba(147, 51, 234, 0.6);
-  transform: translateY(-6px);
+  background-image: linear-gradient(180deg, #ffffff 0%, #ead8ff 40%, rgba(192, 132, 252, 0.55) 80%, rgba(168, 85, 247, 0.1) 100%);
+  filter:
+    drop-shadow(0 0 14px rgba(255, 255, 255, 0.55))
+    drop-shadow(0 0 40px rgba(192, 132, 252, 0.75))
+    drop-shadow(0 0 90px rgba(147, 51, 234, 0.6));
+  transform: translateY(-0.04em);
 }
 
 .light .footer-wordmark-letter {
-  color: rgba(109, 40, 217, 0.14);
-  text-shadow: none;
+  background-image: linear-gradient(180deg, rgba(109, 40, 217, 0.18) 0%, rgba(109, 40, 217, 0.06) 55%, rgba(109, 40, 217, 0) 92%);
 }
 
 .light .footer-wordmark-letter:hover,
 .light .footer-wordmark-letter:active {
-  color: #7c3aed;
-  text-shadow: 0 0 30px rgba(139, 92, 246, 0.45);
+  background-image: linear-gradient(180deg, #7c3aed 0%, #a855f7 60%, rgba(168, 85, 247, 0.15) 100%);
+  filter: drop-shadow(0 0 24px rgba(139, 92, 246, 0.45));
 }
 
 /* Interactive cards: cursor spotlight + 3D tilt (driven by useInteractiveSurfaces) */

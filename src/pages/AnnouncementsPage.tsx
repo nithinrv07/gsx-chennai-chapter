@@ -40,7 +40,7 @@ export const AnnouncementsPage: React.FC<AnnouncementsPageProps> = ({
 
       {/* Featured Announcement Card */}
       {featured && selectedCategory === 'All' && (
-        <ScrollReveal as="section" variant="fade-up" distance={25} className="max-w-6xl mx-auto px-4 sm:px-6 mb-16">
+        <ScrollReveal as="section" variant="fade-up" className="max-w-6xl mx-auto px-4 sm:px-6 mb-16">
           <div className="text-left mb-4">
             <span className="text-xs font-bold uppercase tracking-widest text-purple-400 flex items-center gap-1.5">
               <Flame className="w-3.5 h-3.5 text-purple-400" />
@@ -128,7 +128,7 @@ export const AnnouncementsPage: React.FC<AnnouncementsPageProps> = ({
                   variant="fade-up"
                   staggerIndex={idx}
                   staggerInterval={70}
-                  distance={24}
+                 
                   className="h-full"
                 >
                   <div

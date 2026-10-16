@@ -95,7 +95,7 @@ export const EventsPage: React.FC<EventsPageProps> = ({
                 variant="fade-up"
                 staggerIndex={idx}
                 staggerInterval={80}
-                distance={24}
+               
                 className="h-full"
               >
                 <div className="glass-panel glass-panel-hover rounded-2xl overflow-hidden flex flex-col group border border-white/[0.08] h-full">
@@ -233,7 +233,7 @@ export const EventsPage: React.FC<EventsPageProps> = ({
       {/* Past Events Recap Section */}
       {pastEvents.length > 0 && (
         <section id="past-events" className="max-w-6xl mx-auto px-4 sm:px-6 scroll-mt-28">
-          <ScrollReveal variant="fade-up" distance={20} className="border-t border-white/[0.08] pt-16 mb-8">
+          <ScrollReveal variant="fade-up" className="border-t border-white/[0.08] pt-16 mb-8">
             <span className="text-xs font-bold uppercase tracking-widest text-purple-400 block mb-1">
               Archive & Highlights
             </span>
@@ -252,7 +252,7 @@ export const EventsPage: React.FC<EventsPageProps> = ({
                 variant="fade-up"
                 staggerIndex={idx}
                 staggerInterval={70}
-                distance={20}
+               
                 className="h-full"
               >
                 <div className="spotlight-card glass-panel rounded-2xl overflow-hidden flex flex-col border border-white/[0.06] opacity-85 hover:opacity-100 transition-opacity h-full">

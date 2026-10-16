@@ -1,11 +1,11 @@
 import React, { ElementType, ReactNode, CSSProperties } from 'react';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
-const DESKTOP_REVEAL_QUERY = '(min-width: 1024px) and (hover: hover) and (pointer: fine)';
+const SMALL_SCREEN_QUERY = '(max-width: 767px)';
 
-/** On large mouse-driven screens, rising elements also tip forward in 3D. */
-const isDesktopReveal = () =>
-  typeof window !== 'undefined' && window.matchMedia(DESKTOP_REVEAL_QUERY).matches;
+/** Phones get a shorter rise so content never feels like it is lagging behind. */
+const isSmallScreen = () =>
+  typeof window !== 'undefined' && window.matchMedia(SMALL_SCREEN_QUERY).matches;
 
 export type RevealVariant = 'fade-up' | 'fade-down' | 'fade-left' | 'fade-right' | 'fade' | 'zoom-in';
 
@@ -21,7 +21,7 @@ export interface ScrollRevealProps {
   duration?: number;
   /** Pixel distance for slide animations */
   distance?: number;
-  /** Starting blur radius in pixels (0 disables the focus-in blur) */
+  /** Optional starting blur radius in pixels (0 = no blur) */
   blur?: number;
   /** IntersectionObserver threshold ratio (0.0 to 1.0) */
   threshold?: number;
@@ -43,17 +43,17 @@ export interface ScrollRevealProps {
 
 /**
  * ScrollReveal: Wraps any page section, container, or card with a subtle,
- * IntersectionObserver-driven "focus-in" entrance: content rises, scales up and
- * sharpens from a soft blur, using GPU-friendly transform/opacity/filter transitions.
+ * IntersectionObserver-driven entrance: content fades in while gliding up from
+ * well below its resting place, using GPU-friendly transform/opacity transitions.
  */
 export const ScrollReveal: React.FC<ScrollRevealProps> = ({
   children,
   as: Component = 'div',
   variant = 'fade-up',
   delay = 0,
-  duration = 900,
-  distance = 40,
-  blur = 10,
+  duration = 1000,
+  distance = 150,
+  blur = 0,
   threshold = 0.1,
   rootMargin = '0px 0px -10% 0px',
   once = true,
@@ -72,21 +72,17 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
   const computedDelay = staggerIndex !== undefined ? delay + staggerIndex * staggerInterval : delay;
 
   // Build the initial transform based on variant
-  const desktop = isDesktopReveal();
+  const rise = isSmallScreen() ? Math.min(distance, 80) : distance;
   const getInitialTransform = (): string => {
     switch (variant) {
       case 'fade-up':
-        return desktop
-          ? `perspective(1200px) translate3d(0, ${distance * 1.75}px, 0) rotateX(14deg) scale(0.95)`
-          : `translate3d(0, ${distance}px, 0) scale(0.97)`;
+        return `translate3d(0, ${rise}px, 0)`;
       case 'fade-down':
-        return desktop
-          ? `perspective(1200px) translate3d(0, -${distance * 1.75}px, 0) rotateX(-14deg) scale(0.95)`
-          : `translate3d(0, -${distance}px, 0) scale(0.97)`;
+        return `translate3d(0, -${rise}px, 0)`;
       case 'fade-left':
-        return `translate3d(-${distance}px, 0, 0)`;
+        return `translate3d(-${Math.min(rise, 40)}px, 0, 0)`;
       case 'fade-right':
-        return `translate3d(${distance}px, 0, 0)`;
+        return `translate3d(${Math.min(rise, 40)}px, 0, 0)`;
       case 'zoom-in':
         return 'scale(0.92)';
       case 'fade':
@@ -95,15 +91,14 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
     }
   };
 
-  // Elements come into focus: they rise, scale up slightly and sharpen from a soft blur.
+  // Elements fade in while gliding up from well below, settling like a soft spring.
   const animationStyle: CSSProperties = {
     opacity: isVisible ? 1 : 0,
     transform: isVisible ? 'none' : getInitialTransform(),
-    filter: isVisible ? 'none' : `blur(${blur}px)`,
+    filter: isVisible || !blur ? 'none' : `blur(${blur}px)`,
     transitionProperty: 'opacity, transform, filter',
-    transitionDuration: `${desktop ? duration * 1.2 : duration}ms`,
-    transformOrigin: '50% 100%',
-    transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
+    transitionDuration: `${duration}ms, ${duration}ms, ${duration}ms`,
+    transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
     transitionDelay: `${computedDelay}ms`,
     willChange: isVisible ? 'auto' : 'opacity, transform, filter',
     ...style,
