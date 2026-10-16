@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useId, useRef } from "react";
-import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from "motion/react";
 import { ChevronDown } from "lucide-react";
 
 export interface DropdownNavItem {

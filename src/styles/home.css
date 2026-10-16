@@ -15,15 +15,6 @@
   background: #080414;
 }
 
-.art {
-  position: absolute;
-  inset: 0;
-  z-index: -3;
-  background-image: url('/assets/chennai.webp');
-  background-size: 100% 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-}
 
 .shade {
   position: absolute;
@@ -623,9 +614,6 @@
   overflow: hidden;
 }
 
-.animated-background .art {
-  z-index: 0;
-}
 
 .hero-video {
   position: absolute;
@@ -874,9 +862,6 @@
   .explore {
     display: none;
   }
-  .art {
-    background-size: auto 880px;
-  }
   .home {
     min-height: 880px;
   }
@@ -930,10 +915,6 @@
   .icon-button {
     width: 42px;
     height: 42px;
-  }
-  .art {
-    background-size: auto 740px;
-    background-position: 50% 45px;
   }
   .shade {
     background: linear-gradient(180deg, rgba(8, 4, 20, 0.38), transparent 23%, rgba(8, 4, 20, 0.25) 39%, rgba(8, 4, 20, 0.93) 70%, #080414 100%);

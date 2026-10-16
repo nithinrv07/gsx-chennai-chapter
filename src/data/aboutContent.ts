@@ -196,7 +196,7 @@ export const ABOUT_SECTIONS = [
     "blocks": [
       "Follow our journey, explore our activities, and stay connected with the community.",
       "**LinkedIn:** https://www.linkedin.com/company/gsx-chennai-chapter",
-      "**Instagram:** https://www.instagram.com/gsxchennaichapter/",
+      "**Instagram:** https://www.instagram.com/gsx_chennai_chapter/",
       "**WhatsApp Community:** https://chat.whatsapp.com/HfxItPkZAgeDtdKut2qgfr?s=cl&p=a&ilr=0",
       "### Chapter Contact",
       "**Dedeepya Yakkala**  \nChapter Lead — GSX Chennai Chapter  \nGirlScript Foundation  \nChennai Institute of Technology",
