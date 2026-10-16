@@ -32,9 +32,10 @@ export default function GlowHorizonFM({ className, variant = "top" }: GlowHorizo
     <motion.div
       aria-hidden="true"
       className={"pointer-events-none absolute w-full h-full " + (className ?? "")}
-      style={{ isolation: "isolate" }}
-      initial={reducedMotion ? false : { [axis]: enterPct, [scaleAxis]: 1.5, opacity: 0, filter: "blur(15px)" }}
-      animate={{ [axis]: restPct, [scaleAxis]: 1, opacity: 1, filter: "blur(0px)" }}
+      // Only transform + opacity animate: animating filter here forced every blurred arc to repaint each frame.
+      style={{ isolation: "isolate", willChange: "transform, opacity" }}
+      initial={reducedMotion ? false : { [axis]: enterPct, [scaleAxis]: 1.5, opacity: 0 }}
+      animate={{ [axis]: restPct, [scaleAxis]: 1, opacity: 1 }}
       transition={{ duration: reducedMotion ? 0 : DURATION, ease: EASE }}
     >
       <Arc variant={variant} color="#FFFFFF" size="132%" boxShadow="0px -4px 23px 0px #ffffffb5" delay={1.2} />
@@ -64,7 +65,8 @@ function Arc({ variant, color, size, initialOffset, blur, boxShadow, delay }: {
     <motion.div
       aria-hidden="true"
       className="absolute inset-0 rounded-[100%]"
-      style={{ scale, background: color, ...(blur !== undefined && { filter: `blur(${blur}px)` }), ...(boxShadow && { boxShadow }) }}
+      // will-change keeps each statically blurred arc on its own cached layer while it slides.
+      style={{ scale, background: color, willChange: "transform", ...(blur !== undefined && { filter: `blur(${blur}px)` }), ...(boxShadow && { boxShadow }) }}
       initial={!reducedMotion && startPct ? { [axis]: startPct } : false}
       animate={startPct ? { [axis]: 0 } : undefined}
       transition={{ duration: reducedMotion ? 0 : DURATION, ease: EASE, delay: reducedMotion ? 0 : delay }}

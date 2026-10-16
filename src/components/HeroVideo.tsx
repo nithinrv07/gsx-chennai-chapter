@@ -17,6 +17,17 @@ export const HeroVideo: React.FC = () => {
     () => typeof window !== 'undefined' && window.matchMedia(REDUCED_MOTION_QUERY).matches
   );
   const [inView, setInView] = useState(true);
+  // Hold playback while the welcome intro is on screen so it animates smoothly.
+  const [introActive, setIntroActive] = useState(
+    () => typeof document !== 'undefined' && document.documentElement.dataset.intro === 'active'
+  );
+
+  useEffect(() => {
+    if (!introActive) return;
+    const handleEnd = () => setIntroActive(false);
+    window.addEventListener('gsx:intro-end', handleEnd);
+    return () => window.removeEventListener('gsx:intro-end', handleEnd);
+  }, [introActive]);
 
   useEffect(() => {
     const media = window.matchMedia(REDUCED_MOTION_QUERY);
@@ -37,13 +48,13 @@ export const HeroVideo: React.FC = () => {
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
-    if (userPaused || !inView) {
+    if (userPaused || !inView || introActive) {
       video.pause();
     } else {
       video.playbackRate = PLAYBACK_RATE;
       video.play().catch(() => setUserPaused(true));
     }
-  }, [userPaused, inView]);
+  }, [userPaused, inView, introActive]);
 
   return (
     <>

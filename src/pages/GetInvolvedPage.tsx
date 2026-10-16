@@ -5,6 +5,7 @@ import { PageHero } from '../components/PageHero';
 import { ScrollReveal } from '../components/ScrollReveal';
 import { CollaborationInquiryForm } from '../components/CollaborationInquiryForm';
 import { BrochureModal } from '../components/BrochureModal';
+import { FaqAccordion } from '../components/FaqAccordion';
 import { 
   Sparkles, 
   GraduationCap, 
@@ -402,6 +403,20 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({
               </button>
             </div>
           </div>
+        </ScrollReveal>
+      </section>
+
+      {/* ===================================================
+          FAQ (#faq)
+          =================================================== */}
+      <section id="faq" className="max-w-3xl mx-auto px-4 sm:px-6 mt-16 sm:mt-28 scroll-mt-28">
+        <ScrollReveal variant="fade-up" className="text-center mb-10">
+          <span className="text-xs font-semibold uppercase tracking-widest text-purple-400 block mb-2">Questions</span>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Frequently Asked Questions</h2>
+          <p className="text-sm text-gray-400 mt-3">Everything you need to know before getting involved.</p>
+        </ScrollReveal>
+        <ScrollReveal variant="fade-up">
+          <FaqAccordion />
         </ScrollReveal>
       </section>
     </div>

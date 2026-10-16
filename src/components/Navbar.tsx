@@ -46,6 +46,7 @@ export const NAV_STRUCTURE: NavStructureItem[] = [
     id: 'events',
     label: 'Events',
     children: [
+      { id: 'event-calendar', label: 'Event Calendar', sectionId: 'event-calendar', description: 'Dates at a glance, add to your calendar' },
       { id: 'upcoming-events', label: 'Upcoming Events', sectionId: 'upcoming-events', description: 'Hackathons, meetups & summits' },
       { id: 'meetups', label: 'Meetups', sectionId: 'meetups', description: 'Connect, share ideas & meet fellow builders' },
       { id: 'past-events', label: 'Past Events', sectionId: 'past-events', description: 'Recaps & highlights' },
@@ -70,6 +71,7 @@ export const NAV_STRUCTURE: NavStructureItem[] = [
       { id: 'volunteer', label: 'Volunteer', sectionId: 'volunteer', description: 'Lead tracks & organize events' },
       { id: 'partner-with-us', label: 'Partner With Us', sectionId: 'partner-with-us', description: 'Companies, NGOs & sponsors' },
       { id: 'start-gsx-college', label: 'Start GSX at Your College', sectionId: 'start-gsx-college', description: 'Launch a campus extension' },
+      { id: 'faq', label: 'FAQ', sectionId: 'faq', description: 'Answers to common questions' },
     ],
   },
 ];

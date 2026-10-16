@@ -27,7 +27,14 @@ const CustomCursorCanvas: React.FC = () => {
     const canvas = canvasRef.current;
     const ctx = canvas ? canvas.getContext('2d', { alpha: true }) : null;
 
-    let animId: number;
+    let animId = 0;
+    // The loop only runs while the tail is moving; it stops itself once the cursor rests.
+    let running = false;
+    const startLoop = () => {
+      if (running) return;
+      running = true;
+      animId = requestAnimationFrame(render);
+    };
 
     const resizeCanvas = () => {
       if (!canvas) return;
@@ -52,6 +59,7 @@ const CustomCursorCanvas: React.FC = () => {
 
       setIsVisible(true);
       document.documentElement.classList.add('custom-cursor-active');
+      startLoop();
 
       // Check if hovering interactive target
       const target = e.target as HTMLElement | null;
@@ -131,21 +139,19 @@ const CustomCursorCanvas: React.FC = () => {
           ctx.lineCap = 'round';
           ctx.lineJoin = 'round';
 
-          // Glow pass
+          // Glow pass: wide, faint strokes give the halo (canvas shadowBlur was very costly per frame)
           for (let i = 0; i < trail.length - 1; i++) {
             const p1 = trail[i];
             const p2 = trail[i + 1];
             const progress = i / (trail.length - 1);
-            const alpha = Math.max(0, (1 - progress) * (isDark ? 0.45 : 0.35));
-            const width = Math.max(1, (1 - progress) * 9);
+            const alpha = Math.max(0, (1 - progress) * (isDark ? 0.22 : 0.18));
+            const width = Math.max(2, (1 - progress) * 18);
 
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
             ctx.strokeStyle = `rgba(168, 85, 247, ${alpha})`;
             ctx.lineWidth = width;
-            ctx.shadowColor = '#8B5CF6';
-            ctx.shadowBlur = 12 * (1 - progress);
             ctx.stroke();
           }
 
@@ -164,19 +170,19 @@ const CustomCursorCanvas: React.FC = () => {
               ? `rgba(233, 213, 255, ${alpha})`
               : `rgba(147, 51, 234, ${alpha})`;
             ctx.lineWidth = width;
-            ctx.shadowColor = '#C084FC';
-            ctx.shadowBlur = 6;
             ctx.stroke();
           }
 
           ctx.restore();
+        } else {
+          // Tail has caught up with the cursor: canvas is clear, so pause until the next mousemove.
+          running = false;
+          return;
         }
       }
 
       animId = requestAnimationFrame(render);
     };
-
-    animId = requestAnimationFrame(render);
 
     return () => {
       cancelAnimationFrame(animId);

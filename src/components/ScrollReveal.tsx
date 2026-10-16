@@ -95,12 +95,11 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
   const animationStyle: CSSProperties = {
     opacity: isVisible ? 1 : 0,
     transform: isVisible ? 'none' : getInitialTransform(),
-    filter: isVisible || !blur ? 'none' : `blur(${blur}px)`,
-    transitionProperty: 'opacity, transform, filter',
-    transitionDuration: `${duration}ms, ${duration}ms, ${duration}ms`,
+    ...(blur ? { filter: isVisible ? 'none' : `blur(${blur}px)` } : {}),
+    transitionProperty: blur ? 'opacity, transform, filter' : 'opacity, transform',
+    transitionDuration: `${duration}ms`,
     transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
     transitionDelay: `${computedDelay}ms`,
-    willChange: isVisible ? 'auto' : 'opacity, transform, filter',
     ...style,
   };
 

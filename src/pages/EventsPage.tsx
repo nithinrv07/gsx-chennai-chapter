@@ -3,7 +3,8 @@ import { PageId, EventCategory, EventItem, GSX_JOIN_FORM_URL } from '../types';
 import { EVENTS_DATA } from '../data/events';
 import { PageHero } from '../components/PageHero';
 import { ScrollReveal } from '../components/ScrollReveal';
-import { 
+import { EventsCalendar } from '../components/EventsCalendar';
+import {
   Calendar, 
   Clock, 
   MapPin, 
@@ -48,6 +49,17 @@ export const EventsPage: React.FC<EventsPageProps> = ({
       {/* Hero */}
       <PageHero title={<>Learn. Connect.{' '}
             <span className="text-gradient-purple">Experience.</span></>} description={<>Discover upcoming experiences and explore what we&apos;ve built together.</>} />
+
+      {/* Event calendar with Add to Google Calendar */}
+      <section id="event-calendar" className="max-w-6xl mx-auto px-4 sm:px-6 mb-14 sm:mb-20 scroll-mt-28">
+        <ScrollReveal variant="fade-up" className="mb-8">
+          <span className="text-xs font-bold uppercase tracking-widest text-purple-400 block mb-1">Plan ahead</span>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Event Calendar</h2>
+        </ScrollReveal>
+        <ScrollReveal variant="fade-up">
+          <EventsCalendar events={EVENTS_DATA} onOpenEventDetail={onOpenEventDetail} />
+        </ScrollReveal>
+      </section>
 
       {/* Filter Tabs */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-12">

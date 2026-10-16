@@ -6,6 +6,9 @@ import { HeroGlow } from '../components/HeroGlow';
 import { ChennaiSkyline } from '../components/ChennaiSkyline';
 import { CommunityStats } from '../components/CommunityStats';
 import { ScrollReveal } from '../components/ScrollReveal';
+import { EcosystemMarquee } from '../components/EcosystemMarquee';
+import { TestimonialStrip } from '../components/TestimonialStrip';
+import YouCanScroll from '../components/ui/you-can-scroll';
 import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
 import { 
   Sparkles, 
@@ -129,7 +132,7 @@ export const HomePage: React.FC<HomePageProps> = ({
         
         {/* SECTION 1: ABOUT / ECOSYSTEM PREVIEW */}
         <ScrollReveal as="section" variant="fade-up" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 sm:mb-28">
-          <div className="relative rounded-3xl p-8 sm:p-12 overflow-hidden border border-white/[0.08] bg-gradient-to-br from-[#120826]/80 to-[#080414]/90 backdrop-blur-xl shadow-[0_10px_35px_rgba(0,0,0,0.6)]">
+          <div className="relative rounded-3xl p-8 sm:p-12 overflow-hidden border border-white/[0.08] bg-gradient-to-br from-[#120826]/90 to-[#080414]/95 shadow-[0_10px_35px_rgba(0,0,0,0.6)]">
             <div className="absolute top-0 right-0 w-96 h-96 bg-purple-600/15 rounded-full blur-3xl pointer-events-none" />
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
@@ -157,6 +160,14 @@ export const HomePage: React.FC<HomePageProps> = ({
             </div>
           </div>
         </ScrollReveal>
+
+        {/* Partner & college ecosystem marquee */}
+        <section aria-labelledby="ecosystem-heading" className="mb-16 sm:mb-24">
+          <p id="ecosystem-heading" className="text-center text-xs font-semibold uppercase tracking-widest text-purple-400 mb-6 px-4">
+            Building together with
+          </p>
+          <EcosystemMarquee />
+        </section>
 
         <section id="photo-gallery" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-14 sm:mb-24 scroll-mt-28">
           <div className="text-center mb-8">
@@ -224,6 +235,11 @@ export const HomePage: React.FC<HomePageProps> = ({
             ))}
           </div>
         </section>
+
+        {/* "you can ___" scroll section */}
+        <div className="mb-16 sm:mb-28">
+          <YouCanScroll onJoin={onOpenJoinModal} />
+        </div>
 
         {/* SECTION 3: UPCOMING EVENTS */}
         <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 sm:mb-28">
@@ -332,6 +348,9 @@ export const HomePage: React.FC<HomePageProps> = ({
             </div>
           )}
         </section>
+
+        {/* SECTION 4: MEMBER TESTIMONIALS (hidden until quotes are added) */}
+        <TestimonialStrip />
 
         {/* SECTION 5: FINAL CTA */}
         <ScrollReveal as="section" variant="fade-up" className="relative overflow-hidden py-14 sm:py-20 px-4 sm:px-6 lg:px-8 mb-16">

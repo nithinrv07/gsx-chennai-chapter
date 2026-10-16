@@ -87,6 +87,13 @@ export const HeroParticles: React.FC<HeroParticlesProps> = ({
     };
     document.addEventListener('visibilitychange', handleVisibilityChange);
 
+    // Skip drawing while the hero is scrolled off screen.
+    let onScreen = true;
+    const screenObserver = new IntersectionObserver(([entry]) => {
+      onScreen = entry.isIntersecting;
+    });
+    screenObserver.observe(container);
+
     // Resize observer for crisp dimensions
     const resizeObserver = new ResizeObserver((entries) => {
       for (const entry of entries) {
@@ -105,7 +112,7 @@ export const HeroParticles: React.FC<HeroParticlesProps> = ({
     let time = 0;
 
     const render = () => {
-      if (!isVisible) {
+      if (!isVisible || !onScreen) {
         animationFrameId = requestAnimationFrame(render);
         return;
       }
@@ -191,6 +198,7 @@ export const HeroParticles: React.FC<HeroParticlesProps> = ({
       cancelAnimationFrame(animationFrameId);
       document.removeEventListener('visibilitychange', handleVisibilityChange);
       resizeObserver.disconnect();
+      screenObserver.disconnect();
     };
   }, [particleCount, isDark]);
 

@@ -3,7 +3,6 @@ import { PageId, EventItem, AnnouncementItem, GSX_JOIN_FORM_URL } from './types'
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { CustomCursor } from './components/CustomCursor';
-import { ScrollProgress } from './components/ScrollProgress';
 import { SmoothScroll } from './components/SmoothScroll';
 import { useInteractiveSurfaces } from './hooks/useInteractiveSurfaces';
 import { IntroScreen } from './components/IntroScreen';
@@ -185,8 +184,6 @@ function AppContent() {
         </React.Fragment>
       )}
 
-      {/* Scroll progress indicator */}
-      <ScrollProgress />
       <SmoothScroll />
 
       {/* Background ambient gradient highlights */}

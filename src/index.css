@@ -46,10 +46,10 @@ html.custom-cursor-active * {
   font-family: 'Space Grotesk', sans-serif;
 }
 
+/* Glass surfaces use a solid tint instead of backdrop blur: on this dark, near-flat
+   background the blur was barely visible but made scrolling much heavier. */
 .glass {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -119,16 +119,12 @@ html.custom-cursor-active * {
 
 /* Custom glow and glassmorphism utilities */
 .glass-panel {
-  background: rgba(18, 14, 28, 0.4);
-  -webkit-backdrop-filter: blur(16px);
-  backdrop-filter: blur(16px);
+  background: rgba(18, 14, 28, 0.72);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .light .glass-panel {
-  background: rgba(255, 255, 255, 0.88);
-  -webkit-backdrop-filter: blur(16px);
-  backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.94);
   border: 1px solid rgba(139, 92, 246, 0.18);
   box-shadow: 0 10px 30px -5px rgba(139, 92, 246, 0.07);
 }
@@ -266,6 +262,131 @@ html.custom-cursor-active * {
 }
 .light ::-webkit-scrollbar-thumb:hover {
   background: #8b5cf6;
+}
+
+/* "you can ___" scroll section: sticky lead beside words that light up at the centre line */
+.you-can-scroll {
+  --hue: 265;
+  --line: 1.15em;
+  position: relative;
+  padding-bottom: 72px;
+}
+
+.you-can-inner {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.3em;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 16px;
+  font-family: var(--font-heading);
+  font-size: clamp(30px, 7.2vw, 96px);
+  font-weight: 700;
+  line-height: var(--line);
+  letter-spacing: -0.03em;
+}
+
+.you-can-lead {
+  position: sticky;
+  top: calc(50vh - var(--line) / 2);
+  margin: 0;
+  font: inherit;
+  white-space: nowrap;
+  color: #fff;
+  /* Line the lead up with the first word when the list starts. */
+  margin-top: calc(50vh - var(--line) / 2);
+}
+
+.you-can-list {
+  margin: 0;
+  padding: calc(50vh - var(--line) / 2) 0;
+  list-style: none;
+}
+
+.you-can-list li {
+  --lit: 0;
+  opacity: 0.18;
+  white-space: nowrap;
+  color: oklch(calc(78% + 14% * var(--lit)) calc(0.06 + 0.16 * var(--lit)) var(--hue));
+  text-shadow: 0 0 calc(30px * var(--lit)) oklch(70% 0.25 var(--hue) / calc(0.7 * var(--lit)));
+}
+
+/* Endless marquee (partners, testimonials): list is rendered twice and slides by -50% */
+.marquee {
+  position: relative;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 16px;
+  margin: 0;
+  padding: 6px 0;
+  list-style: none;
+  animation: marquee-scroll var(--marquee-duration, 32s) linear infinite;
+}
+
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-reverse .marquee-track {
+  animation-direction: reverse;
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(calc(-50% - 8px), 0, 0);
+  }
+}
+
+.marquee-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px 12px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.marquee-item:hover {
+  border-color: rgba(192, 132, 252, 0.45);
+  background: rgba(168, 85, 247, 0.1);
+}
+
+.marquee-badge {
+  display: grid;
+  place-items: center;
+  min-width: 44px;
+  height: 44px;
+  padding: 0 8px;
+  border-radius: 999px;
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #fff;
+  background: linear-gradient(135deg, #a855f7, #6d28d9);
+  box-shadow: 0 0 14px rgba(168, 85, 247, 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    overflow-x: auto;
+  }
+  .marquee-track {
+    animation: none;
+  }
 }
 
 /* Footer GSX wordmark: giant tinted letters fading downward and cropped by the

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { EventItem } from '../types';
-import { X, Calendar, Clock, MapPin, Users, Share2, Check, ArrowRight, Sparkles, ExternalLink } from 'lucide-react';
+import { X, Calendar, CalendarPlus, Clock, MapPin, Users, Share2, Check, ArrowRight, Sparkles, ExternalLink } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { googleCalendarUrl } from '../lib/calendar';
 
 interface EventDetailModalProps {
   event: EventItem | null;
@@ -175,7 +176,18 @@ export const EventDetailModal: React.FC<EventDetailModalProps> = ({
               )}
             </button>
 
-            <div className="flex items-center gap-3 w-full sm:w-auto">
+            <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto">
+              {event.status !== 'past' && googleCalendarUrl(event) && (
+                <a
+                  href={googleCalendarUrl(event) ?? undefined}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-3 rounded-xl border border-purple-400/40 bg-purple-500/10 hover:bg-purple-500/20 text-purple-100 font-semibold text-sm transition-colors"
+                >
+                  <CalendarPlus className="w-4 h-4" />
+                  <span>Add to Google Calendar</span>
+                </a>
+              )}
               {event.status === 'upcoming' && event.registrationOpen ? (
                 <button
                   onClick={() => {

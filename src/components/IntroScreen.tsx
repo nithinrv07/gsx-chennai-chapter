@@ -6,7 +6,11 @@ import GlowHorizonDemo from "./ui/glow-horizon-demo";
 // Keep the site mounted underneath so its content loads during the intro.
 export function IntroScreen({ children }: { children: ReactNode }) {
   const [visible, setVisible] = useState(() => !window.matchMedia("(prefers-reduced-motion: reduce)").matches);
-  const [blocking, setBlocking] = useState(visible);
+  const [blocking, setBlocking] = useState(() => {
+    // Mark the intro before any child effects run, so they can defer work until it ends.
+    if (visible) document.documentElement.dataset.intro = "active";
+    return visible;
+  });
   const skipRef = useRef<HTMLButtonElement>(null);
   const restoreFocus = useRef(false);
 
@@ -30,7 +34,13 @@ export function IntroScreen({ children }: { children: ReactNode }) {
     if (!blocking) return;
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    return () => { document.body.style.overflow = previousOverflow; };
+    // Lets heavy background work (e.g. the hero video) wait until the intro is gone.
+    document.documentElement.dataset.intro = "active";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      delete document.documentElement.dataset.intro;
+      window.dispatchEvent(new Event("gsx:intro-end"));
+    };
   }, [blocking]);
 
   return (
