@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { 
   X, 
   Printer, 
@@ -30,6 +30,16 @@ interface BrochureModalProps {
 }
 
 export const BrochureModal: React.FC<BrochureModalProps> = ({ isOpen, onClose }) => {
+  // Escape closes the brochure.
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   const handlePrint = () => {
@@ -37,34 +47,46 @@ export const BrochureModal: React.FC<BrochureModalProps> = ({ isOpen, onClose })
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 overflow-y-auto bg-black/85 backdrop-blur-md">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 overflow-y-auto bg-black/85 backdrop-blur-md"
+      onClick={(e) => {
+        // Clicking the dark backdrop (outside the brochure) closes it.
+        if (e.target === e.currentTarget) onClose();
+      }}
+      role="dialog"
+      aria-modal="true"
+      aria-label="GSX Chennai partnership brochure"
+    >
       {/* Container */}
       <div className="relative w-full max-w-4xl max-h-[92dvh] bg-[#0c0a14] border border-purple-500/30 rounded-3xl shadow-[0_0_60px_rgba(147,51,234,0.3)] overflow-hidden flex flex-col my-auto">
         {/* Modal Toolbar (hidden on print) */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-white/[0.08] bg-[#120f1f] shrink-0 print:hidden">
-          <div className="flex items-center gap-2.5">
-            <span className="p-1.5 rounded-lg bg-purple-500/20 text-purple-300">
+        <div className="flex items-center justify-between gap-3 px-4 sm:px-6 py-3 sm:py-4 border-b border-white/[0.08] bg-[#120f1f] shrink-0 print:hidden">
+          <div className="flex items-center gap-2.5 min-w-0">
+            <span className="p-1.5 rounded-lg bg-purple-500/20 text-purple-300 shrink-0">
               <Sparkles className="w-4 h-4" />
             </span>
-            <span className="text-sm font-bold text-white tracking-wide">
-              Official GSX Chennai Partnership Brochure
+            <span className="text-sm font-bold text-white tracking-wide truncate">
+              <span className="hidden sm:inline">Official GSX Chennai </span>Partnership Brochure
             </span>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <button
               onClick={handlePrint}
-              className="px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold flex items-center gap-2 transition-all shadow-[0_0_15px_rgba(168,85,247,0.4)] cursor-pointer"
+              className="px-3 sm:px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold flex items-center gap-2 transition-all shadow-[0_0_15px_rgba(168,85,247,0.4)] cursor-pointer"
+              aria-label="Print or save as PDF"
             >
               <Printer className="w-4 h-4" />
-              <span>Print / Save as PDF</span>
+              <span className="hidden sm:inline">Print / Save as PDF</span>
             </button>
             <button
               onClick={onClose}
-              className="p-2 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] text-gray-400 hover:text-white transition-colors cursor-pointer"
-              title="Close"
+              autoFocus
+              className="px-3 sm:px-4 py-2 rounded-xl border border-white/20 bg-white/[0.08] hover:bg-red-500/20 hover:border-red-400/50 text-white text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-purple-300"
+              aria-label="Exit brochure"
             >
               <X className="w-4 h-4" />
+              <span>Exit</span>
             </button>
           </div>
         </div>
@@ -477,6 +499,17 @@ export const BrochureModal: React.FC<BrochureModalProps> = ({ isOpen, onClose })
                 &ldquo;GSX Chennai isn&apos;t something that happens for students. It&apos;s something that happens with students.&rdquo;
               </p>
             </div>
+          </div>
+
+          {/* Exit at the end of the brochure so readers don't have to scroll back up */}
+          <div className="flex justify-center pt-2 pb-2 print:hidden">
+            <button
+              onClick={onClose}
+              className="px-6 py-3 rounded-xl border border-purple-400/40 bg-purple-500/15 hover:bg-purple-500/25 text-white text-sm font-semibold flex items-center gap-2 transition-colors cursor-pointer"
+            >
+              <X className="w-4 h-4" />
+              <span>Exit brochure</span>
+            </button>
           </div>
         </div>
       </div>
