@@ -264,52 +264,61 @@ html.custom-cursor-active * {
   background: #8b5cf6;
 }
 
-/* "you can ___" scroll section: sticky lead beside words that light up at the centre line */
+/* "you can ___" scroll section: the stage pins while one word at a time rolls into the slot */
 .you-can-scroll {
   --hue: 265;
-  --line: 1.15em;
+  --line: 1.2em;
   position: relative;
-  padding-bottom: 72px;
 }
 
-.you-can-inner {
+.you-can-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  align-items: flex-start;
-  gap: 0.3em;
-  max-width: 72rem;
-  margin: 0 auto;
   padding: 0 16px;
+}
+
+.you-can-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.28em;
+  margin: 0;
   font-family: var(--font-heading);
-  font-size: clamp(30px, 7.2vw, 96px);
+  font-size: clamp(30px, 7.2vw, 104px);
   font-weight: 700;
   line-height: var(--line);
   letter-spacing: -0.03em;
-}
-
-.you-can-lead {
-  position: sticky;
-  top: calc(50vh - var(--line) / 2);
-  margin: 0;
-  font: inherit;
-  white-space: nowrap;
   color: #fff;
-  /* Line the lead up with the first word when the list starts. */
-  margin-top: calc(50vh - var(--line) / 2);
-}
-
-.you-can-list {
-  margin: 0;
-  padding: calc(50vh - var(--line) / 2) 0;
-  list-style: none;
-}
-
-.you-can-list li {
-  --lit: 0;
-  opacity: 0.18;
   white-space: nowrap;
-  color: oklch(calc(78% + 14% * var(--lit)) calc(0.06 + 0.16 * var(--lit)) var(--hue));
-  text-shadow: 0 0 calc(30px * var(--lit)) oklch(70% 0.25 var(--hue) / calc(0.7 * var(--lit)));
+}
+
+/* One-line viewport onto the word strip; soft fade at top and bottom as words roll. */
+.you-can-window {
+  display: block;
+  height: var(--line);
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 22%, #000 78%, transparent);
+  mask-image: linear-gradient(180deg, transparent, #000 22%, #000 78%, transparent);
+}
+
+.you-can-strip {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  will-change: transform;
+}
+
+.you-can-strip li {
+  --lit: 1;
+  height: var(--line);
+  color: oklch(calc(80% + 12% * var(--lit)) calc(0.08 + 0.14 * var(--lit)) var(--hue));
+  text-shadow: 0 0 calc(28px * var(--lit)) oklch(70% 0.25 var(--hue) / calc(0.65 * var(--lit)));
 }
 
 /* Endless marquee (partners, testimonials): list is rendered twice and slides by -50% */
@@ -348,20 +357,44 @@ html.custom-cursor-active * {
   }
 }
 
+/* Framed panel that holds the partner marquee */
+.ecosystem-panel {
+  position: relative;
+  overflow: hidden;
+  padding: 28px 0 30px;
+  border-radius: 28px;
+  border: 1px solid rgba(192, 132, 252, 0.25);
+  background:
+    radial-gradient(120% 140% at 50% 0%, rgba(168, 85, 247, 0.16), transparent 60%),
+    linear-gradient(180deg, rgba(24, 14, 44, 0.9), rgba(10, 6, 22, 0.95));
+  box-shadow: 0 0 40px -12px rgba(168, 85, 247, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* Plain items (no pill around each name), separated by a small glowing dot */
 .marquee-item {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px 20px 12px 12px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.03);
-  transition: border-color 0.3s ease, background-color 0.3s ease;
+  padding: 4px 28px 4px 0;
+  margin-right: 12px;
 }
 
-.marquee-item:hover {
-  border-color: rgba(192, 132, 252, 0.45);
-  background: rgba(168, 85, 247, 0.1);
+.marquee-item::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #c084fc;
+  box-shadow: 0 0 10px rgba(192, 132, 252, 0.9);
+  transform: translateY(-50%);
+}
+
+.marquee-item:hover .marquee-badge {
+  box-shadow: 0 0 22px rgba(192, 132, 252, 0.8);
 }
 
 .marquee-badge {
@@ -378,6 +411,7 @@ html.custom-cursor-active * {
   color: #fff;
   background: linear-gradient(135deg, #a855f7, #6d28d9);
   box-shadow: 0 0 14px rgba(168, 85, 247, 0.45);
+  transition: box-shadow 0.3s ease;
 }
 
 @media (prefers-reduced-motion: reduce) {

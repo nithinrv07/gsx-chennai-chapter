@@ -1,59 +1,51 @@
 import React, { useEffect, useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
 
-// Inspired by Jhey Tompkins' "you can scroll" demo, rebuilt so it only touches its own section.
+// Inspired by Jhey Tompkins' "you can scroll" demo, rebuilt as a pinned one-word slot.
 const WORDS = [
-  'learn.', 'build.', 'code.', 'design.', 'prototype.', 'debug.', 'collaborate.',
-  'mentor.', 'speak.', 'lead.', 'create.', 'innovate.', 'ship.', 'grow.', 'do it.',
+  'learn.', 'build.', 'code.', 'design.', 'collaborate.',
+  'mentor.', 'lead.', 'innovate.', 'ship.', 'grow.',
 ];
 
 const HUE_START = 265; // violet
 const HUE_END = 330;   // pink
-const DIM = 0.18;
+/** Scroll distance (in viewport heights) spent on each word. */
+const VH_PER_WORD = 0.22;
 
 interface YouCanScrollProps {
   onJoin?: () => void;
 }
 
 /**
- * Sticky "you can" beside a column of words; whichever word crosses the middle of the
- * screen lights up while the accent hue drifts from violet to pink across the list.
+ * The section pins to the screen while "you can ___" rolls through one word at a time.
+ * Scrolling down advances the word, scrolling up rolls it back; then the page continues.
  */
 export default function YouCanScroll({ onJoin }: YouCanScrollProps) {
   const sectionRef = useRef<HTMLElement>(null);
-  const listRef = useRef<HTMLUListElement>(null);
+  const stripRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
     const section = sectionRef.current;
-    const list = listRef.current;
-    if (!section || !list) return;
-    const items = Array.from(list.children) as HTMLElement[];
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      items.forEach((item) => (item.style.opacity = '1'));
-      section.style.setProperty('--hue', String(HUE_START));
-      return;
-    }
+    const strip = stripRef.current;
+    if (!section || !strip) return;
+    const items = Array.from(strip.children) as HTMLElement[];
 
     let frame = 0;
     let active = false;
 
     const update = () => {
       frame = 0;
-      const mid = window.innerHeight / 2;
-      const first = items[0].getBoundingClientRect();
-      const last = items[items.length - 1].getBoundingClientRect();
-      const span = last.top - first.top || 1;
-      const progress = Math.min(1, Math.max(0, (mid - (first.top + first.height / 2)) / span));
-      section.style.setProperty('--hue', (HUE_START + (HUE_END - HUE_START) * progress).toFixed(1));
+      const rect = section.getBoundingClientRect();
+      const travel = rect.height - window.innerHeight || 1;
+      const progress = Math.min(1, Math.max(0, -rect.top / travel));
+      const position = progress * (WORDS.length - 1);
 
-      for (const item of items) {
-        const r = item.getBoundingClientRect();
-        // 1 at the centre line, fading to DIM one line-height away.
-        const closeness = Math.max(0, 1 - Math.abs(r.top + r.height / 2 - mid) / (r.height * 1.1));
-        item.style.opacity = (DIM + (1 - DIM) * closeness).toFixed(3);
-        item.style.setProperty('--lit', closeness.toFixed(3));
-      }
+      strip.style.transform = `translate3d(0, calc(${(-position).toFixed(4)} * var(--line)), 0)`;
+      section.style.setProperty('--hue', (HUE_START + (HUE_END - HUE_START) * progress).toFixed(1));
+      items.forEach((item, i) => {
+        const lit = Math.max(0, 1 - Math.abs(i - position));
+        item.style.setProperty('--lit', lit.toFixed(3));
+      });
     };
 
     const onScroll = () => {
@@ -79,26 +71,31 @@ export default function YouCanScroll({ onJoin }: YouCanScrollProps) {
   }, []);
 
   return (
-    <section ref={sectionRef} className="you-can-scroll" aria-labelledby="you-can-heading">
-      <div className="you-can-inner">
-        <h2 id="you-can-heading" className="you-can-lead">
+    <section
+      ref={sectionRef}
+      className="you-can-scroll"
+      aria-labelledby="you-can-heading"
+      style={{ height: `calc(100vh + ${(WORDS.length - 1) * VH_PER_WORD * 100}vh)` }}
+    >
+      <div className="you-can-stage">
+        <h2 id="you-can-heading" className="you-can-line">
           <span aria-hidden="true">you can</span>
+          <span className="you-can-window" aria-hidden="true">
+            <ul ref={stripRef} className="you-can-strip">
+              {WORDS.map((word) => (
+                <li key={word}>{word}</li>
+              ))}
+            </ul>
+          </span>
           <span className="sr-only">At GSX Chennai you can learn, build, collaborate, lead and grow.</span>
         </h2>
-        <ul ref={listRef} className="you-can-list" aria-hidden="true">
-          {WORDS.map((word) => (
-            <li key={word}>{word}</li>
-          ))}
-        </ul>
-      </div>
-      {onJoin && (
-        <div className="flex justify-center px-4">
-          <button type="button" onClick={onJoin} className="pill primary !py-4 !px-8 inline-flex items-center gap-2 cursor-pointer">
+        {onJoin && (
+          <button type="button" onClick={onJoin} className="pill primary !py-4 !px-8 inline-flex items-center gap-2 cursor-pointer mt-10 sm:mt-14">
             <span>Start with GSX Chennai</span>
             <ArrowRight className="w-4 h-4" />
           </button>
-        </div>
-      )}
+        )}
+      </div>
     </section>
   );
 }

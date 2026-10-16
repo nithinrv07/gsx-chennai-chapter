@@ -162,11 +162,13 @@ export const HomePage: React.FC<HomePageProps> = ({
         </ScrollReveal>
 
         {/* Partner & college ecosystem marquee */}
-        <section aria-labelledby="ecosystem-heading" className="mb-16 sm:mb-24">
-          <p id="ecosystem-heading" className="text-center text-xs font-semibold uppercase tracking-widest text-purple-400 mb-6 px-4">
-            Building together with
-          </p>
-          <EcosystemMarquee />
+        <section aria-labelledby="ecosystem-heading" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 sm:mb-24">
+          <div className="ecosystem-panel">
+            <p id="ecosystem-heading" className="text-center text-xs font-semibold uppercase tracking-widest text-purple-300 mb-6">
+              Building together with
+            </p>
+            <EcosystemMarquee />
+          </div>
         </section>
 
         <section id="photo-gallery" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-14 sm:mb-24 scroll-mt-28">
