@@ -201,7 +201,6 @@ export const Navbar: React.FC<NavbarProps> = ({
           <span className="brand-mark" aria-hidden="true" />
           <span className="brand-text">
             <span className="wordmark">GSX</span>
-            <span className="brand-divider" aria-hidden="true" />
             <span className="chapter">Chennai</span>
           </span>
         </button>
