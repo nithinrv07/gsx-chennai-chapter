@@ -198,12 +198,11 @@ export const Navbar: React.FC<NavbarProps> = ({
           onClick={() => handleNavClick('home')}
           aria-label="GSX Chennai home"
         >
-          <span className="brand-mark">
-            <img src="/gsx-logo.png" alt="" aria-hidden="true" />
-          </span>
+          <span className="brand-mark" aria-hidden="true" />
           <span className="brand-text">
             <span className="wordmark">GSX</span>
-            <span className="chapter">CHENNAI</span>
+            <span className="brand-divider" aria-hidden="true" />
+            <span className="chapter">Chennai</span>
           </span>
         </button>
 
