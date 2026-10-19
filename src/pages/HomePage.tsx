@@ -7,7 +7,8 @@ import { ChennaiSkyline } from '../components/ChennaiSkyline';
 import { CommunityStats } from '../components/CommunityStats';
 import { ScrollReveal } from '../components/ScrollReveal';
 import { EcosystemMarquee } from '../components/EcosystemMarquee';
-import { TestimonialStrip } from '../components/TestimonialStrip';import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
+import { TestimonialStrip } from '../components/TestimonialStrip';
+import { PhotoGallery } from '../components/PhotoGallery';import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
 import { 
   Sparkles, 
   ArrowRight, 
@@ -17,8 +18,7 @@ import {
   Hammer, 
   Users, 
   Briefcase, 
-  Compass,
-  Images
+  Compass
 } from 'lucide-react';
 import '../styles/home.css';
 
@@ -162,16 +162,13 @@ export const HomePage: React.FC<HomePageProps> = ({
           </div>
         </section>
 
-        <section id="photo-gallery" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-14 sm:mb-24 scroll-mt-28">
-          <div className="text-center mb-8">
+        <section id="photo-gallery" className="mb-14 sm:mb-24 scroll-mt-28">
+          <div className="text-center mb-8 px-4">
             <span className="text-xs font-semibold uppercase tracking-widest text-purple-400">Our community in moments</span>
             <h2 className="text-3xl sm:text-4xl font-bold text-white mt-3">Photo Gallery</h2>
+            <p className="text-sm text-gray-400 mt-3">Tap any photo to view it larger.</p>
           </div>
-          <div className="rounded-3xl border border-purple-500/20 bg-gradient-to-br from-purple-950/30 to-[#0d071d] p-10 sm:p-14 text-center">
-            <Images className="w-10 h-10 text-purple-300 mx-auto mb-5" />
-            <h3 className="text-xl text-white font-semibold mb-3">Community moments coming soon</h3>
-            <p className="text-sm text-gray-400 max-w-md mx-auto leading-relaxed">Photos from our chapter activities, meetups, and collaborations will appear here.</p>
-          </div>
+          <PhotoGallery />
         </section>
 
         {/* SECTION 2: CORE PILLARS / WHAT WE DO */}

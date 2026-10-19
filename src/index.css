@@ -300,6 +300,41 @@ html.custom-cursor-active * {
   }
 }
 
+/* Photo gallery cards inside the moving rows */
+.gallery-photo {
+  display: block;
+  height: clamp(170px, 26vw, 280px);
+  padding: 0;
+  border: 1px solid rgba(192, 132, 252, 0.2);
+  border-radius: 20px;
+  overflow: hidden;
+  background: #120a24;
+  cursor: zoom-in;
+  box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.7);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-photo img {
+  display: block;
+  height: 100%;
+  width: auto;
+  max-width: none;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.gallery-photo:hover,
+.gallery-photo:focus-visible {
+  border-color: rgba(216, 180, 254, 0.7);
+  box-shadow: 0 0 34px -6px rgba(168, 85, 247, 0.6);
+  outline: none;
+}
+
+.gallery-photo:hover img,
+.gallery-photo:focus-visible img {
+  transform: scale(1.06);
+}
+
 /* Framed panel that holds the partner marquee */
 .ecosystem-panel {
   position: relative;
