@@ -4,6 +4,7 @@ import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { CustomCursor } from './components/CustomCursor';
 import { SmoothScroll } from './components/SmoothScroll';
+import { Analytics } from '@vercel/analytics/react';
 import { useInteractiveSurfaces } from './hooks/useInteractiveSurfaces';
 import { IntroScreen } from './components/IntroScreen';
 import GsxLoadingScreen from './components/GsxLoadingScreen';
@@ -363,6 +364,8 @@ export default function App() {
       <IntroScreen>
         <AppContent />
       </IntroScreen>
+      {/* Vercel Web Analytics: page views and visitors on the deployed site */}
+      <Analytics />
     </ThemeProvider>
   );
 }
