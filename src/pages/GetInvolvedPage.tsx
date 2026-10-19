@@ -6,6 +6,7 @@ import { ScrollReveal } from '../components/ScrollReveal';
 import { CollaborationInquiryForm } from '../components/CollaborationInquiryForm';
 import { BrochureModal } from '../components/BrochureModal';
 import { FaqAccordion } from '../components/FaqAccordion';
+import { EcosystemPanel } from '../components/EcosystemMarquee';
 import { 
   Sparkles, 
   GraduationCap, 
@@ -244,6 +245,9 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({
           </div>
         </div>
       </ScrollReveal>
+
+      {/* Partner & collaborator marquee, right above Partner With Us */}
+      <EcosystemPanel className="mb-16 sm:mb-24" />
 
       {/* ===================================================
           SECTION 3 — COLLABORATE WITH US / PARTNER WITH US

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useId } from 'react';
 import { ECOSYSTEM_DATA } from '../data/ecosystem';
 
 /** Endless scrolling strip of partner/college badges; pauses on hover, still for reduced motion. */
@@ -19,6 +19,21 @@ export const EcosystemMarquee: React.FC = () => {
         ))}
       </ul>
     </div>
+  );
+};
+
+/** The marquee inside its glowing framed panel with the "Building together with" heading. */
+export const EcosystemPanel: React.FC<{ className?: string }> = ({ className = '' }) => {
+  const headingId = useId();
+  return (
+    <section aria-labelledby={headingId} className={`max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 ${className}`}>
+      <div className="ecosystem-panel">
+        <p id={headingId} className="text-center text-xs font-semibold uppercase tracking-widest text-purple-300 mb-6">
+          Building together with
+        </p>
+        <EcosystemMarquee />
+      </div>
+    </section>
   );
 };
 

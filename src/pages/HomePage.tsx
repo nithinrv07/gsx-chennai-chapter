@@ -6,7 +6,7 @@ import { HeroGlow } from '../components/HeroGlow';
 import { ChennaiSkyline } from '../components/ChennaiSkyline';
 import { CommunityStats } from '../components/CommunityStats';
 import { ScrollReveal } from '../components/ScrollReveal';
-import { EcosystemMarquee } from '../components/EcosystemMarquee';
+import { EcosystemPanel } from '../components/EcosystemMarquee';
 import { TestimonialStrip } from '../components/TestimonialStrip';
 import { PhotoGallery } from '../components/PhotoGallery';import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
 import { 
@@ -153,14 +153,7 @@ export const HomePage: React.FC<HomePageProps> = ({
         </ScrollReveal>
 
         {/* Partner & college ecosystem marquee */}
-        <section aria-labelledby="ecosystem-heading" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 sm:mb-24">
-          <div className="ecosystem-panel">
-            <p id="ecosystem-heading" className="text-center text-xs font-semibold uppercase tracking-widest text-purple-300 mb-6">
-              Building together with
-            </p>
-            <EcosystemMarquee />
-          </div>
-        </section>
+        <EcosystemPanel className="mb-16 sm:mb-24" />
 
         <section id="photo-gallery" className="mb-14 sm:mb-24 scroll-mt-28">
           <div className="text-center mb-8 px-4">
