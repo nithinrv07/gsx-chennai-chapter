@@ -14,7 +14,6 @@ export interface DropdownNavItem {
     items: {
       id: string;
       label: string;
-      description?: string;
       onSelect: () => void;
     }[];
   }[];
@@ -119,14 +118,13 @@ export function DropdownNavigation({ navItems, openMenu, onOpenMenu, onLeaveMenu
                         transition={{ duration: reducedMotion ? 0 : 0.2 }}
                       >
                         {item.subMenus?.map(sub => (
-                          <div key={sub.title} className="w-72 max-w-full">
-                            <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-purple-300">{sub.title}</h3>
-                            <ul className="space-y-2">
+                          <div key={sub.title} className="w-60 max-w-full">
+                            <h3 className="mb-3 text-xs font-semibold uppercase tracking-wider text-purple-300">{sub.title}</h3>
+                            <ul className="space-y-1">
                               {sub.items.map(child => (
                                 <li key={child.id}>
-                                  <button type="button" onClick={child.onSelect} className="group block w-full rounded-xl px-3 py-2 text-left transition-colors hover:bg-purple-500/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-purple-300">
-                                    <span className="block text-sm font-medium leading-5 text-white">{child.label}</span>
-                                    <span className="mt-0.5 block text-xs leading-relaxed text-gray-400 group-hover:text-purple-200">{child.description}</span>
+                                  <button type="button" onClick={child.onSelect} className="group block w-full rounded-xl px-3 py-2.5 text-left transition-colors hover:bg-purple-500/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-purple-300">
+                                    <span className="block text-sm font-medium leading-5 text-white group-hover:text-purple-200 transition-colors">{child.label}</span>
                                   </button>
                                 </li>
                               ))}

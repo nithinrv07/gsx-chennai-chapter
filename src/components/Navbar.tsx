@@ -219,7 +219,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               items: item.children.map(child => ({
                 id: child.id,
                 label: child.label,
-                description: child.description,
                 onSelect: () => handleNavClick(child.pageId || item.id, child.sectionId),
               })),
             }] : undefined,
