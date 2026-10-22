@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PageId, EventCategory, EventItem, GSX_JOIN_FORM_URL } from '../types';
+import { PageId, EventCategory, EventItem } from '../types';
 import { EVENTS_DATA } from '../data/events';
 import { PageHero } from '../components/PageHero';
 import { ScrollReveal } from '../components/ScrollReveal';
@@ -19,6 +19,7 @@ interface EventsPageProps {
   onNavigate: (page: PageId) => void;
   onOpenEventDetail: (event: EventItem) => void;
   onRegisterEvent: (event: EventItem) => void;
+  onOpenJoinModal: () => void;
 }
 
 const CATEGORIES: EventCategory[] = [
@@ -34,6 +35,7 @@ export const EventsPage: React.FC<EventsPageProps> = ({
   onNavigate,
   onOpenEventDetail,
   onRegisterEvent,
+  onOpenJoinModal,
 }) => {
   const [selectedCategory, setSelectedCategory] = useState<EventCategory>('All');
 
@@ -198,15 +200,14 @@ export const EventsPage: React.FC<EventsPageProps> = ({
             <p className="text-xs sm:text-sm text-gray-400 leading-relaxed max-w-md mx-auto mb-6">
               We&apos;re finalizing dates for upcoming developer workshops, AI build jams, and hackathons. Join the community to get access first!
             </p>
-            <a
-              href={GSX_JOIN_FORM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              type="button"
+              onClick={onOpenJoinModal}
               className="px-6 py-3 rounded-xl bg-violet-600 hover:bg-violet-500 text-white text-xs font-bold uppercase tracking-wider shadow-[0_0_20px_rgba(139,92,246,0.35)] transition-all cursor-pointer inline-flex items-center gap-2"
             >
               <Sparkles className="w-4 h-4 text-violet-200" />
               <span>Join GSX Chennai Community</span>
-            </a>
+            </button>
           </div>
         )}
       </section>
@@ -236,7 +237,7 @@ export const EventsPage: React.FC<EventsPageProps> = ({
             <div className="glass-panel rounded-3xl border border-purple-500/20 p-8 sm:p-10 text-center">
               <h3 className="text-lg font-bold text-white mb-3">Meetup details coming soon</h3>
               <p className="text-sm text-gray-400 max-w-lg mx-auto leading-relaxed">Dates and venues will appear here when announced. Join the community to hear about the next meetup.</p>
-              <a href={GSX_JOIN_FORM_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mt-6 px-6 py-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-sm font-semibold transition-colors">Join the community <ArrowRight className="w-4 h-4" /></a>
+              <button type="button" onClick={onOpenJoinModal} className="inline-flex items-center gap-2 mt-6 px-6 py-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-sm font-semibold transition-colors cursor-pointer">Join the community <ArrowRight className="w-4 h-4" /></button>
             </div>
           )}
         </section>

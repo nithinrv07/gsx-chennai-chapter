@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { X, CheckCircle2, Sparkles, Instagram, ArrowRight, Compass, Code, Rocket, ExternalLink } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { X, CheckCircle2, Sparkles, Instagram, AlertCircle, Mail } from 'lucide-react';
 import { motion } from 'motion/react';
 import { sendJoinRegistration, GSX_OFFICIAL_EMAIL } from '../lib/emailService';
-import { GSX_JOIN_FORM_URL } from '../types';
+import { GSX_WHATSAPP_URL } from '../types';
 
 interface JoinCommunityModalProps {
   isOpen: boolean;
@@ -21,6 +21,15 @@ export const JoinCommunityModal: React.FC<JoinCommunityModalProps> = ({ isOpen, 
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitting, setSubmitting] = useState(false);
   const [joined, setJoined] = useState(false);
+  const [sendError, setSendError] = useState(false);
+
+  // Escape closes the form.
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && onClose();
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
@@ -46,15 +55,24 @@ export const JoinCommunityModal: React.FC<JoinCommunityModalProps> = ({ isOpen, 
     e.preventDefault();
     if (!validate()) return;
     setSubmitting(true);
-    try {
-      await sendJoinRegistration(formData);
-    } catch (err) {
-      console.error('Registration dispatch error:', err);
-    } finally {
-      setSubmitting(false);
-      setJoined(true);
-    }
+    setSendError(false);
+    const result = await sendJoinRegistration(formData);
+    setSubmitting(false);
+    // Only confirm when the email to the team was actually accepted.
+    if (result.success) setJoined(true);
+    else setSendError(true);
   };
+
+  const mailtoFallback = `mailto:${GSX_OFFICIAL_EMAIL}?subject=${encodeURIComponent(
+    `Join GSX Chennai: ${formData.name}`
+  )}&body=${encodeURIComponent(
+    `Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+College/Company: ${formData.collegeOrOrg}
+Interest: ${formData.primaryInterest}
+Instagram: ${formData.socialHandle || '-'}`
+  )}`;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-black/85 backdrop-blur-xl">
@@ -81,34 +99,9 @@ export const JoinCommunityModal: React.FC<JoinCommunityModalProps> = ({ isOpen, 
                 Your Journey Starts Here
               </h2>
               <p className="text-xs sm:text-sm text-gray-400 mt-1 leading-relaxed">
-                Join through our official Google Form or register right here.
+                Fill in your details and our core team will get in touch.
               </p>
             </div>
-
-            {/* Google Form Direct Link Banner */}
-            <a
-              href={GSX_JOIN_FORM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full mb-5 p-3 sm:p-3.5 rounded-xl bg-gradient-to-r from-violet-600/30 via-purple-600/20 to-fuchsia-600/30 border border-violet-500/40 hover:border-violet-400 text-white flex items-center justify-between gap-3 shadow-[0_0_20px_rgba(139,92,246,0.2)] hover:shadow-[0_0_25px_rgba(139,92,246,0.4)] transition-all group cursor-pointer"
-            >
-              <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-lg bg-violet-500/30 border border-violet-400/30 flex items-center justify-center text-violet-200">
-                  <ExternalLink className="w-4 h-4" />
-                </div>
-                <div className="text-left">
-                  <span className="text-xs font-bold block text-white group-hover:text-violet-200 transition-colors">
-                    Official GSX Google Form
-                  </span>
-                  <span className="text-[11px] text-gray-400">
-                    Open Google Form to join directly
-                  </span>
-                </div>
-              </div>
-              <span className="text-xs font-bold text-violet-300 flex items-center gap-1 group-hover:translate-x-0.5 transition-transform bg-violet-500/20 px-2.5 py-1 rounded-lg border border-violet-500/30">
-                Open Form →
-              </span>
-            </a>
 
             {/* 3-Step Journey Micro-cards */}
             <div className="grid grid-cols-3 gap-2.5 mb-6">
@@ -229,6 +222,23 @@ export const JoinCommunityModal: React.FC<JoinCommunityModalProps> = ({ isOpen, 
                 />
               </div>
 
+              {sendError && (
+                <div role="alert" className="p-3.5 rounded-xl border border-red-400/40 bg-red-500/10 text-left">
+                  <p className="flex items-center gap-2 text-sm font-semibold text-red-200">
+                    <AlertCircle className="w-4 h-4 shrink-0" /> We couldn&apos;t send your registration.
+                  </p>
+                  <p className="text-xs text-red-100/80 mt-1.5 leading-relaxed">
+                    Please check your connection and try again, or email your details to us directly.
+                  </p>
+                  <a
+                    href={mailtoFallback}
+                    className="inline-flex items-center gap-1.5 mt-2.5 text-xs font-semibold text-white px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
+                  >
+                    <Mail className="w-3.5 h-3.5" /> Email {GSX_OFFICIAL_EMAIL}
+                  </a>
+                </div>
+              )}
+
               <div className="pt-2">
                 <button
                   type="submit"
@@ -236,7 +246,7 @@ export const JoinCommunityModal: React.FC<JoinCommunityModalProps> = ({ isOpen, 
                   className="w-full py-3.5 px-4 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-bold text-sm shadow-[0_10px_30px_rgba(139,92,246,0.35)] transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                 >
                   {submitting ? (
-                    <span>Onboarding You to GSX...</span>
+                    <span>Sending your registration...</span>
                   ) : (
                     <>
                       <Sparkles className="w-4 h-4 text-purple-200" />
@@ -271,9 +281,8 @@ export const JoinCommunityModal: React.FC<JoinCommunityModalProps> = ({ isOpen, 
                 Welcome to GSX Chennai!
               </h3>
               <p className="text-xs sm:text-sm text-gray-300 mt-2 max-w-sm mx-auto leading-relaxed">
-                Your details have been delivered to our core team at{' '}
-                <span className="text-purple-300 font-semibold">{GSX_OFFICIAL_EMAIL}</span>.
-                Check your inbox for upcoming meetups, hackathons, and community access passes!
+                Your registration has reached our core team. We&apos;ll get in touch on WhatsApp or email soon.
+                Meanwhile, join our WhatsApp community to hear about sessions and events first.
               </p>
             </div>
 
@@ -292,13 +301,12 @@ export const JoinCommunityModal: React.FC<JoinCommunityModalProps> = ({ isOpen, 
 
             <div className="flex flex-col sm:flex-row gap-3">
               <a
-                href="https://www.instagram.com/gsx_chennai_chapter/"
+                href={GSX_WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 text-white text-xs font-semibold shadow-lg flex items-center justify-center gap-2"
               >
-                <Instagram className="w-4 h-4" />
-                <span>Follow on Instagram</span>
+                <span>Join WhatsApp Community</span>
               </a>
               <button
                 onClick={onClose}

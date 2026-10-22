@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { PageId, EventItem, AnnouncementItem, GSX_JOIN_FORM_URL } from './types';
+import { PageId, EventItem, AnnouncementItem } from './types';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { CustomCursor } from './components/CustomCursor';
@@ -146,9 +146,9 @@ function AppContent() {
   const [selectedEventForRegister, setSelectedEventForRegister] = useState<EventItem | null>(null);
   const [selectedAnnouncementForDetail, setSelectedAnnouncementForDetail] = useState<AnnouncementItem | null>(null);
 
-  // Direct user to official GSX Google Form
+  // Open the on-site join form (submissions are emailed to the GSX inbox)
   const handleOpenJoinModal = () => {
-    window.open(GSX_JOIN_FORM_URL, '_blank', 'noopener,noreferrer');
+    setIsJoinModalOpen(true);
   };
 
   // Scroll to section or top upon page navigation and push history state
@@ -278,6 +278,7 @@ function AppContent() {
                 onNavigate={handleNavigate}
                 onOpenEventDetail={(evt) => setSelectedEventForDetail(evt)}
                 onRegisterEvent={(evt) => setSelectedEventForRegister(evt)}
+                onOpenJoinModal={handleOpenJoinModal}
               />
             </motion.div>
           )}
@@ -293,6 +294,7 @@ function AppContent() {
               <AnnouncementsPage
                 onNavigate={handleNavigate}
                 onOpenDetail={(ann) => setSelectedAnnouncementForDetail(ann)}
+                onOpenJoinModal={handleOpenJoinModal}
               />
             </motion.div>
           )}

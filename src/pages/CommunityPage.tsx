@@ -1,6 +1,6 @@
 import { TeamPortrait } from '../components/TeamPortrait';
 import React from 'react';
-import { PageId, GSX_JOIN_FORM_URL, GSX_WHATSAPP_URL, GSX_INSTAGRAM_URL, GSX_LINKEDIN_URL } from '../types';
+import { PageId, GSX_WHATSAPP_URL, GSX_INSTAGRAM_URL, GSX_LINKEDIN_URL } from '../types';
 import { FEATURED_LEAD, CORE_TEAM } from '../data/team';
 import { PageHero } from '../components/PageHero';
 import { ScrollReveal } from '../components/ScrollReveal';
@@ -278,15 +278,14 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate, onOpen
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a
-                href={GSX_JOIN_FORM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-500 hover:to-violet-500 text-white font-bold text-sm shadow-[0_0_30px_rgba(168,85,247,0.5)] transition-all flex items-center justify-center gap-2 cursor-pointer"
+              <button
+                type="button"
+                onClick={onOpenJoinModal}
+                className="cursor-pointer w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-500 hover:to-violet-500 text-white font-bold text-sm shadow-[0_0_30px_rgba(168,85,247,0.5)] transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
                 <span>Join Official GSX Community</span>
                 <ArrowRight className="w-4 h-4" />
-              </a>
+              </button>
 
               <a
                 href={GSX_WHATSAPP_URL}

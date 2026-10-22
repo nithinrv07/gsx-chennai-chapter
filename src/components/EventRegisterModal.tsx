@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { EventItem } from '../types';
-import { X, CheckCircle2, Ticket, Sparkles, Calendar, MapPin, Download, Check } from 'lucide-react';
+import { X, CheckCircle2, Ticket, Sparkles, Calendar, MapPin, Download, Check, AlertCircle } from 'lucide-react';
 import { motion } from 'motion/react';
 import { sendEventRegistration, GSX_OFFICIAL_EMAIL } from '../lib/emailService';
 
@@ -21,6 +21,7 @@ export const EventRegisterModal: React.FC<EventRegisterModalProps> = ({ event, o
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [sendError, setSendError] = useState(false);
   const [ticketId, setTicketId] = useState('');
 
   if (!event) return null;
@@ -48,18 +49,16 @@ export const EventRegisterModal: React.FC<EventRegisterModalProps> = ({ event, o
     const generatedPass = `GSX-${Math.floor(100000 + Math.random() * 900000)}`;
     setTicketId(generatedPass);
 
-    try {
-      await sendEventRegistration({
-        eventName: event.title,
-        ...formData,
-        ticketId: generatedPass,
-      });
-    } catch (err) {
-      console.error('Event registration dispatch error:', err);
-    } finally {
-      setIsSubmitting(false);
-      setIsSuccess(true);
-    }
+    setSendError(false);
+    const result = await sendEventRegistration({
+      eventName: event.title,
+      ...formData,
+      ticketId: generatedPass,
+    });
+    setIsSubmitting(false);
+    // Only issue the pass once the registration email was actually accepted.
+    if (result.success) setIsSuccess(true);
+    else setSendError(true);
   };
 
   return (
@@ -171,6 +170,17 @@ export const EventRegisterModal: React.FC<EventRegisterModalProps> = ({ event, o
                   className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.1] text-sm text-white placeholder-gray-500 focus:outline-none focus:border-purple-500"
                 />
               </div>
+
+              {sendError && (
+                <div role="alert" className="p-3.5 rounded-xl border border-red-400/40 bg-red-500/10 text-left">
+                  <p className="flex items-center gap-2 text-sm font-semibold text-red-200">
+                    <AlertCircle className="w-4 h-4 shrink-0" /> We couldn&apos;t complete your registration.
+                  </p>
+                  <p className="text-xs text-red-100/80 mt-1.5 leading-relaxed">
+                    Please check your connection and try again, or email {GSX_OFFICIAL_EMAIL}.
+                  </p>
+                </div>
+              )}
 
               <div className="pt-2">
                 <button

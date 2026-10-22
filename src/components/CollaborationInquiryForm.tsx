@@ -181,6 +181,7 @@ export const CollaborationInquiryForm: React.FC<CollaborationInquiryFormProps> =
             _subject: `New GSX Chennai Collaboration: ${formData.organization} (${formData.name})`,
             _template: 'table',
             _captcha: 'false',
+            _replyto: formData.email,
             'Full Name': formData.name,
             'Email Address': formData.email,
             'Organization': formData.organization,
@@ -194,8 +195,12 @@ export const CollaborationInquiryForm: React.FC<CollaborationInquiryFormProps> =
           }),
         });
 
-        if (!response.ok) {
-          console.warn(`Endpoint returned status: ${response.status}`);
+        // Only confirm when FormSubmit actually accepted the proposal (it can answer 200 with success "false").
+        const result = await response.json().catch(() => ({} as { success?: string | boolean }));
+        if (!response.ok || String(result?.success) === 'false') {
+          throw new Error(
+            'We couldn’t send your proposal. Please try again, or email reachtogsxchennai@gmail.com directly.'
+          );
         }
       } else {
         await new Promise((resolve) => setTimeout(resolve, 750));

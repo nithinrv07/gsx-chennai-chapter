@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PageId, AnnouncementItem, AnnouncementCategory, GSX_JOIN_FORM_URL } from '../types';
+import { PageId, AnnouncementItem, AnnouncementCategory } from '../types';
 import { ANNOUNCEMENTS_DATA } from '../data/announcements';
 import { PageHero } from '../components/PageHero';
 import { ScrollReveal } from '../components/ScrollReveal';
@@ -8,6 +8,7 @@ import { Calendar, Clock, ArrowRight, Sparkles, Tag, Flame } from 'lucide-react'
 interface AnnouncementsPageProps {
   onNavigate: (page: PageId) => void;
   onOpenDetail: (announcement: AnnouncementItem) => void;
+  onOpenJoinModal: () => void;
 }
 
 const CATEGORIES: AnnouncementCategory[] = [
@@ -22,6 +23,7 @@ const CATEGORIES: AnnouncementCategory[] = [
 export const AnnouncementsPage: React.FC<AnnouncementsPageProps> = ({
   onNavigate,
   onOpenDetail,
+  onOpenJoinModal,
 }) => {
   const [selectedCategory, setSelectedCategory] = useState<AnnouncementCategory>('All');
 
@@ -199,15 +201,14 @@ export const AnnouncementsPage: React.FC<AnnouncementsPageProps> = ({
             <p className="text-xs sm:text-sm text-gray-400 leading-relaxed max-w-md mx-auto mb-6">
               Official chapter bulletins, fellowship programs, and hackathon registration announcements will be posted here soon.
             </p>
-            <a
-              href={GSX_JOIN_FORM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              type="button"
+              onClick={onOpenJoinModal}
               className="px-6 py-3 rounded-xl bg-violet-600 hover:bg-violet-500 text-white text-xs font-bold uppercase tracking-wider shadow-[0_0_20px_rgba(139,92,246,0.35)] transition-all cursor-pointer inline-flex items-center gap-2"
             >
               <Sparkles className="w-4 h-4 text-violet-200" />
               <span>Join GSX Community</span>
-            </a>
+            </button>
           </div>
         )}
       </section>

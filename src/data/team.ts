@@ -74,16 +74,6 @@ export const CORE_TEAM: TeamMember[] = [
     "linkedin": "https://www.linkedin.com/in/buvanagirish-sk-3b7ba8329/"
   },
   {
-    "id": "core-06",
-    "name": "Sreekanth G",
-    "role": "Core Member",
-    "owns": "Community initiatives and chapter activities",
-    "shortBio": "Supporting the chapter’s community initiatives and activities.",
-    "image": "/team/purple/Sreekanth%20G.jpg",
-    "iconName": "Users",
-    "linkedin": "https://www.linkedin.com/in/sreekanth-g-429711418"
-  },
-  {
     "id": "core-07",
     "name": "Hariharan",
     "role": "Technical Team",
