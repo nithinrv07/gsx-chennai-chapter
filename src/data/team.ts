@@ -150,6 +150,15 @@ export const CORE_TEAM: TeamMember[] = [
     "image": mediaUrl('team/mithra.jpg'),
     "iconName": "Megaphone",
     "linkedin": "https://www.linkedin.com/in/mithra-b-404111313/"
+  },
+  {
+    "id": "core-santhosh-m",
+    "name": "Santhosh M",
+    "role": "Media Team",
+    "owns": "Photos, videos and media content",
+    "shortBio": "Capturing chapter moments and supporting media content for the community.",
+    "image": mediaUrl('team/santhosh-m.jpg'),
+    "iconName": "Megaphone"
   }
 ];
 
