@@ -1,12 +1,17 @@
 /**
  * GSX Chennai email service.
- * Sends website form submissions to reachtogsxchennai@gmail.com through FormSubmit (AJAX).
+ * Sends website form submissions to reachtogsxchennai@gmail.com through Web3Forms.
  * A copy is also kept in the visitor's browser (localStorage) as a backup, but a submission
- * only counts as delivered when FormSubmit confirms it.
+ * only counts as delivered when Web3Forms confirms it.
  */
 
 export const GSX_OFFICIAL_EMAIL = 'reachtogsxchennai@gmail.com';
-export const FORMSUBMIT_ENDPOINT = `https://formsubmit.co/ajax/${GSX_OFFICIAL_EMAIL}`;
+export const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
+/**
+ * Web3Forms access key for reachtogsxchennai@gmail.com. Web3Forms keys are designed to be
+ * public (they only allow sending to the registered inbox), so it is safe in client code.
+ */
+export const WEB3FORMS_ACCESS_KEY = 'bdc79651-99bf-475f-babc-3c24be8a7a66';
 
 export interface SendResult {
   success: boolean;
@@ -57,30 +62,34 @@ function backup(key: string, data: object) {
 }
 
 /**
- * Post fields to FormSubmit. `replyTo` lets the team answer the sender straight from Gmail.
- * Resolves with success only when FormSubmit accepts the submission.
+ * Send fields to the GSX inbox via Web3Forms. `replyTo` lets the team answer the sender
+ * straight from Gmail. Resolves with success only when Web3Forms accepts the submission.
  */
 export async function sendToGsxEmail(
   subject: string,
   fields: Record<string, string>,
   replyTo?: string
 ): Promise<SendResult> {
+  if (!WEB3FORMS_ACCESS_KEY) {
+    console.error('Web3Forms access key is not set in src/lib/emailService.ts');
+    return { success: false, message: 'Form email is not configured' };
+  }
   try {
-    const response = await fetch(FORMSUBMIT_ENDPOINT, {
+    const response = await fetch(WEB3FORMS_ENDPOINT, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
       body: JSON.stringify({
-        _subject: subject,
-        _template: 'table',
-        _captcha: 'false',
-        ...(replyTo ? { _replyto: replyTo } : {}),
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject,
+        from_name: 'GSX Chennai Website',
+        ...(replyTo ? { replyto: replyTo } : {}),
         ...fields,
         'Submitted At': submittedAt(),
       }),
     });
-    const result = await response.json().catch(() => ({} as { success?: string | boolean; message?: string }));
-    // FormSubmit answers 200 with success "false" for problems such as an unactivated inbox.
-    const accepted = response.ok && String(result?.success) !== 'false';
+    const result = await response.json().catch(() => ({} as { success?: boolean; message?: string }));
+    const accepted = response.ok && result?.success === true;
+    if (!accepted) console.warn('Web3Forms rejected the submission:', result?.message || response.status);
     return { success: accepted, message: result?.message };
   } catch (err) {
     console.warn('Form email could not be sent:', err);

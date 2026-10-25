@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useTheme } from '../context/ThemeContext';
+import { GSX_OFFICIAL_EMAIL, sendToGsxEmail } from '../lib/emailService';
 
 export interface CollaborationInquiryFormProps {
   id?: string;
@@ -44,7 +45,7 @@ export const CollaborationInquiryForm: React.FC<CollaborationInquiryFormProps> =
   title = 'Collaboration & Inquiries',
   subtitle = 'Partner with GSX Chennai for workshops, sponsorships, joint events, or community mentorship.',
   defaultType = 'Partnership',
-  endpointUrl = 'https://formsubmit.co/ajax/reachtogsxchennai@gmail.com',
+  endpointUrl,
   onSubmitCustom,
   onSuccess,
   showBackendHelper = false,
@@ -166,44 +167,42 @@ export const CollaborationInquiryForm: React.FC<CollaborationInquiryFormProps> =
         // LocalStorage fallback
       }
 
+      const fields = {
+        'Form Type': 'Collaboration / Partnership Inquiry',
+        'Full Name': formData.name,
+        'Email Address': formData.email,
+        'Phone': formData.phone || 'Not provided',
+        'Organization': formData.organization,
+        'Role': formData.role,
+        'Collaboration Type': formData.collaborationType,
+        'Primary Track': formData.primaryTrack,
+        'Preferred Timeline': formData.preferredTimeline,
+        'Expected Audience': formData.expectedAudience,
+        'Proposal Details': formData.message,
+      };
+      const failure = new Error(
+        `We couldn’t send your proposal. Please try again, or email ${GSX_OFFICIAL_EMAIL} directly.`
+      );
+
       if (onSubmitCustom) {
         // Custom submit handler provided by parent
         await onSubmitCustom(formData);
       } else if (endpointUrl) {
-        // Real Backend submission to reachtogsxchennai@gmail.com
+        // Optional custom JSON endpoint
         const response = await fetch(endpointUrl, {
           method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            _subject: `New GSX Chennai Collaboration: ${formData.organization} (${formData.name})`,
-            _template: 'table',
-            _captcha: 'false',
-            _replyto: formData.email,
-            'Full Name': formData.name,
-            'Email Address': formData.email,
-            'Organization': formData.organization,
-            'Role': formData.role,
-            'Collaboration Type': formData.collaborationType,
-            'Primary Track': formData.primaryTrack,
-            'Preferred Timeline': formData.preferredTimeline,
-            'Expected Audience': formData.expectedAudience,
-            'Proposal Details': formData.message,
-            'Submitted At': new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
-          }),
+          headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+          body: JSON.stringify(fields),
         });
-
-        // Only confirm when FormSubmit actually accepted the proposal (it can answer 200 with success "false").
-        const result = await response.json().catch(() => ({} as { success?: string | boolean }));
-        if (!response.ok || String(result?.success) === 'false') {
-          throw new Error(
-            'We couldn’t send your proposal. Please try again, or email reachtogsxchennai@gmail.com directly.'
-          );
-        }
+        if (!response.ok) throw failure;
       } else {
-        await new Promise((resolve) => setTimeout(resolve, 750));
+        // Default: email the GSX inbox; only confirm when the send is accepted.
+        const result = await sendToGsxEmail(
+          `New GSX Chennai Collaboration: ${formData.organization} (${formData.name})`,
+          fields,
+          formData.email
+        );
+        if (!result.success) throw failure;
       }
 
       setIsSuccess(true);
