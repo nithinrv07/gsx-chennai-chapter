@@ -72,7 +72,8 @@ export interface EventItem {
     name: string;
     role: string;
     company: string;
-    avatar: string;
+    /** Photo path; initials are shown when it's missing. */
+    avatar?: string;
   }[];
   agenda?: {
     time: string;

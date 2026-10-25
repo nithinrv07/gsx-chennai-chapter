@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { EventItem } from '../types';
 import { X, Calendar, CalendarPlus, Clock, MapPin, Users, Share2, Check, ArrowRight, Sparkles, ExternalLink } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -17,6 +17,14 @@ export const EventDetailModal: React.FC<EventDetailModalProps> = ({
 }) => {
   const [copied, setCopied] = useState(false);
 
+  // Escape closes the popup.
+  useEffect(() => {
+    if (!event) return;
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && onClose();
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [event, onClose]);
+
   if (!event) return null;
 
   const handleShare = () => {
@@ -26,48 +34,54 @@ export const EventDetailModal: React.FC<EventDetailModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-black/80 backdrop-blur-xl">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-xl"
+      onClick={(e) => e.target === e.currentTarget && onClose()}
+      role="dialog"
+      aria-modal="true"
+      aria-label={event.title}
+    >
       <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
-        className="relative w-full max-w-3xl bg-[#090710] border border-white/[0.1] rounded-2xl shadow-[0_0_50px_rgba(168,85,247,0.2)] overflow-hidden my-8"
+        className="relative w-full max-w-xl max-h-[90dvh] flex flex-col bg-[#090710] border border-white/[0.1] rounded-2xl shadow-[0_0_50px_rgba(168,85,247,0.2)] overflow-hidden"
       >
-        {/* Close Button */}
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 z-20 p-2 rounded-full bg-black/60 border border-white/10 text-gray-300 hover:text-white hover:bg-black/90 transition-colors"
-          aria-label="Close modal"
-        >
-          <X className="w-5 h-5" />
-        </button>
-
-        {/* Hero Banner Image */}
-        <div className="relative h-56 sm:h-72 w-full overflow-hidden">
-          <img
-            src={event.image}
-            alt={event.title}
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#090710] via-[#090710]/60 to-transparent" />
-          
-          <div className="absolute top-4 left-4">
-            <span className="px-3 py-1 text-xs font-semibold rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/40 backdrop-blur-md">
-              {event.category}
-            </span>
-          </div>
-
-          <div className="absolute bottom-4 left-4 right-4 sm:left-6 sm:right-6">
-            <h2 className="text-xl sm:text-3xl font-extrabold text-white tracking-tight leading-tight">
-              {event.title}
-            </h2>
-          </div>
+        {/* Pinned top bar: always-visible Exit */}
+        <div className="flex items-center justify-between gap-3 px-4 py-3 border-b border-white/[0.08] bg-[#0d0a18] shrink-0">
+          <span className="px-2.5 py-1 text-[11px] font-semibold rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/40">
+            {event.category}
+          </span>
+          <button
+            type="button"
+            onClick={onClose}
+            autoFocus
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-white/20 bg-white/[0.08] hover:bg-red-500/20 hover:border-red-400/50 text-white text-xs font-semibold transition-colors cursor-pointer"
+            aria-label="Exit event details"
+          >
+            <X className="w-4 h-4" />
+            <span>Exit</span>
+          </button>
         </div>
 
+        {/* Scrollable content */}
+        <div className="overflow-y-auto">
+          {/* Poster: whole image, black and white until hovered */}
+          <div className="group h-56 sm:h-64 w-full bg-[#0b0716]">
+            <img
+              src={event.image}
+              alt={event.title}
+              className="w-full h-full object-contain grayscale group-hover:grayscale-0 group-active:grayscale-0 transition-[filter] duration-500"
+            />
+          </div>
+
         {/* Modal Body */}
-        <div className="p-6 sm:p-8 space-y-6">
+        <div className="p-5 space-y-5">
+          <h2 className="text-lg sm:text-xl font-extrabold text-white tracking-tight leading-snug">
+            {event.title}
+          </h2>
           {/* Key Event Metadata Row */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 p-4 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+          <div className="grid grid-cols-3 gap-2 p-3 rounded-xl bg-white/[0.02] border border-white/[0.06]">
             <div className="flex items-center gap-3 text-gray-300">
               <Calendar className="w-4 h-4 text-purple-400 shrink-0" />
               <div>
@@ -97,10 +111,10 @@ export const EventDetailModal: React.FC<EventDetailModalProps> = ({
 
           {/* Description */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-2">
+            <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
               About The Experience
             </h3>
-            <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
+            <p className="text-sm text-gray-300 leading-relaxed">
               {event.description}
             </p>
           </div>
@@ -108,20 +122,29 @@ export const EventDetailModal: React.FC<EventDetailModalProps> = ({
           {/* Speakers Section if available */}
           {event.speakers && event.speakers.length > 0 && (
             <div>
-              <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3">
+              <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2.5">
                 Featured Speakers & Mentors
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {event.speakers.map((speaker, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center gap-3.5 p-3 rounded-xl bg-white/[0.03] border border-white/[0.06]"
+                    className="flex items-center gap-3 p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06]"
                   >
-                    <img
-                      src={speaker.avatar}
-                      alt={speaker.name}
-                      className="w-11 h-11 rounded-full object-cover border border-purple-500/30"
-                    />
+                    {speaker.avatar ? (
+                      <img
+                        src={speaker.avatar}
+                        alt={speaker.name}
+                        className="w-11 h-11 rounded-full object-cover object-top border border-purple-500/30 shrink-0"
+                      />
+                    ) : (
+                      <span
+                        aria-hidden="true"
+                        className="w-11 h-11 rounded-full grid place-items-center shrink-0 text-sm font-bold text-white bg-gradient-to-br from-purple-500 to-violet-700 border border-purple-500/30"
+                      >
+                        {speaker.name.split(' ').map((part) => part[0]).slice(0, 2).join('').toUpperCase()}
+                      </span>
+                    )}
                     <div>
                       <p className="text-sm font-bold text-white">{speaker.name}</p>
                       <p className="text-xs text-purple-300">{speaker.role}</p>
@@ -136,19 +159,19 @@ export const EventDetailModal: React.FC<EventDetailModalProps> = ({
           {/* Agenda Section if available */}
           {event.agenda && event.agenda.length > 0 && (
             <div>
-              <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3">
+              <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2.5">
                 Session Agenda
               </h3>
               <div className="space-y-2.5">
                 {event.agenda.map((slot, idx) => (
                   <div
                     key={idx}
-                    className="flex flex-col sm:flex-row sm:items-center justify-between p-3 rounded-xl bg-white/[0.02] border border-white/[0.04] text-xs"
+                    className="flex items-start gap-3 px-3 py-2.5 rounded-xl bg-white/[0.02] border border-white/[0.04] text-sm"
                   >
-                    <span className="font-mono text-purple-400 font-semibold mb-1 sm:mb-0">
+                    <span className="font-mono text-purple-400 font-semibold shrink-0">
                       {slot.time}
                     </span>
-                    <span className="text-gray-200 font-medium sm:text-right">
+                    <span className="text-gray-200 font-medium">
                       {slot.topic}
                     </span>
                   </div>
@@ -201,12 +224,18 @@ export const EventDetailModal: React.FC<EventDetailModalProps> = ({
                   <ArrowRight className="w-4 h-4" />
                 </button>
               ) : (
-                <div className="px-4 py-2 rounded-xl bg-white/[0.03] border border-white/[0.08] text-gray-400 text-xs font-medium">
-                  Past Event / Recap Mode
-                </div>
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl border border-white/15 bg-white/[0.05] hover:bg-white/[0.1] text-white text-xs font-semibold transition-colors cursor-pointer"
+                >
+                  <X className="w-4 h-4" />
+                  <span>Exit</span>
+                </button>
               )}
             </div>
           </div>
+        </div>
         </div>
       </motion.div>
     </div>

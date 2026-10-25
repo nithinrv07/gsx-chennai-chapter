@@ -13,8 +13,10 @@ export function getEventRange(
   if (Number.isNaN(day.getTime())) return null;
 
   const [startText, endText] = (event.time || '').split(/\s*[-–—]\s*|\s+to\s+/i);
+  // Only real clock times ("10:00 AM", "2 pm", "14:30") count; durations like "1–2 hours" mean all-day.
+  const CLOCK_TIME = /^\d{1,2}(:\d{2})?\s*[ap]\.?m\.?$|^\d{1,2}:\d{2}$/i;
   const withTime = (text?: string) => {
-    if (!text) return null;
+    if (!text || !CLOCK_TIME.test(text.trim())) return null;
     const parsed = new Date(`${event.date} ${text.trim()}`);
     return Number.isNaN(parsed.getTime()) ? null : parsed;
   };

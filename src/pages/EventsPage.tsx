@@ -268,12 +268,14 @@ export const EventsPage: React.FC<EventsPageProps> = ({
                
                 className="h-full"
               >
-                <div className="spotlight-card glass-panel rounded-2xl overflow-hidden flex flex-col border border-white/[0.06] opacity-85 hover:opacity-100 transition-opacity h-full">
-                  <div className="relative h-40 w-full overflow-hidden">
+                <div className="group spotlight-card glass-panel rounded-2xl overflow-hidden flex flex-col border border-white/[0.06] h-full">
+                  <div className="relative h-64 w-full overflow-hidden">
+                    {/* Posters show in black and white until hovered (or tapped) */}
                     <img
                       src={evt.image}
                       alt={evt.title}
-                      className="w-full h-full object-cover grayscale-[30%]"
+                      loading="lazy"
+                      className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 group-active:grayscale-0 group-hover:scale-105 transition-[transform,filter] duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#090710] via-transparent to-transparent" />
                     <span className="absolute top-3 left-3 px-2 py-0.5 text-[10px] font-semibold rounded-full bg-black/70 text-gray-300">
@@ -286,7 +288,7 @@ export const EventsPage: React.FC<EventsPageProps> = ({
                       <div className="text-[11px] text-gray-400 mb-1">
                         {evt.date} • {evt.venueType}
                       </div>
-                      <h3 className="text-sm font-bold text-white mb-2 line-clamp-1">
+                      <h3 className="text-sm font-bold text-white mb-2 line-clamp-2">
                         {evt.title}
                       </h3>
                       <p className="text-xs text-gray-400 line-clamp-2 leading-relaxed">
