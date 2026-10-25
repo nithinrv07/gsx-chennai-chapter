@@ -18,6 +18,7 @@ import {
   HeartHandshake,
   TrendingUp,
   Megaphone,
+  Palette,
 } from 'lucide-react';
 
 interface TeamPageProps {
@@ -43,6 +44,8 @@ const getRoleIcon = (iconName?: string) => {
       return <TrendingUp className="w-4 h-4 text-purple-400" />;
     case 'Megaphone':
       return <Megaphone className="w-4 h-4 text-purple-400" />;
+    case 'Palette':
+      return <Palette className="w-4 h-4 text-purple-400" />;
     default:
       return <Sparkles className="w-4 h-4 text-purple-400" />;
   }

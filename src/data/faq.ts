@@ -48,6 +48,6 @@ export const FAQ_DATA: FaqItem[] = [
   {
     question: 'How do I stay updated?',
     answer:
-      'Follow us on Instagram (@gsx_chennai_chapter) and LinkedIn, and join the WhatsApp community for announcements.',
+      'Follow us on Instagram (@gsxchennaichapter) and LinkedIn, and join the WhatsApp community for announcements.',
   },
 ];

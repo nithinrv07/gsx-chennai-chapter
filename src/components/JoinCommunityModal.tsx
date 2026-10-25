@@ -259,13 +259,13 @@ Instagram: ${formData.socialHandle || '-'}`
               <div className="pt-2 flex items-center justify-center gap-2 text-xs text-gray-400">
                 <span>Follow our official Instagram:</span>
                 <a
-                  href="https://www.instagram.com/gsx_chennai_chapter/"
+                  href="https://www.instagram.com/gsxchennaichapter/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-purple-300 hover:text-purple-200 font-semibold flex items-center gap-1"
                 >
                   <Instagram className="w-3.5 h-3.5" />
-                  <span>@gsx_chennai_chapter</span>
+                  <span>@gsxchennaichapter</span>
                 </a>
               </div>
             </form>

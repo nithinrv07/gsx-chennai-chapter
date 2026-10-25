@@ -137,7 +137,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenJoinModal }) =
 
               <a
                 id="footer-instagram-link"
-                href="https://www.instagram.com/gsx_chennai_chapter/"
+                href="https://www.instagram.com/gsxchennaichapter/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-between p-2.5 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-purple-500/40 hover:bg-purple-950/20 text-gray-300 hover:text-white transition-all group"

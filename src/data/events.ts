@@ -63,7 +63,7 @@ export const EVENTS_DATA: EventItem[] = [
       'Station 03, Assembly & QA: front meets back. We connected the frontend and backend, wrote a README as the project’s user manual, and cleared every “wait, how do I…?” about building an MVP.',
     image: mediaUrl('events/build-your-mvp-day-3-integration.webp'),
     speakers: [
-      { name: 'Adithyan', role: 'Speaker', company: 'GSX Chennai' },
+      { name: 'Adithyan', role: 'Speaker', company: 'GSX Chennai', avatar: mediaUrl('team/adhithyan.jpg') },
       { name: 'Hariharan', role: 'Speaker', company: 'GSX Chennai', avatar: mediaUrl('team/hari-haran.jpg') },
       { name: 'Sathappan', role: 'Speaker', company: 'GSX Chennai', avatar: mediaUrl('team/sathappan.jpg') },
     ],

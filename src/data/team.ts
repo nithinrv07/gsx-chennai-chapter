@@ -23,211 +23,152 @@ Her guiding philosophy: Learn. Build. Connect. Grow. — together, beyond campus
   isLead: true,
 };
 
+// Order and roles follow "GSX Chennai Chapter - Operations & Team Responsibilities".
+// A member without a photo can use image: '' to show their initials.
 export const CORE_TEAM: TeamMember[] = [
   {
-    "id": "core-01",
-    "name": "Minhu Parthasarathy",
-    "role": "Co-Lead",
-    "owns": "Chapter coordination and support",
-    "shortBio": "Supporting the Chapter Lead and coordinating the core team.",
-    "image": mediaUrl('team/minhu.jpg'),
-    "iconName": "Compass",
-    "linkedin": "https://www.linkedin.com/in/minhu-parthasarathy07/"
+    id: 'core-buvanagirish',
+    name: 'Buvanagirish S K',
+    role: 'Co-Lead',
+    owns: 'Chapter coordination and leadership',
+    shortBio: 'Co-leading the chapter alongside the Chapter Lead and coordinating the core team.',
+    image: mediaUrl('team/buvaneshwer.jpg'),
+    iconName: 'Compass',
+    linkedin: 'https://www.linkedin.com/in/buvanagirish-sk-3b7ba8329/',
   },
   {
-    "id": "core-02",
-    "name": "Abinaya R",
-    "role": "Operations Lead",
-    "owns": "Chapter operations and event coordination",
-    "shortBio": "Coordinating chapter operations and supporting event delivery.",
-    "image": mediaUrl('team/abinaya.jpg'),
-    "iconName": "Cpu",
-    "linkedin": "https://www.linkedin.com/in/abinaya0333"
+    id: 'core-minhu',
+    name: 'Minhu Parthasarathy',
+    role: 'Co-Lead',
+    owns: 'Chapter coordination and leadership',
+    shortBio: 'Co-leading the chapter alongside the Chapter Lead and coordinating the core team.',
+    image: mediaUrl('team/minhu.jpg'),
+    iconName: 'Compass',
+    linkedin: 'https://www.linkedin.com/in/minhu-parthasarathy07/',
   },
   {
-    "id": "core-03",
-    "name": "Jenita Agnes D L",
-    "role": "Operations Lead",
-    "owns": "Chapter operations and event coordination",
-    "shortBio": "Coordinating chapter operations and supporting event delivery.",
-    "image": mediaUrl('team/jenita-agnes.jpg'),
-    "iconName": "Cpu",
-    "linkedin": "https://www.linkedin.com/in/jenita-agnes-dl/"
+    id: 'core-abinaya',
+    name: 'Abinaya R',
+    role: 'Projects Head',
+    owns: 'Chapter projects',
+    shortBio: 'Leading the chapter’s projects and guiding project teams.',
+    image: mediaUrl('team/abinaya.jpg'),
+    iconName: 'Hammer',
+    linkedin: 'https://www.linkedin.com/in/abinaya0333',
   },
   {
-    "id": "core-04",
-    "name": "Semmozhi A",
-    "role": "Learning",
-    "owns": "Community learning initiatives",
-    "shortBio": "Supporting learning sessions and knowledge sharing within the community.",
-    "image": mediaUrl('team/semmozhi.jpg'),
-    "iconName": "BookOpen",
-    "linkedin": "https://www.linkedin.com/in/semmozhi/"
+    id: 'core-adhithyan',
+    name: 'Adhithyan',
+    role: 'Outreach',
+    owns: 'Outreach and partnerships',
+    shortBio: 'Connecting the chapter with colleges, organisations and new members.',
+    image: mediaUrl('team/adhithyan.jpg'),
+    iconName: 'HeartHandshake',
   },
   {
-    "id": "core-05",
-    "name": "Buvanagirish S K",
-    "role": "Building",
-    "owns": "Community project building",
-    "shortBio": "Supporting collaborative project building within the community.",
-    "image": mediaUrl('team/buvaneshwer.jpg'),
-    "iconName": "Hammer",
-    "linkedin": "https://www.linkedin.com/in/buvanagirish-sk-3b7ba8329/"
+    id: 'core-balaji',
+    name: 'Balaji',
+    role: 'Tech Head',
+    owns: 'Technical direction',
+    shortBio: 'Leading the chapter’s technical initiatives and development.',
+    image: mediaUrl('team/balaji-s.jpg'),
+    iconName: 'Cpu',
   },
   {
-    "id": "core-07",
-    "name": "Hariharan",
-    "role": "Technical Team",
-    "owns": "Technical support and development",
-    "shortBio": "Supporting the chapter’s technical initiatives and development.",
-    "image": mediaUrl('team/hari-haran.jpg'),
-    "iconName": "Cpu"
+    id: 'core-hariharan',
+    name: 'Hariharan',
+    role: 'Tech Ops',
+    owns: 'Technical operations',
+    shortBio: 'Running technical operations and supporting chapter sessions.',
+    image: mediaUrl('team/hari-haran.jpg'),
+    iconName: 'Cpu',
   },
   {
-    "id": "core-08",
-    "name": "Balaji",
-    "role": "Technical Team",
-    "owns": "Technical support and development",
-    "shortBio": "Supporting the chapter’s technical initiatives and development.",
-    "image": mediaUrl('team/balaji-s.jpg'),
-    "iconName": "Cpu"
+    id: 'core-sathappan',
+    name: 'Sathappan',
+    role: 'Tech Ops',
+    owns: 'Technical operations',
+    shortBio: 'Running technical operations and supporting chapter sessions.',
+    image: mediaUrl('team/sathappan.jpg'),
+    iconName: 'Cpu',
   },
   {
-    "id": "core-nithin-r",
-    "name": "Nithin R",
-    "role": "Technical Team",
-    "owns": "Technical support and development",
-    "shortBio": "Supporting the chapter’s technical initiatives and development.",
-    "image": mediaUrl('team/nithin-r.jpg'),
-    "iconName": "Cpu",
-    "linkedin": "https://www.linkedin.com/in/nithinr-engineer"
+    id: 'core-jenita',
+    name: 'Jenita Agnes D L',
+    role: 'Outreach & Community Engagement',
+    owns: 'Outreach and community engagement',
+    shortBio: 'Growing the chapter’s reach and keeping the community engaged.',
+    image: mediaUrl('team/jenita-agnes.jpg'),
+    iconName: 'HeartHandshake',
+    linkedin: 'https://www.linkedin.com/in/jenita-agnes-dl/',
   },
   {
-    "id": "core-sathappan",
-    "name": "Sathappan",
-    "role": "Technical Team",
-    "owns": "Technical support and development",
-    "shortBio": "Supporting the chapter’s technical initiatives and development.",
-    "image": mediaUrl('team/sathappan.jpg'),
-    "iconName": "Cpu"
+    id: 'core-kaviya',
+    name: 'Kaviya Sree N',
+    role: 'Online Meetups',
+    owns: 'Online meetups',
+    shortBio: 'Organising the chapter’s online meetups and virtual sessions.',
+    image: mediaUrl('team/kaviya.jpg'),
+    iconName: 'Users',
+    linkedin: 'https://www.linkedin.com/in/kaviya-sree-n-a6293b380/',
   },
   {
-    "id": "core-09",
-    "name": "Kameshwaran B",
-    "role": "Community",
-    "owns": "Community engagement",
-    "shortBio": "Connecting students across colleges and supporting community participation.",
-    "image": mediaUrl('team/kameshwaran.jpg'),
-    "iconName": "Users",
-    "linkedin": "https://www.linkedin.com/in/kameshwaran-b-779363338/"
+    id: 'core-nithin-r',
+    name: 'Nithin R',
+    role: 'Core / Tech Coordination',
+    owns: 'Core team and tech coordination',
+    shortBio: 'Coordinating between the core team and the tech team.',
+    image: mediaUrl('team/nithin-r.jpg'),
+    iconName: 'Cpu',
+    linkedin: 'https://www.linkedin.com/in/nithinr-engineer',
   },
   {
-    "id": "core-10",
-    "name": "Mohamed Shameel M",
-    "role": "Impact",
-    "owns": "Community impact initiatives",
-    "shortBio": "Supporting initiatives that bring technology and community impact together.",
-    "image": mediaUrl('team/shameel.jpg'),
-    "iconName": "HeartHandshake",
-    "linkedin": "https://www.linkedin.com/in/mohamedshameel2006/"
+    id: 'core-semmozhi',
+    name: 'Semmozhi A',
+    role: 'Design',
+    owns: 'Design and visuals',
+    shortBio: 'Creating the chapter’s designs, posters and visual identity.',
+    image: mediaUrl('team/semmozhi.jpg'),
+    iconName: 'Palette',
+    linkedin: 'https://www.linkedin.com/in/semmozhi/',
   },
   {
-    "id": "core-11",
-    "name": "Kaviya Sree N",
-    "role": "Career",
-    "owns": "Career development initiatives",
-    "shortBio": "Supporting career learning and development within the community.",
-    "image": mediaUrl('team/kaviya.jpg'),
-    "iconName": "TrendingUp",
-    "linkedin": "https://www.linkedin.com/in/kaviya-sree-n-a6293b380/"
+    id: 'core-shameel',
+    name: 'Mohamed Shameel M',
+    role: 'Community Engagement',
+    owns: 'Community engagement',
+    shortBio: 'Engaging members and supporting community participation.',
+    image: mediaUrl('team/shameel.jpg'),
+    iconName: 'Users',
+    linkedin: 'https://www.linkedin.com/in/mohamedshameel2006/',
   },
   {
-    "id": "core-12",
-    "name": "Mithra B",
-    "role": "Communications",
-    "owns": "Chapter communications",
-    "shortBio": "Supporting chapter announcements and community communications.",
-    "image": mediaUrl('team/mithra.jpg'),
-    "iconName": "Megaphone",
-    "linkedin": "https://www.linkedin.com/in/mithra-b-404111313/"
+    id: 'core-kameshwaran',
+    name: 'Kameshwaran B',
+    role: 'Community Engagement',
+    owns: 'Community engagement',
+    shortBio: 'Engaging members and supporting community participation.',
+    image: mediaUrl('team/kameshwaran.jpg'),
+    iconName: 'Users',
+    linkedin: 'https://www.linkedin.com/in/kameshwaran-b-779363338/',
   },
   {
-    "id": "core-santhosh-m",
-    "name": "Santhosh M",
-    "role": "Media Team",
-    "owns": "Photos, videos and media content",
-    "shortBio": "Capturing chapter moments and supporting media content for the community.",
-    "image": mediaUrl('team/santhosh-m.jpg'),
-    "iconName": "Megaphone"
-  }
-];
-
-export interface CommunityRoleCharter {
-  role: string;
-  owns: string;
-  details: string;
-  iconName: string;
-}
-
-export const COMMUNITY_CHARTER: CommunityRoleCharter[] = [
-  {
-    "role": "Chapter Lead",
-    "owns": "Chapter vision and leadership",
-    "details": "Leading the chapter’s vision, community development and partnerships.",
-    "iconName": "Compass"
+    id: 'core-mithra',
+    name: 'Mithra B',
+    role: 'Media Team',
+    owns: 'Photos, videos and media content',
+    shortBio: 'Capturing chapter moments and creating media content for the community.',
+    image: mediaUrl('team/mithra.jpg'),
+    iconName: 'Megaphone',
+    linkedin: 'https://www.linkedin.com/in/mithra-b-404111313/',
   },
   {
-    "role": "Co-Lead",
-    "owns": "Chapter coordination and support",
-    "details": "Supporting the Chapter Lead and coordinating the core team.",
-    "iconName": "Compass"
+    id: 'core-santhosh-m',
+    name: 'Santhosh M',
+    role: 'Media Team',
+    owns: 'Photos, videos and media content',
+    shortBio: 'Capturing chapter moments and creating media content for the community.',
+    image: mediaUrl('team/santhosh-m.jpg'),
+    iconName: 'Megaphone',
   },
-  {
-    "role": "Operations Lead",
-    "owns": "Chapter operations and event coordination",
-    "details": "Coordinating chapter operations and supporting event delivery.",
-    "iconName": "Cpu"
-  },
-  {
-    "role": "Learning",
-    "owns": "Community learning initiatives",
-    "details": "Supporting learning sessions and knowledge sharing within the community.",
-    "iconName": "BookOpen"
-  },
-  {
-    "role": "Building",
-    "owns": "Community project building",
-    "details": "Supporting collaborative project building within the community.",
-    "iconName": "Hammer"
-  },
-  {
-    "role": "Technical Team",
-    "owns": "Technical support and development",
-    "details": "Supporting the chapter’s technical initiatives and development.",
-    "iconName": "Cpu"
-  },
-  {
-    "role": "Community",
-    "owns": "Community engagement",
-    "details": "Connecting students across colleges and supporting community participation.",
-    "iconName": "Users"
-  },
-  {
-    "role": "Impact",
-    "owns": "Community impact initiatives",
-    "details": "Supporting initiatives that bring technology and community impact together.",
-    "iconName": "HeartHandshake"
-  },
-  {
-    "role": "Career",
-    "owns": "Career development initiatives",
-    "details": "Supporting career learning and development within the community.",
-    "iconName": "TrendingUp"
-  },
-  {
-    "role": "Communications",
-    "owns": "Chapter communications",
-    "details": "Supporting chapter announcements and community communications.",
-    "iconName": "Megaphone"
-  }
 ];

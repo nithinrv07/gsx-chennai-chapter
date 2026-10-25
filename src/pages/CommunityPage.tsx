@@ -20,7 +20,8 @@ import {
   Hammer,
   HeartHandshake,
   TrendingUp,
-  Megaphone
+  Megaphone,
+  Palette
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { mediaUrl } from '../lib/media';
@@ -48,6 +49,8 @@ const getRoleIcon = (iconName?: string) => {
       return <TrendingUp className="w-4 h-4 text-purple-400" />;
     case 'Megaphone':
       return <Megaphone className="w-4 h-4 text-purple-400" />;
+    case 'Palette':
+      return <Palette className="w-4 h-4 text-purple-400" />;
     default:
       return <Sparkles className="w-4 h-4 text-purple-400" />;
   }

@@ -474,7 +474,7 @@ export const BrochureModal: React.FC<BrochureModalProps> = ({ isOpen, onClose })
               </a>
 
               <a
-                href="https://www.instagram.com/gsx_chennai_chapter/"
+                href="https://www.instagram.com/gsxchennaichapter/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 p-3 rounded-xl bg-white/[0.04] border border-white/[0.08] hover:border-purple-500/40 text-gray-300 hover:text-white transition-colors"
